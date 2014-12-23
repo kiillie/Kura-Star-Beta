@@ -6,7 +6,7 @@
 		<div class="col-xs-6">
 			@if(Session::has('message'))
 				<span>{{Session::get('message')}}</span>
-			@endif
+			@endif 
 			<div class="reg-form">
 				<h2>User Registration</h2>
 				<div class="reg-inputs">
