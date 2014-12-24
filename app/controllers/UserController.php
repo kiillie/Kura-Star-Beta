@@ -11,15 +11,19 @@ class UserController extends BaseController{
 	}
 
 	public function store(){
-		$save = $this->user->store(Input::all());
-		
-		if($save){
+		$validate = new \KuraStar\Services\Validators\User;
+
+		if($validate->passes()){
+			$save = $this->user->store(Input::all());
+
 			return Redirect::route('registration')
 					->with('message', 'Successfully Registered!');
 		}
 		else{
+			$errors = $validate->getErrors();
+
 			return Redirect::route('registration')
-					->with('message', 'There was an error upon registration.');
+					->with('message', $errors->toArray());
 		}
 	}
 }
