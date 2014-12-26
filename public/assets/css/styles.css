@@ -96,6 +96,93 @@
 .foo-country p, .foo-category p{
 	font-size: 12px;
 }
+.article-details{
+	margin: 30px 0;
+}
+.article-menu{
+	background: rgb(218, 218, 218);
+	padding: 30px 20px;
+}
+.article-details .art-default-img img{
+	height: 145px;
+	width: 100%;
+}
+.article-details .art-title-desc textarea{
+	height: 95px;
+}
+.art-addons{
+	margin: 30px 0;
+	min-height: 400px;
+}
+.url-setting input[name='art-url']{
+	width: 310px;
+	display: inline-block;
+}
+.url-setting input[name='art-submit']{
+	vertical-align: top;
+}
+.art-addons .ui-state-active{
+	background: none;
+}
+.art-addons ul{
+	border-bottom-color: transparent;
+}
+.art-addons ul li{
+	background: rgb(229, 229, 229);
+	margin-right: 5px;
+}
+.art-addons .ui-state-active a{
+	color: #555;
+	cursor: default;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-bottom-color:transparent;
+}
+.art-addons textarea[name='art-text']{
+	height: 358px;
+	margin-bottom:10px;
+}
+.art-addons .ui-state-active a:hover{
+	border-bottom-color:transparent;
+}
+.art-addons .ui-state-active a:focus{
+	background:none;
+	outline: none;
+}
+.art-addons .addon-tab.picture{
+	height: 300px;
+	position: relative;
+}
+.art-addons .addon-tab.picture .pic-wrap{
+	width: 38%;
+	position: absolute;
+	margin: auto;
+	right: 0;
+	left: 0;
+	display: inline-block;
+	bottom: 0;
+	top: 0;
+	height: 50%;
+}
+.art-addons .addon-tab.picture img{
+	width: 125px;
+}
+.art-addons .addon-tab.picture .pic-img{
+	margin-right:30px;
+}
+.art-addons .addon-tab.reference textarea{
+	height: 300px;
+}
+.art-addons .addon-tab{
+	margin-top: 20px;
+}
+.art-addons .addon-tab.link .link-wrap input[name='art-link']{
+	width: 400px;
+}
+.art-addons .addon-tab.link .link-wrap input{
+	margin-right:10px;
+}
+.art-addons .addon-tab.link .link-wrap
 .foobar{
 	border-radius: 10px;
 	background: #DFDFDF;

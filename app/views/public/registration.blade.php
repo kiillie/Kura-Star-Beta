@@ -64,10 +64,10 @@
 			</div>
 		</div>
 		<div class="col-xs-6">
-			@if(Session::has('message_login'))
-				<span>{{Session::get('message_login')}}</span>
-			@endif
 			<div class="log-form">
+				@if(Session::has('message_login'))
+					<span class="label label-danger">{{Session::get('message_login')}}</span>
+				@endif
 				<h2>Login</h2>
 				{{Form::open(['name' => 'login', 'route' => 'login'])}}
 					<div class="form-group">
