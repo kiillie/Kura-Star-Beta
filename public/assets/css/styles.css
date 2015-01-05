@@ -4,8 +4,16 @@
 .main-header .row{
 	display:inline;
 }
-.menu-header .header{
-	height: 340px;
+.menu-header .header-slide{
+	position: relative;
+}
+.menu-header .header-slide .container{
+	height: auto;
+	margin: 0 auto;
+	top: 60%;
+	position: absolute;
+	right: 0;
+	left: 0;
 }
 .menu-header .container{
 	height: 100%;
@@ -149,12 +157,14 @@
 .article .rank-article ul li, .article .rank-country ul li{
 	list-style: none;
 }
+.article{
+	margin-bottom: 40px;
+}
 .article .details .extra-details{
 	border: 2px solid #E5E5E5;
 	height: 730px;
 	border-radius: 10px;
 	padding: 20px;
-	margin-bottom: 40px;
 }
 .article .rank-article img, .article .rank-country img{
 	width: 70px;
@@ -169,6 +179,7 @@
 .article .ex-advertisement img{
 	width: 35%;
 	margin: 0 20px;
+	border: 2px solid;
 }
 .art-addons{
 	margin: 30px 0;

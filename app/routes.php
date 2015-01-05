@@ -30,6 +30,11 @@ Route::get('article/view', [
 	'as'	=>	'article.view'
 ]);
 
+Route::get('article/category', [
+	'uses'	=>	'ArticleController@showByCategory',
+	'as'	=>	'article.bycategory'
+]);
+
 /** Login **/
 
 Route::post('user/login', [

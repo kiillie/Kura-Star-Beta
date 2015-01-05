@@ -14,6 +14,11 @@ Breadcrumbs::register('view_article', function($breadcrumbs){
 
     $breadcrumbs->push('Article Title', route('article.view'));
 });
+
+Breadcrumbs::register('article_category', function($breadcrumbs){
+    $breadcrumbs->parent('index');
+    $breadcrumbs->push('Category', route('article.bycategory'));
+});
 Breadcrumbs::register('category', function($breadcrumbs, $category) {
     $breadcrumbs->parent('blog');
 

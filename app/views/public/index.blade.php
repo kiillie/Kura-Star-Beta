@@ -1,7 +1,14 @@
 @extends('../layouts.main')
 @section('content')
 <div class="menu-header">
-	<div class="jumbotron">
+	<div class="header-slide">
+		<div class="header">
+			<ul class="bxslider">
+				<li><img src="/assets/images/header/top1.jpg" /></li>
+				<li><img src="/assets/images/header/top3.png" /></li>
+				<li><img src="/assets/images/header/top5.png" /></li>
+			</ul>
+		</div>
 		<div class="container">
 			<div class="search-form">
 				<div class="row head-search">
@@ -13,6 +20,17 @@
 								<option value="02">Japan</option>
 								<option value="03">United States of America</option>
 							</select>
+							<!-- <div class="content">
+								<div id="admin"><b id="admin_text">Admin Settings</b></div>
+								<div id="settings" class="fa fa-cog"></div>
+								<div id="menu">
+									<div id="arrow"></div>
+									<a href="#">Edit Users <i id="firstIcon" class="fa fa-user"></i></a>
+									<a href="#">Web Statistics <i id="secondIcon" class="fa fa-bar-chart-o"></i></a>
+									<a href="#">Upload Settings <i id="thirdIcon" class="fa fa-cloud-upload"></i></a>
+									<a href="#">Edit Slider <i id="fourthIcon" class="fa fa-pencil"></i></a>
+								</div>
+							</div> -->
 						</div>
 						<div class="col-md-5 cat">
 							<select class="category btn">
