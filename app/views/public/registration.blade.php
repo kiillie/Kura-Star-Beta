@@ -3,7 +3,7 @@
 <div class="container">
 	{{ Breadcrumbs::render('registration') }}
 	<div class="reglog-wrapper row">
-		<div class="col-xs-6">
+		<div class="col-md-6">
 			
 			<div class="reg-form">
 				<h2>User Registration</h2>
@@ -63,7 +63,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-xs-6">
+		<div class="col-md-6">
 			<div class="log-form">
 				@if(Session::has('message_login'))
 					<span class="label label-danger">{{Session::get('message_login')}}</span>
@@ -85,16 +85,16 @@
 				<div class="social-login row">
 					<br/>
 					<h6>Or Login with:</h6>
-					<div class="facebook col-xs-6">
+					<div class="facebook col-md-6">
 						{{HTML::image('assets/images/facebook.png')}}
 					</div>
-					<div class="google col-xs-6">
+					<div class="google col-md-6">
 						{{HTML::image('assets/images/google.png')}}
 					</div>
-					<div class="twitter col-xs-6">
+					<div class="twitter col-md-6">
 						{{HTML::image('assets/images/twitter.png')}}
 					</div>
-					<div class="yahoo col-xs-6">
+					<div class="yahoo col-md-6">
 						{{HTML::image('assets/images/yahoojapan.png')}}
 					</div>
 				</div>

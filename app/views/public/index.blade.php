@@ -6,7 +6,7 @@
 			<div class="search-form">
 				<div class="row head-search">
 					{{Form::open(['name' => 'search', 'class' => 'form-inline'])}}
-					<div class="col-xs-5 count">
+					<div class="col-md-5 count">
 							<select class="country btn">
 								<option value="0" disabled selected>Select a Country</option>
 								<option value="01">Philippines</option>
@@ -14,7 +14,7 @@
 								<option value="03">United States of America</option>
 							</select>
 						</div>
-						<div class="col-xs-5 cat">
+						<div class="col-md-5 cat">
 							<select class="category btn">
 								<option value="0" disabled selected>Select  Category</option>
 								<option value="01">Gourmet</option>
@@ -26,8 +26,8 @@
 								<option value="03">Buzz</option>
 							</select>
 						</div>
-						<div class="col-xs-2 search-btn">
-							<input type="button" class="form-control btn btn-primary" value="Search"/>
+						<div class="col-md-2 search-btn">
+							<input type="button" class="form-control btn btn-primary" href="article.view" value="Search"/>
 						</div>
 						{{Form::close()}}
 				</div>
@@ -37,7 +37,7 @@
 </div>
 <div class="container">
 	<div class="row">
-		<div class="col-xs-2 cat-sidebar">
+		<div class="col-md-2 cat-sidebar">
 			<ul class="nav nav-pills nav-stacked">
 				<li><a href="{{URL::route('index')}}">Home</a></li>
 				<li><a href="#">Gourmet</a></li>
@@ -49,16 +49,16 @@
 				<li><a href="#">Buzz</a></li>
 			</ul>
 		</div>
-		<div class="col-xs-7 latest">
+		<div class="col-md-7 latest">
 			<div class="latest-group">
 				<div class="row">
-					<div class="col-xs-2">
+					<div class="col-md-2">
 						<img src="assets/images/default.jpg" alt="Name" />
 					</div>
-					<div class="col-xs-8">
+					<div class="col-md-8">
 						Description
 					</div>
-					<div class="col-xs-2">
+					<div class="col-md-2">
 						Name
 					</div>
 				</div>
@@ -71,13 +71,13 @@
 			</div>
 			<div class="latest-group">
 				<div class="row">
-					<div class="col-xs-2">
+					<div class="col-md-2">
 						<img src="assets/images/default.jpg" alt="Name" />
 					</div>
-					<div class="col-xs-8">
+					<div class="col-md-8">
 						Description
 					</div>
-					<div class="col-xs-2">
+					<div class="col-md-2">
 						Name
 					</div>
 				</div>
@@ -90,13 +90,13 @@
 			</div>
 			<div class="latest-group">
 				<div class="row">
-					<div class="col-xs-2">
+					<div class="col-md-2">
 						<img src="assets/images/default.jpg" alt="Name" />
 					</div>
-					<div class="col-xs-8">
+					<div class="col-md-8">
 						Description
 					</div>
-					<div class="col-xs-2">
+					<div class="col-md-2">
 						Name
 					</div>
 				</div>
@@ -108,7 +108,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-xs-3">
+		<div class="col-md-3">
 			<h2>Advertisements</h2>
 		</div>
 	</div>

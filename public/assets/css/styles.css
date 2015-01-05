@@ -110,6 +110,66 @@
 .article-details .art-title-desc textarea{
 	height: 95px;
 }
+.article .details h2{
+	margin: 0;
+}
+.article .details p{
+	font-size: 12px;
+}
+.article .details .count-cat{
+	position: absolute;
+	right: 50px;
+	top: -9px;
+}
+.article .details .count-cat .country{
+	background: #288A2E;
+}
+.article .advertisement img{
+	width: 100%;
+	border: 2px solid;
+}
+.article .user{
+	height: 50px;
+}
+.article .right-bar .user, .article .right-bar .advertisement, .article .right-bar .rank-article, .article .right-bar .rank-country{
+	margin: 30px 0;
+}
+.article .details .count-cat .category{
+	background: #C26A2B;
+}
+.article .details .count-cat .country, .article .details .count-cat .category{
+	height: 35px;
+}
+.article .details .count-cat .country a, .article .details .count-cat .category a{
+	color: #ffffff;
+}
+.article .rank-article ul, .article .rank-country ul{
+	padding: 0;
+}
+.article .rank-article ul li, .article .rank-country ul li{
+	list-style: none;
+}
+.article .details .extra-details{
+	border: 2px solid #E5E5E5;
+	height: 730px;
+	border-radius: 10px;
+	padding: 20px;
+	margin-bottom: 40px;
+}
+.article .rank-article img, .article .rank-country img{
+	width: 70px;
+	margin: 10px 0;
+}
+.article .pages{
+	text-align: center;
+}
+.article .ex-advertisement{
+	text-align: center;
+}
+.article .ex-advertisement img{
+	width: 35%;
+	margin: 0 20px;
+}
 .art-addons{
 	margin: 30px 0;
 	min-height: 400px;

@@ -21,16 +21,16 @@
 <body>
 	<div class="container main-header">
 		<div class="row">
-			<div class="col-xs-4">
+			<div class="col-md-4">
 				<div class="input-group">
 					<span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
 					{{Form::text('search', '', ['placeholder' => 'Search', 'class' => 'form-control'])}}
 				</div>
 			</div>
-			<div class="col-xs-4">
+			<div class="col-md-4">
 				Logo
 			</div>
-			<div class="col-xs-4">
+			<div class="col-md-4">
 				<ul class="list-inline">
 					<li><a href="{{URL::route('article.create')}}">Make an Article</a></li>
 					@if(Auth::check())
@@ -49,10 +49,10 @@
 	<div class="foobar">
 		<div class="footer">
 			<div class="row">
-				<div class="col-xs-3">
+				<div class="col-md-3">
 					Logo
 				</div>
-				<div class="col-xs-9">
+				<div class="col-md-9">
 					<div class="foo-country">
 						<h3>Country</h3>
 						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut mattis pharetra nisi, ut aliquet nunc placerat convallis. Donec in nisi arcu. Donec fringilla tortor nec purus consequat, at porta turpis suscipit. Proin gravida, velit a maximus fermentum, velit augue scelerisque leo, in consequat nisi quam sit amet risus. Donec venenatis ut enim et efficitur. Praesent tincidunt velit lectus, non tempor eros malesuada vel. Pellentesque laoreet nunc in eros lobortis maximus aliquet vitae felis. Phasellus laoreet viverra tortor ut consequat. Curabitur bibendum sem in nisi lacinia blandit. Curabitur in dictum mauris</p>

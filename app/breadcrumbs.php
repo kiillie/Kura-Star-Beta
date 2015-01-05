@@ -9,6 +9,11 @@ Breadcrumbs::register('registration', function($breadcrumbs) {
     $breadcrumbs->push('User Registration', route('registration'));
 });
 
+Breadcrumbs::register('view_article', function($breadcrumbs){
+    $breadcrumbs->parent('index');
+
+    $breadcrumbs->push('Article Title', route('article.view'));
+});
 Breadcrumbs::register('category', function($breadcrumbs, $category) {
     $breadcrumbs->parent('blog');
 

@@ -10,9 +10,9 @@ $(function(){
 	<div class="container article">
 		<div class="article-menu">
 			<div class="row">
-				<div class="col-xs-6">
+				<div class="col-md-6">
 					<div class="row">
-						<div class="country col-xs-6">
+						<div class="country col-md-6">
 							<select class="form-control">
 								<option disabled selected>Select A Country</option>
 								<option>Philippines</option>
@@ -20,7 +20,7 @@ $(function(){
 								<option>USA</option>
 							</select>
 						</div>
-						<div class="category col-xs-6">
+						<div class="category col-md-6">
 							<select class="form-control">
 								<option disabled selected>Select A Category</option>
 								<option>Gourmet</option>
@@ -33,7 +33,7 @@ $(function(){
 						</div>
 					</div>
 				</div>
-				<div class="col-xs-6">
+				<div class="col-md-6">
 					<div class="article-btn">
 						<input type="button" class="btn btn-default" value="Preview" />
 						<input type="button" class="btn btn-default" value="Save" />
@@ -45,10 +45,10 @@ $(function(){
 		<div class="article-details">
 			<div class="title-desc">
 				<div class="row">
-					<div class="col-xs-2 art-default-img">
+					<div class="col-md-2 art-default-img">
 						<img src="/assets/images/article-default.png" />
 					</div>
-					<div class="col-xs-10 art-title-desc">
+					<div class="col-md-10 art-title-desc">
 						<div class="form-group">
 							<input type="text" class="form-control" name="title" placeholder="Title" />
 						</div>

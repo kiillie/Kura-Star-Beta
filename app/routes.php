@@ -25,6 +25,11 @@ Route::get('article/create', [
 	'as'	=>	'article.create'
 ]);
 
+Route::get('article/view', [
+	'uses'	=>	'ArticleController@show',
+	'as'	=>	'article.view'
+]);
+
 /** Login **/
 
 Route::post('user/login', [
