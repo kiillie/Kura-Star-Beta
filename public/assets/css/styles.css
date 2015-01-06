@@ -15,6 +15,83 @@
 	right: 0;
 	left: 0;
 }
+.search-form{
+	background: rgba(255, 255, 255, 0.7);
+}
+.search-form .country, .search-form .category{
+	padding:0;
+	border: 1px solid #ffffff;
+}
+.search-form .search-title{
+	padding: 0;
+}
+.search-form h2{
+	color: #41BD8E;
+	margin: 0;
+	margin-left: 10px;
+	font-size: 28px;
+	text-align: center;
+	text-shadow: 0 -1px 0 rgba(100, 89, 89, 0.71);
+}
+.search-form .country button, .search-form .category button{
+	width: 100%;
+	border: 0;
+	border-radius: 0;
+	text-shadow: none;
+}
+.search-form .country ul, .search-form .category ul{
+	width: 100%;
+	padding: 10px;
+}
+.search-form .country ul li, .search-form .category ul li{
+	padding: 5px;
+}
+.search-form .country ul li:hover, .search-form .category ul li:hover{
+	color: white;
+	background: #41BD8E;
+	cursor: pointer;
+}
+.nav-category{
+	z-index: 1000;
+	padding: 0;
+}
+.nav-category .navbar-collapse{
+	overflow: hidden;
+}
+.nav-category .navbar .divider{
+	height: 1px;
+	margin: 9px 0;
+	overflow: hidden;
+	background-color: #e5e5e5;
+}
+.nav-category .navbar .search button{
+	width: 100%;
+	margin: 0 0 10px 0;
+	background: #288A5D;
+	color: white;
+	border: none;
+	border-radius: 0;
+	text-shadow: none;
+}
+.nav-category .navbar .search .srch-click{
+	background: #28708A;
+}
+.nav-category .navbar .nav-ctry li, .nav-category .navbar .nav-cat li{
+	padding: 5px;
+}
+.nav-category .navbar .nav-ctry li:hover, .nav-category .navbar .nav-cat li:hover{
+	color: white;
+	background: #ACACAD;
+	cursor: pointer;
+}
+.nav-category .navbar{
+	margin: 0;
+	border-radius: 0;
+	border: none;
+}
+.nav-category .navbar li{
+	text-align:center;
+}
 .menu-header .container{
 	height: 100%;
 }
@@ -23,7 +100,7 @@
 }
 .latest-group{
 	padding: 10px;
-	height: 115px;
+	min-height: 115px;
 	border: 2px solid;
 	margin-bottom: 20px;
 	position: relative;
@@ -38,6 +115,10 @@
 }
 .latest-group .count-cat a{
 	color: #ffffff;
+}
+.latest-group p{
+	text-align: justify;
+	font-size: 12px;
 }
 .latest-group .count-cat .country{
 	background: #288A2E;

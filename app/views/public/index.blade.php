@@ -9,45 +9,41 @@
 				<li><img src="/assets/images/header/top5.png" /></li>
 			</ul>
 		</div>
-		<div class="container">
+		<div class="container hidden-xs">
 			<div class="search-form">
 				<div class="row head-search">
-					{{Form::open(['name' => 'search', 'class' => 'form-inline'])}}
-					<div class="col-md-5 count">
-							<select class="country btn">
-								<option value="0" disabled selected>Select a Country</option>
-								<option value="01">Philippines</option>
-								<option value="02">Japan</option>
-								<option value="03">United States of America</option>
-							</select>
-							<!-- <div class="content">
-								<div id="admin"><b id="admin_text">Admin Settings</b></div>
-								<div id="settings" class="fa fa-cog"></div>
-								<div id="menu">
-									<div id="arrow"></div>
-									<a href="#">Edit Users <i id="firstIcon" class="fa fa-user"></i></a>
-									<a href="#">Web Statistics <i id="secondIcon" class="fa fa-bar-chart-o"></i></a>
-									<a href="#">Upload Settings <i id="thirdIcon" class="fa fa-cloud-upload"></i></a>
-									<a href="#">Edit Slider <i id="fourthIcon" class="fa fa-pencil"></i></a>
-								</div>
-							</div> -->
+					<div class="col-md-2 search-title">
+						<h2>Search</h2>
+					</div>
+					<div class="col-md-4 country">
+							<div class="dropdown">
+					       		<button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">Select A Country <span class="caret"></span></button>
+					        	<ul class="dropdown-menu nav-ctry" role="menu">
+						    		<li>Philippines</li>
+						    		<li>Japan</li>
+						    		<li>USA</li>
+						    	</ul>
+						    </div>
 						</div>
-						<div class="col-md-5 cat">
-							<select class="category btn">
-								<option value="0" disabled selected>Select  Category</option>
-								<option value="01">Gourmet</option>
-								<option value="02">Leisure</option>
-								<option value="03">Fashion</option>
-								<option value="03">Study</option>
-								<option value="03">Business</option>
-								<option value="03">Hotel</option>
-								<option value="03">Buzz</option>
-							</select>
+						<div class="col-md-4 category">
+							<div class="dropdown">
+						    	<button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">Select A Category <span class="caret"></span></button>
+					        	<ul class="dropdown-menu nav-cat" role="menu">
+									<li value="01">Gourmet</li>
+									<li value="02">Leisure</li>
+									<li value="03">Fashion</li>
+									<li value="03">Study</li>
+									<li value="03">Business</li>
+									<li value="03">Hotel</li>
+									<li value="03">Buzz</li>
+						    	</ul>
+						    </div>
 						</div>
-						<div class="col-md-2 search-btn">
+						<div class="col-md-1 search-btn">
 							<input type="button" class="form-control btn btn-primary" href="article.view" value="Search"/>
 						</div>
-						{{Form::close()}}
+						<div class="col-md-1 search-btn">
+						</div>
 				</div>
 			</div>
 		</div>
@@ -55,29 +51,32 @@
 </div>
 <div class="container">
 	<div class="row">
-		<div class="col-md-2 cat-sidebar">
+		<div class="col-md-2 hidden-xs cat-sidebar">
 			<ul class="nav nav-pills nav-stacked">
-				<li><a href="{{URL::route('index')}}">Home</a></li>
-				<li><a href="#">Gourmet</a></li>
-				<li><a href="#">Leisure</a></li>
-				<li><a href="#">Fashion</a></li>
-				<li><a href="#">Study</a></li>
-				<li><a href="#">Business</a></li>
-				<li><a href="#">Hotel</a></li>
-				<li><a href="#">Buzz</a></li>
+				<li><a href="{{URL::route('index')}}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+				<li><a href="#"><span class="glyphicon glyphicon-cutlery"></span> Gourmet</a></li>
+				<li><a href="#"><span class="glyphicon glyphicon-music"></span> Leisure</a></li>
+				<li><a href="#"><span class="glyphicon glyphicon-briefcase"></span> Fashion</a></li>
+				<li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Study</a></li>
+				<li><a href="#"><span class="glyphicon glyphicon-usd"></span> Business</a></li>
+				<li><a href="#"><span class="glyphicon glyphicon-tower"></span> Hotel</a></li>
+				<li><a href="#"><span class="glyphicon glyphicon-pushpin"></span> Buzz</a></li>
 			</ul>
 		</div>
-		<div class="col-md-7 latest">
+		<div class="col-md-7 col-xs-12 latest">
 			<div class="latest-group">
 				<div class="row">
-					<div class="col-md-2">
-						<img src="assets/images/default.jpg" alt="Name" />
+					<div class="col-md-2 col-xs-6">
+						<img src="assets/images/temp/thumb50.JPG" alt="Name" />
 					</div>
-					<div class="col-md-8">
-						Description
+					<div class="col-md-8 col-xs-12">
+						<h3>Title</h3>
+						<hr></hr>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi libero, viverra nec eleifend vel, malesuada pretium nibh. Pellentesque iaculis luctus mollis. Integer pharetra venenatis dui, nec elementum mauris. Nam a tellus nec mauris pharetra porta. Fusce at mi ornare, volutpat tellus vel, convallis magna. Ut condimentum posuere ipsum, sit amet tempus turpis placerat vel. Mauris feugiat, eros quis consequat laoreet, ipsum felis viverra justo, nec consequat nisi ex quis augue. Sed convallis ornare massa, eu sollicitudin sem. Nulla facilisi.</p>
 					</div>
-					<div class="col-md-2">
-						Name
+					<div class="col-md-2 col-xs-12">
+						<span class="hidden-xs">Name</span>
+						<span class="visible-xs"><i>- Name</i></span>
 					</div>
 				</div>
 				<div class="count-cat">
@@ -89,14 +88,17 @@
 			</div>
 			<div class="latest-group">
 				<div class="row">
-					<div class="col-md-2">
-						<img src="assets/images/default.jpg" alt="Name" />
+					<div class="col-md-2 col-xs-6">
+						<img src="assets/images/temp/thumb57.JPG" alt="Name" />
 					</div>
-					<div class="col-md-8">
-						Description
+					<div class="col-md-8 col-xs-12">
+						<h3>Title</h3>
+						<hr></hr>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi libero, viverra nec eleifend vel, malesuada pretium nibh. Pellentesque iaculis luctus mollis. Integer pharetra venenatis dui, nec elementum mauris. Nam a tellus nec mauris pharetra porta. Fusce at mi ornare, volutpat tellus vel, convallis magna. Ut condimentum posuere ipsum, sit amet tempus turpis placerat vel. Mauris feugiat, eros quis consequat laoreet, ipsum felis viverra justo, nec consequat nisi ex quis augue. Sed convallis ornare massa, eu sollicitudin sem. Nulla facilisi.</p>
 					</div>
-					<div class="col-md-2">
-						Name
+					<div class="col-md-2 col-xs-12">
+						<span class="hidden-xs">Name</span>
+						<span class="visible-xs"><i>- Name</i></span>
 					</div>
 				</div>
 				<div class="count-cat">
@@ -108,14 +110,17 @@
 			</div>
 			<div class="latest-group">
 				<div class="row">
-					<div class="col-md-2">
-						<img src="assets/images/default.jpg" alt="Name" />
+					<div class="col-md-2 col-xs-6">
+						<img src="assets/images/temp/thumb62.jpg" alt="Name" />
 					</div>
-					<div class="col-md-8">
-						Description
+					<div class="col-md-8 col-xs-12">
+						<h3>Title</h3>
+						<hr></hr>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi libero, viverra nec eleifend vel, malesuada pretium nibh. Pellentesque iaculis luctus mollis. Integer pharetra venenatis dui, nec elementum mauris. Nam a tellus nec mauris pharetra porta. Fusce at mi ornare, volutpat tellus vel, convallis magna. Ut condimentum posuere ipsum, sit amet tempus turpis placerat vel. Mauris feugiat, eros quis consequat laoreet, ipsum felis viverra justo, nec consequat nisi ex quis augue. Sed convallis ornare massa, eu sollicitudin sem. Nulla facilisi.</p>
 					</div>
-					<div class="col-md-2">
-						Name
+					<div class="col-md-2 col-xs-12">
+						<span class="hidden-xs">Name</span>
+						<span class="visible-xs"><i>- Name</i></span>
 					</div>
 				</div>
 				<div class="count-cat">

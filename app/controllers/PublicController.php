@@ -1,5 +1,7 @@
 <?php
 
+use KuraStar\Storage\Country\CountryRepository as Country;
+
 class PublicController extends BaseController{
 
 	public function index(){

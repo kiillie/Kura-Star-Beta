@@ -31,7 +31,81 @@ $(document).ready(function(){
 });
 </script>
 <body>
-	<div class="container main-header">
+	<div class="container-fluid visible-xs nav-category">
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+		    <!-- Brand and toggle get grouped for better mobile display -->
+			    <div class="navbar-header">
+				    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					    <span class="sr-only">Toggle navigation</span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				    </button>
+				    <a class="navbar-brand" href="#">Logo Here</a>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				    <ul class="nav navbar-nav">
+					    <li><a href="{{URL::route('index')}}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+						<li><a href="{{URL::route('article.create')}}"><span class="glyphicon glyphicon-file"></span> Make an Article</a></li>
+						@if(Auth::check())
+						<li><a href="#"><span class="glyphicon glyphicon-user"></span> {{Auth::user()->name}}</a></li>
+						<li><a href="{{URL::route('logout')}}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+						@else
+						<li><a href="{{URL::route('registration')}}"><span class="glyphicon glyphicon-registration-mark"></span> Sign Up</a></li>
+						<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+						@endif
+						<li class="dropdown">
+				          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-list-alt"></span> Categories<span class="caret"></span></a>
+				          <ul class="dropdown-menu" role="menu">
+							<li><a href="#"><span class="glyphicon glyphicon-cutlery"></span> Gourmet</a></li>
+							<li class="divider"></li>
+							<li><a href="#"><span class="glyphicon glyphicon-music"></span> Leisure</a></li>
+							<li class="divider"></li>
+							<li><a href="#"><span class="glyphicon glyphicon-briefcase"></span> Fashion</a></li>
+							<li class="divider"></li>
+							<li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Study</a></li>
+							<li class="divider"></li>
+							<li><a href="#"><span class="glyphicon glyphicon-usd"></span> Business</a></li>
+							<li class="divider"></li>
+							<li><a href="#"><span class="glyphicon glyphicon-tower"></span> Hotel</a></li>
+							<li class="divider"></li>
+							<li><a href="#"><span class="glyphicon glyphicon-pushpin"></span> Buzz</a></li>
+				          </ul>
+				        </li>
+				        <li class="divider"><li>
+				        <li class="search">
+				        	Search
+						    <div class="dropdown">
+					       		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">Select A Country<span class="caret"></span></button>
+					        	<ul class="dropdown-menu nav-ctry" role="menu">
+						    		<li>Philippines</li>
+						    		<li>Japan</li>
+						    		<li>USA</li>
+						    	</ul>
+						    </div>
+						    <div class="dropdown">
+						    	<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">Select A Category<span class="caret"></span></button>
+					        	<ul class="dropdown-menu nav-cat" role="menu">
+									<li value="01">Gourmet</li>
+									<li value="02">Leisure</li>
+									<li value="03">Fashion</li>
+									<li value="03">Study</li>
+									<li value="03">Business</li>
+									<li value="03">Hotel</li>
+									<li value="03">Buzz</li>
+						    	</ul>
+						    </div>
+						    <button class="btn srch-click">Search</button>
+					    </li>
+					    <li class="divider"><li>
+				    </ul>
+				</div><!-- /.navbar-collapse -->
+			</div><!-- /.container-fluid -->
+		</nav>
+	</div>
+	<div class="container main-header hidden-xs">
 		<div class="row">
 			<div class="col-md-4">
 				<div class="input-group">
@@ -40,7 +114,9 @@ $(document).ready(function(){
 				</div>
 			</div>
 			<div class="col-md-4">
-				Logo
+				<div class="logo">
+					Logo here!
+				</div>
 			</div>
 			<div class="col-md-4">
 				<ul class="list-inline">
