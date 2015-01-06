@@ -54,7 +54,7 @@
 		<div class="col-md-2 hidden-xs cat-sidebar">
 			<ul class="nav nav-pills nav-stacked">
 				<li><a href="{{URL::route('index')}}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-				<li><a href="#"><span class="glyphicon glyphicon-cutlery"></span> Gourmet</a></li>
+				<li><a href="{{URL::route('article.view')}}"><span class="glyphicon glyphicon-cutlery"></span> Gourmet</a></li>
 				<li><a href="#"><span class="glyphicon glyphicon-music"></span> Leisure</a></li>
 				<li><a href="#"><span class="glyphicon glyphicon-briefcase"></span> Fashion</a></li>
 				<li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Study</a></li>

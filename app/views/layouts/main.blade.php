@@ -59,7 +59,7 @@ $(document).ready(function(){
 						<li class="dropdown">
 				          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-list-alt"></span> Categories<span class="caret"></span></a>
 				          <ul class="dropdown-menu" role="menu">
-							<li><a href="#"><span class="glyphicon glyphicon-cutlery"></span> Gourmet</a></li>
+							<li><a href="{{URL::route('article.view')}}"><span class="glyphicon glyphicon-cutlery"></span> Gourmet</a></li>
 							<li class="divider"></li>
 							<li><a href="#"><span class="glyphicon glyphicon-music"></span> Leisure</a></li>
 							<li class="divider"></li>
