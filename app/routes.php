@@ -47,5 +47,37 @@ Route::get('user/logout', [
 	'as'	=>	'logout'
 ]);
 
+/** Continent & Countries **/
+
+Route::get('continent/create', [
+	'uses'	=>	'CountryController@createContinent',
+	'as'	=>	'continent.create'
+]);
+
+Route::post('continent/store', [
+	'uses'	=>	'CountryController@storeContinent',
+	'as'	=>	'continent.store'
+]);
+
+Route::get('country/create', [
+	'uses'	=>	'CountryController@createCountry',
+	'as'	=>	'country.create'
+]);
+
+Route::post('counry/store', [
+	'uses'	=>	'CountryController@storeCountry',
+	'as'	=>	'country.store'
+]);
+
+/** Category **/
+Route::get('category/create', [
+	'uses'	=>	'CategoryController@create',
+	'as'	=>	'category.create'
+]);
+
+Route::post('category/store', [
+	'uses'	=>	'CategoryController@store',
+	'as'	=>	'category.store'
+]);
 
 ?>

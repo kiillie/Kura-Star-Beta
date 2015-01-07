@@ -19,9 +19,9 @@
 							<div class="dropdown">
 					       		<button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">Select A Country <span class="caret"></span></button>
 					        	<ul class="dropdown-menu nav-ctry" role="menu">
-						    		<li>Philippines</li>
-						    		<li>Japan</li>
-						    		<li>USA</li>
+						    		@foreach($countries as $country)
+						    			<li>{{$country->COUNTRY_NAME}}</li>
+						    		@endforeach
 						    	</ul>
 						    </div>
 						</div>
@@ -29,13 +29,9 @@
 							<div class="dropdown">
 						    	<button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">Select A Category <span class="caret"></span></button>
 					        	<ul class="dropdown-menu nav-cat" role="menu">
-									<li value="01">Gourmet</li>
-									<li value="02">Leisure</li>
-									<li value="03">Fashion</li>
-									<li value="03">Study</li>
-									<li value="03">Business</li>
-									<li value="03">Hotel</li>
-									<li value="03">Buzz</li>
+									@foreach($categories as $category)
+										<li value="{{$category->CATEGORY_ID}}">{{$category->CATEGORY_NAME}}</li>
+									@endforeach
 						    	</ul>
 						    </div>
 						</div>

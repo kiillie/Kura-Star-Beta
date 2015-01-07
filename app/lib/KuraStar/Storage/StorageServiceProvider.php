@@ -13,6 +13,14 @@ class StorageServiceProvider extends ServiceProvider{
 				'KuraStar\Storage\Country\CountryRepository',
 				'KuraStar\Storage\Country\EloquentCountryRepository'
 			);
+		$this->app->bind(
+				'KuraStar\Storage\Continent\ContinentRepository',
+				'KuraStar\Storage\Continent\EloquentContinentRepository'
+			);
+		$this->app->bind(
+				'KuraStar\Storage\Category\CategoryRepository',
+				'KuraStar\Storage\Category\EloquentCategoryRepository'
+			);
 	}
 }
 
