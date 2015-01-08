@@ -24,7 +24,14 @@ class PublicController extends BaseController{
 	}
 
 	public function registration(){
-		return View::make('public.registration');
+		$countries = $this->country->showCountryByContinent();
+		$continents = $this->continent->show();
+		$categories = $this->category->show();
+
+		return View::make('public.registration')
+				->withCountries($countries)
+				->withContinents($continents)
+				->withCategories($categories);
 	}
 }
 

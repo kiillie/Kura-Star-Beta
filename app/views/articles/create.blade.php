@@ -13,23 +13,35 @@ $(function(){
 				<div class="col-md-6">
 					<div class="row">
 						<div class="country col-md-6">
-							<select class="form-control">
-								<option disabled selected>Select A Country</option>
-								<option>Philippines</option>
-								<option>Japan</option>
-								<option>USA</option>
-							</select>
+							<div class="dropdown">
+					       		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"><span class="val-select">Select A Country</span> <span class="caret"></span></button>
+					        	<ul class="dropdown-menu nav-ctry" role="menu">
+						    		@foreach($continents as $continent)
+					        			<li class="disabled">{{$continent->CONTINENT_NAME}}</li>
+							    		@foreach($countries as $country)
+							    			@if($country->CONTINENT_ID == $continent->CONTINENT_ID)
+							    				<li class="item" value="{{$country->COUNTRY_ID}}">{{$country->COUNTRY_NAME}}</li>
+							    			@endif
+							    		@endforeach
+							    	@endforeach
+						    	</ul>
+						    </div>
 						</div>
 						<div class="category col-md-6">
-							<select class="form-control">
+							<!-- <select class="form-control">
 								<option disabled selected>Select A Category</option>
-								<option>Gourmet</option>
-								<option>Leisure</option>
-								<option>Fashion</option>
-								<option>Study</option>
-								<option>Business</option>
-								<option>Hotel</option>
-							</select>
+								@foreach($categories as $category)
+									<option value="{{$category->CATEGORY_ID}}">{{$category->CATEGORY_NAME}}</option>
+								@endforeach
+							</select> -->
+							<div class="dropdown">
+						    	<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"><span class="val-select">Select A Category</span> <span class="caret"></span></button>
+					        	<ul class="dropdown-menu nav-cat" role="menu">
+									@foreach($categories as $category)
+										<li class="item" value="{{$category->CATEGORY_ID}}">{{$category->CATEGORY_NAME}}</li>
+									@endforeach
+						    	</ul>
+						    </div>
 						</div>
 					</div>
 				</div>

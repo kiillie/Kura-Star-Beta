@@ -35,6 +35,11 @@ Route::get('article/category', [
 	'as'	=>	'article.bycategory'
 ]);
 
+Route::post('article/search', [
+	'uses'	=>	'ArticleController@showByCountryAndCategory',
+	'as'	=>	'article.search'
+]);
+
 /** Login **/
 
 Route::post('user/login', [

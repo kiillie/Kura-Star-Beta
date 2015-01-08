@@ -42,6 +42,8 @@
 .search-form .country ul, .search-form .category ul{
 	width: 100%;
 	padding: 10px;
+	height: 225px;
+	overflow-y: scroll;
 }
 .search-form .country ul li, .search-form .category ul li{
 	padding: 5px;
@@ -50,6 +52,33 @@
 	color: white;
 	background: #41BD8E;
 	cursor: pointer;
+}
+.search-form .dropdown ul .disabled{
+	font-style: italic;
+	font-size: 14px;
+	color: #ABABAB;
+	padding-left: 14px;
+	border-bottom: 1px solid;
+	background: none;
+}
+.search-form .dropdown ul li.disabled:hover{
+	background: #ffffff;
+	color: #ABABAB;
+	border-bottom: 1px solid;
+	cursor: default;
+}
+/* Scrollbar */
+.search-form .dropdown ul::-webkit-scrollbar {
+    width: 10px;
+} 
+/* Handle */
+.search-form .dropdown ul::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(178,178,178,0.5); 
+}
+.search-form .dropdown ul::-webkit-scrollbar-thumb:window-inactive {
+	background: rgba(255,0,0,0.4); 
 }
 .nav-category{
 	z-index: 1000;
@@ -72,6 +101,36 @@
 	border: none;
 	border-radius: 0;
 	text-shadow: none;
+}
+.nav-category .dropdown ul{
+	height: 225px;
+	overflow-y: scroll;
+}
+/* Scrollbar */
+.nav-category .dropdown ul::-webkit-scrollbar {
+    width: 10px;
+} 
+/* Handle */
+.nav-category .dropdown ul::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(178,178,178,0.5); 
+}
+.nav-category .dropdown ul::-webkit-scrollbar-thumb:window-inactive {
+	background: rgba(255,0,0,0.4); 
+}
+.nav-category .dropdown ul li.disabled{
+	font-style: italic;
+	font-size: 14px;
+	color: #ABABAB;
+	border-bottom: 1px solid;
+	background: none;
+}
+.nav-category .dropdown ul li.disabled:hover{
+	background: #ffffff;
+	color: #ABABAB;
+	border-bottom: 1px solid;
+	cursor: default;
 }
 .nav-category .navbar .search .srch-click{
 	background: #28708A;
@@ -185,6 +244,7 @@
 .foo-country p, .foo-category p{
 	font-size: 12px;
 }
+/** Article Menu **/
 .article-details{
 	margin: 30px 0;
 }
@@ -262,6 +322,51 @@
 	margin: 0 20px;
 	border: 2px solid;
 }
+.article-menu .dropdown button{
+	width: 100%;
+}
+.article-menu .dropdown ul{
+	width: 100%;
+	padding: 10px;
+	overflow-y: scroll;
+	height: 225px;
+}
+/* Let's get this party started */
+.article-menu .dropdown ul::-webkit-scrollbar {
+    width: 10px;
+} 
+/* Handle */
+.article-menu .dropdown ul::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(178,178,178,0.5); 
+}
+.article-menu .dropdown ul::-webkit-scrollbar-thumb:window-inactive {
+	background: rgba(255,0,0,0.4); 
+}
+/** End of Scrollbar **/
+.article-menu .dropdown ul li{
+	padding: 5px;
+}
+.article-menu .dropdown ul li:hover{
+	color: white;
+	background: #41BD8E;
+	cursor: pointer;
+}
+.article-menu .dropdown ul li.disabled{
+	font-style: italic;
+	font-size: 14px;
+	color: #ABABAB;
+	border-bottom: 1px solid;
+	background: none;
+}
+.article-menu .dropdown ul li.disabled:hover{
+	background: #ffffff;
+	color: #ABABAB;
+	border-bottom: 1px solid;
+	cursor: default;
+}
+/*** End of Article Styles***/
 .art-addons{
 	margin: 30px 0;
 	min-height: 400px;

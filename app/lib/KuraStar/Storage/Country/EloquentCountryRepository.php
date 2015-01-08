@@ -25,6 +25,10 @@ class EloquentCountryRepository implements CountryRepository{
 		return Country::orderBy('COUNTRY_ID', 'ASC')->get();
 		// return Country::orderBy('COUNTRY_ID', 'asc')->get();
 	}
+
+	public function getById($id){
+		return Country::where('COUNTRY_ID', $id)->get();
+	}
 }
 
 ?>

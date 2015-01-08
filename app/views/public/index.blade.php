@@ -16,30 +16,39 @@
 						<h2>Search</h2>
 					</div>
 					<div class="col-md-4 country">
+						{{Form::open(['name'=>'search', 'role'=>'form', 'method'=>'post', 'route'=>'article.search'])}}
 							<div class="dropdown">
-					       		<button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">Select A Country <span class="caret"></span></button>
+					       		<button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"><span class="val-select">Select A Country</span> <span class="caret"></span></button>
+					        	<input type="hidden" class="sel-id" name="ctry-sel">
 					        	<ul class="dropdown-menu nav-ctry" role="menu">
-						    		@foreach($countries as $country)
-						    			<li>{{$country->COUNTRY_NAME}}</li>
-						    		@endforeach
+					        		@foreach($continents as $continent)
+					        			<li class="disabled">{{$continent->CONTINENT_NAME}}</li>
+							    		@foreach($countries as $country)
+							    			@if($country->CONTINENT_ID == $continent->CONTINENT_ID)
+							    				<li class="item" value="{{$country->COUNTRY_ID}}">{{$country->COUNTRY_NAME}}</li>
+							    			@endif
+							    		@endforeach
+							    	@endforeach
 						    	</ul>
 						    </div>
 						</div>
 						<div class="col-md-4 category">
 							<div class="dropdown">
-						    	<button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">Select A Category <span class="caret"></span></button>
+						    	<button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"><span class="val-select">Select A Category</span> <span class="caret"></span></button>
+					        	<input type="hidden" class="sel-id" name="cat-sel">
 					        	<ul class="dropdown-menu nav-cat" role="menu">
 									@foreach($categories as $category)
-										<li value="{{$category->CATEGORY_ID}}">{{$category->CATEGORY_NAME}}</li>
+										<li class="item" value="{{$category->CATEGORY_ID}}">{{$category->CATEGORY_NAME}}</li>
 									@endforeach
 						    	</ul>
 						    </div>
 						</div>
 						<div class="col-md-1 search-btn">
-							<input type="button" class="form-control btn btn-primary" href="article.view" value="Search"/>
+							<input type="submit" class="form-control btn btn-primary" href="article.view" value="Search"/>
 						</div>
 						<div class="col-md-1 search-btn">
 						</div>
+						{{Form::close()}}
 				</div>
 			</div>
 		</div>

@@ -11,51 +11,19 @@
 					<p style="text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur metus tellus, iaculis et sollicitudin ut, gravida quis nisi. Praesent et convallis lorem, id sollicitudin mauris.</p>
 					{{Form::open(['name' => 'register', 'route' => 'user.registration', 'role' => 'form'])}}
 						<div class="form-group">
-							@if(Session::has('message'))
-	  							@if(array_key_exists('name', Session::get('message')))
-		  							<span class="label label-danger">
-										<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-		  								<span class="sr-only">Error:</span>
-										{{Session::get('message')['name'][0]}}
-									</span>
-								@endif
-							@endif
+							
 							{{Form::text('name', '', ['class' => 'form-control', 'placeholder' => 'Name'])}}
 						</div>
 						<div class="form-group">
-							@if(Session::has('message'))
-								@if(array_key_exists('email', Session::get('message')))
-									<span class="label label-danger">
-										<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-		  								<span class="sr-only">Error:</span>
-										{{Session::get('message')['email'][0]}}
-									</span>
-								@endif
-							@endif
+							
 							{{Form::text('email', '', ['class' => 'form-control', 'placeholder' => 'Email Address'])}}
 						</div>
 						<div class="form-group">
-							@if(Session::has('message'))
-								@if(array_key_exists('password', Session::get('message')))
-									<span class="label label-danger">
-										<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-		  								<span class="sr-only">Error:</span>
-										{{Session::get('message')['password'][0]}}
-									</span>
-								@endif
-							@endif
+							
 							{{Form::password('password', ['class' => 'form-control', 'placeholder' => 'Password'])}}
 						</div>
 						<div class="form-group">
-							@if(Session::has('message'))
-								@if(array_key_exists('confirm_password', Session::get('message')))
-									<span class="label label-danger">
-										<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-		  								<span class="sr-only">Error:</span>
-										{{Session::get('message')['confirm_password'][0]}}
-									</span>
-								@endif
-							@endif
+							
 							{{Form::password('confirm_password', ['class' => 'form-control', 'placeholder' => 'Confirm Password'])}}
 						</div>
 						<div>{{Form::submit('Submit', ['class'	=> 'form-control btn btn-primary'])}}</div>

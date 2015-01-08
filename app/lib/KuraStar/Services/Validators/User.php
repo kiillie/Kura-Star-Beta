@@ -4,7 +4,7 @@ class User extends Validator{
 
 	public static $rules = array(
 		'name'	=>	'required',
-		'email'	=>	'required|email|unique:users',
+		'email'	=>	'required',
 		'password' => 'required|min:8',
 		'confirm_password' => 'required|same:password'
 		);

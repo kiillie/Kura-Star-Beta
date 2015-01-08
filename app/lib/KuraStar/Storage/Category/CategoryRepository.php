@@ -5,6 +5,8 @@ interface CategoryRepository{
 	public function store($input);
 
 	public function show();
+
+	public function getById($id);
 }
 
 

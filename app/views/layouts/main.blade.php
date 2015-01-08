@@ -18,6 +18,7 @@
 	{{ HTML::script('//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js') }}
 	{{ HTML::script('/assets/js/bootstrap-select.js') }}
 	{{ HTML::script('/assets/js/bootstrap-select.min.js') }}
+	{{ HTML::script('/assets/js/kurastar.js')}}
 	{{ HTML::script('/assets/js/jquery.bxslider.js') }}
 	{{ HTML::script('/assets/js/jquery.bxslider.min.js') }}
 </head>
@@ -77,24 +78,28 @@ $(document).ready(function(){
 				        <li class="divider"><li>
 				        <li class="search">
 				        	Search
+				        	{{Form::open(['name'=>'search', 'role'=>'form', 'method'=>'post', 'route'=>'article.search'])}}
 						    <div class="dropdown">
-					       		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">Select A Country<span class="caret"></span></button>
+					       		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"><span class="val-select">Select A Country</span> <span class="caret"></span></button>
 					        	<ul class="dropdown-menu nav-ctry" role="menu">
-						    		<li>Philippines</li>
-						    		<li>Japan</li>
-						    		<li>USA</li>
+					        		<input type="hidden" class="sel-id" name="ctry-sel">
+						    		@foreach($continents as $continent)
+					        			<li class="disabled">{{$continent->CONTINENT_NAME}}</li>
+							    		@foreach($countries as $country)
+							    			@if($country->CONTINENT_ID == $continent->CONTINENT_ID)
+							    				<li class="item" value="{{$country->COUNTRY_ID}}">{{$country->COUNTRY_NAME}}</li>
+							    			@endif
+							    		@endforeach
+							    	@endforeach
 						    	</ul>
 						    </div>
 						    <div class="dropdown">
-						    	<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">Select A Category<span class="caret"></span></button>
+						    	<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"><span class="val-select">Select A Category</span> <span class="caret"></span></button>
 					        	<ul class="dropdown-menu nav-cat" role="menu">
-									<li value="01">Gourmet</li>
-									<li value="02">Leisure</li>
-									<li value="03">Fashion</li>
-									<li value="03">Study</li>
-									<li value="03">Business</li>
-									<li value="03">Hotel</li>
-									<li value="03">Buzz</li>
+					        		<input type="hidden" class="sel-id" name="cat-sel">
+									@foreach($categories as $category)
+										<li class="item" value="{{$category->CATEGORY_ID}}">{{$category->CATEGORY_NAME}}</li>
+									@endforeach
 						    	</ul>
 						    </div>
 						    <button class="btn srch-click">Search</button>
