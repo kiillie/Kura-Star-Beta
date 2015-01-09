@@ -27,7 +27,7 @@ class EloquentCountryRepository implements CountryRepository{
 	}
 
 	public function getById($id){
-		return Country::where('COUNTRY_ID', $id)->get();
+		return Country::where('COUNTRY_ID', $id)->first();
 	}
 }
 

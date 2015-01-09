@@ -13,9 +13,7 @@
 	{{ HTML::style('/assets/css/jquery.bxslider.css') }}
 	{{ HTML::script('/assets/js/jquery-2.1.3.min.js') }}
 	{{ HTML::script('/assets/js/bootstrap.js') }}
-	{{ HTML::script('/assets/js/bootstrap.min.js') }}
 	{{ HTML::script('/assets/js/npm.js') }}
-	{{ HTML::script('//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js') }}
 	{{ HTML::script('/assets/js/bootstrap-select.js') }}
 	{{ HTML::script('/assets/js/bootstrap-select.min.js') }}
 	{{ HTML::script('/assets/js/kurastar.js')}}
@@ -103,6 +101,7 @@ $(document).ready(function(){
 						    	</ul>
 						    </div>
 						    <button class="btn srch-click">Search</button>
+						    {{Form::close()}}
 					    </li>
 					    <li class="divider"><li>
 				    </ul>

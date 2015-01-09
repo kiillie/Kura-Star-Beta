@@ -25,7 +25,12 @@ Route::get('article/create', [
 	'as'	=>	'article.create'
 ]);
 
-Route::get('article/view', [
+Route::post('article/store', [
+	'uses'	=>	'ArticleController@store',
+	'as'	=>	'article.store'
+]);
+
+Route::get('article/{id}/view/', [
 	'uses'	=>	'ArticleController@show',
 	'as'	=>	'article.view'
 ]);

@@ -21,6 +21,10 @@ class StorageServiceProvider extends ServiceProvider{
 				'KuraStar\Storage\Category\CategoryRepository',
 				'KuraStar\Storage\Category\EloquentCategoryRepository'
 			);
+		$this->app->bind(
+				'KuraStar\Storage\Article\ArticleRepository',
+				'KuraStar\Storage\Article\EloquentArticleRepository'
+			);
 	}
 }
 

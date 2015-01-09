@@ -11,11 +11,13 @@ $(function(){
 		<div class="article-menu">
 			<div class="row">
 				<div class="col-md-6">
+					{{ Form::open(['name'=>'article', 'role'=>'form', 'route'=>'article.store', 'method'=>'post']) }}
 					<div class="row">
 						<div class="country col-md-6">
 							<div class="dropdown">
 					       		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"><span class="val-select">Select A Country</span> <span class="caret"></span></button>
 					        	<ul class="dropdown-menu nav-ctry" role="menu">
+					        		<input type="hidden" class="sel-id" name="country">
 						    		@foreach($continents as $continent)
 					        			<li class="disabled">{{$continent->CONTINENT_NAME}}</li>
 							    		@foreach($countries as $country)
@@ -28,15 +30,10 @@ $(function(){
 						    </div>
 						</div>
 						<div class="category col-md-6">
-							<!-- <select class="form-control">
-								<option disabled selected>Select A Category</option>
-								@foreach($categories as $category)
-									<option value="{{$category->CATEGORY_ID}}">{{$category->CATEGORY_NAME}}</option>
-								@endforeach
-							</select> -->
 							<div class="dropdown">
 						    	<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"><span class="val-select">Select A Category</span> <span class="caret"></span></button>
 					        	<ul class="dropdown-menu nav-cat" role="menu">
+					        		<input type="hidden" class="sel-id" name="category">
 									@foreach($categories as $category)
 										<li class="item" value="{{$category->CATEGORY_ID}}">{{$category->CATEGORY_NAME}}</li>
 									@endforeach
@@ -47,8 +44,13 @@ $(function(){
 				</div>
 				<div class="col-md-6">
 					<div class="article-btn">
-						<input type="button" class="btn btn-default" value="Preview" />
-						<input type="button" class="btn btn-default" value="Save" />
+						<button type="button" class="btn btn-default preview" data-toggle="modal" data-target="#articlePreview"> Preview </button>
+						<!-- Modal for Preview -->
+							@include('layouts.preview_modal')
+							@section('prevModal')
+							@show
+						<!-- End of Preview Modal-->
+						<input type="submit" class="btn btn-default save" value="Save" />
 						<input type="button" class="btn btn-default" value="Public" />
 					</div>
 				</div>
@@ -61,10 +63,10 @@ $(function(){
 						<img src="/assets/images/article-default.png" />
 					</div>
 					<div class="col-md-10 art-title-desc">
-						<div class="form-group">
+						<div class="form-group title">
 							<input type="text" class="form-control" name="title" placeholder="Title" />
 						</div>
-						<div class="form-group">
+						<div class="form-group desc">
 							<textarea class="form-control" name="description" placeholder="Description"></textarea>
 							<span class="right">0/150 characters</span>
 						</div>
@@ -85,8 +87,12 @@ $(function(){
 					<li><a href="#tabs-7"><span class="glyphicon glyphicon-hd-video"></span> Youtube</a></li>
 				</ul>
 				<div class="addon-tab text" id="tabs-1">
-					<textarea name="art-text" class="form-control" placeholder="Enter Text Here"></textarea>
-					<div><input type="button" class="btn btn-default" value="Add" /></div>
+					<div class="tag-wrap temp-storage">
+						
+					</div>
+					<textarea name="art-text-add" class="added-value" style="display:none;"></textarea>
+					<textarea name="art-text" class="form-control temp-inp" placeholder="Enter Text Here"></textarea>
+					<div><input type="button" class="btn btn-default val-add" value="Add" /></div>
 				</div>
 				<div class="addon-tab picture" id="tabs-2">
 					<div class="pic-wrap">
@@ -116,10 +122,14 @@ $(function(){
 					<div><input type="button" class="btn btn-default" value="Add" /></div>
 				</div>
 				<div class="addon-tab htag" id="tabs-4">
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Heading" height="30" name="art-ref-h"/>
+					<div class="tag-wrap alert alert-info temp-storage">
+						
 					</div>
-					<div><input type="button" class="btn btn-default" value="Add" /></div>
+					<div class="form-group">
+						<input type="hidden" name="art-heading" class="added-value">
+						<input type="text" class="form-control temp-inp" placeholder="Heading" height="30" name="art-ref-h"/>
+					</div>
+					<div><input type="button" class="btn btn-default tag-add val-add" value="Add" /></div>
 				</div>
 				<div class="addon-tab link" id="tabs-5">
 					<div class="link-wrap">
@@ -135,6 +145,7 @@ $(function(){
 
 				</div>
 			</div>
+			{{Form::close()}}
 		</div>
 	</div>
 @stop

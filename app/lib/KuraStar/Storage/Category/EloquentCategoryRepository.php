@@ -16,7 +16,7 @@ class EloquentCategoryRepository implements CategoryRepository{
 	}
 
 	public function getById($id){
-		return Category::where('CATEGORY_ID', $id)->get();
+		return Category::where('CATEGORY_ID', $id)->first();
 	}
 
 }

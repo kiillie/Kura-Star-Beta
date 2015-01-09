@@ -157,32 +157,32 @@
 .menu-header .row{
 	display:inline;
 }
-.latest-group{
+.latest-group, .article-group{
 	padding: 10px;
 	min-height: 115px;
 	border: 2px solid;
 	margin-bottom: 20px;
 	position: relative;
 }
-.latest-group .count-cat{
+.latest-group .count-cat, .article-group .count-cat{
 	position: absolute;
 	right: 10px;
 	top: -12px;
 }
-.latest-group img{
+.latest-group img, .article-group img{
 	width: 100%;
 }
-.latest-group .count-cat a{
+.latest-group .count-cat a, .article-group .count-cat a{
 	color: #ffffff;
 }
-.latest-group p{
+.latest-group p, .article-group p{
 	text-align: justify;
 	font-size: 12px;
 }
-.latest-group .count-cat .country{
+.latest-group .count-cat .country, .article-group .count-cat .country{
 	background: #288A2E;
 }
-.latest-group .count-cat .category{
+.latest-group .count-cat .category, .article-group .count-cat .category{
 	background: #C26A2B;
 }
 .head-search .input-group-btn .country{
@@ -439,7 +439,22 @@
 .art-addons .addon-tab.link .link-wrap input{
 	margin-right:10px;
 }
-.art-addons .addon-tab.link .link-wrap
+/**** CSS For Modals *****/
+.article-view .modal-dialog{
+	width: 90%;
+}
+.article-view .modal-dialog img{
+	width: 100%;
+	overflow: hidden;
+}
+.article-view .modal-dialog .extra-details{
+	border: 1px solid #dfdfdf;
+	border-radius: 10px;
+	min-height: 215px;
+	padding: 10px;
+}
+/**** END of CSS for Modals*****/
+
 .foobar{
 	border-radius: 10px;
 	background: #DFDFDF;

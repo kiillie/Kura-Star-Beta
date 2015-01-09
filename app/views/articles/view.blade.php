@@ -9,10 +9,10 @@
 					<img src="/assets/images/article-default.png" alt="Title" width="150" height="215" />
 				</div>
 				<div class="col-md-9">
-					<h2>Title</h2>
+					<h2>{{$article->CURATION_TITLE}}</h2>
 					<h4>Description</h4>
 					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultrices faucibus justo ac imperdiet. Phasellus fermentum nisl vitae purus cursus interdum. Maecenas ut lacus vel leo dictum laoreet id ut neque. Phasellus vulputate laoreet massa. Cras pulvinar nunc ac quam volutpat, non vulputate odio imperdiet. Donec sed sem ac quam commodo elementum eu vel metus. Aliquam molestie, dolor vitae aliquet molestie, felis dolor consectetur nulla, nec fermentum risus sem eget lorem. Vivamus efficitur, eros bibendum tristique feugiat, arcu nibh auctor nisi, ut mollis nisl elit ut nisi. Proin eu mattis orci, sit amet pharetra enim. Suspendisse potenti. Vivamus eros mi, tincidunt at nunc ac, interdum porttitor urna. Aliquam pretium tortor eu ultrices dapibus.
+						{{$article->CURATION_DESCRIPTION}}
 					</p>
 					<div class="social">
 						<input type="button" class="btn btn-info" value="Like">
@@ -28,13 +28,17 @@
 			</div>
 			<div class="count-cat">
 				<ul class="list-inline">
-					<li class="country"><a href="#">Philippines</a></li>
-					<li class="category"><a href="#">Fashion</a></li>
+					<li class="country"><a href="#">{{$country->COUNTRY_NAME}}</a></li>
+					<li class="category"><a href="#">{{$category->CATEGORY_NAME}}</a></li>
 				</ul>
 			</div>
 			<hr></hr>
 			<div class="extra-details">
-				Here goes extra details of the Article.
+				<h2>{{$article->TAG}}</h2>
+				<hr></hr>
+				<p>
+					{{$article->CURATION_DETAIL}}
+				</p>
 			</div>
 			<div class="pages">
 				<ul class="pagination">
@@ -48,7 +52,7 @@
 				<img src="/assets/images/Google-Adsense.jpg" alt="Advertisement"/> <img src="/assets/images/Google-Adsense.jpg" alt="Advertisement"/>
 			</div>
 		</div>
-		<div class="col-md-3 right-bar">
+		<div class="col-md-3 right-bar hidden-xs">
 			@include('articles.rightbar')
 			@section('rightbar')
 			@show
