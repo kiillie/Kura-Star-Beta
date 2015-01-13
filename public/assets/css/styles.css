@@ -299,9 +299,6 @@
 .article .details .count-cat .category{
 	background: #C26A2B;
 }
-.article .details .count-cat .country, .article .details .count-cat .category{
-	height: 35px;
-}
 .article .details .count-cat .country a, .article .details .count-cat .category a{
 	color: #ffffff;
 }
@@ -323,6 +320,11 @@
 .article .rank-article img, .article .rank-country img{
 	width: 70px;
 	margin: 10px 0;
+}
+.article .article-view{
+	padding: 20px;
+	background: rgba(58, 187, 143, 0.57);
+	border-radius: 10px;
 }
 .article .pages{
 	text-align: center;

@@ -4,7 +4,7 @@
 	{{ Breadcrumbs::render('view_article') }}
 	<div class="row details">
 		<div class="col-md-9">
-			<div class="row">
+			<div class="row article-view">
 				<div class="col-md-3">
 					<img src="/assets/images/article-default.png" alt="Title" width="150" height="215" />
 				</div>
