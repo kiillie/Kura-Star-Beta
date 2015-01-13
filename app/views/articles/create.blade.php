@@ -81,10 +81,10 @@ $(function(){
 					<li><a href="#tabs-1"><span class="glyphicon glyphicon-pencil"></span> Text</a></li>
 					<li><a href="#tabs-2"><span class="glyphicon glyphicon-camera"></span> Picture</a></li>
 					<li><a href="#tabs-3"><span class="glyphicon glyphicon-hdd"></span> Reference</a></li>
-					<li><a href="#tabs-4"><span class="glyphicon glyphicon-header"></span> h2 Tag</a></li>
-					<li><a href="#tabs-5"><span class="glyphicon glyphicon-link"></span> Link</a></li>
-					<li><a href="#tabs-6"><span class="glyphicon glyphicon-retweet"></span> Twitter</a></li>
-					<li><a href="#tabs-7"><span class="glyphicon glyphicon-hd-video"></span> Youtube</a></li>
+					<li><a href="#tabs-4"><span class="glyphicon glyphicon-link"></span> Link</a></li>
+					<li><a href="#tabs-5"><span class="glyphicon glyphicon-retweet"></span> Twitter</a></li>
+					<li><a href="#tabs-6"><span class="glyphicon glyphicon-hd-video"></span> Youtube</a></li>
+					<li><a href="#tabs-7"><span class="glyphicon glyphicon-header"></span> h2 Tag</a></li>
 				</ul>
 				<div class="addon-tab text" id="tabs-1">
 					<div class="tag-wrap temp-storage">
@@ -121,7 +121,20 @@ $(function(){
 					</div>
 					<div><input type="button" class="btn btn-default" value="Add" /></div>
 				</div>
-				<div class="addon-tab htag" id="tabs-4">
+				<div class="addon-tab link" id="tabs-4">
+					<div class="link-wrap">
+						<div class="inline">
+							<input type="text" class="form-control left" placeholder="Enter URL" name="art-link" /> <input type="button" class="btn btn-default left" value="Submit"> <input type="button" class="btn btn-default left" value="Cancel" name="reset" />
+						</div>
+					</div>
+				</div>
+				<div class="addon-tab twitter" id="tabs-5">
+
+				</div>
+				<div class="addon-tab youtube" id="tabs-6">
+
+				</div>
+				<div class="addon-tab htag" id="tabs-7">
 					<div class="tag-wrap alert alert-info temp-storage">
 						
 					</div>
@@ -130,19 +143,6 @@ $(function(){
 						<input type="text" class="form-control temp-inp" placeholder="Heading" height="30" name="art-ref-h"/>
 					</div>
 					<div><input type="button" class="btn btn-default tag-add val-add" value="Add" /></div>
-				</div>
-				<div class="addon-tab link" id="tabs-5">
-					<div class="link-wrap">
-						<div class="inline">
-							<input type="text" class="form-control left" placeholder="Enter URL" name="art-link" /> <input type="button" class="btn btn-default left" value="Submit"> <input type="button" class="btn btn-default left" value="Cancel" name="reset" />
-						</div>
-					</div>
-				</div>
-				<div class="addon-tab twitter" id="tabs-6">
-
-				</div>
-				<div class="addon-tab youtube" id="tabs-7">
-
 				</div>
 			</div>
 			{{Form::close()}}

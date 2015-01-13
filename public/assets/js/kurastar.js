@@ -37,7 +37,7 @@ $(document).ready(function(){
 			if(pressed == 13){
 				e.preventDefault();
 				var value = $(a).find('.temp-inp').val();
-				$(a).find('.temp-storage').append("<span class='label added label-info'>"+value+" <a href='#' class='add-close'>&times;</a></span> ");
+				$(a).find('.temp-storage').html("<h2 style='font-size:18px;' class='added'>"+value+" <a href='#' class='add-close'>&times;</a></h2> ");
 				$(a).find('.added-value').val(value);
 				$(a).find('.temp-inp').val("");
 
@@ -50,7 +50,7 @@ $(document).ready(function(){
 
 		$(a).find('.val-add').on('click', function(){
 			var value = $(a).find('.temp-inp').val();
-			$(a).find('.temp-storage').append("<span class='label added label-info'>"+value+" <a href='#' class='add-close'>&times;</a></span> ");
+			$(a).find('.temp-storage').html("<h2 style='font-size:18px;' class='added'>"+value+" <a href='#' class='add-close'>&times;</a></h2> ");
 			$(a).find('.added-value').val(value);
 			$(a).find('.temp-inp').val("");
 
