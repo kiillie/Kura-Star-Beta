@@ -41,7 +41,7 @@ $(document).ready(function(){
 				        <span class="icon-bar"></span>
 				        <span class="icon-bar"></span>
 				    </button>
-				    <a class="navbar-brand" href="#">Logo Here</a>
+				    <a class="navbar-brand" href="{{URL::route('index')}}">Logo Here</a>
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -119,7 +119,7 @@ $(document).ready(function(){
 			</div>
 			<div class="col-md-4">
 				<div class="logo">
-					Logo here!
+					<a href="{{URL::route('index')}}">LOGO</a>
 				</div>
 			</div>
 			<div class="col-md-4">

@@ -13,6 +13,10 @@ class EloquentUserRepository implements UserRepository{
 			return $user->save();
 	}
 
+	public function allUsers(){
+		return User::all();
+	}
+
 	public function update($id, $input){
 		//
 	}

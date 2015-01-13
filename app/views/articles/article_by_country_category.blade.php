@@ -14,7 +14,7 @@
 					<div class="row">
 						@foreach($categories as $category)
 							<div class="col-md-3 col-xs-3">
-								<a href="{{$category->CATEGORY_ID}}">{{$category->CATEGORY_NAME}}</a> <span><a class="label label-info" href="#">(2)</a></span>
+								<a href="{{$category->CATEGORY_ID}}">{{$category->CATEGORY_NAME}}</a> <span><a class="label label-info" href="#">{{$artcount[$category->CATEGORY_ID]}}</a></span>
 							</div>
 						@endforeach
 					</div>
@@ -22,21 +22,14 @@
 				<hr></hr>
 				<div class="row">
 					<div class="col-md-2 hidden-xs cat-sidebar">
-						<ul class="nav nav-pills nav-stacked">
-							<li><a href="{{URL::route('index')}}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-							<li><a href="{{URL::route('article.view')}}"><span class="glyphicon glyphicon-cutlery"></span> Gourmet</a></li>
-							<li><a href="#"><span class="glyphicon glyphicon-music"></span> Leisure</a></li>
-							<li><a href="#"><span class="glyphicon glyphicon-briefcase"></span> Fashion</a></li>
-							<li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Study</a></li>
-							<li><a href="#"><span class="glyphicon glyphicon-usd"></span> Business</a></li>
-							<li><a href="#"><span class="glyphicon glyphicon-tower"></span> Hotel</a></li>
-							<li><a href="#"><span class="glyphicon glyphicon-pushpin"></span> Buzz</a></li>
-						</ul>
+						@include('articles.leftbar')
+						@section('leftbar')
+						@show
 					</div>
 					<div class="col-md-10 col-xs-12 article-results">
 						@if(count($articles) == 0)
 							<div class="alert alert-danger">
-								<span class="article-message">There are no articles in <a href="#">{{$ctry->COUNTRY_NAME}}</a> under <a href="#">{{$cat->CATEGORY_NAME}}</a> category.</span>
+								<span class="article-message">There are no articles in <a href="{{URL::route('article.bycountry', $ctry->COUNTRY_ID)}}">{{$ctry->COUNTRY_NAME}}</a> under <a href="{{URL::route('article.bycategory', $cat->CATEGORY_ID)}}">{{$cat->CATEGORY_NAME}}</a> category.</span>
 							</div>
 						@else
 							@foreach($articles as $article)
@@ -50,15 +43,19 @@
 												<hr></hr>
 												<p>{{$article->CURATION_DESCRIPTION}}</p>
 											</div>
-											<div class="col-md-2 col-xs-12">
-												<span class="hidden-xs">Name</span>
-												<span class="visible-xs"><i>- Name</i></span>
+											<div class="col-md-2 user-detail col-xs-12">
+												@foreach($users as $user)
+													@if($user->CURATER_ID == $article->CURATER_ID)
+														<span class="hidden-xs"><a href="#">{{$user->CURATER}}</a></span>
+														<span class="visible-xs"><i>- <a href="#">{{$user->CURATER}}</a></i></span>
+													@endif
+												@endforeach
 											</div>
 										</div>
 										<div class="count-cat">
 											<ul class="list-inline">
-												<li class="country"><a href="#">{{$ctry->COUNTRY_NAME}}</a></li>
-												<li class="category"><a href="">{{$cat->CATEGORY_NAME}}</a></li>
+												<li class="country"><a href="{{URL::route('article.bycountry', $ctry->COUNTRY_ID)}}">{{$ctry->COUNTRY_NAME}}</a></li>
+												<li class="category"><a href="{{URL::route('article.bycategory', $cat->CATEGORY_ID)}}">{{$cat->CATEGORY_NAME}}</a></li>
 											</ul>
 										</div>
 									</div>

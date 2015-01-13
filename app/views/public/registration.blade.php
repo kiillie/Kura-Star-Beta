@@ -8,6 +8,11 @@
 			<div class="reg-form">
 				<h2>User Registration</h2>
 				<div class="reg-inputs">
+					@if(Session::has('message'))
+						@foreach(Session::get('message') as $message)
+							<span class="label label-danger">{{$message['0']}}</span>
+						@endforeach
+					@endif
 					<p style="text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur metus tellus, iaculis et sollicitudin ut, gravida quis nisi. Praesent et convallis lorem, id sollicitudin mauris.</p>
 					{{Form::open(['name' => 'register', 'route' => 'user.registration', 'role' => 'form'])}}
 						<div class="form-group">
@@ -33,13 +38,15 @@
 		</div>
 		<div class="col-md-6">
 			<div class="log-form">
-				@if(Session::has('message_login'))
-					<span class="label label-danger">{{Session::get('message_login')}}</span>
-				@endif
 				<h2>Login</h2>
+					@if(Session::has('message_login'))
+					<div class="form-group">
+						<span class="label label-danger">{{Session::get('message_login')}}</span>
+					</div>
+					@endif
 				{{Form::open(['name' => 'login', 'route' => 'login'])}}
 					<div class="form-group">
-							{{Form::text('email', '', ['class' => 'form-control', 'placeholder' => 'Email Address'])}}
+							{{Form::text('log_email', '', ['class' => 'form-control', 'placeholder' => 'Email Address'])}}
 					</div>
 					<div class="form-group">
 						{{Form::password('password', ['class' => 'form-control', 'placeholder' => 'Password'])}}

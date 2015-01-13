@@ -12,17 +12,34 @@ class SessionController extends BaseController{
 
 	public function store(){
 		$credentials = [
-			'email' 	=>	Input::get('email'),
-			'password'	=>	Input::get('password')
+			'MAIL_ADDRESS' 	=>	Input::get('log_email'),
+			'PASSWORD'	=>	Input::get('password')
 		];
 
-		if(Auth::attempt($credentials)){
-			return Redirect::route('index')
-					->with('message', 'Welcome!');
+		$rules = [
+			'MAIL_ADDRESS'=>'required',
+			'PASSWORD'=>'required'
+		];
+
+
+		$validator =  Validator::make($credentials, $rules);
+
+		if($validator->passes()){
+			if(Auth::attempt($credentials)){
+				return Redirect::route('index')
+						->with('message', 'Welcome!');
+			}
+			else{
+				return Redirect::back()
+						->withInput()
+						->with('message_login', 'Incorrect Email or Password');
+			}
 		}
 		else{
 			return Redirect::back()
-					->with('message_login', 'Incorrect Email or Password');
+				->withErrors($validator)
+				->withInput()
+				->with('message_login', 'Invalid Email Address or Password');
 		}
 	}
 

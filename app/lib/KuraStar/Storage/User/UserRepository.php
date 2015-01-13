@@ -4,6 +4,8 @@ interface UserRepository{
 	
 	public function store($input);
 
+	public function allUsers();
+	
 	public function update($id, $input);
 
 	public function delete($id);

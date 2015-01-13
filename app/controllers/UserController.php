@@ -23,6 +23,7 @@ class UserController extends BaseController{
 			$errors = $validate->getErrors();
 
 			return Redirect::route('registration')
+					->withInput()
 					->with('message', $errors->toArray());
 		}
 	}

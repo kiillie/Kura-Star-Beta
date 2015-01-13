@@ -157,12 +157,22 @@
 .menu-header .row{
 	display:inline;
 }
+.latest{
+	margin: 40px 0;
+}
 .latest-group, .article-group{
 	padding: 10px;
 	min-height: 115px;
-	border: 2px solid;
+	border-radius: 10px;
+	background: #FFFFFF;
 	margin-bottom: 20px;
 	position: relative;
+}
+.latest-group:hover{
+	cursor: pointer;
+}
+.latest-group:nth-child(even), .article-group:nth-child(even){
+	background: #DFDFDF;
 }
 .latest-group .count-cat, .article-group .count-cat{
 	position: absolute;
@@ -184,6 +194,9 @@
 }
 .latest-group .count-cat .category, .article-group .count-cat .category{
 	background: #C26A2B;
+}
+.latest-group .user-detail, .article-results .user-detail{
+	text-align: center;
 }
 .head-search .input-group-btn .country{
 	border-top-right-radius: 0;

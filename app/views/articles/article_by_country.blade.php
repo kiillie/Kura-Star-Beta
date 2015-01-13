@@ -1,9 +1,19 @@
 @extends('layouts.main')
 @section('content')
-<div class="container article by-category">
+<div class="container article by-country">
 	<div class="row">
 		<div class="col-md-9">
-			<div class="search-results">{{$cat->CATEGORY_NAME}} results ({{count($articles)}} items):</div>
+			<div class="search-results">{{$ctry->COUNTRY_NAME}} results ({{count($articles)}} items):</div>
+			<hr></hr>
+			<div class="cat-list">
+			<div class="row">
+					@foreach($categories as $category)
+						<div class="col-md-3 col-xs-3">
+									<a href="{{$category->CATEGORY_ID}}">{{$category->CATEGORY_NAME}}</a> <span><a class="label label-info" href="#">{{$artcount[$category->CATEGORY_ID]}}</a></span>
+						</div>
+					@endforeach
+				</div>
+			</div>
 			<hr></hr>
 		<div class="row">
 				<div class="col-md-2 hidden-xs cat-sidebar">
@@ -35,18 +45,18 @@
 									</div>
 									<div class="count-cat">
 										<ul class="list-inline">
-											@foreach($countries as $country)
-												@if($country->COUNTRY_ID == $article->COUNTRY_ID)
-													<li class="country"><a href=" {{URL::route('article.bycountry', $article->COUNTRY_ID)}}">{{$country->COUNTRY_NAME}}</a></li>
+											<li class="country"><a href=" {{URL::route('article.bycountry', $article->COUNTRY_ID)}}">{{$ctry->COUNTRY_NAME}}</a></li>
+											@foreach($categories as $category)
+												@if($category->CATEGORY_ID == $article->CATEGORY_ID)
+													<li class="category"><a href="{{URL::route('article.bycategory', $article->CATEGORY_ID)}}">{{$category->CATEGORY_NAME}}</a></li>
 												@endif
 											@endforeach
-											<li class="category"><a href="{{URL::route('article.bycategory', $article->CATEGORY_ID)}}">{{$cat->CATEGORY_NAME}}</li>
 										</ul>
 									</div>
 								</div>
 						@endforeach
 					@else
-						<div class="alert alert-danger">There are no Articles with <a href="{{URL::route('article.bycategory', $cat->CATEGORY_ID)}}">{{$cat->CATEGORY_NAME}}</a> category.</div>
+						<div class="alert alert-danger">There are no Articles in <a href="{{URL::route('article.bycountry', $ctry->COUNTRY_ID)}}">{{$ctry->COUNTRY_NAME}}</a></div>
 					@endif
 				</div>
 			</div>

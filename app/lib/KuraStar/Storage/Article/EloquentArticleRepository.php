@@ -19,6 +19,10 @@ class EloquentArticleRepository implements ArticleRepository{
 		return $article->save();
 	}
 
+	public function allArticles(){
+		return Article::all();
+	}
+
 	public function show($id){
 		return Article::where('CURATION_ID', '=', $id)->first();
 	}
@@ -27,6 +31,22 @@ class EloquentArticleRepository implements ArticleRepository{
 		return Article::where('COUNTRY_ID', '=', $country)
 						->where('CATEGORY_ID', '=', $category)
 						->get();
+	}
+
+	public function getByCountry($country){
+		return Article::where('COUNTRY_ID', '=', $country)
+						->get();
+	}
+
+	public function getByCategory($category){
+		return Article::where('CATEGORY_ID', '=', $category)
+						->get();
+	}
+
+	public function countCategoryByCountry($country, $category){
+		return Article::where('COUNTRY_ID', '=', $country)
+						->where('CATEGORY_ID', '=', $category)
+						->count();
 	}
 
 	public function viewById(){

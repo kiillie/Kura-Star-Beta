@@ -5,6 +5,7 @@ use KuraStar\Storage\Country\CountryRepository as Country;
 use KuraStar\Storage\Category\CategoryRepository as Category;
 use KuraStar\Storage\Continent\ContinentRepository as Continent;
 use KuraStar\Storage\Article\ArticleRepository as Article;
+use KuraStar\Storage\User\UserRepository as User;
 
 class ArticleController extends BaseController{
 
@@ -12,12 +13,14 @@ class ArticleController extends BaseController{
 	protected $category;
 	protected $continent;
 	protected $article;
+	protected $user;
 
-	public function __construct(Country $country, Category $category, Continent $continent, Article $article){
+	public function __construct(Country $country, Category $category, Continent $continent, Article $article, User $user){
 		$this->country = $country;
 		$this->category = $category;
 		$this->continent = $continent;
 		$this->article = $article;
+		$this->user = $user;
 	}
 
 	public function index(){
@@ -44,6 +47,7 @@ class ArticleController extends BaseController{
 	}
 
 	public function show($id){
+		$users = $this->user->allUsers();
 		$countries = $this->country->showCountryByContinent();
 		$categories = $this->category->show();
 		$continents = $this->continent->show();
@@ -60,32 +64,78 @@ class ArticleController extends BaseController{
 				->withCategory($category);
 	}
 
-	public function showByCategory(){
+	public function showByCategory($id){
+		$users = $this->user->allUsers();
 		$countries = $this->country->showCountryByContinent();
 		$categories = $this->category->show();
 		$continents = $this->continent->show();
+		$articles = $this->article->getByCategory($id);
+		$selected_category = $this->category->getById($id);
+
 		return View::make('articles.article_by_category')
 				->withCountries($countries)
 				->withCategories($categories)
-				->withContinents($continents);
+				->withContinents($continents)
+				->withCat($selected_category)
+				->withArticles($articles)
+				->withUsers($users);
 	}
 
-	public function showByCountryAndCategory(){
-		$selected_country = $this->country->getById(Input::get('ctry-sel'));
-		$selected_category = $this->category->getById(Input::get('cat-sel'));
+	public function showByCountry($id){
+		$users = $this->user->allUsers();
 		$countries = $this->country->showCountryByContinent();
 		$categories = $this->category->show();
 		$continents = $this->continent->show();
+		$articles = $this->article->getByCountry($id);
+		$selected_country = $this->country->getById($id);
+		$count = [];
 
-		$articles = $this->article->getByCountryCategory($selected_country->COUNTRY_ID, $selected_category->CATEGORY_ID);
+		foreach($categories as $category){
+			$count[$category->CATEGORY_ID] = $this->article->countCategoryByCountry($id, $category->CATEGORY_ID);
+		}
 
-		return View::make('articles.article_by_country_category')
+		return View::make('articles.article_by_country')
 				->withCountries($countries)
 				->withCategories($categories)
 				->withContinents($continents)
 				->withCtry($selected_country)
-				->withCat($selected_category)
-				->withArticles($articles);
+				->withArticles($articles)
+				->withUsers($users)
+				->withArtcount($count);
+	}
+
+	public function showByCountryAndCategory(){
+		if(Input::get('ctry-sel') == ""){
+			return $this->showByCategory(Input::get('cat-sel'));
+		}
+		else if(Input::get('cat-sel') == ""){
+			return $this->showByCountry(Input::get('ctry-sel'));
+		}
+		else{
+			$users = $this->user->allUsers();
+			$selected_country = $this->country->getById(Input::get('ctry-sel'));
+			$selected_category = $this->category->getById(Input::get('cat-sel'));
+			$articles = $this->article->getByCountryCategory($selected_country->COUNTRY_ID, $selected_category->CATEGORY_ID);
+			$count = [];
+			$countries = $this->country->showCountryByContinent();
+			$categories = $this->category->show();
+			$continents = $this->continent->show();
+
+			foreach($categories as $category){
+				$count[$category->CATEGORY_ID] = $this->article->countCategoryByCountry(Input::get('ctry-sel'), $category->CATEGORY_ID);
+			}
+
+			return View::make('articles.article_by_country_category')
+					->withCountries($countries)
+					->withCategories($categories)
+					->withContinents($continents)
+					->withCtry($selected_country)
+					->withCat($selected_category)
+					->withArticles($articles)
+					->withUsers($users)
+					->withArtcount($count);
+
+		}
 	}
 }
 

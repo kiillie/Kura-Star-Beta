@@ -30,12 +30,12 @@ Route::post('article/store', [
 	'as'	=>	'article.store'
 ]);
 
-Route::get('article/{id}/view/', [
+Route::get('article/{id}/view', [
 	'uses'	=>	'ArticleController@show',
 	'as'	=>	'article.view'
 ]);
 
-Route::get('article/category', [
+Route::get('article/{id}/category', [
 	'uses'	=>	'ArticleController@showByCategory',
 	'as'	=>	'article.bycategory'
 ]);
@@ -43,6 +43,11 @@ Route::get('article/category', [
 Route::post('article/search', [
 	'uses'	=>	'ArticleController@showByCountryAndCategory',
 	'as'	=>	'article.search'
+]);
+
+Route::get('article/{id}/country', [
+	'uses'	=>	'ArticleController@showByCountry',
+	'as'	=>	'article.bycountry'
 ]);
 
 /** Login **/

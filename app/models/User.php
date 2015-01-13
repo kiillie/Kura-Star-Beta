@@ -16,7 +16,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 *
 	 * @var string
 	 */
-	protected $table = 't_curater'; 
+	protected $table = 't_curater';
+	protected $primaryKey = 'CURATER_ID';
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -27,5 +28,17 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	protected $fillable = ['CURATER', 'MAIL_ADDRESS', 'PASSWORD', 'CURATER_IMAGE', 'CURATER_DESCRIPTION', 'CURATER_SITE', 'STOP_FLAG'];
 
+
+	public function getAuthIdentifier(){
+		return $this->getKey();
+	}
+
+	public function getAuthPassword(){
+		return $this->PASSWORD;
+	}
+
+	public function getReminderEmail(){
+		return $this->MAIL_ADDRESS;
+	}
 
 }

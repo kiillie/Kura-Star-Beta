@@ -29,22 +29,35 @@ $(document).ready(function(){
 
 
 	//For Add Button in Create Article
-	// var def = $(".art-addons .ui-state-active").find(a).attr("href");
-	// 	alert(def);
-	// 	$(def).find('.val-add').on('click', function(){
-	// 		var value = $(def).find('.temp-inp').val();
-	// 		$(def).find('.temp-storage').html(value);
-	// 		$(def).find('.added-value').val(value);
-	// 		$(def).find('.temp-inp').val("");
-	// 	});
 	$(".art-addons ul li").on('click', function(){
 		var a = $(this).find('a').attr("href");
 
+		$(a).find("input[type='text']").keypress(function(e){
+			var pressed = (e.keyCode ? e.keyCode : e.which);
+			if(pressed == 13){
+				e.preventDefault();
+				var value = $(a).find('.temp-inp').val();
+				$(a).find('.temp-storage').append("<span class='label added label-info'>"+value+" <a href='#' class='add-close'>&times;</a></span> ");
+				$(a).find('.added-value').val(value);
+				$(a).find('.temp-inp').val("");
+
+				$(a).find('.added .add-close').on('click', function(e){
+					e.preventDefault();
+					$(this).parent().remove();
+				});
+			}
+		});
+
 		$(a).find('.val-add').on('click', function(){
 			var value = $(a).find('.temp-inp').val();
-			$(a).find('.temp-storage').html(value);
+			$(a).find('.temp-storage').append("<span class='label added label-info'>"+value+" <a href='#' class='add-close'>&times;</a></span> ");
 			$(a).find('.added-value').val(value);
 			$(a).find('.temp-inp').val("");
+
+			$(a).find('.added .add-close').on('click', function(e){
+				e.preventDefault();
+				$(this).parent().remove();
+			});
 		});
 	});
 	//End for Add Button
