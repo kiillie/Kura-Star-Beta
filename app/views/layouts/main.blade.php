@@ -124,13 +124,14 @@ $(document).ready(function(){
 			</div>
 			<div class="col-md-4">
 				<ul class="list-inline">
-					<li><a href="{{URL::route('article.create')}}">Make an Article</a></li>
 					@if(Auth::check())
+					<li><a href="{{URL::route('article.create')}}">Make an Article</a></li>
 					<li><a href="#">{{Auth::user()->name}}</a></li>
 					<li><a href="{{URL::route('logout')}}">Logout</a></li>
 					@else
+					<li><a href="{{URL::route('registration')}}">Make an Article</a></li>
 					<li><a href="{{URL::route('registration')}}">Sign Up</a></li>
-					<li><a href="#">Login</a></li>
+					<li><a href="{{URL::route('login')}}">Login</a></li>
 					@endif
 				</ul>
 			</div>

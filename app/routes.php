@@ -17,7 +17,6 @@ Route::post('user/register', [
 	'as'	=>	'user.registration'
 ]);
 
-
 /** Articles **/
 
 Route::get('article/create', [
@@ -41,7 +40,7 @@ Route::get('article/{id}/category', [
 ]);
 
 Route::post('article/search', [
-	'uses'	=>	'ArticleController@showByCountryAndCategory',
+	'uses'	=>	'ArticleController@searchArticle',
 	'as'	=>	'article.search'
 ]);
 
@@ -52,9 +51,14 @@ Route::get('article/{id}/country', [
 
 /** Login **/
 
+Route::get('login',[
+	'uses'	=>	'SessionController@create',
+	'as'	=> 'login'
+]);
+
 Route::post('user/login', [
 	'uses'	=>	'SessionController@store',
-	'as'	=>	'login'
+	'as'	=>	'user.login'
 ]);
 
 Route::get('user/logout', [

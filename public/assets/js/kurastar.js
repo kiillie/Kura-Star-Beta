@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	//For the dropdown Select
 	$('.dropdown').on('click', function(){
 		var init = $(this);
 		var value;
@@ -50,7 +51,7 @@ $(document).ready(function(){
 
 		$(a).find('.val-add').on('click', function(){
 			var value = $(a).find('.temp-inp').val();
-			$(a).find('.temp-storage').html("<h2 style='font-size:18px;' class='added'>"+value+" <a href='#' class='add-close'>&times;</a></h2> ");
+			$(a).find('.temp-storage').html(value+" <a href='#' class='add-close'>&times;</a>");
 			$(a).find('.added-value').val(value);
 			$(a).find('.temp-inp').val("");
 
@@ -61,4 +62,11 @@ $(document).ready(function(){
 		});
 	});
 	//End for Add Button
+
+	//For the Number of Characters in Create Article
+	$(".article-details .desc textarea").keyup(function(e){
+		var value = $(this).val().length;
+		
+		$(".article-details .desc .num-char").text(value);
+	});
 });

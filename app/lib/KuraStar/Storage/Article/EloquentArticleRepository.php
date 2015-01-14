@@ -9,7 +9,7 @@ class EloquentArticleRepository implements ArticleRepository{
 		$article = new Article;
 		$article->COUNTRY_ID = $input['country'];
 		$article->CATEGORY_ID = $input['category'];
-		$article->CURATER_ID = 1;
+		$article->CURATER_ID = \Auth::user()->CURATER_ID;
 		$article->CURATION_TITLE = $input['title'];
 		$article->CURATION_DESCRIPTION = $input['description'];
 		$article->CURATION_DETAIL = $input['art-text-add'];

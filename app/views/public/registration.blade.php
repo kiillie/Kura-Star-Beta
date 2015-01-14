@@ -3,15 +3,19 @@
 <div class="container">
 	{{ Breadcrumbs::render('registration') }}
 	<div class="reglog-wrapper row">
+		<div class=""></div>
 		<div class="col-md-6">
-			
 			<div class="reg-form">
 				<h2>User Registration</h2>
 				<div class="reg-inputs">
 					@if(Session::has('message'))
-						@foreach(Session::get('message') as $message)
-							<span class="label label-danger">{{$message['0']}}</span>
-						@endforeach
+						@if(is_array(Session::get('message')))
+							@foreach(Session::get('message') as $message)
+								<span class="label label-danger">{{$message['0']}}</span>
+							@endforeach
+						@else
+							<span class="label label-danger">{{Session::get('message')}}</span>
+						@endif
 					@endif
 					<p style="text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur metus tellus, iaculis et sollicitudin ut, gravida quis nisi. Praesent et convallis lorem, id sollicitudin mauris.</p>
 					{{Form::open(['name' => 'register', 'route' => 'user.registration', 'role' => 'form'])}}
@@ -44,7 +48,7 @@
 						<span class="label label-danger">{{Session::get('message_login')}}</span>
 					</div>
 					@endif
-				{{Form::open(['name' => 'login', 'route' => 'login'])}}
+				{{Form::open(['name' => 'login', 'route' => 'user.login'])}}
 					<div class="form-group">
 							{{Form::text('log_email', '', ['class' => 'form-control', 'placeholder' => 'Email Address'])}}
 					</div>

@@ -104,7 +104,7 @@ class ArticleController extends BaseController{
 				->withArtcount($count);
 	}
 
-	public function showByCountryAndCategory(){
+	public function searchArticle(){
 		if(Input::get('ctry-sel') == ""){
 			return $this->showByCategory(Input::get('cat-sel'));
 		}
@@ -125,7 +125,7 @@ class ArticleController extends BaseController{
 				$count[$category->CATEGORY_ID] = $this->article->countCategoryByCountry(Input::get('ctry-sel'), $category->CATEGORY_ID);
 			}
 
-			return View::make('articles.article_by_country_category')
+			return View::make('articles.article_search')
 					->withCountries($countries)
 					->withCategories($categories)
 					->withContinents($continents)

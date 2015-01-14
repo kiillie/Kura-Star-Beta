@@ -67,8 +67,8 @@ $(function(){
 							<input type="text" class="form-control" name="title" placeholder="Title" />
 						</div>
 						<div class="form-group desc">
-							<textarea class="form-control" name="description" placeholder="Description"></textarea>
-							<span class="right">0/150 characters</span>
+							<textarea maxlength="150" class="form-control" name="description" placeholder="Description"></textarea>
+							<span class="right"><span class="num-char">0</span>/150 characters</span>
 						</div>
 					</div>
 				</div>
@@ -135,7 +135,7 @@ $(function(){
 
 				</div>
 				<div class="addon-tab htag" id="tabs-7">
-					<div class="tag-wrap alert alert-info temp-storage">
+					<div class="tag-wrap temp-storage">
 						
 					</div>
 					<div class="form-group">

@@ -17,7 +17,7 @@ class CreateCuraterTable extends Migration {
 			$table->mediumInteger('CURATER_ID', true);
 			$table->string('CURATER', 100);
 			$table->string('MAIL_ADDRESS', 50);
-			$table->string('PASSWORD', 70);
+			$table->string('password', 70);
 			$table->string('CURATER_IMAGE', 100)->nullable();
 			$table->string('CURATER_DESCRIPTION', 500)->nullable();
 			$table->string('CURATER_SITE', 100)->nullable();
