@@ -411,7 +411,7 @@
 	border-bottom-color:transparent;
 }
 .art-addons textarea[name='art-text']{
-	height: 358px;
+	height: 220px;
 	margin-bottom:10px;
 }
 .art-addons .ui-state-active a:hover{
@@ -470,6 +470,27 @@
 }
 /**** END of CSS for Modals*****/
 
+.image-search .img-search .nav img{
+	width: 20px;
+}
+.img-srch #content .image-res{
+	height: 151px;
+	overflow: hidden;
+	position:relative;
+	margin:20px 0;
+}
+.image-search #content.row .image-res button{
+	display: none;
+	width: 52px;
+	vertical-align: middle;
+	position: absolute;
+	margin: 0px auto;
+	right: 0px;
+	left: 0px;
+	top: 50%;
+	bottom: 50%;
+	height: 35px;
+} 
 .foobar{
 	border-radius: 10px;
 	background: #DFDFDF;

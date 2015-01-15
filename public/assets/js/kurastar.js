@@ -28,11 +28,39 @@ $(document).ready(function(){
 	});
 	//End for Modal Preview
 
+	//For Modal Image Search
+	// $("button.image-search").on('click', function(){
+	// 	var country = $(".country .dropdown .val-select").text();
+	// 	var category = $(".category .dropdown .val-select").text();
+	// 	var title = $(".article .article-details .title input").val();
+	// 	var description = $(".article .article-details .desc textarea").val();
+
+	// 	$(".article-modal .count-cat .country a").text(country);
+	// 	$(".article-modal .count-cat .category a").text(category);
+	// 	$(".article-modal .art-title").text(title);
+	// 	$(".article-modal .art-desc").text(description);
+	// });
+
+	//End for Modal Image Search
+
+	$("button.preview").on('click', function(){
+		var country = $(".country .dropdown .val-select").text();
+		var category = $(".category .dropdown .val-select").text();
+		var title = $(".article .article-details .title input").val();
+		var description = $(".article .article-details .desc textarea").val();
+
+		$(".article-modal .count-cat .country a").text(country);
+		$(".article-modal .count-cat .category a").text(category);
+		$(".article-modal .art-title").text(title);
+		$(".article-modal .art-desc").text(description);
+	});
+
 
 	//For Add Button in Create Article
-	$(".art-addons ul li").on('click', function(){
-		var a = $(this).find('a').attr("href");
+	$(".art-addons ul li").one('click', function(){
 
+		var a = $(this).find('a').attr("href");
+		var splitted = a.split('-');
 		$(a).find("input[type='text']").keypress(function(e){
 			var pressed = (e.keyCode ? e.keyCode : e.which);
 			if(pressed == 13){
@@ -49,11 +77,14 @@ $(document).ready(function(){
 			}
 		});
 
-		$(a).find('.val-add').on('click', function(){
+		$(a).find('.val-add').on('click', function(e){
 			var value = $(a).find('.temp-inp').val();
-			$(a).find('.temp-storage').html(value+" <a href='#' class='add-close'>&times;</a>");
-			$(a).find('.added-value').val(value);
-			$(a).find('.temp-inp').val("");
+			if(splitted[1] == 1){
+				$('.addons-container').prepend("<div class='addon-appended'><p>"+value+"</p></div>");
+			}
+			else if(splitted[1] == 7){
+				$('.addons-container').prepend("<div class='addon-appended'><h2>"+value+"</h2></div>");
+			}
 
 			$(a).find('.added .add-close').on('click', function(e){
 				e.preventDefault();
@@ -69,4 +100,10 @@ $(document).ready(function(){
 		
 		$(".article-details .desc .num-char").text(value);
 	});
+
+	//For Image uploading
+	$(".file-upload input").on('change', function(e){
+		console.log("changed");
+	});
+
 });

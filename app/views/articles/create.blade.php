@@ -2,9 +2,11 @@
 @section('content')
 <script src="/assets/js/jquery-ui.js" language="javascript"></script>
 <script src="/assets/js/jquery-ui.min.js" language="javascript"></script>
+<script src="/assets/js/google-search.js" language="javascript"></script>
 <script>
 $(function(){
 	$(".art-addons").tabs();
+	$(".img-search").tabs();
 });
 </script>
 	<div class="container article">
@@ -60,7 +62,7 @@ $(function(){
 			<div class="title-desc">
 				<div class="row">
 					<div class="col-md-2 art-default-img">
-						<img src="/assets/images/article-default.png" />
+						<img src="/assets/images/article-default.png" /><div class="img-art file-upload">{{Form::open(['name'=>'artImage', 'route'=>'article.upload', 'method'=>'post', 'enctype'=>'multipart/form-data'])}}<input type="file" accept="image/*" name="articleImage"/>{{Form::close()}}</div>
 					</div>
 					<div class="col-md-10 art-title-desc">
 						<div class="form-group title">
@@ -95,16 +97,22 @@ $(function(){
 					<div><input type="button" class="btn btn-default val-add" value="Add" /></div>
 				</div>
 				<div class="addon-tab picture" id="tabs-2">
+					<div class="img-addon" style="display:none;">
+						<img src="" />
+					</div>
 					<div class="pic-wrap">
 						<div class="pic-img left">
 							<img src="/assets/images/article-default.png" />
 						</div>
 						<div class="pic-upload left">
 							<div class="form-group">
-								<input type="file" name="art-image-addon">
+								<button class="btn btn-default">Select a file</button>
 							</div>
 							<div class="form-group">
-								<input type="button" class="btn btn-default" name="search" value="search">
+								<button class="btn btn-default img-search" data-toggle="modal" data-target="#imageSearch" name="search">Search</button>
+								@include('articles.image_search')
+								@section('imageSearch')
+								@show
 							</div>
 						</div>
 						<div class="clear"></div>
@@ -144,6 +152,9 @@ $(function(){
 					</div>
 					<div><input type="button" class="btn btn-default tag-add val-add" value="Add" /></div>
 				</div>
+			</div>
+			<div class="addons-container">
+				
 			</div>
 			{{Form::close()}}
 		</div>

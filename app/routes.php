@@ -49,6 +49,11 @@ Route::get('article/{id}/country', [
 	'as'	=>	'article.bycountry'
 ]);
 
+Route::post('file/upload', [
+	'uses'	=>	'ArticleController@upload',
+	'as'	=>	'article.upload'
+]);
+
 /** Login **/
 
 Route::get('login',[
