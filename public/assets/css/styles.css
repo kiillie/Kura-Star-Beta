@@ -267,7 +267,6 @@
 }
 .article-details .art-default-img img{
 	height: 145px;
-	width: 100%;
 }
 .article-details .art-title-desc textarea{
 	height: 95px;
@@ -384,7 +383,7 @@
 /*** End of Article Styles***/
 .art-addons{
 	margin: 30px 0;
-	min-height: 400px;
+	min-height: 135px;
 }
 .url-setting input[name='art-url']{
 	width: 310px;
@@ -453,6 +452,16 @@
 }
 .art-addons .addon-tab.link .link-wrap input{
 	margin-right:10px;
+}
+.art-addons .addon-tab.youtube input{
+	width: 500px;
+	margin-bottom: 20px;
+}
+.art-addons .addon-tab.youtube .vid-result textarea{
+	margin-bottom: 20px;
+}
+.addons-container img{
+	width: 100%;
 }
 /**** CSS For Modals *****/
 .article-view .modal-dialog{

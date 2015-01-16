@@ -9,6 +9,7 @@ $(function(){
 	$(".img-search").tabs();
 });
 </script>
+<script src="/assets/js/article.js" language="javascript"></script>
 	<div class="container article">
 		<div class="article-menu">
 			<div class="row">
@@ -62,7 +63,7 @@ $(function(){
 			<div class="title-desc">
 				<div class="row">
 					<div class="col-md-2 art-default-img">
-						<img src="/assets/images/article-default.png" /><div class="img-art file-upload">{{Form::open(['name'=>'artImage', 'route'=>'article.upload', 'method'=>'post', 'enctype'=>'multipart/form-data'])}}<input type="file" accept="image/*" name="articleImage"/>{{Form::close()}}</div>
+						<img src="/assets/images/article-default.png" />
 					</div>
 					<div class="col-md-10 art-title-desc">
 						<div class="form-group title">
@@ -75,8 +76,17 @@ $(function(){
 					</div>
 				</div>
 			</div>
-			<div class="url-setting inline">
-				<input type="text" placeholder="URL" name="art-url" class="form-control"> <input type="button" class="btn btn-default" name="art-submit" value="Submit">
+			<div class="url-setting inline row">
+				<div class="img-url col-md-4">
+					<input type="text" placeholder="URL" name="imageUrl" class="form-control" />
+				</div>
+				<div class="img-upload col-md-4" style="display:none;">
+					<input type="file" name="imgUp" class="form-control" accept="image/*">
+				</div>
+				<div class="col-md-8 img-btns">
+					<input type="button" class="btn btn-default" name="art-submit" value="Submit">
+					<a href="#" class="disp-def">Click to Upload an Image</a>
+				</div>
 			</div>
 			<div class="art-addons">
 				<ul class="nav nav-tabs">
@@ -97,19 +107,16 @@ $(function(){
 					<div><input type="button" class="btn btn-default val-add" value="Add" /></div>
 				</div>
 				<div class="addon-tab picture" id="tabs-2">
-					<div class="img-addon" style="display:none;">
-						<img src="" />
-					</div>
 					<div class="pic-wrap">
 						<div class="pic-img left">
 							<img src="/assets/images/article-default.png" />
 						</div>
 						<div class="pic-upload left">
 							<div class="form-group">
-								<button class="btn btn-default">Select a file</button>
+								<input type="button" class="btn btn-default" value="Select a file" />
 							</div>
 							<div class="form-group">
-								<button class="btn btn-default img-search" data-toggle="modal" data-target="#imageSearch" name="search">Search</button>
+								<input type="button" class="btn btn-default img-search" data-toggle="modal" data-target="#imageSearch" name="search" value="Search" />
 								@include('articles.image_search')
 								@section('imageSearch')
 								@show
@@ -118,7 +125,6 @@ $(function(){
 						<div class="clear"></div>
 					</div>
 					<div class="clear"></div>
-					<div><input type="button" class="btn btn-default" value="Add" /></div>
 				</div>
 				<div class="addon-tab reference" id="tabs-3">
 					<div class="form-group">
@@ -140,7 +146,23 @@ $(function(){
 
 				</div>
 				<div class="addon-tab youtube" id="tabs-6">
+					<div class="video-url">
+						<input type="text" class="vid-url form-control" placeholder="Enter URL from Youtube"/>
+						<input type="button" class="btn btn-default vid-check" value="Check" />
+						<input class="btn btn-default vid-cancel" value="Cancel" />
+					</div>
+					<div class="vid-result row" style="display:none">
+						<div class="col-md-4">
+							<iframe src="#" width="300" height="300">#document</iframe>
+						</div>
+						<div class="vid-text col-md-4">
+							<textarea placeholder="Video Description" class="form-control vid-desc"></textarea>
+							<input type="button" class="btn btn-default vid-add val-add" value="Add" />
+						</div>
+						<div class="col-md-4">
 
+						</div>
+					</div>
 				</div>
 				<div class="addon-tab htag" id="tabs-7">
 					<div class="tag-wrap temp-storage">
