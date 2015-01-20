@@ -4,7 +4,7 @@
 	<div class="header-slide">
 		<div class="header">
 			<ul class="bxslider">
-				<li><img src="/assets/images/header/top1.jpg" /></li>
+				<li><img src="/assets/images/header/top1.JPG" /></li>
 				<li><img src="/assets/images/header/top3.png" /></li>
 				<li><img src="/assets/images/header/top5.png" /></li>
 			</ul>
