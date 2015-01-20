@@ -21,7 +21,7 @@ class CreateCategoryTable extends Migration {
 			$table->timestamp(BaseModel::UPDATED_AT);
 		});
 
-	}
+	} 
 
 	/**
 	 * Reverse the migrations.

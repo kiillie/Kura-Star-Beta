@@ -25,7 +25,7 @@ class CreateCuraterTable extends Migration {
 			$table->timestamp(BaseModel::CREATED_AT);
 			$table->timestamp(BaseModel::UPDATED_AT);
 		});
-	}
+	} 
 
 	/**
 	 * Reverse the migrations.

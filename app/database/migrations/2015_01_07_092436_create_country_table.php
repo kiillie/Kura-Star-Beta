@@ -21,7 +21,7 @@ class CreateCountryTable extends Migration {
 			$table->timestamp(Basemodel::CREATED_AT);
 			$table->timestamp(BaseModel::UPDATED_AT);
 		});
-	}
+	} 
 
 	/**
 	 * Reverse the migrations.
