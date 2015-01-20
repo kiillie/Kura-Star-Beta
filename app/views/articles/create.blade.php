@@ -77,16 +77,16 @@ $(function(){
 				</div>
 			</div>
 			<div class="url-setting inline row">
-				<div class="img-url col-md-4">
-					<input type="text" placeholder="URL" name="imageUrl" class="form-control" />
-				</div>
-				<div class="img-upload col-md-4" style="display:none;">
-					<input type="file" name="imgUp" class="form-control" accept="image/*">
-				</div>
-				<div class="col-md-8 img-btns">
-					<input type="button" class="btn btn-default" name="art-submit" value="Submit">
-					<a href="#" class="disp-def">Click to Upload an Image</a>
-				</div>
+					<div class="img-url col-md-4">
+						<input type="text" placeholder="URL" name="imageUrl" class="form-control" />
+					</div>
+					<div class="img-upload col-md-4" style="display:none;">
+						<input type="file" name="imgUp" class="form-control" accept="image/*">
+					</div>
+					<div class="col-md-8 img-btns">
+						<input type="submit" class="btn btn-default art-url-submit" name="art-submit" value="Set">
+						<a href="#" class="disp-def">Click to Upload an Image</a>
+					</div>
 			</div>
 			<div class="art-addons">
 				<ul class="nav nav-tabs">
@@ -113,7 +113,7 @@ $(function(){
 						</div>
 						<div class="pic-upload left">
 							<div class="form-group">
-								<input type="button" class="btn btn-default" value="Select a file" />
+								<input type="file" class="btn btn-default pic-upload" value="Select a file" />
 							</div>
 							<div class="form-group">
 								<input type="button" class="btn btn-default img-search" data-toggle="modal" data-target="#imageSearch" name="search" value="Search" />
@@ -143,7 +143,11 @@ $(function(){
 					</div>
 				</div>
 				<div class="addon-tab twitter" id="tabs-5">
-
+					<input type="text" class="form-control" placeholder="URL of the tweet">
+					<input type="button" class="btn btn-default" data-toggle="modal" data-target="#twitterSearch" name="search" value="Loof for tweets" />
+					@include('articles.twitter_search')
+					@section('twitterSearch')
+					@show
 				</div>
 				<div class="addon-tab youtube" id="tabs-6">
 					<div class="video-url">

@@ -345,11 +345,13 @@
 	overflow-y: scroll;
 	height: 225px;
 }
-/* Let's get this party started */
+.article-details .art-default-img{
+	overflow: hidden;
+}
+/** Start of Scrollbar **/
 .article-menu .dropdown ul::-webkit-scrollbar {
     width: 10px;
 } 
-/* Handle */
 .article-menu .dropdown ul::-webkit-scrollbar-thumb {
     -webkit-border-radius: 10px;
     border-radius: 10px;

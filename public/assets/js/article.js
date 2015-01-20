@@ -4,6 +4,8 @@ $(document).ready(function(){
 $(".url-setting .img-btns a").on('click', function(e){
 	e.preventDefault();
 	if($(this).hasClass('disp-def')){
+		$(".url-setting .img-btns input").removeClass("art-url-submit");
+		$(".url-setting .img-btns input").addClass("art-img-submit");
 		$(".url-setting .img-upload").css('display', 'block');
 		$(".url-setting .img-url").css('display', 'none');
 		$(this).text("Click to Add an Image URL");
@@ -11,6 +13,8 @@ $(".url-setting .img-btns a").on('click', function(e){
 		$(this).addClass('disp-up');
 	}
 	else{
+		$(".url-setting .img-btns input").removeClass("art-img-submit");
+		$(".url-setting .img-btns input").addClass("art-url-submit");
 		$(".url-setting .img-upload").css('display', 'none');
 		$(".url-setting .img-url").css('display', 'block');
 		$(this).text("Click to Upload an Image");
@@ -18,21 +22,50 @@ $(".url-setting .img-btns a").on('click', function(e){
 		$(this).addClass('disp-def');
 	}
 });
+$(".img-upload input").change(function() {
+	$("#message").empty(); // To remove the previous error message
+	var file = this.files[0];
+	var imagefile = file.type;
+	var match= ["image/jpeg","image/png","image/jpg"];
+	if(!((imagefile==match[0]) || (imagefile==match[1]) || (imagefile==match[2])))
+	{
+	$("#message").html("<p id='error'>Please Select A valid Image File</p>"+"<h4>Note</h4>"+"<span id='error_message'>Only jpeg, jpg and png Images type allowed</span>");
+	return false;
+	}
+	else
+	{
+	var reader = new FileReader();
+	reader.onload = imageIsLoaded;
+	reader.readAsDataURL(this.files[0]);
+	}
+});
 
-$(".url-setting .img-btns input").on('click', function(){
+var imgresult;
+
+function imageIsLoaded(e) {
+	$(".img-upload input").css("color","green");
+	imgresult = e.target.result;
+}
+$(".url-setting .img-btns input[name='art-submit']").on('click', function(e){
+	
 	var parent = $(this).parent();
+	var vparent = $(parent).parent();
 
 	if($(parent).find('a').hasClass("disp-def")){
+		e.preventDefault();
 		var val = $(".url-setting .img-url input").val();
 		$(".article-details .art-default-img img").attr("src", val);
 		$(".url-setting .img-url input").val("");
 	}
 	else{
-		var val = $(".url-setting .img-upload input").val();
-		$(".article-details .art-default-img img").attr("src", val);
-		var val = $(".url-setting .img-upload input").val("");
+		e.preventDefault();
+		$(".art-default-img img").attr("src", imgresult);
 	}
 });
+
+//Link
+
+
 
 //For Add Button in Create Article
 	var uiDef = ""; 
@@ -163,12 +196,8 @@ $(".url-setting .img-btns input").on('click', function(){
 	//For the Number of Characters in Create Article
 	$(".article-details .desc textarea").keyup(function(e){
 		var value = $(this).val().length;
-		
 		$(".article-details .desc .num-char").text(value);
 	});
 
-	//For Image uploading
-	$(".file-upload input").on('change', function(e){
-		console.log("changed");
-	});
+
 });

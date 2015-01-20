@@ -54,10 +54,10 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'localhost',
-			'database'  => 'kura-star_dev',
-			'username'  => 'root',
-			'password'  => '',
+			'host'      => '104.236.65.35',
+			'database'  => 'forge',
+			'username'  => 'forge',
+			'password'  => 'WjejZMYoUTCbnEMu6wZe',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

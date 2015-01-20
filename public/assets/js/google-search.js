@@ -65,19 +65,18 @@ google.load('search', '1');
 
 	  	});
 
-	  	$(".img-search").one('click', function(){
-	  		$(this).find('div').on('mouseover', function(){
-	  			$(this).find('.add-btn').attr("data-dismiss", "modal");
-	  			$(this).find('.add-btn').text("Add");
-	  			$(this).find('.add-btn').css('display', 'block');
-	  			var rCon = $(this);
-	  			$(this).find('.add-btn').on('click', function(){
-	  				$(".img-addon img").attr("src", $(rCon).find('img').attr('src'));
-	  				$(".addons-container").prepend("<img src='"+$(rCon).find('img').attr('src')+"' />");
-	  			});
-	  		});
-	  		$(this).find('div').on('mouseout', function(){
-	  			$(this).find('.add-btn').css('display', 'none');
-	  		});
-		});
-	});
+$(".image-search #content.row").hover(function(){
+  $(this).find('div').one('mouseenter', function(){
+    $(this).find('.add-btn').attr("data-dismiss", "modal");
+      $(this).find('.add-btn').text("Add");
+      $(this).find('.add-btn').toggle();
+      var rCon = $(this);
+      $(this).find('.add-btn').on('click', function(){
+        $(".img-addon img").attr("src", $(rCon).find('img').attr('src'));
+        $(".addons-container").prepend("<img src='"+$(rCon).find('img').attr('src')+"' />");
+        $("#content.row div").remove();
+      })
+  });
+});
+  
+});

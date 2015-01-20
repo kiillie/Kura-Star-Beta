@@ -51,7 +51,7 @@ Route::get('article/{id}/country', [
 
 Route::post('file/upload', [
 	'uses'	=>	'ArticleController@upload',
-	'as'	=>	'article.upload'
+	'as'	=>	'article.imgupload'
 ]);
 
 /** Login **/
