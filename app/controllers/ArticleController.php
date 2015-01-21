@@ -137,6 +137,12 @@ class ArticleController extends BaseController{
 
 		}
 	}
+
+	public function fetchLink(){
+		$input = Input::all();
+		return View::make('articles.extract_link')
+				->withLink($input);
+	}
 }
 
 ?>

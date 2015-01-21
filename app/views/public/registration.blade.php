@@ -67,14 +67,8 @@
 					<div class="facebook col-md-6">
 						{{HTML::image('assets/images/facebook.png')}}
 					</div>
-					<div class="google col-md-6">
-						{{HTML::image('assets/images/google.png')}}
-					</div>
 					<div class="twitter col-md-6">
 						{{HTML::image('assets/images/twitter.png')}}
-					</div>
-					<div class="yahoo col-md-6">
-						{{HTML::image('assets/images/yahoojapan.png')}}
 					</div>
 				</div>
 			</div>

@@ -46,6 +46,10 @@ class PublicController extends BaseController{
 				->withContinents($continents)
 				->withCategories($categories);
 	}
+
+	public function test(){
+		return View::make('test');
+	}
 }
 
 ?>

@@ -104,4 +104,12 @@ Route::post('category/store', [
 	'as'	=>	'category.store'
 ]);
 
+Route::get('test', [
+	'uses'	=>	'PublicController@test',
+	'as'	=>	'test'
+]);
+Route::post('fetchlink', [
+	'uses'	=>	'ArticleController@fetchlink',
+	'as'	=>	'fetchlink'
+]);
 ?>

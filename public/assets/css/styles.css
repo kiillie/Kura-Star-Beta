@@ -456,11 +456,28 @@
 	margin-right:10px;
 }
 .art-addons .addon-tab.youtube input{
-	width: 500px;
-	margin-bottom: 20px;
+	margin: 0 10px 20px 0;
+}
+.art-addons .addon-tab.youtube input[type='text']{
+	width: 400px;
 }
 .art-addons .addon-tab.youtube .vid-result textarea{
 	margin-bottom: 20px;
+}
+.art-addons .link .extracted_content input{
+	margin: 20px 0;
+	width: 50%;
+}
+.art-addons .link .link-container .extra-texts{
+	display: none;
+}
+.art-addons .link .link-container textarea{
+	height: 90px;
+	margin: 20px 0;
+	width: 50%;
+}
+.art-addons .link .link-results{
+	margin: 20px 0;
 }
 .addons-container img{
 	width: 100%;

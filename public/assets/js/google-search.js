@@ -66,7 +66,7 @@ google.load('search', '1');
 	  	});
 
 $(".image-search #content.row").hover(function(){
-  $(this).find('div').one('mouseenter', function(){
+  $(this).find('div').hover(function(){
     $(this).find('.add-btn').attr("data-dismiss", "modal");
       $(this).find('.add-btn').text("Add");
       $(this).find('.add-btn').toggle();

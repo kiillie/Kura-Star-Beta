@@ -137,30 +137,38 @@ $(function(){
 				</div>
 				<div class="addon-tab link" id="tabs-4">
 					<div class="link-wrap">
-						<div class="inline">
-							<input type="text" class="form-control left" placeholder="Enter URL" name="art-link" /> <input type="button" class="btn btn-default left" value="Submit"> <input type="button" class="btn btn-default left" value="Cancel" name="reset" />
+						<div class="inline check-wrap">
+							<input type="hidden" class="route-url" value="{{URL::route('fetchlink')}}">
+							<input type="text" class="form-control left art-link" placeholder="Enter URL" name="art-link" /> <input type="button" class="btn btn-default left link-check left" value="Check"> <input type="button" class="btn btn-default left" value="Cancel" name="reset" /><img src="/assets/images/loader.gif" class="loading" style="display: none; width: 20px"/> 
+							<div class="clear"></div>
+						</div>
+						<div class="link-container">
+							<div class="link-results">
+							</div>
+							<div class="extra-texts">
+								<textarea class="link-extra-text form-control"></textarea>
+								<input type="button" class="btn btn-default val-add" value="Add"> <input type="button" class="btn btn-default" value="Cancel">
+							</div>
 						</div>
 					</div>
 				</div>
 				<div class="addon-tab twitter" id="tabs-5">
 					<input type="text" class="form-control" placeholder="URL of the tweet">
-					<input type="button" class="btn btn-default" data-toggle="modal" data-target="#twitterSearch" name="search" value="Loof for tweets" />
+					<input type="button" class="btn btn-default" data-toggle="modal" data-target="#twitterSearch" name="search" value="Look for tweets" />
 					@include('articles.twitter_search')
 					@section('twitterSearch')
 					@show
 				</div>
 				<div class="addon-tab youtube" id="tabs-6">
-					<div class="video-url">
-						<input type="text" class="vid-url form-control" placeholder="Enter URL from Youtube"/>
-						<input type="button" class="btn btn-default vid-check" value="Check" />
-						<input class="btn btn-default vid-cancel" value="Cancel" />
+					<div class="video-url inline">
+						<input type="text" class="vid-url form-control left" placeholder="Enter URL from Youtube"/>&nbsp;<input type="button" class="btn btn-default vid-check left" value="Check" />&nbsp;<input type="button" class="btn btn-default vid-cancel left" value="Cancel" />
 					</div>
 					<div class="vid-result row" style="display:none">
 						<div class="col-md-4">
 							<iframe src="#" width="300" height="300">#document</iframe>
 						</div>
 						<div class="vid-text col-md-4">
-							<textarea placeholder="Video Description" class="form-control vid-desc"></textarea>
+							<textarea placeholder="Video Description" placeholder="Description for the link" class="form-control vid-desc"></textarea>
 							<input type="button" class="btn btn-default vid-add val-add" value="Add" />
 						</div>
 						<div class="col-md-4">

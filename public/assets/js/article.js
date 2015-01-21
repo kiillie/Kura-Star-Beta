@@ -119,6 +119,19 @@ $(".url-setting .img-btns input[name='art-submit']").on('click', function(e){
 						$('.addons-container').prepend("<div class='addon-appended'><p>"+value+"</p><div class='addon-edit' style='display:none;'><input type='button' class='btn btn-primary' value='Edit'/><input type='button' class='btn btn-danger' value='Remove'/></div></div>");
 						$(a).find('.temp-inp').val("");
 					}
+					else if(splitted[1] == 4){
+							var title = $(".link .link-title").val();
+							var desc = $(".link .link-description").val();
+							var extra = $(".link .link-extra-text").val();
+							var url =  $('.link .art-link').val();
+							var content = "<div class='addon-appended'><h4><a href='"+url+"' target='_blank' '>"+title+"</a></h4><p>"+desc+"</p><span>"+extra+"</span><div class='addon-edit' style='display:none;'><input type='button' class='btn btn-primary' value='Edit'/><input type='button' class='btn btn-danger' value='Remove'/></div></div>";
+							$(".addons-container").prepend(content);
+							$(".link .link-results").hide();
+							$(".link .extra-texts").hide();
+							$(".link .link-extra-text").val("");
+							$(".link .art-link").val("");
+							$(".link .check-wrap").show();
+					}
 					else if(splitted[1] == 6){
 						var desc = $(".youtube .vid-desc").val();
 						value = $(".youtube iframe").attr("src");
@@ -150,6 +163,19 @@ $(".url-setting .img-btns input[name='art-submit']").on('click', function(e){
 			if(splitted[1] == 1){
 				$('.addons-container').prepend("<div class='addon-appended'><p>"+value+"</p><div class='addon-edit' style='display:none;'><input type='button' class='btn btn-primary' value='Edit'/><input type='button' class='btn btn-danger' value='Remove'/></div></div>");
 				$(a).find('.temp-inp').val("");
+			}
+			else if(splitted[1] == 4){
+				var title = $(".link .link-title").val();
+				var desc = $(".link .link-description").val();
+				var extra = $(".link .link-extra-text").val();
+				var url =  $('.link .art-link').val();
+				var content = "<div class='addon-appended'><h4><a href='"+url+"' target='_blank' '>"+title+"</a></h4><p>"+desc+"</p><span>"+extra+"</span><div class='addon-edit' style='display:none;'><input type='button' class='btn btn-primary' value='Edit'/><input type='button' class='btn btn-danger' value='Remove'/></div></div>";
+				$(".addons-container").prepend(content);
+				$(".link .link-results").hide();
+				$(".link .extra-texts").hide();
+				$(".link .link-extra-text").val("");
+				$(".link .art-link").val("");
+				$(".link .check-wrap").show();
 			}
 			else if(splitted[1] == 6){
 				var desc = $(".youtube .vid-desc").val();
@@ -199,5 +225,41 @@ $(".url-setting .img-btns input[name='art-submit']").on('click', function(e){
 		$(".article-details .desc .num-char").text(value);
 	});
 
-
+	//For Link Extraction
+	var getUrl  = $('.link .art-link'); //url to extract from text field
+	
+	$(".link .link-check").on('click', function() { //user types url in text field		
+		
+		//url to match in the text field
+		var match_url = /\b(https?):\/\/([\-A-Z0-9.]+)(\/[\-A-Z0-9+&@#\/%=~_|!:,.;]*)?(\?[A-Z0-9+&@#\/%=~_|!:,.;]*)?/i;
+		
+		//returns true and continue if matched url is found in text field
+		if (match_url.test(getUrl.val())) {
+				$(".link .link-results").hide();
+				$(".link .loading").show(); //show loading indicator image
+				
+				var extracted_url = getUrl.val().match(match_url)[0]; //extracted first url from text filed
+				var route = $('.route-url').val();
+				//ajax request to be sent to extract-process.php
+				$.post(route,{'url': extracted_url}, function(data){         
+               		
+					//content to be loaded in #results element
+					var content = '<div class="extracted_url"><div class="extracted_content"><input type="text" class="form-control link-title" value="'+data.title+'"/><textarea class="form-control link-description">'+data.content+'</textarea><div><span>'+extracted_url+'</span></div></div></div>';
+					
+					//load results in the element
+					$(".link .link-results").html(content); //append received data into the element
+					$(".link .check-wrap").hide();
+					$(".link .link-results").slideDown(); //show results with slide down effect
+					$(".link .extra-texts").show();
+					$(".link .loading").hide(); //hide loading indicator image
+                },'json');
+		}
+		else{
+			$(".link .link-results").hide();
+			$(".link .loading").show(); 
+			$(".link .link-results").html("<span class='label label-danger'>Invalid URL</span>");
+			$(".link .loading").hide();
+			$(".link .link-results").show();
+		}
+	});
 });
