@@ -25,6 +25,7 @@ class CreateCurationTable extends Migration {
 			$table->mediumInteger('PV', false)->nullable();
 			$table->text('TAG')->nullable();
 			$table->smallInteger('CURATION_STATUS', false)->default(0);
+			$table->integer('VIEWS', false)->default(0);
 			$table->timestamp(BaseModel::CREATED_AT);
 			$table->timestamp(BaseModel::UPDATED_AT);
 		});

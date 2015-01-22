@@ -1,6 +1,13 @@
 @section('rightbar')
 <div class="user">
-	<span class="glyphicon glyphicon-user"></span>    <span><a href="{{URL::route('user.login')}}">{{Auth::user()->CURATER}}</a></span>
+	<span class="glyphicon glyphicon-user"></span>    
+<span>
+	@if(Auth::check())
+	<a href="{{URL::route('user.login')}}">{{Auth::user()->CURATER}}</a>
+	@else
+	<a href="{{URL::route('user.login')}}">Login</a>
+	@endif
+</span>
 </div>
 <div class="advertisement">
 	<img src="/assets/images/Google-Adsense.jpg" alt="Advertisement"/>

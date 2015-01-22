@@ -54,6 +54,16 @@ Route::post('file/upload', [
 	'as'	=>	'article.imgupload'
 ]);
 
+Route::get('article/test', [
+	'uses'	=>	'ArticleController@test',
+	'as'	=>	'article.test'
+]);
+
+Route::post('addon/new', [
+	'uses'	=>	'ArticleController@addon',
+	'as'	=>	'article.addon'
+]);
+
 /** Login **/
 
 Route::get('login',[

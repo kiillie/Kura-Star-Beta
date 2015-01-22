@@ -1,8 +1,30 @@
 .main-header{
 	height: 65px;
 }
+.logo{
+	text-align: center;
+}
+.logo img{
+	width: 90px;
+}
 .main-header .row{
 	display:inline;
+}
+.main-header .row ul{
+	margin: 10px 0 0 0;
+}
+.mobile-header{
+	min-height: 80px;
+}
+.mobile-header .navbar-header{
+	height: 100%;
+}
+.mobile-header .navbar-toggle{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.mobile-header a img {
+	width: 130px;
 }
 .menu-header .header-slide{
 	position: relative;

@@ -24,6 +24,7 @@ class CreateCuraterTable extends Migration {
 			$table->smallInteger('STOP_FLAG', false)->nullable();
 			$table->timestamp(BaseModel::CREATED_AT);
 			$table->timestamp(BaseModel::UPDATED_AT);
+			$table->string('remember_token');
 		});
 	} 
 

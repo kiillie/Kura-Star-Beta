@@ -16,8 +16,7 @@ class UserController extends BaseController{
 		if($validate->passes()){
 			$save = $this->user->store(Input::all());
 
-			return Redirect::route('registration')
-					->with('message', 'Successfully Registered!');
+			return $this->login(Input::all());
 		}
 		else{
 			$errors = $validate->getErrors();
@@ -25,6 +24,39 @@ class UserController extends BaseController{
 			return Redirect::route('registration')
 					->withInput()
 					->with('message', $errors->toArray());
+		}
+	}
+
+	public function login($input){
+		$credentials = [
+			'MAIL_ADDRESS' 	=>	$input['email'],
+			'password'	=>	$input['password']
+		];
+
+		$rules = [
+			'MAIL_ADDRESS'=>'required',
+			'password'=>'required'
+		];
+
+
+		$validator =  Validator::make($credentials, $rules);
+
+		if($validator->passes()){
+			if(Auth::attempt($credentials)){
+				return Redirect::route('index')
+						->with('message', 'Welcome!');
+			}
+			else{
+				return Redirect::back()
+						->withInput()
+						->with('message_login', 'Incorrect Email or Password');
+			}
+		}
+		else{
+			return Redirect::back()
+				->withErrors($validator)
+				->withInput()
+				->with('message_login', 'Invalid Email Address or Password');
 		}
 	}
 }

@@ -32,7 +32,7 @@ $(document).ready(function(){
 <body>
 	<div class="container-fluid visible-xs nav-category">
 		<nav class="navbar navbar-default">
-			<div class="container-fluid">
+			<div class="container-fluid mobile-header">
 		    <!-- Brand and toggle get grouped for better mobile display -->
 			    <div class="navbar-header">
 				    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -41,7 +41,7 @@ $(document).ready(function(){
 				        <span class="icon-bar"></span>
 				        <span class="icon-bar"></span>
 				    </button>
-				    <a class="navbar-brand" href="{{URL::route('index')}}">Logo Here</a>
+				    <a class="navbar-brand" href="{{URL::route('index')}}"><img src="/assets/images/logo.png" alt="Kurastar" /></a>
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -119,19 +119,19 @@ $(document).ready(function(){
 			</div>
 			<div class="col-md-4">
 				<div class="logo">
-					<a href="{{URL::route('index')}}">LOGO</a>
+					<a href="{{URL::route('index')}}"><img src="/assets/images/logo.png" alt="Kurastar" /></a>
 				</div>
 			</div>
 			<div class="col-md-4">
 				<ul class="list-inline">
 					@if(Auth::check())
-					<li><a href="{{URL::route('article.create')}}">Make an Article</a></li>
-					<li><a href="#">{{Auth::user()->name}}</a></li>
-					<li><a href="{{URL::route('logout')}}">Logout</a></li>
+					<li><span class="glyphicon glyphicon-list-alt"></span> <a href="{{URL::route('article.create')}}">Make an Article</a></li>
+					<li><span class="glyphicon glyphicon-user"></span>  <a href="#">{{Auth::user()->CURATER}}</a></li>
+					<li><span class="glyphicon glyphicon-log-out"></span> <a href="{{URL::route('logout')}}">Logout</a></li>
 					@else
-					<li><a href="{{URL::route('registration')}}">Make an Article</a></li>
-					<li><a href="{{URL::route('registration')}}">Sign Up</a></li>
-					<li><a href="{{URL::route('login')}}">Login</a></li>
+					<li><span class="glyphicon glyphicon-list-alt"></span> <a href="{{URL::route('registration')}}">Make an Article</a></li>
+					<li><span class="glyphicon glyphicon-file"></span> <a href="{{URL::route('registration')}}">Sign Up</a></li>
+					<li><span class="glyphicon glyphicon-log-in"></span> <a href="{{URL::route('login')}}">Login</a></li>
 					@endif
 				</ul>
 			</div>

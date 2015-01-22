@@ -143,6 +143,22 @@ class ArticleController extends BaseController{
 		return View::make('articles.extract_link')
 				->withLink($input);
 	}
+
+	public function test(){
+		$countries = $this->country->showCountryByContinent();
+		$categories = $this->category->show();
+		$continents = $this->continent->show();
+		return View::make('articles.create_test')
+				->withCountries($countries)
+				->withCategories($categories)
+				->withContinents($continents);
+	}
+
+	public function addon(){
+		$addon = Input::all();
+		return View::make('articles.addon')
+				->withAddon($addon);
+	}
 }
 
 ?>
