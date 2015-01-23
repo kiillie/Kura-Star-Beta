@@ -540,7 +540,13 @@
 	top: 50%;
 	bottom: 50%;
 	height: 35px;
-} 
+}
+.advertisement h2{
+	text-align: center;
+}
+.advertisement {
+	padding-top:35px;
+}
 .foobar{
 	border-radius: 10px;
 	background: #DFDFDF;

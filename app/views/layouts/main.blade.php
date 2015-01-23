@@ -143,7 +143,7 @@ $(document).ready(function(){
 		<div class="footer">
 			<div class="row">
 				<div class="col-md-3">
-					Logo
+					<img src="/assets/images/logo.png" alt="Kurastar" />
 				</div>
 				<div class="col-md-9">
 					<div class="foo-country">

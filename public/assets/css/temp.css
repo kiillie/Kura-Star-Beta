@@ -1,10 +1,13 @@
-.new-addon img{
+.loading img{
 	width: 140px;
 }
-.new-addon .row span{
+.loading .row span{
 	text-align: center;
 }
-.new-addon .row .col-md-12{
+.loading .row .col-md-12{
 	text-align: center;
 	margin: 20px 0;
+}
+.editlist{
+	visibility: hidden;
 }

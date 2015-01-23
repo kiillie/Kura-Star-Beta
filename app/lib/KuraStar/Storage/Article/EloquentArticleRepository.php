@@ -58,5 +58,19 @@ class EloquentArticleRepository implements ArticleRepository{
 		//
 	}
 
+	public function getByRanking(){
+		return Article::where('CURATION_STATUS', '=', 1)
+				->orderBy('VIEWS', 'desc')
+				->take(5)
+				->get();
+	}
+
+	public function countByCountry($country){
+		return Article::where('COUNTRY_ID', '=', $country)
+						->where('CURATION_STATUS', '=', 1)
+						->count();
+
+	}
+
 }
 ?>

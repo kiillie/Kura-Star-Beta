@@ -4,6 +4,7 @@
 <script src="/assets/js/jquery-ui.min.js" language="javascript"></script>
 <script src="/assets/js/google-search.js" language="javascript"></script>
 <script src="/assets/js/article.js" language="javascript"></script>
+<script language="javascript" src="/assets/js/temp_art.js"></script>
 <link rel="stylesheet" type="text/css" href="/assets/css/temp.css"></link>
 	<div class="container article">
 		<div class="article-menu">
@@ -93,12 +94,17 @@
 					<li class="add-video"><a href="javascript:void(0)"><span class="glyphicon glyphicon-hd-video"></span> Youtube</a></li>
 					<li class="add-heading"><a href="javascript:void(0)"><span class="glyphicon glyphicon-header"></span> h2 Tag</a></li>
 				</ul>
-				<div class="new-addon">
+				<div class="loading">
 					<div class="loader row" style="display: none;"><div class="col-md-12"><img src="/assets/images/loader.gif" /></div><div class="col-md-12">Loading...</div></div>
+				</div>
+				<div class="new-addon row">
+					
 				</div>
 			</div>
 			<div class="addons-container">
-				
+				<ul class="sortable">
+
+				</ul>
 			</div>
 			{{Form::close()}}
 		</div>
@@ -113,6 +119,8 @@ function post_addon_data(type, controller, action){
 		'/'+controller+'/'+action,
 		{
 			'type' : type
+		}).done(function(data){
+			$(".new-addon").html(data);
 		});
 }
 </script>
