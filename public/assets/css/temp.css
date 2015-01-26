@@ -11,3 +11,41 @@
 .editlist{
 	visibility: hidden;
 }
+.new-addon{
+	padding: 20px;
+}
+.new-addon textarea{
+	height: 235px;
+}
+.new-addon input[type='button']{
+	margin: 10px 10px 10px 0;
+}
+.addons-container ul .added-addon{
+	width: 60%;
+}
+.addons-container ul li .item-inner{
+	padding: 20px;
+}
+.addons-container ul li .item-added-container:hover{
+	background: rgb(215, 215, 215);
+}
+.addons-container ul li .add-item-area{
+	display: block;
+}
+.addons-container ul li .add-item-area .add-inner{
+	visibility: hidden;
+	padding: 10px;
+}
+.addons-container .editlist button, .editlist span.sort-item{
+	background: rgb(8, 182, 163);
+	border: none;
+	color: white;
+	height: 30px;
+}
+.addons-container .editlist button:hover, .editlist span.sort-item:hover{
+	background: rgb(17, 131, 118);
+}
+.addons-container .editlist li{
+	padding: 0;
+	margin: 0;
+}

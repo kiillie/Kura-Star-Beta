@@ -1,5 +1,8 @@
 @extends('layouts.main')
 @section('content')
+<script>
+$("")
+</script>
 <script src="/assets/js/jquery-ui.js" language="javascript"></script>
 <script src="/assets/js/jquery-ui.min.js" language="javascript"></script>
 <script src="/assets/js/google-search.js" language="javascript"></script>
@@ -102,7 +105,7 @@
 				</div>
 			</div>
 			<div class="addons-container">
-				<ul class="sortable">
+				<ul class="sortable list-unstyled">
 
 				</ul>
 			</div>
@@ -123,5 +126,8 @@ function post_addon_data(type, controller, action){
 			$(".new-addon").html(data);
 		});
 }
+$(".sortable").sortable({
+	handle: '.sort-item'
+});
 </script>
 @stop

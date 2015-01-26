@@ -27,7 +27,7 @@ class ArticleController extends BaseController{
 		$countries = $this->country->showCountryByContinent();
 		$categories = $this->category->show();
 		$continents = $this->continent->show();
-		return View::make('articles.create')
+		return View::make('articles.create_test')
 				->withCountries($countries)
 				->withCategories($categories)
 				->withContinents($continents);
