@@ -122,7 +122,6 @@ function edit_addon(li, type, controller, action, kind){
 	post_addon_data(li, type, controller, action, kind);
 }
 function post_addon_data(li, type, controller, action, kind){
-	alert(kind);
 	$.post(
 		'/'+controller+'/'+action,
 		{
