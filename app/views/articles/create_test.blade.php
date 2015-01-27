@@ -89,7 +89,7 @@ $("")
 			</div>
 			<div class="art-addons">
 				<ul class="nav nav-tabs">
-					<li class="add-text"><a href="javascript:void(0)" onclick="edit_addon('text', 'addon', 'new')"><span class="glyphicon glyphicon-pencil"></span> Text</a></li>
+					<li class="add-text"><a href="javascript:void(0)" onclick="edit_addon('0', 'text', 'addon', 'new', 'new')"><span class="glyphicon glyphicon-pencil"></span> Text</a></li>
 					<li class="add-image"><a href="javascript:void(0)"><span class="glyphicon glyphicon-camera"></span> Picture</a></li>
 					<li class="add-reference"><a href="javascript:void(0)"><span class="glyphicon glyphicon-hdd"></span> Reference</a></li>
 					<li class="add-link"><a href="javascript:void(0)"><span class="glyphicon glyphicon-link"></span> Link</a></li>
@@ -97,37 +97,71 @@ $("")
 					<li class="add-video"><a href="javascript:void(0)"><span class="glyphicon glyphicon-hd-video"></span> Youtube</a></li>
 					<li class="add-heading"><a href="javascript:void(0)"><span class="glyphicon glyphicon-header"></span> h2 Tag</a></li>
 				</ul>
-				<div class="loading">
-					<div class="loader row" style="display: none;"><div class="col-md-12"><img src="/assets/images/loader.gif" /></div><div class="col-md-12">Loading...</div></div>
-				</div>
-				<div class="new-addon row">
-					
-				</div>
-			</div>
-			<div class="addons-container">
-				<ul class="sortable list-unstyled">
+				<div class="addon-wrapper">
+					<div class="loading">
+						<div class="loader row" style="display: none;"><div class="col-md-12"><img src="/assets/images/loader.gif" /></div><div class="col-md-12">Loading...</div></div>
+					</div>
+					<div class="new-addon row">
+						<div class="col-md-6 new-item">
+						</div>
+					</div>
+					<div class="addons-container">
+						<ul class="sortable list-unstyled">
 
-				</ul>
+						</ul>
+					</div>
+				</div>
 			</div>
+			
 			{{Form::close()}}
 		</div>
 	</div>
 <script>
-function edit_addon(type, controller, action){
+function edit_addon(li, type, controller, action, kind){
 	$(".loader").show();
-	post_addon_data(type, controller, action);
+	post_addon_data(li, type, controller, action, kind);
 }
-function post_addon_data(type, controller, action){
+function post_addon_data(li, type, controller, action, kind){
+	alert(kind);
 	$.post(
 		'/'+controller+'/'+action,
 		{
-			'type' : type
+			'li'   : li,
+			'type' : type,
+			'kind' : kind
+
 		}).done(function(data){
-			$(".new-addon").html(data);
+			if(kind == 'new'){
+				$(".new-addon .new-item").html(data);
+			}
+			else{
+				$('ul.sortable li[value="'+li+'"] .append-new-item').html(content);
+				$("ul.sortable li[value="+li+"] .add-inner .show-append-here").html("");
+			}
 		});
 }
 $(".sortable").sortable({
 	handle: '.sort-item'
 });
+function show_appended_item_area(li){
+	var addon = "";
+	addon += '<ul class="append-add-item list-inline">';
+	addon += '<li><a href="javascript:void(0);" onclick="edit_addon(\''+li+'\', \'text\', \'addon\', \'new\', \'append\')">Text</a></li>';
+	addon += '<li><a href="javascript:void(0);" onclick="edit_addon(\'text\', \'addon\', \'new\')">Picture</a></li>';
+	addon += '<li><a href="javascript:void(0);" onclick="edit_addon("text", "addon", "new")">Reference</a></li>';
+	addon += '<li><a href="javascript:void(0);" onclick="edit_addon("text", "addon", "new")">Link</a></li>';
+	addon += '<li><a href="javascript:void(0);" onclick="edit_addon("text", "addon", "new")">Twitter</a></li>';
+	addon += '<li><a href="javascript:void(0);" onclick="edit_addon("text", "addon", "new")">Youtube</a></li>';
+	addon += '<li><a href="javascript:void(0);" onclick="edit_addon("text", "addon", "new")">H2 Tag</a></li>';
+	addon += '<li class="remove-appended"><a href="javascript:void(0);" onclick="close_appended('+li+')"><span class="glyphicon glyphicon-remove-circle"></span></a></li>';
+	addon += '</ul>';
+
+	$("ul.sortable li[value="+li+"] .add-inner .show-append-here").html(addon);
+	$("ul.sortable li[value="+li+"] .add-inner .item-btn-con").hide();
+}
+function close_appended(li){
+	$("ul.sortable li[value="+li+"] .add-inner .show-append-here").html("");
+	$("ul.sortable li[value="+li+"] .add-inner .item-btn-con").show();
+}
 </script>
 @stop

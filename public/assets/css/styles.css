@@ -422,16 +422,15 @@
 .art-addons ul{
 	border-bottom-color: transparent;
 }
-.art-addons ul li{
+.art-addons ul.nav-tabs li{
 	background: rgb(229, 229, 229);
-	margin-right: 5px;
 }
 .art-addons .ui-state-active a{
 	color: #555;
 	cursor: default;
 	background-color: #fff;
-	border: 1px solid #ddd;
 	border-bottom-color:transparent;
+	border-radius: 0;
 }
 .art-addons textarea[name='art-text']{
 	height: 220px;

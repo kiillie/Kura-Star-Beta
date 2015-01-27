@@ -1,3 +1,8 @@
+.art-addons .addon-wrapper{
+	border: solid 1px #E5E5E5;
+	margin: 0;
+	padding: 10px;
+}
 .loading img{
 	width: 140px;
 }
@@ -21,7 +26,7 @@
 	margin: 10px 10px 10px 0;
 }
 .addons-container ul .added-addon{
-	width: 60%;
+	width: 65%;
 }
 .addons-container ul li .item-inner{
 	padding: 20px;
@@ -36,14 +41,57 @@
 	visibility: hidden;
 	padding: 10px;
 }
+.editlist ul{
+	background: rgb(8, 182, 163);
+	margin: 0;
+}
 .addons-container .editlist button, .editlist span.sort-item{
 	background: rgb(8, 182, 163);
 	border: none;
 	color: white;
 	height: 30px;
+	vertical-align: middle;
+}
+.editlist span.sort-item{
+	display: table-cell;
+	padding: 0 10px !important;
+}
+.add-item-area .add-item-btn a{
+	background: rgb(213, 113, 113);
+	height: 29px;
+	display: table-cell;
+	color: white;
+	vertical-align: middle;
+	border-bottom-left-radius: 20px;
+	border-top-left-radius: 20px;
+	padding: 0 20px;
+	text-decoration: none;
+}
+.add-item-area{
+	position: relative;
+}
+.add-item-area .add-item-btn{
+	position: absolute;
+	right: -88px;
+	top: 16px;
+}
+.add-item-area .add-item-btn a:hover{
+	background: rgb(182, 100, 100);
+}
+.add-item-area .append-add-item{
+	background: #e5e5e5;
+	position: relative;
+	width: 100%;
+}
+.add-item-area .append-add-item li{
+	vertical-align: middle;
+	height: 30px;
 }
 .addons-container .editlist button:hover, .editlist span.sort-item:hover{
 	background: rgb(17, 131, 118);
+}
+.editlist .sort:hover{
+	cursor: move;
 }
 .addons-container .editlist li{
 	padding: 0;
