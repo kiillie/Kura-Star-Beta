@@ -425,6 +425,9 @@
 .art-addons ul.nav-tabs li{
 	background: rgb(229, 229, 229);
 }
+.tag-bullet{
+	display: none;
+}
 .art-addons .ui-state-active a{
 	color: #555;
 	cursor: default;

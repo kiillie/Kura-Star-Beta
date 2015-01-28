@@ -1,13 +1,11 @@
 @extends('layouts.main')
 @section('content')
-<script>
-$("")
-</script>
 <script src="/assets/js/jquery-ui.js" language="javascript"></script>
 <script src="/assets/js/jquery-ui.min.js" language="javascript"></script>
 <script src="/assets/js/google-search.js" language="javascript"></script>
 <script src="/assets/js/article.js" language="javascript"></script>
 <script language="javascript" src="/assets/js/temp_art.js"></script>
+<script type="text/javascript" src="/assets/js/plugins/jscolor.js"></script>
 <link rel="stylesheet" type="text/css" href="/assets/css/temp.css"></link>
 	<div class="container article">
 		<div class="article-menu">
@@ -95,7 +93,7 @@ $("")
 					<li class="add-link"><a href="javascript:void(0)"><span class="glyphicon glyphicon-link"></span> Link</a></li>
 					<li class="add-twitter"><a href="javascript:void(0)"><span class="glyphicon glyphicon-retweet"></span> Twitter</a></li>
 					<li class="add-video"><a href="javascript:void(0)"><span class="glyphicon glyphicon-hd-video"></span> Youtube</a></li>
-					<li class="add-heading"><a href="javascript:void(0)"><span class="glyphicon glyphicon-header"></span> h2 Tag</a></li>
+					<li class="add-heading"><a href="javascript:void(0)"  onclick="edit_addon('0', 'tag', 'addon', 'new', 'new')"><span class="glyphicon glyphicon-header"></span> h2 Tag</a></li>
 				</ul>
 				<div class="addon-wrapper">
 					<div class="loading">
@@ -134,8 +132,9 @@ function post_addon_data(li, type, controller, action, kind){
 				$(".new-addon .new-item").html(data);
 			}
 			else{
-				$('ul.sortable li[value="'+li+'"] .append-new-item').html(content);
-				$("ul.sortable li[value="+li+"] .add-inner .show-append-here").html("");
+				$("ul.sortable li[value='"+li+"'] .append-new-item").html(data);
+				$("ul.sortable li[value='"+li+"'] .add-inner .show-append-here").html("");
+				$("ul.sortable li[value='"+li+"'] .append-new-item").show();
 			}
 		});
 }
@@ -151,8 +150,8 @@ function show_appended_item_area(li){
 	addon += '<li><a href="javascript:void(0);" onclick="edit_addon("text", "addon", "new")">Link</a></li>';
 	addon += '<li><a href="javascript:void(0);" onclick="edit_addon("text", "addon", "new")">Twitter</a></li>';
 	addon += '<li><a href="javascript:void(0);" onclick="edit_addon("text", "addon", "new")">Youtube</a></li>';
-	addon += '<li><a href="javascript:void(0);" onclick="edit_addon("text", "addon", "new")">H2 Tag</a></li>';
-	addon += '<li class="remove-appended"><a href="javascript:void(0);" onclick="close_appended('+li+')"><span class="glyphicon glyphicon-remove-circle"></span></a></li>';
+	addon += '<li><a href="javascript:void(0);" onclick="edit_addon(\''+li+'\', \'tag\', \'addon\', \'new\', \'append\')">H2 Tag</a></li>';
+	addon += '<li class="remove-appended right"><a href="javascript:void(0);" onclick="close_appended('+li+')"><span class="glyphicon glyphicon-remove-circle"></span></a></li>';
 	addon += '</ul>';
 
 	$("ul.sortable li[value="+li+"] .add-inner .show-append-here").html(addon);
@@ -162,5 +161,29 @@ function close_appended(li){
 	$("ul.sortable li[value="+li+"] .add-inner .show-append-here").html("");
 	$("ul.sortable li[value="+li+"] .add-inner .item-btn-con").show();
 }
+function color_changed(li, type, kind){
+	var color = "";
+	if(kind == 'new'){
+		color = $(".new-addon .new-item .colorpicker").val();
+		$(".new-addon .new-item .tag-bullet").css('color', color);
+		$(".new-addon .new-item .tag-hr").css('border-color', color);
+	}
+	else{
+
+	}
+}
+function select_htype(li, type, kind){
+	if(kind == 'new'){
+		var tagtype = $(".new-addon .new-item .tag-heading").val();
+		if(tagtype == 'normal'){
+			$(".new-addon .new-item .tag-hr").show();
+			$(".new-addon .new-item .tag-bullet").hide();
+		}else{
+			$(".new-addon .new-item .tag-hr").hide();
+			$(".new-addon .new-item .tag-bullet").show();
+		}
+	}
+}
 </script>
+
 @stop
