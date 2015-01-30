@@ -20,7 +20,7 @@ $(".url-setting .img-btns a").on('click', function(e){
 		$(this).text("Click to Upload an Image");
 		$(this).removeClass('disp-up');
 		$(this).addClass('disp-def');
-	}
+	} 
 });
 $(".img-upload input").change(function() {
 	$("#message").empty(); // To remove the previous error message

@@ -33,6 +33,7 @@ function addItem(li, type, kind){
 		addonHovered();
 	}
 	else if(type == 'tag'){
+<<<<<<< HEAD
 		var color = "";
 		if(kind == 'new'){
 			color = $('.new-addon .new-item .colorpicker').val();
@@ -58,12 +59,27 @@ function addItem(li, type, kind){
 			else{
 				text = '<h2 class="normal" style="border-bottom: 4px solid; border-color: '+color+'">'+text+'</h2>';
 			}
+=======
+		if(kind == 'new'){
+			var text = $(".new-item .tag").val();
+			$('.new-addon .new-item').html("");
+		}
+		else{
+			var text = $("ul.sortable li[value='"+li+"'] .append-new-item .tag").val();
+			$('ul.sortable li[value="'+li+'"] .append-new-item').html("");
+			$('ul.sortable li[value="'+li+'"] .add-inner .item-btn-con').show();
+>>>>>>> 0d2d0f015c8ee46a1535fc814d8842b96f52d526
 		}
 		$(".loader").show();
 		var content = '<li class="ui-state-default added-addon">'+
 						'<div class="item-added-container">'+
+<<<<<<< HEAD
 						'<div class="item-inner tag">'+
 						text+
+=======
+						'<div class="item-inner">'+
+						'<h2>'+text+'</h2>'+
+>>>>>>> 0d2d0f015c8ee46a1535fc814d8842b96f52d526
 						'</div>'+
 						'<div class="editlist">'+
 						'<button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button>'+
@@ -185,6 +201,7 @@ function moveUpAndDown(){
 		current.insertAfter(verypar.find('li.added-addon').eq(ins));
 		added_addon_val();
 	});
+<<<<<<< HEAD
 }
 function extract_video(li, type, kind){
 	if(kind == 'new'){
@@ -195,4 +212,6 @@ function extract_video(li, type, kind){
 		$(".new-addon .new-item .extracted-vid").show();
 		$(".new-addon .new-item .vid-url-container").hide();
 	}
+=======
+>>>>>>> 0d2d0f015c8ee46a1535fc814d8842b96f52d526
 }
