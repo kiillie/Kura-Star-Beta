@@ -2,17 +2,17 @@ function addItem(li, type, kind){
 	if(type == 'text'){
 		if(kind == 'new'){
 			var text = $(".new-item .texts").val();
-			$(".new-addon").html("");
+			$('.new-addon .new-item').html("");
 		}
 		else{
-			alert("hi");
 			var text = $("ul.sortable li[value='"+li+"'] .append-new-item .texts").val();
 			$('ul.sortable li[value="'+li+'"] .append-new-item').html("");
+			$('ul.sortable li[value="'+li+'"] .add-inner .item-btn-con').show();
 		}
 		$(".loader").show();
 		var content = '<li class="ui-state-default added-addon">'+
 						'<div class="item-added-container">'+
-						'<div class="item-inner">'+
+						'<div class="item-inner text">'+
 						'<p>'+text+'</p>'+
 						'</div>'+
 						'<div class="editlist">'+
@@ -21,11 +21,71 @@ function addItem(li, type, kind){
 						'</div>'+
 						'<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div></div>'+
 						'</li>';
-		$(".addons-container .sortable").prepend(content);
+		if(kind == 'new'){
+			$(".addons-container .sortable").prepend(content);
+		}
+		else{
+			var current = $('ul.sortable li[value="'+li+'"]');
+			$("ul.sortable li[value='"+li+"'] .append-new-item").hide();
+			current.after(content);
+		}
+		$(".loader").hide();
+		addonHovered();
+	}
+	else if(type == 'tag'){
+		var color = "";
+		if(kind == 'new'){
+			color = $('.new-addon .new-item .colorpicker').val();
+			var text = $(".new-item .tag").val();
+			var tagtype = $(".new-addon .new-item .tag-heading").val();
+			$('.new-addon .new-item').html("");
+			if(tagtype != 'normal'){
+				text = '<h2 class="subheading"><span class="tag-bul" style="color: '+color+'">■</span> '+text+'</h2>';
+			}
+			else{
+				text = '<h2 class="normal" style="border-bottom: 4px solid; border-color: '+color+'">'+text+'</h2>';
+			}
+		}
+		else{
+			color = $("ul.sortable li[value='"+li+"'] .colorpicker").val();
+			var text = $("ul.sortable li[value='"+li+"'] .append-new-item .tag").val();
+			var tagtype = $('ul.sortable li[value="'+li+'"] .tag-heading').val();
+			$('ul.sortable li[value="'+li+'"] .append-new-item').html("");
+			$('ul.sortable li[value="'+li+'"] .add-inner .item-btn-con').show();
+			if(tagtype != 'normal'){
+				text = '<h2 class="subheading"><span class="tag-bul" style="color: '+color+'">■</span> '+text+'</h2>';
+			}
+			else{
+				text = '<h2 class="normal" style="border-bottom: 4px solid; border-color: '+color+'">'+text+'</h2>';
+			}
+		}
+		$(".loader").show();
+		var content = '<li class="ui-state-default added-addon">'+
+						'<div class="item-added-container">'+
+						'<div class="item-inner tag">'+
+						text+
+						'</div>'+
+						'<div class="editlist">'+
+						'<button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button>'+
+						'</div>'+
+						'</div>'+
+						'<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div></div>'+
+						'</li>';
+		if(kind == 'new'){
+			$(".addons-container .sortable").prepend(content);
+		}
+		else{
+			var current = $('ul.sortable li[value="'+li+'"]');
+			$("ul.sortable li[value='"+li+"'] .append-new-item").hide();
+			current.after(content);
+		}
 		$(".loader").hide();
 		addonHovered();
 	}
 	added_addon_val();
+}
+function cancel_add(li, type, kind){
+
 }
 function added_addon_val(){
 	$(".loader").show()
@@ -125,5 +185,14 @@ function moveUpAndDown(){
 		current.insertAfter(verypar.find('li.added-addon').eq(ins));
 		added_addon_val();
 	});
+}
+function extract_video(li, type, kind){
+	if(kind == 'new'){
+		var url = $(".new-addon .new-item .vid-url").val();
+		vid = url.replace('watch?v=', 'embed/');
+		$(".new-addon .new-item iframe").attr("src", vid);
 
+		$(".new-addon .new-item .extracted-vid").show();
+		$(".new-addon .new-item .vid-url-container").hide();
+	}
 }

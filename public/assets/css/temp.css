@@ -28,8 +28,11 @@
 .addons-container ul .added-addon{
 	width: 65%;
 }
+.addons-container ul .added-addon h2{
+	margin: 0;
+}
 .addons-container ul li .item-inner{
-	padding: 20px;
+	padding: 10px;
 }
 .addons-container ul li .item-added-container:hover{
 	background: rgb(215, 215, 215);
@@ -52,6 +55,9 @@
 	height: 30px;
 	vertical-align: middle;
 }
+.tag-hr{
+	border-width: 4px;
+}
 .editlist span.sort-item{
 	display: table-cell;
 	padding: 0 10px !important;
@@ -70,6 +76,19 @@
 .add-item-area{
 	position: relative;
 }
+.add-item-area .append-new-item{
+	display: none;
+	width: 75%;
+	min-height: 150px;
+	padding: 10px;
+}
+.add-item-area .append-new-item textarea{
+	height: 100px;
+	margin: 20px 0;
+}
+.add-item-area .append-new-item input{
+	margin: 0 10px 0 0;
+}
 .add-item-area .add-item-btn{
 	position: absolute;
 	right: -88px;
@@ -83,9 +102,16 @@
 	position: relative;
 	width: 100%;
 }
-.add-item-area .append-add-item li{
-	vertical-align: middle;
-	height: 30px;
+.add-item-area .append-add-item li:hover{
+	background: #F19C2D;
+}
+.add-item-area .append-add-item li a:hover{
+	text-decoration: none;
+	color: white;
+}
+.add-item-area .append-add-item li a{
+	display: block;
+	padding: 10px;
 }
 .addons-container .editlist button:hover, .editlist span.sort-item:hover{
 	background: rgb(17, 131, 118);
@@ -96,4 +122,40 @@
 .addons-container .editlist li{
 	padding: 0;
 	margin: 0;
+}
+.tag-bullet{
+	display: none;
+	float: left;
+	margin-right: 10px;
+}
+.new-item .tag-heading, .append-new-item .tag-heading{
+	margin : 10px 0;
+	width: 60%;
+}
+.new-item .tag, .append-new-item .tag{
+	width: 90%;
+	margin: 10px 0 !important;
+}
+.new-item .tag-hr, .append-new-item .tag-hr{
+	width: 90%;
+	margin: 0 0 20px 0;
+	border-color: black;
+}
+.new-item .colorpicker, .append-new-item .colorpicker{
+	width: 90%;
+	margin-bottom: 10px !important;
+}
+.new-item .extracted-vid{
+	display: none;
+}
+.item-inner.tag h2.normal{
+	padding-bottom: 10px;
+	font-size: 30px;
+}
+.item-inner.tag h2.subheading{
+	font-size: 20px;
+}
+.item-inner.tag h2.subheading span{
+	font-size: 15px;
+	vertical-align: text-top;
 }
