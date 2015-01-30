@@ -92,11 +92,7 @@
 					<li class="add-reference"><a href="javascript:void(0)"><span class="glyphicon glyphicon-hdd"></span> Reference</a></li>
 					<li class="add-link"><a href="javascript:void(0)"><span class="glyphicon glyphicon-link"></span> Link</a></li>
 					<li class="add-twitter"><a href="javascript:void(0)"><span class="glyphicon glyphicon-retweet"></span> Twitter</a></li>
-<<<<<<< HEAD
 					<li class="add-video"><a href="javascript:void(0)" onclick="edit_addon('0', 'video', 'addon', 'new', 'new')"><span class="glyphicon glyphicon-hd-video"></span> Youtube</a></li>
-=======
-					<li class="add-video"><a href="javascript:void(0)"><span class="glyphicon glyphicon-hd-video"></span> Youtube</a></li>
->>>>>>> 0d2d0f015c8ee46a1535fc814d8842b96f52d526
 					<li class="add-heading"><a href="javascript:void(0)"  onclick="edit_addon('0', 'tag', 'addon', 'new', 'new')"><span class="glyphicon glyphicon-header"></span> h2 Tag</a></li>
 				</ul>
 				<div class="addon-wrapper">
@@ -173,13 +169,9 @@ function color_changed(li, type, kind){
 		$(".new-addon .new-item .tag-hr").css('border-color', color);
 	}
 	else{
-<<<<<<< HEAD
 		color = $("ul.sortable li[value='"+li+"'] .colorpicker").val();
 		$("ul.sortable li[value='"+li+"'] .tag-bullet").css('color', color);
 		$("ul.sortable li[value='"+li+"'] .tag-hr").css('border-color', color);
-=======
-
->>>>>>> 0d2d0f015c8ee46a1535fc814d8842b96f52d526
 	}
 }
 function select_htype(li, type, kind){
@@ -193,7 +185,6 @@ function select_htype(li, type, kind){
 			$(".new-addon .new-item .tag-bullet").show();
 		}
 	}
-<<<<<<< HEAD
 	else{
 		var tagtype = $("ul.sortable li[value='"+li+"'] .tag-heading").val();
 		if(tagtype == 'normal'){
@@ -204,8 +195,6 @@ function select_htype(li, type, kind){
 			$("ul.sortable li[value='"+li+"'] .tag-bullet").show();
 		}
 	}
-=======
->>>>>>> 0d2d0f015c8ee46a1535fc814d8842b96f52d526
 }
 </script>
 

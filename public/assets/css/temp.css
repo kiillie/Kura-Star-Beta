@@ -79,11 +79,7 @@
 .add-item-area .append-new-item{
 	display: none;
 	width: 75%;
-<<<<<<< HEAD
 	min-height: 150px;
-=======
-	height: 150px;
->>>>>>> 0d2d0f015c8ee46a1535fc814d8842b96f52d526
 	padding: 10px;
 }
 .add-item-area .append-new-item textarea{
