@@ -12,9 +12,9 @@ class EloquentArticleRepository implements ArticleRepository{
 		$article->CURATER_ID = \Auth::user()->CURATER_ID;
 		$article->CURATION_TITLE = $input['title'];
 		$article->CURATION_DESCRIPTION = $input['description'];
-		$article->CURATION_DETAIL = $input['art-text-add'];
+		$article->CURATION_DETAIL = "";
 		$article->CURATION_IMAGE = "";
-		$article->TAG = $input['art-heading'];
+		$article->TAG = "";
 
 		return $article->save();
 	}

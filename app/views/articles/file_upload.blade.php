@@ -2,7 +2,7 @@
 
 // $file = $_FILES['articleImage'];
 
-// echo $file['tmp_name'];
+// print_r($image);
 
-echo "Yes I'm here!";
+// echo "Yes I'm here!";
 ?>

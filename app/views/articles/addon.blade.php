@@ -1,5 +1,5 @@
-
 <?php
+
 if($addon['type'] == 'text'){
 ?>
 <script>
@@ -22,6 +22,51 @@ if($addon['type'] == 'text'){
 </script>
 <?php
 }
+else if($addon['type'] == 'picture'){
+?>
+<script>
+	$(".loader").hide();
+	var kind = "{{$addon['kind']}}";
+	var li = "{{$addon['li']}}";
+	var type = "{{$addon['type']}}";
+	var content = 	'{{Form::open(["name"=>"picture"])}}'+
+					'<div class="row picture">'+
+					'<div class="col-md-6 def-image">'+
+					'<img src="/assets/images/article-default.png" width="200" alt="Image">'+
+					'</div>'+
+					'<div class="col-md-6 url-upload">'+
+					'<div class="url-img">'+
+					'<input type="text" class="form-control imgurl" name="picture" placeholder="Url of the Image"/>'+
+					'<input type="button" class="btn btn-default" value="Check" onclick="extract_image(\''+li+'\', \''+type+'\', \''+kind+'\')" />'+
+					'<input type="button" class="btn btn-default" value="Cancel">'+
+					'</div>'+
+					'<div class="upload-img-con">'+
+					'{{Form::open(["name"=>"image", "enctype"=>"multipart/form-data"])}}'+
+					'<input type="file" class="upload-img" accept="image/*"/ onchange="upload_image(\''+li+'\', \''+type+'\', \''+kind+'\')">'+
+					'{{Form::close()}}'+
+					'</div>'+
+					'<a href="javascript:void(0)" class="img-anchor a-url" onclick="select_img_type(\''+li+'\', \''+type+'\', \''+kind+'\')">Upload an Image</a><br/><br/>'+
+					'<a href="javascript:void(0)" class="search-anchor"><span class="glyphicon glyphicon-search"></span> Search for image</a>'+
+					'<div class="img-desc-con">'+
+					'<textarea class="form-control img-desc"></textarea>'+
+					'<input type="button" class="btn btn-default" value="Add" onclick="addItem(\''+li+'\', \''+type+'\', \''+kind+'\')">'+
+					'<input type="button" class="btn btn-default" value="Cancel">'+
+					'</div>'+
+					'</div>'+
+					'</div>'+
+					'<input type="hidden" class="img-hid" />'+
+					'{{Form::close()}}';
+
+	if(kind == 'new'){
+		$('.new-addon .new-item').html(content);
+	}
+	else{
+		$("ul.sortable li[value='"+li+"'] .append-new-item").html(content);
+		$("ul.sortable li[value='"+li+"'] .add-inner .show-append-here").html("");
+	}
+</script>
+<?php
+}
 else if($addon['type'] == 'video'){
 ?>
 <script>
@@ -35,11 +80,15 @@ else if($addon['type'] == 'video'){
 					'<input type="button" value="Check" class="btn btn-default add" onclick="extract_video(\''+li+'\', \''+type+'\', \''+kind+'\')">'+
 					'<input type="button" value="Cancel" class="btn btn-default">'+
 					'</div>'+
-					'<div class="extracted-vid">'+
+					'<div class="extracted-vid row">'+
+					'<div class="col-md-7">'+
 					'<iframe src="#" width="300" height="300">#document</iframe>'+
-					'<textarea class="vid-desc" placeholder="Video Description"></textarea>'+
+					'</div>'+
+					'<div class="col-md-5">'+
+					'<textarea class="vid-desc form-control" placeholder="Video Description"></textarea>'+
 					'<input type="button" class="btn btn-default" onclick="addItem(\''+li+'\', \''+type+'\', \''+kind+'\')" value="Add" />'+
 					'<input type="button" class="btn btn-default" onclick="" value="Cancel">'+
+					'</div>'+
 					'</div>'+
 					'{{Form::close()}}';
 
@@ -82,4 +131,6 @@ else if($addon['type'] == 'tag'){
 <?php
 
 }
+// $files = fopen(public_path()."/assets/articles/boang.html", "w");
+// fwrite($files, $addon['content']);
 ?>

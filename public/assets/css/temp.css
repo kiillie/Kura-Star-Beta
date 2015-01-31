@@ -145,7 +145,7 @@
 	width: 90%;
 	margin-bottom: 10px !important;
 }
-.new-item .extracted-vid{
+.new-item .extracted-vid, .item{
 	display: none;
 }
 .item-inner.tag h2.normal{
@@ -158,4 +158,16 @@
 .item-inner.tag h2.subheading span{
 	font-size: 15px;
 	vertical-align: text-top;
+}
+.new-item .extracted-vid iframe, .item-added-container iframe{
+	border: none;
+}
+.add-item-area .extracted-vid{
+	display: none;
+}
+.add-item-area .vid-url{
+	margin-bottom: 10px !important;
+}
+.new-item .img-desc-con, .new-item .upload-img-con{
+	display: none;
 }
