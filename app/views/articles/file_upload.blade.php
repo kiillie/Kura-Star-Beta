@@ -7,6 +7,6 @@ if(isset($image['image'])){
 
 	//echo $upload->getRealPath();
 	$upload->move($folder, $move);
-	echo "/assets/images/attachments/".$move;
+	echo "\assets\images\attachments\\".$move;
 }
 ?>
