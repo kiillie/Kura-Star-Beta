@@ -203,6 +203,7 @@ function upload_image(li, type, kind){
 	if(kind == 'new'){
 		$(".new-addon .new-item #upload-addon").submit(function(e){
 			e.preventDefault();
+			$(".loader").show();
 			$.ajax({
 				url	: '/file/upload',
 				type : 'POST',
@@ -213,6 +214,7 @@ function upload_image(li, type, kind){
 				success : function(res){
 					$(".new-addon .new-item .def-image img").attr('src', res);
 					$(".new-addon .new-item .img-hid").val(res);
+					$(".loader").hide();
 				}
 			});
 		});
@@ -220,6 +222,7 @@ function upload_image(li, type, kind){
 	else{
 		$("ul.sortable li[value='"+li+"'] #upload-addon").submit(function(e){
 			e.preventDefault();
+			$(".loader").show();
 			$.ajax({
 				url	: '/file/upload',
 				type : 'POST',
@@ -230,6 +233,7 @@ function upload_image(li, type, kind){
 				success : function(res){
 					$("ul.sortable li[value='"+li+"'] .def-image img").attr('src', res);
 					$("ul.sortable li[value='"+li+"'] .img-hid").val(res);
+					$(".loader").hide();
 				}
 			});
 		});
