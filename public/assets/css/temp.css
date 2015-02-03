@@ -168,6 +168,12 @@
 .add-item-area .vid-url{
 	margin-bottom: 10px !important;
 }
-.new-item .img-desc-con, .new-item .upload-img-con{
+.img-desc-con, .upload-img-con{
 	display: none;
+}
+.upload-check{
+	margin: 10px 0 !important;
+}
+.append-new-item .picture .url-check, .append-new-item .picture .url-cancel{
+	margin: 10px 10px 10px 0;
 }

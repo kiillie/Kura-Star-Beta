@@ -90,7 +90,7 @@
 					<li class="add-text"><a href="javascript:void(0)" onclick="edit_addon('0', 'text', 'addon', 'new', 'new')"><span class="glyphicon glyphicon-pencil"></span> Text</a></li>
 					<li class="add-image"><a href="javascript:void(0)" onclick="edit_addon('0', 'picture', 'addon', 'new', 'new')"><span class="glyphicon glyphicon-camera" ></span> Picture</a></li>
 					<li class="add-reference"><a href="javascript:void(0)"><span class="glyphicon glyphicon-hdd"></span> Reference</a></li>
-					<li class="add-link"><a href="javascript:void(0)"><span class="glyphicon glyphicon-link"></span> Link</a></li>
+					<li class="add-link"><a href="javascript:void(0)" onclick="edit_addon('0', 'link', 'addon', 'new', 'new')"><span class="glyphicon glyphicon-link"></span> Link</a></li>
 					<li class="add-twitter"><a href="javascript:void(0)"><span class="glyphicon glyphicon-retweet"></span> Twitter</a></li>
 					<li class="add-video"><a href="javascript:void(0)" onclick="edit_addon('0', 'video', 'addon', 'new', 'new')"><span class="glyphicon glyphicon-hd-video"></span> Youtube</a></li>
 					<li class="add-heading"><a href="javascript:void(0)"  onclick="edit_addon('0', 'tag', 'addon', 'new', 'new')"><span class="glyphicon glyphicon-header"></span> h2 Tag</a></li>
@@ -201,24 +201,37 @@ function select_htype(li, type, kind){
 }
 function upload_image(li, type, kind){
 	if(kind == 'new'){
-		var file = $(".new-addon .new-item .upload-img").val();
-		$.post(
-		'/file/upload',
-		{
-			'li'   : li,
-			'type' : type,
-			'kind' : kind,
-			'file' : file
-
-		}).done(function(data){
-			if(kind == 'new'){
-				$(".test").html(data);
-			}
-			else{
-				$("ul.sortable li[value='"+li+"'] .append-new-item").html(data);
-				$("ul.sortable li[value='"+li+"'] .add-inner .show-append-here").html("");
-				$("ul.sortable li[value='"+li+"'] .append-new-item").show();
-			}
+		$(".new-addon .new-item #upload-addon").submit(function(e){
+			e.preventDefault();
+			$.ajax({
+				url	: '/file/upload',
+				type : 'POST',
+				data : new FormData(this),
+				contentType : false,
+				cache : false,
+				processData : false,
+				success : function(res){
+					$(".new-addon .new-item .def-image img").attr('src', res);
+					$(".new-addon .new-item .img-hid").val(res);
+				}
+			});
+		});
+	}
+	else{
+		$("ul.sortable li[value='"+li+"'] #upload-addon").submit(function(e){
+			e.preventDefault();
+			$.ajax({
+				url	: '/file/upload',
+				type : 'POST',
+				data : new FormData(this),
+				contentType : false,
+				cache : false,
+				processData : false,
+				success : function(res){
+					$("ul.sortable li[value='"+li+"'] .def-image img").attr('src', res);
+					$("ul.sortable li[value='"+li+"'] .img-hid").val(res);
+				}
+			});
 		});
 	}
 }

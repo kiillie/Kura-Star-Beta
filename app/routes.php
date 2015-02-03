@@ -118,8 +118,14 @@ Route::get('test', [
 	'uses'	=>	'PublicController@test',
 	'as'	=>	'test'
 ]);
+
 Route::post('fetchlink', [
 	'uses'	=>	'ArticleController@fetchlink',
 	'as'	=>	'fetchlink'
+]);
+
+Route::get('tester', [
+	'uses'	=>	'PublicController@tester',
+	'as'	=>	'tester'
 ]);
 ?>

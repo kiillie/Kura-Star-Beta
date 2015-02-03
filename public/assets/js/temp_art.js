@@ -41,7 +41,12 @@ function addItem(li, type, kind){
 			$('.new-addon .new-item').html("");
 		}
 		else{
-			//
+			var src = $("ul.sortable li[value='"+li+"'] .img-hid").val();
+			var desc = $("ul.sortable li[value='"+li+"'] .img-desc").val();
+			var image = '<img class="image" src="'+src+'" alt="" />'+
+						'<p class="desc">'+desc+'</p>';
+			$('ul.sortable li[value="'+li+'"] .append-new-item').html("");
+			$('ul.sortable li[value="'+li+'"] .add-inner .item-btn-con').show();
 		}
 		$(".loader").show();
 		var content = 	'<li class="ui-state-default added-addon">'+
@@ -290,10 +295,22 @@ function extract_video(li, type, kind){
 
 function extract_image(li, type, kind){
 	if(kind == 'new'){
-		var image = $(".new-addon .new-item .picture .url-img .imgurl").val();
-		$(".new-addon .new-item .picture .def-image img").attr("src", image);
-		$(".new-addon .new-item .img-hid").val(image);
-		$(".new-addon .new-item .img-desc-con").show();
+		var imgtype = $(".new-addon .new-item .picture .img-anchor").hasClass("a-upload");
+		if(!imgtype){
+			var image = $(".new-addon .new-item .picture .url-img .imgurl").val();
+			$(".new-addon .new-item .picture .def-image img").attr("src", image);
+			$(".new-addon .new-item .img-hid").val(image);
+			$(".new-addon .new-item .img-desc-con").show();
+		}
+	}
+	else{
+		var imgtype = $("ul.sortable li[value='"+li+"'] .picture .img-anchor").hasClass("a-upload");
+		if(!imgtype){
+			var image = $("ul.sortable li[value='"+li+"'] .picture .url-img .imgurl").val();
+			$("ul.sortable li[value='"+li+"'] .picture .def-image img").attr("src", image);
+			$("ul.sortable li[value='"+li+"'] .img-hid").val(image);
+			$("ul.sortable li[value='"+li+"'] .img-desc-con").show();
+		}
 	}
 }
 
@@ -316,6 +333,25 @@ function select_img_type(li, type, kind){
 			$(".new-addon .new-item .url-img").show();
 			$(".new-addon .new-item .upload-img-con").hide();
 			$(".new-addon .new-item .img-desc-con").hide();
+		}
+	}
+	else{
+		var anchorClass = $("ul.sortable li[value='"+li+"'] .img-anchor").hasClass("a-url");
+		if(anchorClass){
+			$("ul.sortable li[value='"+li+"'] .img-anchor").removeClass("a-url");
+			$("ul.sortable li[value='"+li+"'] .img-anchor").addClass("a-upload");
+			$("ul.sortable li[value='"+li+"'] .img-anchor").text("Image From URL");
+			$("ul.sortable li[value='"+li+"'] .url-img").hide();
+			$("ul.sortable li[value='"+li+"'] .upload-img-con").show();
+			$("ul.sortable li[value='"+li+"'] .img-desc-con").show();
+		}
+		else{
+			$("ul.sortable li[value='"+li+"'] .img-anchor").removeClass("a-upload");
+			$("ul.sortable li[value='"+li+"'] .img-anchor").addClass("a-url");
+			$("ul.sortable li[value='"+li+"'] .img-anchor").text("Upload an Image");
+			$("ul.sortable li[value='"+li+"'] .url-img").show();
+			$("ul.sortable li[value='"+li+"'] .upload-img-con").hide();
+			$("ul.sortable li[value='"+li+"'] .img-desc-con").hide();
 		}
 	}
 }

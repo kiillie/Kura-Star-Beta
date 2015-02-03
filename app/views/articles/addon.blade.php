@@ -29,21 +29,22 @@ else if($addon['type'] == 'picture'){
 	var kind = "{{$addon['kind']}}";
 	var li = "{{$addon['li']}}";
 	var type = "{{$addon['type']}}";
-	var content = 	'{{Form::open(["name"=>"picture"])}}'+
-					'<div class="row picture">'+
+	var content = 	'<div class="row picture">'+
 					'<div class="col-md-6 def-image">'+
 					'<img src="/assets/images/article-default.png" width="200" alt="Image">'+
 					'</div>'+
 					'<div class="col-md-6 url-upload">'+
+					'<div class="upload-img-con">'+
+					'{{Form::open(["name"=>"image", "enctype"=>"multipart/form-data", "id"=>"upload-addon", "url"=>"file/upload"])}}'+
+					'<input type="file" name="image" class="upload-img" accept="image/*"/>'+
+					'<input type="submit" class="btn btn-default upload-check" onclick="upload_image(\''+li+'\', \''+type+'\', \''+kind+'\')" value="Check">'+
+					'{{Form::close()}}'+
+					'</div>'+
+					'{{Form::open(["name"=>"picture"])}}'+
 					'<div class="url-img">'+
 					'<input type="text" class="form-control imgurl" name="picture" placeholder="Url of the Image"/>'+
-					'<input type="button" class="btn btn-default" value="Check" onclick="extract_image(\''+li+'\', \''+type+'\', \''+kind+'\')" />'+
-					'<input type="button" class="btn btn-default" value="Cancel">'+
-					'</div>'+
-					'<div class="upload-img-con">'+
-					'{{Form::open(["name"=>"image", "enctype"=>"multipart/form-data"])}}'+
-					'<input type="file" class="upload-img" accept="image/*"/ onchange="upload_image(\''+li+'\', \''+type+'\', \''+kind+'\')">'+
-					'{{Form::close()}}'+
+					'<input type="button" class="btn btn-default url-check" value="Check" onclick="extract_image(\''+li+'\', \''+type+'\', \''+kind+'\')" />'+
+					'<input type="button" class="btn btn-default url-cancel" value="Cancel">'+
 					'</div>'+
 					'<a href="javascript:void(0)" class="img-anchor a-url" onclick="select_img_type(\''+li+'\', \''+type+'\', \''+kind+'\')">Upload an Image</a><br/><br/>'+
 					'<a href="javascript:void(0)" class="search-anchor"><span class="glyphicon glyphicon-search"></span> Search for image</a>'+
@@ -55,6 +56,29 @@ else if($addon['type'] == 'picture'){
 					'</div>'+
 					'</div>'+
 					'<input type="hidden" class="img-hid" />'+
+					'{{Form::close()}}';
+
+	if(kind == 'new'){
+		$('.new-addon .new-item').html(content);
+	}
+	else{
+		$("ul.sortable li[value='"+li+"'] .append-new-item").html(content);
+		$("ul.sortable li[value='"+li+"'] .add-inner .show-append-here").html("");
+	}
+</script>
+<?php
+}
+else if($addon['type'] == 'link'){
+?>
+<script>
+	$(".loader").hide();
+	var kind = "{{$addon['kind']}}";
+	var li = "{{$addon['li']}}";
+	var type = "{{$addon['type']}}";
+	var content =	'{{Form::open(["name"=>"link"])}}'+
+					'<input type="text" class="form-control link-url" placeholder="URL of the Link"/>'+
+					'<input type="button" class="btn btn-default check-link" value="Check" />'+
+					'<input type="button" class="btn btn-default cancel-link" value="Cancel">'+
 					'{{Form::close()}}';
 
 	if(kind == 'new'){

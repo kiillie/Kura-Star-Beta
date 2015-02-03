@@ -50,6 +50,10 @@ class PublicController extends BaseController{
 	public function test(){
 		return View::make('test');
 	}
+
+	public function tester(){
+		return View::make('public.google');
+	}
 }
 
 ?>
