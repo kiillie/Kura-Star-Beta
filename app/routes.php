@@ -64,6 +64,10 @@ Route::post('addon/new', [
 	'as'	=>	'article.addon'
 ]);
 
+Route::post('addon/edit', [
+	'uses'	=>	'ArticleController@addonEdit',
+	'as'	=>	'article.addonedit'
+]);
 /** Login **/
 
 Route::get('login',[

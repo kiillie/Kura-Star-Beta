@@ -17,7 +17,7 @@
 		        	<div class="img-srch" id="google">
 		        		<div class="google-input"><input type="text" class="form-control img-text"/></div>
 		        		<br />
-    					<div id="content" class="row">Loading...</div>
+    					<div id="content" class="row" >Loading...</div>
 		        	</div>
 		        	<div class="img-srch" id="instagram">
 		        		Instagram

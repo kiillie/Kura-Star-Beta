@@ -10,6 +10,7 @@ if($addon['type'] == 'text'){
 					'<textarea placeholder="Put your text here" class="form-control texts">'+
 					'</textarea>'+
 					'<input type="button" value="Add" class="btn btn-default add" onclick="addItem(\'{{$addon["li"]}}\', \'{{$addon["type"]}}\', \'{{$addon["kind"]}}\')"/><input type="button" class="btn btn-default cancel" value="Cancel"/>'+
+					'<input type="hidden" class="type" value="'+li+'">'+
 					'{{Form::close()}}';
 	if(kind == 'new'){
 		$('.new-addon .new-item').html(content);
@@ -142,7 +143,6 @@ else if($addon['type'] == 'tag'){
 					'<hr class="tag-hr"></hr>'+
 					'<input type="color" class="form-control colorpicker" onchange="color_changed(\'{{$addon["li"]}}\', \'{{$addon["type"]}}\', \'{{$addon["kind"]}}\')"/>'+
 					'<input type="button" value="Add" class="btn btn-default add" onclick="addItem(\'{{$addon["li"]}}\', \'{{$addon["type"]}}\', \'{{$addon["kind"]}}\')"/><input type="button" class="btn btn-default cancel" value="Cancel"/>'+
-					
 					'{{Form::close()}}';
 	if(kind == 'new'){
 		$('.new-addon .new-item').html(content);

@@ -118,7 +118,23 @@
 <script>
 function edit_addon(li, type, controller, action, kind){
 	$(".loader").show();
-	post_addon_data(li, type, controller, action, kind);
+	if(action == 'new'){
+		post_addon_data(li, type, controller, action, kind);
+	}
+	else if(action == 'edit'){
+		edit_addon_data(li, type, controller, action, kind);
+	}
+}
+function edit_addon_data(li, type, controller, action, kind){
+	$.post(
+		'/'+controller+"/"+action,
+		{
+			'li'   : li,
+			'type' : type,
+			'kind' : kind
+		}).done(function(data){
+			$(".new-addon .new-item").html(data);
+		});
 }
 function post_addon_data(li, type, controller, action, kind){
 	var tosave = $("ul.sortable").html();

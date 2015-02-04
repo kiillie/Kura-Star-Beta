@@ -185,6 +185,12 @@ class ArticleController extends BaseController{
 				->withAddon($addon);
 	}
 
+	public function addonEdit(){
+		$addon = Input::all();
+		return View::make('articles.addon_edit')
+				->withAddon($addon);
+	}
+
 	public function upload(){
 		$image = Input::all();
 		return View::make('articles.file_upload')

@@ -4,6 +4,22 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <title>Hello World - Google  Web Search API Sample</title>
+      {{ HTML::style('/assets/css/bootstrap.css') }}
+  {{ HTML::style('/assets/css/bootstrap.min.css') }}
+  {{ HTML::style('/assets/css/bootstrap-theme.css') }}
+  {{ HTML::style('/assets/css/bootstrap-theme.min.css') }}
+  {{ HTML::style('/assets/css/bootstrap-select.css') }}
+  {{ HTML::style('/assets/css/bootstrap-select.min.css') }}
+  {{ HTML::style('/assets/css/styles.css') }}
+  {{ HTML::style('/assets/css/jquery.bxslider.css') }}
+  {{ HTML::script('/assets/js/jquery-2.1.3.min.js') }}
+  {{ HTML::script('/assets/js/bootstrap.js') }}
+  {{ HTML::script('/assets/js/npm.js') }}
+  {{ HTML::script('/assets/js/bootstrap-select.js') }}
+  {{ HTML::script('/assets/js/bootstrap-select.min.js') }}
+  {{ HTML::script('/assets/js/kurastar.js')}}
+  {{ HTML::script('/assets/js/jquery.bxslider.js') }}
+  {{ HTML::script('/assets/js/jquery.bxslider.min.js') }}
     <script src="https://www.google.com/jsapi"
         type="text/javascript"></script>
     <script language="Javascript" type="text/javascript">
@@ -41,17 +57,29 @@
   </head>
   <body>
     <div id="searchcontrol"></div>
-    <?php
-      $html = file_get_contents("http://mery.jp/");
-      $dom = new DOMDocument;
-      @$dom->loadHTML($html);
-
-      $links = $dom->getElementsByTagName('title');
-
-      foreach ($links as $title)
-      {               
-          echo $title->nodeValue."<br>";
-      }
-    ?>
+    
+    <div id="displayHere">
+      <?php
+        function pageTitle($page_url)
+        {
+             $read_page=file_get_contents($page_url);
+             preg_match("/<title.*?>[\n\r\s]*(.*)[\n\r\s]*<\/title>/", $read_page, $page_title);
+              if (isset($page_title[1]))
+              {
+                    if ($page_title[1] == '')
+                    {
+                          return $page_url;
+                    }
+                    $page_title = $page_title[1];
+                    return trim($page_title);
+              }
+              else
+              {
+                    return $page_url;
+              }
+        }
+         echo pageTitle();
+        ?>
+    </div>
   </body>
 </html>
