@@ -6,17 +6,23 @@ class EloquentArticleRepository implements ArticleRepository{
 	
 	public function store($input){
 		//
+		$article = Article::where('CURATION_ID', '=', $input['cur_id'])
+						->update(['COUNTRY_ID' => $input['country'], 'CATEGORY_ID' => $input['category'], 'CURATION_TITLE' => $input['title'], 'CURATION_DESCRIPTION' => $input['description'] ]);
+
+		return $article;
+	}
+
+	public function insert(){
 		$article = new Article;
-		$article->COUNTRY_ID = $input['country'];
-		$article->CATEGORY_ID = $input['category'];
 		$article->CURATER_ID = \Auth::user()->CURATER_ID;
-		$article->CURATION_TITLE = $input['title'];
-		$article->CURATION_DESCRIPTION = $input['description'];
-		$article->CURATION_DETAIL = "";
-		$article->CURATION_IMAGE = "";
-		$article->TAG = "";
 
 		return $article->save();
+	}
+
+	public function getArticle(){
+		$article = Article::where('CURATER_ID', '=', \Auth::user()->CURATER_ID)->max('REGISTER_DATE');
+		return Article::where('CURATER_ID', '=', \Auth::user()->CURATER_ID)
+						->where('REGISTER_DATE', '=', $article)->first();
 	}
 
 	public function allArticles(){

@@ -145,7 +145,7 @@
 	width: 90%;
 	margin-bottom: 10px !important;
 }
-.new-item .extracted-vid, .item{
+.new-item .extracted-vid{
 	display: none;
 }
 .item-inner.tag h2.normal{

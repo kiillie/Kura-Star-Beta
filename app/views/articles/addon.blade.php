@@ -9,7 +9,7 @@ if($addon['type'] == 'text'){
 	var content =	'{{Form::open(["name"=>"text"])}}'+
 					'<textarea placeholder="Put your text here" class="form-control texts">'+
 					'</textarea>'+
-					'<input type="button" value="Add" class="btn btn-default add" onclick="addItem(\'{{$addon["li"]}}\', \'{{$addon["type"]}}\', \'{{$addon["kind"]}}\')"/><input type="button" class="btn btn-default cancel" value="Cancel"/>'+
+					'<input type="button" value="Add" class="btn btn-default add" onclick="addItem(\'{{$addon["li"]}}\', \'{{$addon["type"]}}\', \'{{$addon["kind"]}}\')"/><input type="button" class="btn btn-default cancel" value="Cancel" onclick="cancel_add(\'{{$addon["li"]}}\', \'{{$addon["type"]}}\', \'{{$addon["kind"]}}\')" />'+
 					'<input type="hidden" class="type" value="'+li+'">'+
 					'{{Form::close()}}';
 	if(kind == 'new'){
@@ -45,14 +45,14 @@ else if($addon['type'] == 'picture'){
 					'<div class="url-img">'+
 					'<input type="text" class="form-control imgurl" name="picture" placeholder="Url of the Image"/>'+
 					'<input type="button" class="btn btn-default url-check" value="Check" onclick="extract_image(\''+li+'\', \''+type+'\', \''+kind+'\')" />'+
-					'<input type="button" class="btn btn-default url-cancel" value="Cancel">'+
+					'<input type="button" class="btn btn-default url-cancel" value="Cancel" onclick="cancel_add(\''+li+'\', \''+type+'\', \''+kind+'\')">'+
 					'</div>'+
 					'<a href="javascript:void(0)" class="img-anchor a-url" onclick="select_img_type(\''+li+'\', \''+type+'\', \''+kind+'\')">Upload an Image</a><br/><br/>'+
 					'<a href="javascript:void(0)" class="search-anchor"><span class="glyphicon glyphicon-search"></span> Search for image</a>'+
 					'<div class="img-desc-con">'+
 					'<textarea class="form-control img-desc"></textarea>'+
 					'<input type="button" class="btn btn-default" value="Add" onclick="addItem(\''+li+'\', \''+type+'\', \''+kind+'\')">'+
-					'<input type="button" class="btn btn-default" value="Cancel">'+
+					'<input type="button" class="btn btn-default" value="Cancel" onclick="cancel_add(\''+li+'\', \''+type+'\', \''+kind+'\')">'+
 					'</div>'+
 					'</div>'+
 					'</div>'+
@@ -79,7 +79,7 @@ else if($addon['type'] == 'link'){
 	var content =	'{{Form::open(["name"=>"link"])}}'+
 					'<input type="text" class="form-control link-url" placeholder="URL of the Link"/>'+
 					'<input type="button" class="btn btn-default check-link" value="Check" />'+
-					'<input type="button" class="btn btn-default cancel-link" value="Cancel">'+
+					'<input type="button" class="btn btn-default cancel-link" onclick="cancel_add(\''+li+'\', \''+type+'\', \''+kind+'\')" value="Cancel">'+
 					'{{Form::close()}}';
 
 	if(kind == 'new'){
@@ -112,7 +112,7 @@ else if($addon['type'] == 'video'){
 					'<div class="col-md-5">'+
 					'<textarea class="vid-desc form-control" placeholder="Video Description"></textarea>'+
 					'<input type="button" class="btn btn-default" onclick="addItem(\''+li+'\', \''+type+'\', \''+kind+'\')" value="Add" />'+
-					'<input type="button" class="btn btn-default" onclick="" value="Cancel">'+
+					'<input type="button" class="btn btn-default" onclick="cancel_add(\''+li+'\', \''+type+'\', \''+kind+'\')" value="Cancel">'+
 					'</div>'+
 					'</div>'+
 					'{{Form::close()}}';

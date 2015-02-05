@@ -126,7 +126,7 @@ $(document).ready(function(){
 			<div class="col-md-4">
 				<ul class="list-inline">
 					@if(Auth::check())
-					<li><span class="glyphicon glyphicon-list-alt"></span> <a href="{{URL::route('article.create')}}">Make an Article</a></li>
+					<li><span class="glyphicon glyphicon-list-alt"></span> <a href="{{URL::route('article.insert')}}">Make an Article</a></li>
 					<li><span class="glyphicon glyphicon-user"></span>  <a href="#">{{Auth::user()->CURATER}}</a></li>
 					<li><span class="glyphicon glyphicon-log-out"></span> <a href="{{URL::route('logout')}}">Logout</a></li>
 					@else

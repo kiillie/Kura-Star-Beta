@@ -1,3 +1,7 @@
+$(document).ready(function(){
+	addonHovered("", "");
+});
+
 function addItem(li, type, kind){
 	if(type == 'text'){
 		if(kind == 'new'){
@@ -173,10 +177,19 @@ function addItem(li, type, kind){
 		addonHovered(type, kind);
 	}
 	added_addon_val(type, kind);
+	insert_addon();
 }
 
 function cancel_add(li, type, kind){
-
+	if(kind == 'new'){
+		$(".new-addon .new-item").html("");
+	}
+	else{
+		$("ul.sortable li[value='"+li+"'] .append-new-item").html("");
+		$("ul.sortable li[value='"+li+"'] .append-new-item").css("display", "none");
+		$("ul.sortable li[value='"+li+"'] .add-inner").show();
+		show_appended_item_area(li);
+	}
 }
 
 function editItem(li, type, kind){
@@ -338,6 +351,7 @@ function moveUpAndDown(type, kind){
 
 		current.insertBefore(previous);
 		added_addon_val(type, kind);
+		insert_addon();
 	});
 	$('.movedown').on('click', function(){
 		var par = $(this).parent().parent().parent().parent().parent();
@@ -346,6 +360,7 @@ function moveUpAndDown(type, kind){
 
 		current.insertAfter(next);
 		added_addon_val(type, kind);
+		insert_addon();
 	});
 	$('.movetop').on('click', function(){
 		var par = $(this).parent().parent().parent().parent().parent();
@@ -354,6 +369,7 @@ function moveUpAndDown(type, kind){
 		
 		current.insertBefore(verypar.find('li.added-addon').eq(0));
 		added_addon_val(type, kind);
+		insert_addon();
 	});
 	$('.movebottom').on('click', function(){
 		var par = $(this).parent().parent().parent().parent().parent();
@@ -363,6 +379,7 @@ function moveUpAndDown(type, kind){
 
 		current.insertAfter(verypar.find('li.added-addon').eq(ins));
 		added_addon_val(type, kind);
+		insert_addon();
 	});
 }
 

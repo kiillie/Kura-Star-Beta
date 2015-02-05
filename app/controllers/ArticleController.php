@@ -23,27 +23,40 @@ class ArticleController extends BaseController{
 		$this->user = $user;
 	}
 
-	public function index(){
+	public function index($id){
 		$countries = $this->country->showCountryByContinent();
 		$categories = $this->category->show();
 		$continents = $this->continent->show();
-		return View::make('articles.create_test')
+		
+		return View::make('articles.create')
 				->withCountries($countries)
 				->withCategories($categories)
-				->withContinents($continents);
+				->withContinents($continents)
+				->with('curation', $id);
+	}
+
+	public function insert(){
+		$insert = $this->article->insert();
+		if($insert){
+			$article = $this->article->getArticle();
+			$files = fopen(public_path()."/assets/articles/".$article->CURATION_ID.".php", "w");
+			$id = $article->CURATION_ID;
+			return Redirect::route('article.create', $id)->with('curation', $id);
+		}
 	}
 
 	public function store(){
 		$article = $this->article->store(Input::all());
-
+		$input = Input::all();
 		if($article){
-			return Redirect::route('article.create')
-					->with('message', 'Article Successfully created.');
+			return Redirect::route('article.create', $input['cur_id'])
+					->with('message', 'Article Saved.');
 		}
 		else{
-			return Redirect::route('article.create')
-					->with('message', 'Article was not created.');
+			return Redirect::route('article.create', $input['cur_id'])
+					->with('message', 'Article was not saved.');
 		}
+
 	}
 
 	public function show($id){
@@ -188,6 +201,12 @@ class ArticleController extends BaseController{
 	public function addonEdit(){
 		$addon = Input::all();
 		return View::make('articles.addon_edit')
+				->withAddon($addon);
+	}
+
+	public function addonInsert(){
+		$addon = Input::all();
+		return View::make('articles.addon_insert')
 				->withAddon($addon);
 	}
 

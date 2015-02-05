@@ -4,6 +4,10 @@ interface ArticleRepository{
 	
 	public function store($input);
 
+	public function insert();
+
+	public function getArticle();
+
 	public function allArticles();
 
 	public function show($id);

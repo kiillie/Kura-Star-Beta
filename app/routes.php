@@ -19,9 +19,14 @@ Route::post('user/register', [
 
 /** Articles **/
 
-Route::get('article/create', [
+Route::get('article/{id}/create', [
 	'uses'	=> 'ArticleController@index',
 	'as'	=>	'article.create'
+]);
+
+Route::get('article/insert', [
+	'uses'	=>	'ArticleController@insert',
+	'as'	=>	'article.insert'
 ]);
 
 Route::post('article/store', [
@@ -67,6 +72,11 @@ Route::post('addon/new', [
 Route::post('addon/edit', [
 	'uses'	=>	'ArticleController@addonEdit',
 	'as'	=>	'article.addonedit'
+]);
+
+Route::post('addon/insert', [
+	'uses'	=>	'ArticleController@addonInsert',
+	'as'	=>	'article.addoninsert'
 ]);
 /** Login **/
 

@@ -3,19 +3,21 @@
 <script src="/assets/js/jquery-ui.js" language="javascript"></script>
 <script src="/assets/js/jquery-ui.min.js" language="javascript"></script>
 <script src="/assets/js/google-search.js" language="javascript"></script>
-<script>
-$(function(){
-	$(".art-addons").tabs();
-	$(".img-search").tabs();
-});
-</script>
 <script src="/assets/js/article.js" language="javascript"></script>
+<script language="javascript" src="/assets/js/temp_art.js"></script>
+<script type="text/javascript" src="/assets/js/plugins/jscolor.js"></script>
+<link rel="stylesheet" type="text/css" href="/assets/css/temp.css"></link>
 	<div class="container article">
 		<div class="article-menu">
 			<div class="row">
 				<div class="col-md-6">
 					{{ Form::open(['name'=>'article', 'role'=>'form', 'route'=>'article.store', 'method'=>'post']) }}
 					<div class="row">
+						@if(Session::has('curation'))
+							<input type="hidden" class="cur-id" name="cur_id" value="{{Session::get('curation')}}">
+						@else
+							<input type="hidden" class="cur-id" name="cur_id" value="{{$curation}}">
+						@endif
 						<div class="country col-md-6">
 							<div class="dropdown">
 					       		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"><span class="val-select">Select A Country</span> <span class="caret"></span></button>
@@ -53,7 +55,7 @@ $(function(){
 							@section('prevModal')
 							@show
 						<!-- End of Preview Modal-->
-						<input type="submit" class="btn btn-default save" value="Save" />
+						<input type="submit" class="btn btn-default save" onclick="save_article()" value="Save" />
 						<input type="button" class="btn btn-default" value="Public" />
 					</div>
 				</div>
@@ -90,107 +92,185 @@ $(function(){
 			</div>
 			<div class="art-addons">
 				<ul class="nav nav-tabs">
-					<li><a href="#tabs-1"><span class="glyphicon glyphicon-pencil"></span> Text</a></li>
-					<li><a href="#tabs-2"><span class="glyphicon glyphicon-camera"></span> Picture</a></li>
-					<li><a href="#tabs-3"><span class="glyphicon glyphicon-hdd"></span> Reference</a></li>
-					<li><a href="#tabs-4"><span class="glyphicon glyphicon-link"></span> Link</a></li>
-					<li><a href="#tabs-5"><span class="glyphicon glyphicon-retweet"></span> Twitter</a></li>
-					<li><a href="#tabs-6"><span class="glyphicon glyphicon-hd-video"></span> Youtube</a></li>
-					<li><a href="#tabs-7"><span class="glyphicon glyphicon-header"></span> h2 Tag</a></li>
+					<li class="add-text"><a href="javascript:void(0)" onclick="edit_addon('0', 'text', 'addon', 'new', 'new')"><span class="glyphicon glyphicon-pencil"></span> Text</a></li>
+					<li class="add-image"><a href="javascript:void(0)" onclick="edit_addon('0', 'picture', 'addon', 'new', 'new')"><span class="glyphicon glyphicon-camera" ></span> Picture</a></li>
+					<li class="add-reference"><a href="javascript:void(0)"><span class="glyphicon glyphicon-hdd"></span> Reference</a></li>
+					<li class="add-link"><a href="javascript:void(0)" onclick="edit_addon('0', 'link', 'addon', 'new', 'new')"><span class="glyphicon glyphicon-link"></span> Link</a></li>
+					<li class="add-twitter"><a href="javascript:void(0)"><span class="glyphicon glyphicon-retweet"></span> Twitter</a></li>
+					<li class="add-video"><a href="javascript:void(0)" onclick="edit_addon('0', 'video', 'addon', 'new', 'new')"><span class="glyphicon glyphicon-hd-video"></span> Youtube</a></li>
+					<li class="add-heading"><a href="javascript:void(0)"  onclick="edit_addon('0', 'tag', 'addon', 'new', 'new')"><span class="glyphicon glyphicon-header"></span> h2 Tag</a></li>
 				</ul>
-				<div class="addon-tab text" id="tabs-1">
-					<div class="tag-wrap temp-storage">
-						
+				<div class="test"></div>
+				<div class="addon-wrapper">
+					<div class="loading">
+						<div class="loader row" style="display: none;"><div class="col-md-12"><img src="/assets/images/loader.gif" /></div><div class="col-md-12">Loading...</div></div>
 					</div>
-					<textarea name="art-text-add" class="added-value" style="display:none;"></textarea>
-					<textarea name="art-text" class="form-control temp-inp" placeholder="Enter Text Here"></textarea>
-					<div><input type="button" class="btn btn-default val-add" value="Add" /></div>
-				</div>
-				<div class="addon-tab picture" id="tabs-2">
-					<div class="pic-wrap">
-						<div class="pic-img left">
-							<img src="/assets/images/article-default.png" />
-						</div>
-						<div class="pic-upload left">
-							<div class="form-group">
-								<input type="file" class="btn btn-default pic-upload" value="Select a file" />
-							</div>
-							<div class="form-group">
-								<input type="button" class="btn btn-default img-search" data-toggle="modal" data-target="#imageSearch" name="search" value="Search" />
-								@include('articles.image_search')
-								@section('imageSearch')
-								@show
-							</div>
-						</div>
-						<div class="clear"></div>
-					</div>
-					<div class="clear"></div>
-				</div>
-				<div class="addon-tab reference" id="tabs-3">
-					<div class="form-group">
-						<textarea class="form-control" name="art-ref-text" placeholder="Enter text"></textarea>
-					</div>
-					<div class="form-group">
-						<input type="text" class="form-control" name="ref-url" placeholder="Reference URL" />
-					</div>
-					<div><input type="button" class="btn btn-default" value="Add" /></div>
-				</div>
-				<div class="addon-tab link" id="tabs-4">
-					<div class="link-wrap">
-						<div class="inline check-wrap">
-							<input type="hidden" class="route-url" value="{{URL::route('fetchlink')}}">
-							<input type="text" class="form-control left art-link" placeholder="Enter URL" name="art-link" /> <input type="button" class="btn btn-default left link-check left" value="Check"> <input type="button" class="btn btn-default left" value="Cancel" name="reset" /><img src="/assets/images/loader.gif" class="loading" style="display: none; width: 20px"/> 
-							<div class="clear"></div>
-						</div>
-						<div class="link-container">
-							<div class="link-results">
-							</div>
-							<div class="extra-texts">
-								<textarea class="link-extra-text form-control"></textarea>
-								<input type="button" class="btn btn-default val-add" value="Add"> <input type="button" class="btn btn-default" value="Cancel">
-							</div>
+					<div class="new-addon row">
+						<div class="col-md-6 new-item">
 						</div>
 					</div>
-				</div>
-				<div class="addon-tab twitter" id="tabs-5">
-					<input type="text" class="form-control" placeholder="URL of the tweet">
-					<input type="button" class="btn btn-default" data-toggle="modal" data-target="#twitterSearch" name="search" value="Look for tweets" />
-					@include('articles.twitter_search')
-					@section('twitterSearch')
-					@show
-				</div>
-				<div class="addon-tab youtube" id="tabs-6">
-					<div class="video-url inline">
-						<input type="text" class="vid-url form-control left" placeholder="Enter URL from Youtube"/>&nbsp;<input type="button" class="btn btn-default vid-check left" value="Check" />&nbsp;<input type="button" class="btn btn-default vid-cancel left" value="Cancel" />
-					</div>
-					<div class="vid-result row" style="display:none">
-						<div class="col-md-4">
-							<iframe src="#" width="300" height="300">#document</iframe>
-						</div>
-						<div class="vid-text col-md-4">
-							<textarea placeholder="Video Description" placeholder="Description for the link" class="form-control vid-desc"></textarea>
-							<input type="button" class="btn btn-default vid-add val-add" value="Add" />
-						</div>
-						<div class="col-md-4">
-
-						</div>
+					<div class="addons-container">
+						<ul class="sortable list-unstyled">
+							<?php
+								echo file_get_contents(public_path()."/assets/articles/".$curation.".php");
+							?>
+						</ul>
 					</div>
 				</div>
-				<div class="addon-tab htag" id="tabs-7">
-					<div class="tag-wrap temp-storage">
-						
-					</div>
-					<div class="form-group">
-						<input type="hidden" name="art-heading" class="added-value">
-						<input type="text" class="form-control temp-inp" placeholder="Heading" height="30" name="art-ref-h"/>
-					</div>
-					<div><input type="button" class="btn btn-default tag-add val-add" value="Add" /></div>
-				</div>
-			</div>
-			<div class="addons-container">
-				
 			</div>
 			{{Form::close()}}
 		</div>
 	</div>
+<script>
+function edit_addon(li, type, controller, action, kind){
+	$(".loader").show();
+	if(action == 'new'){
+		post_addon_data(li, type, controller, action, kind);
+	}
+	else if(action == 'edit'){
+		edit_addon_data(li, type, controller, action, kind);
+	}
+}
+function edit_addon_data(li, type, controller, action, kind){
+	$.post(
+		'/'+controller+"/"+action,
+		{
+			'li'   : li,
+			'type' : type,
+			'kind' : kind
+		}).done(function(data){
+			$(".new-addon .new-item").html(data);
+		});
+}
+function post_addon_data(li, type, controller, action, kind){
+	var tosave = $("ul.sortable").html();
+	$.post(
+		'/'+controller+'/'+action,
+		{
+			'li'   : li,
+			'type' : type,
+			'kind' : kind,
+			'content' : tosave
+
+		}).done(function(data){
+			if(kind == 'new'){
+				$(".new-addon .new-item").html(data);
+			}
+			else{
+				$("ul.sortable li[value='"+li+"'] .append-new-item").html(data);
+				$("ul.sortable li[value='"+li+"'] .add-inner .show-append-here").html("");
+				$("ul.sortable li[value='"+li+"'] .append-new-item").show();
+			}
+		});
+}
+$(".sortable").sortable({
+	handle: '.sort-item'
+});
+function show_appended_item_area(li){
+	var addon = "";
+	addon += '<ul class="append-add-item list-inline">';
+	addon += '<li><a href="javascript:void(0);" onclick="edit_addon(\''+li+'\', \'text\', \'addon\', \'new\', \'append\')">Text</a></li>';
+	addon += '<li><a href="javascript:void(0);" onclick="edit_addon(\''+li+'\', \'picture\', \'addon\', \'new\', \'append\')">Picture</a></li>';
+	addon += '<li><a href="javascript:void(0);" onclick="edit_addon("text", "addon", "new")">Reference</a></li>';
+	addon += '<li><a href="javascript:void(0);" onclick="edit_addon("text", "addon", "new")">Link</a></li>';
+	addon += '<li><a href="javascript:void(0);" onclick="edit_addon("text", "addon", "new")">Twitter</a></li>';
+	addon += '<li><a href="javascript:void(0);" onclick="edit_addon(\''+li+'\', \'video\', \'addon\', \'new\', \'append\')">Youtube</a></li>';
+	addon += '<li><a href="javascript:void(0);" onclick="edit_addon(\''+li+'\', \'tag\', \'addon\', \'new\', \'append\')">H2 Tag</a></li>';
+	addon += '<li class="remove-appended right"><a href="javascript:void(0);" onclick="close_appended('+li+')"><span class="glyphicon glyphicon-remove-circle"></span></a></li>';
+	addon += '</ul>';
+
+	$("ul.sortable li[value="+li+"] .add-inner .show-append-here").html(addon);
+	$("ul.sortable li[value="+li+"] .add-inner .item-btn-con").hide();
+}
+function close_appended(li){
+	$("ul.sortable li[value="+li+"] .add-inner .show-append-here").html("");
+	$("ul.sortable li[value="+li+"] .add-inner .item-btn-con").show();
+}
+function color_changed(li, type, kind){
+	var color = "";
+	if(kind == 'new'){
+		color = $(".new-addon .new-item .colorpicker").val();
+		$(".new-addon .new-item .tag-bullet").css('color', color);
+		$(".new-addon .new-item .tag-hr").css('border-color', color);
+	}
+	else{
+		color = $("ul.sortable li[value='"+li+"'] .colorpicker").val();
+		$("ul.sortable li[value='"+li+"'] .tag-bullet").css('color', color);
+		$("ul.sortable li[value='"+li+"'] .tag-hr").css('border-color', color);
+	}
+}
+function select_htype(li, type, kind){
+	if(kind == 'new'){
+		var tagtype = $(".new-addon .new-item .tag-heading").val();
+		if(tagtype == 'normal'){
+			$(".new-addon .new-item .tag-hr").show();
+			$(".new-addon .new-item .tag-bullet").hide();
+		}else{
+			$(".new-addon .new-item .tag-hr").hide();
+			$(".new-addon .new-item .tag-bullet").show();
+		}
+	}
+	else{
+		var tagtype = $("ul.sortable li[value='"+li+"'] .tag-heading").val();
+		if(tagtype == 'normal'){
+			$("ul.sortable li[value='"+li+"'] .tag-hr").show();
+			$("ul.sortable li[value='"+li+"'] .tag-bullet").hide();
+		}else{
+			$("ul.sortable li[value='"+li+"'] .tag-hr").hide();
+			$("ul.sortable li[value='"+li+"'] .tag-bullet").show();
+		}
+	}
+}
+function upload_image(li, type, kind){
+	if(kind == 'new'){
+		$(".new-addon .new-item #upload-addon").submit(function(e){
+			e.preventDefault();
+			$(".loader").show();
+			$.ajax({
+				url	: '/file/upload',
+				type : 'POST',
+				data : new FormData(this),
+				contentType : false,
+				cache : false,
+				processData : false,
+				success : function(res){
+					$(".new-addon .new-item .def-image img").attr('src', res);
+					$(".new-addon .new-item .img-hid").val(res);
+					$(".loader").hide();
+				}
+			});
+		});
+	}
+	else{
+		$("ul.sortable li[value='"+li+"'] #upload-addon").submit(function(e){
+			e.preventDefault();
+			$(".loader").show();
+			$.ajax({
+				url	: '/file/upload',
+				type : 'POST',
+				data : new FormData(this),
+				contentType : false,
+				cache : false,
+				processData : false,
+				success : function(res){
+					$("ul.sortable li[value='"+li+"'] .def-image img").attr('src', res);
+					$("ul.sortable li[value='"+li+"'] .img-hid").val(res);
+					$(".loader").hide();
+				}
+			});
+		});
+	}
+}
+function insert_addon(){
+	$(".loader").show();
+	var insert = $("ul.sortable").html();
+	var id = $(".cur-id").val();
+	$.post('/addon/insert',{
+		'insert' : insert,
+		'id'	 : id
+	});
+}
+
+</script>
+
 @stop
