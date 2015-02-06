@@ -16,7 +16,7 @@ Route::post('user/register', [
 	'uses'	=>	'UserController@store',
 	'as'	=>	'user.registration'
 ]);
-
+ 
 Route::get('user/profile/{id}', [
 	'uses'	=>	'UserController@profile',
 	'as'	=>	'user.profile'
