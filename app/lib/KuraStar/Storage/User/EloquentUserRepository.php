@@ -13,6 +13,12 @@ class EloquentUserRepository implements UserRepository{
 			return $user->save();
 	}
 
+	public function getUserById($id){
+		$user = User::where('CURATER_ID', '=', $id)->first();
+
+		return $user;
+	}
+
 	public function allUsers(){
 		return User::all();
 	}

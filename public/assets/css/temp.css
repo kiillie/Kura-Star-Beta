@@ -13,6 +13,24 @@
 	text-align: center;
 	margin: 20px 0;
 }
+.modal-loader{
+	position: fixed;
+	z-index: 10000;
+	background: rgb(211, 206, 206);
+	width: 100%;
+	display: block;
+	height: 100%;
+	opacity: 0.5;
+	display: none;
+}
+.modal-loader img{
+	width: 130px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -60px;
+	margin-top: -60px;
+}
 .editlist{
 	visibility: hidden;
 }

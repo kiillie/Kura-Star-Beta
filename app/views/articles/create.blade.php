@@ -7,7 +7,11 @@
 <script language="javascript" src="/assets/js/temp_art.js"></script>
 <script type="text/javascript" src="/assets/js/plugins/jscolor.js"></script>
 <link rel="stylesheet" type="text/css" href="/assets/css/temp.css"></link>
+<div class="modal modal-loader"><div class="img-modal"><img src="/assets/images/loader.gif" /></div></div>
 	<div class="container article">
+		@if(Session::has('article'))
+			<?php $article = Session::get('article'); ?>
+		@endif
 		<div class="article-menu">
 			<div class="row">
 				<div class="col-md-6">
@@ -20,9 +24,19 @@
 						@endif
 						<div class="country col-md-6">
 							<div class="dropdown">
-					       		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"><span class="val-select">Select A Country</span> <span class="caret"></span></button>
+					       		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+					       			@if($article->COUNTRY_ID == 0)
+					       				<span class="val-select">Select A Country</span> <span class="caret"></span>
+					       			@else
+					       				@foreach($countries as $country)
+					       					@if($country->COUNTRY_ID == $article->COUNTRY_ID)
+					       						<span class="val-select">{{$country->COUNTRY_NAME}}</span> <span class="caret"></span>
+					       					@endif
+					       				@endforeach
+					       			@endif
+					       		</button>
 					        	<ul class="dropdown-menu nav-ctry" role="menu">
-					        		<input type="hidden" class="sel-id" name="country">
+					        		<input type="hidden" class="sel-id" name="country" value="{{$article->COUNTRY_ID}}">
 						    		@foreach($continents as $continent)
 					        			<li class="disabled">{{$continent->CONTINENT_NAME}}</li>
 							    		@foreach($countries as $country)
@@ -36,9 +50,19 @@
 						</div>
 						<div class="category col-md-6">
 							<div class="dropdown">
-						    	<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"><span class="val-select">Select A Category</span> <span class="caret"></span></button>
+						    	<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+						    		@if($article->CATEGORY_ID == 0)
+						    			<span class="val-select">Select A Category</span> <span class="caret"></span>
+						    		@else
+						    			@foreach($categories as $category)
+						    				@if($category->CATEGORY_ID == $article->CATEGORY_ID)
+						    					<span class="val-select">{{$category->CATEGORY_NAME}}</span> <span class="caret"></span>
+						    				@endif
+						    			@endforeach
+						    		@endif
+						    	</button>
 					        	<ul class="dropdown-menu nav-cat" role="menu">
-					        		<input type="hidden" class="sel-id" name="category">
+					        		<input type="hidden" class="sel-id" value="{{$article->CATEGORY_ID}}" name="category">
 									@foreach($categories as $category)
 										<li class="item" value="{{$category->CATEGORY_ID}}">{{$category->CATEGORY_NAME}}</li>
 									@endforeach
@@ -56,7 +80,36 @@
 							@show
 						<!-- End of Preview Modal-->
 						<input type="submit" class="btn btn-default save" onclick="save_article()" value="Save" />
-						<input type="button" class="btn btn-default" value="Public" />
+						@if(Session::has('curation'))
+							@if(Session::has('status'))
+								@if(Session::get('status') == 0)
+									<input type="button" class="btn btn-default publish unpublished" onclick="publish_article({{Session::get('curation')}})" value="Publish" />
+								@else
+									<input type="button" class="btn btn-default publish published" onclick="publish_article({{Session::get('curation')}})" value="Unpublish" />
+								@endif
+							@else
+								@if(($status) == 0)
+									<input type="button" class="btn btn-default publish unpublished" onclick="publish_article({{Session::get('curation')}})" value="Publish" />
+								@else
+									<input type="button" class="btn btn-default publish published" onclick="publish_article({{Session::get('curation')}})" value="Unpublish" />
+								@endif
+							@endif
+						@else
+							@if(Session::has('status'))
+								@if(Session::get('status') == 0)
+									<input type="button" class="btn btn-default publish unpublished" onclick="publish_article({{$curation}})" value="Publish" />
+								@else
+									<input type="button" class="btn btn-default publish published" onclick="publish_article({{$curation}})" value="Unpublish" />
+								@endif
+							@else
+								@if(($status) == 0)
+									<input type="button" class="btn btn-default publish unpublished" onclick="publish_article({{$curation}})" value="Publish" />
+								@else
+									<input type="button" class="btn btn-default publish published" onclick="publish_article({{$curation}})" value="Unpublish" />
+								@endif
+							@endif
+						@endif
+						
 					</div>
 				</div>
 			</div>
@@ -69,10 +122,10 @@
 					</div>
 					<div class="col-md-10 art-title-desc">
 						<div class="form-group title">
-							<input type="text" class="form-control" name="title" placeholder="Title" />
+							<input type="text" class="form-control" name="title" placeholder="Title" value="{{$article->CURATION_TITLE}}" />
 						</div>
 						<div class="form-group desc">
-							<textarea maxlength="150" class="form-control" name="description" placeholder="Description"></textarea>
+							<textarea maxlength="150" class="form-control" name="description" placeholder="Description">{{$article->CURATION_DESCRIPTION}}</textarea>
 							<span class="right"><span class="num-char">0</span>/150 characters</span>
 						</div>
 					</div>
@@ -131,6 +184,7 @@ function edit_addon(li, type, controller, action, kind){
 		edit_addon_data(li, type, controller, action, kind);
 	}
 }
+
 function edit_addon_data(li, type, controller, action, kind){
 	$.post(
 		'/'+controller+"/"+action,
@@ -142,6 +196,7 @@ function edit_addon_data(li, type, controller, action, kind){
 			$(".new-addon .new-item").html(data);
 		});
 }
+
 function post_addon_data(li, type, controller, action, kind){
 	var tosave = $("ul.sortable").html();
 	$.post(
@@ -166,6 +221,7 @@ function post_addon_data(li, type, controller, action, kind){
 $(".sortable").sortable({
 	handle: '.sort-item'
 });
+
 function show_appended_item_area(li){
 	var addon = "";
 	addon += '<ul class="append-add-item list-inline">';
@@ -182,10 +238,12 @@ function show_appended_item_area(li){
 	$("ul.sortable li[value="+li+"] .add-inner .show-append-here").html(addon);
 	$("ul.sortable li[value="+li+"] .add-inner .item-btn-con").hide();
 }
+
 function close_appended(li){
 	$("ul.sortable li[value="+li+"] .add-inner .show-append-here").html("");
 	$("ul.sortable li[value="+li+"] .add-inner .item-btn-con").show();
 }
+
 function color_changed(li, type, kind){
 	var color = "";
 	if(kind == 'new'){
@@ -199,6 +257,7 @@ function color_changed(li, type, kind){
 		$("ul.sortable li[value='"+li+"'] .tag-hr").css('border-color', color);
 	}
 }
+
 function select_htype(li, type, kind){
 	if(kind == 'new'){
 		var tagtype = $(".new-addon .new-item .tag-heading").val();
@@ -221,6 +280,7 @@ function select_htype(li, type, kind){
 		}
 	}
 }
+
 function upload_image(li, type, kind){
 	if(kind == 'new'){
 		$(".new-addon .new-item #upload-addon").submit(function(e){
@@ -261,6 +321,7 @@ function upload_image(li, type, kind){
 		});
 	}
 }
+
 function insert_addon(){
 	$(".loader").show();
 	var insert = $("ul.sortable").html();
@@ -271,6 +332,30 @@ function insert_addon(){
 	});
 }
 
-</script>
+function publish_article(id){
+	var publish = $(".publish").hasClass("published");
+	var value = 0;
+	if(!publish){
+			value = 1;
+	}
 
+	$(".modal-loader").show();
+	$.post('/article/publish', {
+		'id' : id,
+		'value' : value
+	}).done(function(){
+		$(".modal-loader").hide();
+		if(publish){
+			$(".publish").removeClass("published");
+			$(".publish").addClass("unpublished");
+			$(".publish").val("Publish");
+		}
+		else{
+			$(".publish").removeClass("unpublished");
+			$(".publish").addClass("published");
+			$(".publish").val("Unpublish");	
+		}
+	});
+}
+</script>
 @stop

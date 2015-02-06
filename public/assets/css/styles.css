@@ -588,3 +588,18 @@
   /* flex: 1; */
   flex-grow: 1;
 }
+
+.profile{
+	margin: 40px 0;
+	min-height: 300px;
+}
+.profile .prof-img-wrapper img{
+	width: 100%;
+}
+.profile ul{
+	padding: 0;
+}
+.profile ul li{
+	list-style: none;
+	padding: 10px 0;
+}

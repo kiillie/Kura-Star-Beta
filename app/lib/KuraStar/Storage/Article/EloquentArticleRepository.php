@@ -34,6 +34,12 @@ class EloquentArticleRepository implements ArticleRepository{
 		return Article::where('CURATION_ID', '=', $id)->first();
 	}
 
+	public function publish($article){
+		$publish = Article::where('CURATION_ID', '=', $article['id'])->update(['CURATION_STATUS' => $article['value']]);
+
+		return $publish;
+	}
+
 	public function getByCountryCategory($country, $category){
 		return Article::where('COUNTRY_ID', '=', $country)
 						->where('CATEGORY_ID', '=', $category)

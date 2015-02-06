@@ -11,6 +11,8 @@ interface ArticleRepository{
 	public function allArticles();
 
 	public function show($id);
+
+	public function publish($article);
 	
 	public function getByCountryCategory($country, $category);
 

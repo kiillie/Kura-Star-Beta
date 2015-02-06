@@ -50,7 +50,7 @@ $(document).ready(function(){
 					    <li><a href="{{URL::route('index')}}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
 						<li><a href="{{URL::route('article.create')}}"><span class="glyphicon glyphicon-file"></span> Make an Article</a></li>
 						@if(Auth::check())
-						<li><a href="#"><span class="glyphicon glyphicon-user"></span> {{Auth::user()->name}}</a></li>
+						<li><a href="{{URL::route('user.profile', Auth::user()->CURATER_ID)}}"><span class="glyphicon glyphicon-user"></span> {{Auth::user()->name}}</a></li>
 						<li><a href="{{URL::route('logout')}}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 						@else
 						<li><a href="{{URL::route('registration')}}"><span class="glyphicon glyphicon-registration-mark"></span> Sign Up</a></li>
@@ -127,7 +127,7 @@ $(document).ready(function(){
 				<ul class="list-inline">
 					@if(Auth::check())
 					<li><span class="glyphicon glyphicon-list-alt"></span> <a href="{{URL::route('article.insert')}}">Make an Article</a></li>
-					<li><span class="glyphicon glyphicon-user"></span>  <a href="#">{{Auth::user()->CURATER}}</a></li>
+					<li><span class="glyphicon glyphicon-user"></span>  <a href="{{URL::route('user.profile', Auth::user()->CURATER_ID)}}">{{Auth::user()->CURATER}}</a></li>
 					<li><span class="glyphicon glyphicon-log-out"></span> <a href="{{URL::route('logout')}}">Logout</a></li>
 					@else
 					<li><span class="glyphicon glyphicon-list-alt"></span> <a href="{{URL::route('registration')}}">Make an Article</a></li>

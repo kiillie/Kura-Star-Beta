@@ -17,6 +17,11 @@ Route::post('user/register', [
 	'as'	=>	'user.registration'
 ]);
 
+Route::get('user/profile/{id}', [
+	'uses'	=>	'UserController@profile',
+	'as'	=>	'user.profile'
+]);
+
 /** Articles **/
 
 Route::get('article/{id}/create', [
@@ -54,6 +59,11 @@ Route::get('article/{id}/country', [
 	'as'	=>	'article.bycountry'
 ]);
 
+Route::post('article/publish', [
+	'uses'	=>	'ArticleController@publish',
+	'as'	=>	'article.publish'
+]);
+
 Route::post('file/upload', [
 	'uses'	=>	'ArticleController@upload',
 	'as'	=>	'article.imgupload'
@@ -78,6 +88,7 @@ Route::post('addon/insert', [
 	'uses'	=>	'ArticleController@addonInsert',
 	'as'	=>	'article.addoninsert'
 ]);
+
 /** Login **/
 
 Route::get('login',[

@@ -27,12 +27,15 @@ class ArticleController extends BaseController{
 		$countries = $this->country->showCountryByContinent();
 		$categories = $this->category->show();
 		$continents = $this->continent->show();
-		
+		$article = $this->article->show($id);
+
 		return View::make('articles.create')
 				->withCountries($countries)
 				->withCategories($categories)
 				->withContinents($continents)
-				->with('curation', $id);
+				->with('curation', $id)
+				->with('status', $article->CURATION_STATUS)
+				->with('article', $article);
 	}
 
 	public function insert(){
@@ -41,7 +44,8 @@ class ArticleController extends BaseController{
 			$article = $this->article->getArticle();
 			$files = fopen(public_path()."/assets/articles/".$article->CURATION_ID.".php", "w");
 			$id = $article->CURATION_ID;
-			return Redirect::route('article.create', $id)->with('curation', $id);
+			$publish = $article->CURATION_STATUS;
+			return Redirect::route('article.create', $id)->with('curation', $id)->with('status', $publish)->with('article', $article);
 		}
 	}
 
@@ -57,6 +61,19 @@ class ArticleController extends BaseController{
 					->with('message', 'Article was not saved.');
 		}
 
+	}
+
+	public function publish(){
+		$publish = $this->article->publish(Input::all());
+		$input = Input::all();
+		if($publish){
+			return Redirect::route('article.create', $input['id'])
+					->with('message', 'Article was published successfully!');
+		}
+		else{
+			return Redirect::route('article.create', $input['id'])
+					->with('message', 'Article was not published!');
+		}
 	}
 
 	public function show($id){

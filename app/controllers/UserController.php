@@ -1,13 +1,25 @@
 <?php
 
 use KuraStar\Storage\User\UserRepository as User;
+use KuraStar\Storage\Continent\ContinentRepository as Continent;
+use KuraStar\Storage\Country\CountryRepository as Country;
+use KuraStar\Storage\Category\CategoryRepository as Category;
+use KuraStar\Storage\Article\ArticleRepository as Article;
 
 class UserController extends BaseController{
 	
 	protected $user;
+	protected $continent;
+	protected $country;
+	protected $category;
+	protected $article;
 
-	public function __construct(User $user){
+	public function __construct(User $user, Continent $continent, Country $country, Category $category, Article $article){
 		$this->user = $user;
+		$this->continent = $continent;
+		$this->country = $country;
+		$this->category = $category;
+		$this->article = $article;
 	}
 
 	public function store(){
@@ -58,6 +70,19 @@ class UserController extends BaseController{
 				->withInput()
 				->with('message_login', 'Invalid Email Address or Password');
 		}
+	}
+
+	public function profile($id){
+		$countries = $this->country->showCountryByContinent();
+		$categories = $this->category->show();
+		$continents = $this->continent->show();
+		$user = $this->user->getUserById($id);
+
+		return View::make('users.profile')
+					->withUser($user)
+					->withContinents($continents)
+					->withCountries($countries)
+					->withCategories($categories);
 	}
 }
 

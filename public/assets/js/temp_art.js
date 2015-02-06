@@ -340,6 +340,7 @@ function delete_item(type, kind){
 		}
 	});
 	added_addon_val(type, kind);
+	insert_addon();
 }
 
 function moveUpAndDown(type, kind){
