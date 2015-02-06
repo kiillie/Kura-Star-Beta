@@ -40,6 +40,15 @@ class EloquentArticleRepository implements ArticleRepository{
 		return $publish;
 	}
 
+	public function getByUser($id){
+		return Article::where('CURATER_ID', '=', $id)->get();
+	}
+
+	public function countArticlesByUser($id){
+		return Article::where('CURATER_ID', '=', $id)
+					->count();
+	}
+
 	public function getByCountryCategory($country, $category){
 		return Article::where('COUNTRY_ID', '=', $country)
 						->where('CATEGORY_ID', '=', $category)

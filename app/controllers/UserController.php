@@ -77,12 +77,14 @@ class UserController extends BaseController{
 		$categories = $this->category->show();
 		$continents = $this->continent->show();
 		$user = $this->user->getUserById($id);
+		$count = $this->article->countArticlesByUser($id);
 
 		return View::make('users.profile')
 					->withUser($user)
 					->withContinents($continents)
 					->withCountries($countries)
-					->withCategories($categories);
+					->withCategories($categories)
+					->withCount($count);
 	}
 }
 

@@ -101,6 +101,23 @@ class ArticleController extends BaseController{
 				->withCtryrank($ctry_rank);;
 	}
 
+	public function showArticlesByUser($id){
+		$articles = $this->article->getByUser($id);
+		$user = $this->user->getUserById($id);
+		$countries = $this->country->showCountryByContinent();
+		$categories = $this->category->show();
+		$continents = $this->continent->show();
+		$count = $this->article->countArticlesByUser($id);
+
+		return View::make('users.articles')
+				->withContinents($continents)
+				->withCountries($countries)
+				->withCategories($categories)
+				->withArticles($articles)
+				->withUser($user)
+				->withCount($count);
+	}
+
 	public function showByCategory($id){
 		$users = $this->user->allUsers();
 		$countries = $this->country->showCountryByContinent();

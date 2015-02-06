@@ -13,6 +13,10 @@ interface ArticleRepository{
 	public function show($id);
 
 	public function publish($article);
+
+	public function getByUser($user);
+
+	public function countArticlesByUser($id);
 	
 	public function getByCountryCategory($country, $category);
 

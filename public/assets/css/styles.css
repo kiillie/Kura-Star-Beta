@@ -603,3 +603,6 @@
 	list-style: none;
 	padding: 10px 0;
 }
+.article-container .lists .image img{
+	width: 70px;
+}

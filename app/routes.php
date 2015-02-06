@@ -22,6 +22,10 @@ Route::get('user/profile/{id}', [
 	'as'	=>	'user.profile'
 ]);
 
+Route::get('user/article/{id}', [
+	'uses'	=>	'ArticleController@showArticlesByUser',
+	'as'	=>	'user.articles'
+]);
 /** Articles **/
 
 Route::get('article/{id}/create', [
