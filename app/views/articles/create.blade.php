@@ -73,12 +73,11 @@
 				</div>
 				<div class="col-md-6">
 					<div class="article-btn">
-						<button type="button" class="btn btn-default preview" data-toggle="modal" data-target="#articlePreview"> Preview </button>
-						<!-- Modal for Preview -->
-							@include('layouts.preview_modal')
-							@section('prevModal')
-							@show
-						<!-- End of Preview Modal-->
+						@if(Session::has('curation'))
+							<a class="btn btn-default preview" href="{{URL::route('article.preview', Session::get('curation'))}}"> Preview </a>
+						@else
+							<a class="btn btn-default preview" href="{{URL::route('article.preview', $curation)}}"> Preview </a>
+						@endif
 						<input type="submit" class="btn btn-default save" onclick="save_article()" value="Save" />
 						@if(Session::has('curation'))
 							@if(Session::has('status'))

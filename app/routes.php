@@ -93,6 +93,11 @@ Route::post('addon/insert', [
 	'as'	=>	'article.addoninsert'
 ]);
 
+Route::get('article/preview/{id}',[
+	'uses'	=>	'ArticleController@preview',
+	'as'	=>	'article.preview'
+]);
+
 /** Login **/
 
 Route::get('login',[
