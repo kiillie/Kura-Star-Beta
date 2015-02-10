@@ -30,6 +30,7 @@ function addItem(li, type, kind){
 							'</li>';
 			if(kind == 'new'){
 				$(".addons-container .sortable").prepend(content);
+				insert_addon();
 			}
 			else{
 				var current = $('ul.sortable li[value="'+li+'"]');
@@ -38,7 +39,6 @@ function addItem(li, type, kind){
 			}
 			$(".loader").hide();
 			addonHovered(type, kind);
-			insert_addon();
 		}
 	}
 	else if(type == 'picture'){
@@ -74,6 +74,7 @@ function addItem(li, type, kind){
 							'</li>';
 			if(kind == 'new'){
 				$(".addons-container .sortable").prepend(content);
+				insert_addon();
 			}
 			else{
 				var current = $('ul.sortable li[value="'+li+'"]');
@@ -82,7 +83,6 @@ function addItem(li, type, kind){
 			}
 			$(".loader").hide();
 			addonHovered(type, kind);
-			insert_addon();
 		}
 	}
 	else if(type == 'video'){
@@ -119,6 +119,7 @@ function addItem(li, type, kind){
 
 		if(kind == 'new'){
 			$(".addons-container .sortable").prepend(content);
+			insert_addon();
 		}
 		else{
 			var current = $('ul.sortable li[value="'+li+'"]');
@@ -128,7 +129,6 @@ function addItem(li, type, kind){
 
 		$(".loader").hide();
 		addonHovered(type, kind);
-		insert_addon();
 	}
 	else if(type == 'tag'){
 		if(validate_addon(li, type, kind)){
@@ -175,6 +175,7 @@ function addItem(li, type, kind){
 							'</li>';
 			if(kind == 'new'){
 				$(".addons-container .sortable").prepend(content);
+				insert_addon();
 			}
 			else{
 				var current = $('ul.sortable li[value="'+li+'"]');
@@ -183,7 +184,6 @@ function addItem(li, type, kind){
 			}
 			$(".loader").hide();
 			addonHovered(type, kind);
-			insert_addon();
 		}
 	}
 	added_addon_val(type, kind);
@@ -413,26 +413,33 @@ function extract_video(li, type, kind){
 	}
 }
 
+function isURL(text){
+	var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
+	return regexp.test(text);
+}
+
 function extract_image(li, type, kind){
-	$(".loader").show();
-	if(kind == 'new'){
-		var imgtype = $(".new-addon .new-item .picture .img-anchor").hasClass("a-upload");
-		if(!imgtype){
-			var image = $(".new-addon .new-item .picture .url-img .imgurl").val();
-			$(".new-addon .new-item .picture .def-image img").attr("src", image);
-			$(".new-addon .new-item .img-hid").val(image);
-			$(".new-addon .new-item .img-desc-con").show();
-			$(".loader").hide();
+	if(validate_addon(li, type, kind)){
+		$(".loader").show();
+		if(kind == 'new'){
+			var imgtype = $(".new-addon .new-item .picture .img-anchor").hasClass("a-upload");
+			if(!imgtype){
+				var image = $(".new-addon .new-item .picture .url-img .imgurl").val();
+				$(".new-addon .new-item .picture .def-image img").attr("src", image);
+				$(".new-addon .new-item .img-hid").val(image);
+				$(".new-addon .new-item .img-desc-con").show();
+				$(".loader").hide();
+			}
 		}
-	}
-	else{
-		var imgtype = $("ul.sortable li[value='"+li+"'] .picture .img-anchor").hasClass("a-upload");
-		if(!imgtype){
-			var image = $("ul.sortable li[value='"+li+"'] .picture .url-img .imgurl").val();
-			$("ul.sortable li[value='"+li+"'] .picture .def-image img").attr("src", image);
-			$("ul.sortable li[value='"+li+"'] .img-hid").val(image);
-			$("ul.sortable li[value='"+li+"'] .img-desc-con").show();
-			$(".loader").hide();
+		else{
+			var imgtype = $("ul.sortable li[value='"+li+"'] .picture .img-anchor").hasClass("a-upload");
+			if(!imgtype){
+				var image = $("ul.sortable li[value='"+li+"'] .picture .url-img .imgurl").val();
+				$("ul.sortable li[value='"+li+"'] .picture .def-image img").attr("src", image);
+				$("ul.sortable li[value='"+li+"'] .img-hid").val(image);
+				$("ul.sortable li[value='"+li+"'] .img-desc-con").show();
+				$(".loader").hide();
+			}
 		}
 	}
 }
@@ -479,6 +486,10 @@ function select_img_type(li, type, kind){
 	}
 }
 
+function valid_file_extension(file, type){
+
+}
+
 function validate_addon(li, type, kind){
 	var checker = 0;
 	if(type == 'text'){
@@ -487,7 +498,9 @@ function validate_addon(li, type, kind){
 				$("<span class='label label-danger err'>No texts inputted.</span>").insertBefore(".new-addon .new-item textarea.texts");
 			}, 1000);
 			setTimeout(function(){
-				$(".new-item span.err").hide("drop", {'direction': 'down'}, 'slow').done(function(){$(".new-item span.err").remove();});
+				$(".new-item span.err").hide('slow', function(){
+					$(".new-item span.err").remove();
+				});
 				
 			}, 5000);
 			checker++;
@@ -499,21 +512,148 @@ function validate_addon(li, type, kind){
 			return true;
 		}
 	}
-	else if(type == 'tag'){
-		if($(".new-addon .new-item .tag").val() == ""){
-			setTimeout(function(){
-				$("<span class='label label-danger err'>Insert a Tag Title</span>").insertBefore(".new-addon .new-item .tag");
-			}, 1000);
-			setTimeout(function(){
-				$(".new-item span.err").hide("drop", {'direction' : 'down'}, 'slow').done(function(){ $('.new-item span.err').remove();});
-			}, 5000);
-			checker++;
-		}
-		if(checker > 0){
-			return false;
+	else if(type == 'picture'){
+		if(kind == 'new'){
+			var imgtype = $(".new-addon .new-item .picture .img-anchor").hasClass("a-upload");
+
+			if(!imgtype){
+				var image = $(".new-addon .new-item .picture .url-img .imgurl").val();
+				if(image == ""){
+					setTimeout(function(){
+						$("<span class='label label-danger err'>Input a URL.</span>").insertBefore(".new-addon .new-item .imgurl");
+					}, 1000);
+					setTimeout(function(){
+						$(".new-item span.err").hide("drop", {'direction' : 'down'}, 'slow').done(function(){ $('.new-item span.err').remove();});
+					}, 5000);
+					checker++;
+				}
+				else if(!isURL(image)){
+					setTimeout(function(){
+						$("<span class='label label-danger err'>This is not a valid URL</span>").insertBefore(".new-addon .new-item .imgurl");
+					}, 1000);
+					setTimeout(function(){
+						$(".new-item span.err").hide("drop", {'direction' : 'down'}, 'slow').done(function(){ $('.new-item span.err').remove();});
+					}, 5000);
+					checker++;
+				}
+				if(checker > 0){
+					return false;
+				}
+				else{
+					return true;
+				}
+			}
+			else{
+				var image = $(".new-addon .new-item .picture .url-upload .upload-img").val();
+				if(image == ""){
+					setTimeout(function(){
+						$("<span class='label label-danger err'>Choose A file to upload.</span>").insertBefore(".new-addon .new-item .upload-img");
+					}, 1000);
+					setTimeout(function(){
+						$(".new-item span.err").hide('slow', function(){
+							$(".new-item span.err").remove();
+						});
+					}, 5000);
+					checker++;
+				}
+				if(checker > 0){
+					return false;
+				}
+				else{
+					return true;
+				}
+			}
 		}
 		else{
-			return true;
+			var imgtype = $("ul.sortable li[value='"+li+"'] .picture .img-anchor").hasClass("a-upload");
+
+			if(!imgtype){
+				var image = $("ul.sortable li[value='"+li+"'] .picture .url-img .imgurl").val();
+				if(image == ""){
+					setTimeout(function(){
+						$("<span class='label label-danger err'>Input a URL.</span>").insertBefore("ul.sortable li[value='"+li+"'] .imgurl");
+					}, 1000);
+					setTimeout(function(){
+						$("ul.sortable li[value='"+li+"'] span.err").hide("drop", {'direction' : 'down'}, 'slow').done(function(){ $("ul.sortable li[value='"+li+"'] span.err").remove();});
+					}, 5000);
+					checker++;
+				}
+				else if(!isURL(image)){
+					setTimeout(function(){
+						$("<span class='label label-danger err'>This is not a valid URL</span>").insertBefore("ul.sortable li[value='"+li+"'] .imgurl");
+					}, 1000);
+					setTimeout(function(){
+						$(".new-item span.err").hide("drop", {'direction' : 'down'}, 'slow').done(function(){ $("ul.sortable li[value='"+li+"'] span.err").remove();});
+					}, 5000);
+					checker++;
+				}
+				if(checker > 0){
+					return false;
+				}
+				else{
+					return true;
+				}
+			}
+			else{
+				var image = $("ul.sortable li[value='"+li+"'] .picture .url-upload .upload-img").val();
+				if(image == ""){
+					setTimeout(function(){
+						$("<span class='label label-danger err'>Choose A file to upload.</span>").insertBefore("ul.sortable li[value='"+li+"'] .upload-img");
+					}, 1000);
+					setTimeout(function(){
+						$("ul.sortable li[value='"+li+"'] span.err").hide('slow', function(){
+							$("ul.sortable li[value='"+li+"'] span.err").remove();
+						});
+					}, 5000);
+					checker++;
+				}
+				if(checker > 0){
+					return false;
+				}
+				else{
+					return true;
+				}
+			}
+		}
+	}
+	else if(type == 'tag'){
+		if(kind == 'new'){
+			if($(".new-addon .new-item .tag").val() == ""){
+				setTimeout(function(){
+					$("<span class='label label-danger err'>Insert a Tag Title</span>").insertBefore(".new-addon .new-item .tag");
+				}, 1000);
+				setTimeout(function(){
+					$(".new-item span.err").hide('slow', function(){
+						$('.new-item span.err').remove();
+					});
+				}, 5000);
+				checker++;
+			}
+			if(checker > 0){
+				return false;
+			}
+			else{
+				return true;
+			}
+		}
+		else{
+			if($("ul.sortable li[value='"+li+"'] .tag").val() == ""){
+				setTimeout(function(){
+					$("<span class='label label-danger err'>Insert a Tag Title</span>").insertBefore("ul.sortable li[value='"+li+"'] .tag");
+				}, 1000);
+				setTimeout(function(){
+					$("ul.sortable li[value='"+li+"'] span.err").hide('slow', function(){
+						$("ul.sortable li[value='"+li+"'] span.err").remove();
+					});
+				}, 5000);
+				checker++;
+			}
+			if(checker > 0){
+				return false;
+			}
+			else{
+				return true;
+			}
 		}
 	}
 }

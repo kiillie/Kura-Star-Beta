@@ -169,6 +169,7 @@
 						</ul>
 					</div>
 				</div>
+				<textarea name="inner-detail" class="detail-li" style="display:none;">{{$article->CURATION_DETAILS}}</textarea>
 			</div>
 			{{Form::close()}}
 		</div>
@@ -282,41 +283,88 @@ function select_htype(li, type, kind){
 
 function upload_image(li, type, kind){
 	if(kind == 'new'){
-		$(".new-addon .new-item #upload-addon").submit(function(e){
-			e.preventDefault();
-			$(".loader").show();
-			$.ajax({
-				url	: '/file/upload',
-				type : 'POST',
-				data : new FormData(this),
-				contentType : false,
-				cache : false,
-				processData : false,
-				success : function(res){
-					$(".new-addon .new-item .def-image img").attr('src', res);
-					$(".new-addon .new-item .img-hid").val(res);
-					$(".loader").hide();
+			$(".new-addon .new-item #upload-addon").one('submit', function(e){
+				e.preventDefault();
+				if(validate_addon(li, type, kind)){
+					$(".loader").show();
+					$.ajax({
+						url	: '/file/upload',
+						type : 'POST',
+						data : new FormData(this),
+						contentType : false,
+						cache : false,
+						processData : false,
+						success : function(res){
+							if(res == "size"){
+								setTimeout(function(){
+									$("<span class='label label-danger err'>File chosen is too small.</span>").insertBefore(".new-addon .new-item .upload-img");
+								}, 100);
+								setTimeout(function(){
+									$(".new-item span.err").hide("drop", {'direction' : 'down'}, 'slow').done(function(){ $('.new-item span.err').remove();});
+								}, 5000);
+								$(".loader").hide();
+							}
+							else if(res == "type"){
+								setTimeout(function(){
+									$("<span class='label label-danger err'>File chosen is not an image.</span>").insertBefore(".new-addon .new-item .upload-img");
+								}, 100);
+								setTimeout(function(){
+									$(".new-item span.err").hide("drop", {'direction' : 'down'}, 'slow').done(function(){ $('.new-item span.err').remove();});
+								}, 5000);
+								$(".loader").hide();
+							}
+							else{
+								$(".new-addon .new-item .def-image img").attr('src', res);
+								$(".new-addon .new-item .img-hid").val(res);
+								$(".loader").hide();
+							}
+						}
+					});
+
 				}
 			});
-		});
+
 	}
 	else{
-		$("ul.sortable li[value='"+li+"'] #upload-addon").submit(function(e){
+		$("ul.sortable li[value='"+li+"'] #upload-addon"). one('submit', function(e){
 			e.preventDefault();
-			$(".loader").show();
-			$.ajax({
-				url	: '/file/upload',
-				type : 'POST',
-				data : new FormData(this),
-				contentType : false,
-				cache : false,
-				processData : false,
-				success : function(res){
-					$("ul.sortable li[value='"+li+"'] .def-image img").attr('src', res);
-					$("ul.sortable li[value='"+li+"'] .img-hid").val(res);
-					$(".loader").hide();
-				}
-			});
+			alert("hi");
+			if(validate_addon(li, type, kind)){
+				$(".loader").show();
+				$.ajax({
+					url	: '/file/upload',
+					type : 'POST',
+					data : new FormData(this),
+					contentType : false,
+					cache : false,
+					processData : false,
+					success : function(res){
+						if(res == "size"){
+							setTimeout(function(){
+								$("<span class='label label-danger err'>File chosen is too small.</span>").insertBefore("ul.sortable li[value='"+li+"'] .upload-img");
+							}, 100);
+							setTimeout(function(){
+								$("ul.sortable li[value='"+li+"'] span.err").hide("drop", {'direction' : 'down'}, 'slow').done(function(){ $("ul.sortable li[value='"+li+"'] span.err").remove();});
+							}, 5000);
+							$(".loader").hide();
+						}
+						else if(res == "type"){
+							setTimeout(function(){
+								$("<span class='label label-danger err'>File chosen is not an image.</span>").insertBefore("ul.sortable li[value='"+li+"'] .upload-img");
+							}, 100);
+							setTimeout(function(){
+								$("ul.sortable li[value='"+li+"'] span.err").hide("drop", {'direction' : 'down'}, 'slow').done(function(){ $("ul.sortable li[value='"+li+"'] span.err").remove();});
+							}, 5000);
+							$(".loader").hide();
+						}
+						else{
+							$("ul.sortable li[value='"+li+"'] .def-image img").attr('src', res);
+							$("ul.sortable li[value='"+li+"'] .img-hid").val(res);
+							$(".loader").hide();
+						}
+					}
+				});
+			}
 		});
 	}
 }
@@ -324,6 +372,13 @@ function upload_image(li, type, kind){
 function insert_addon(){
 	$(".loader").show();
 	var insert = $("ul.sortable").html();
+	var det = $("ul.sortable li .item-inner").length;
+	var det_con = "<ul class='details'>";
+	for(var i = 0; i < det; i++){
+		det_con += "<li>"+$("ul.sortable li .item-inner").eq(i).html()+"</li>";
+	}
+	det_con += "</ul>";
+	$(".detail-li").val(det_con);
 	var id = $(".cur-id").val();
 	$.post('/addon/insert',{
 		'insert' : insert,

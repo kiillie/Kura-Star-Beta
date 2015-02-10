@@ -103,7 +103,7 @@ else if($addon['type'] == 'video'){
 					'<div class="vid-url-container">'+
 					'<input type="text" class="vid-url form-control" placeholder="Video URL"/>'+
 					'<input type="button" value="Check" class="btn btn-default add" onclick="extract_video(\''+li+'\', \''+type+'\', \''+kind+'\')">'+
-					'<input type="button" value="Cancel" class="btn btn-default">'+
+					'<input type="button" value="Cancel" class="btn btn-default"onclick="cancel_add(\''+li+'\', \''+type+'\', \''+kind+'\')">'+
 					'</div>'+
 					'<div class="extracted-vid row">'+
 					'<div class="col-md-7">'+
@@ -142,7 +142,7 @@ else if($addon['type'] == 'tag'){
 					'<input type="text" class="form-control tag" placeholder="Tag Title"/>'+
 					'<hr class="tag-hr"></hr>'+
 					'<input type="color" class="form-control colorpicker" onchange="color_changed(\'{{$addon["li"]}}\', \'{{$addon["type"]}}\', \'{{$addon["kind"]}}\')"/>'+
-					'<input type="button" value="Add" class="btn btn-default add" onclick="addItem(\'{{$addon["li"]}}\', \'{{$addon["type"]}}\', \'{{$addon["kind"]}}\')"/><input type="button" class="btn btn-default cancel" value="Cancel"/>'+
+					'<input type="button" value="Add" class="btn btn-default add" onclick="addItem(\'{{$addon["li"]}}\', \'{{$addon["type"]}}\', \'{{$addon["kind"]}}\')"/><input type="button" class="btn btn-default cancel" onclick="cancel_add(\'{{$addon["li"]}}\', \'{{$addon["type"]}}\', \'{{$addon["kind"]}}\')" value="Cancel"/>'+
 					'{{Form::close()}}';
 	if(kind == 'new'){
 		$('.new-addon .new-item').html(content);
