@@ -5,7 +5,6 @@
 							
 							
 							
-							<li class="ui-state-default added-addon" value="1"><div class="item-added-container"><div class="item-inner text"><div class="image-container"><img class="image" src="/assets/images/attachments/unLH6Ru6KZCGLGg4Zt9apFDpBn5XSNTcDNV4ryiY.jpg" alt=""><p class="desc">yes this is</p></div></div><div class="editlist" style="visibility: visible;"><ul class="list-inline editbtns3"><li><button class="movebottom"><span class="glyphicon glyphicon-arrow-down"></span> Move To Bottom</button></li><li><button class="movedown"><span class="glyphicon glyphicon-chevron-down"></span> Move Down</button></li><li><button class="editItem" onclick="edit_addon('1', 'picture', 'addon', 'edit', 'new')"><span class="glyphicon glyphicon-edit"></span> Edit</button></li><li><button class="deleteItem"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button></li><li class="right sort"><span class="sort-item"><span class="glyphicon glyphicon-move"></span> Sort this item</span></li></ul></div></div><div class="add-item-area"><div class="append-new-item"></div><div class="add-inner" style="visibility: hidden;"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area(1)">Add New Addon</a></div></div></div></div><input type="hidden" class="type" value="picture"><input type="hidden" class="kind" value="new"></li>
 							
 							
 							
@@ -16,7 +15,6 @@
 							
 							
 							
-							<li class="ui-state-default added-addon" value="2"><div class="item-added-container"><div class="item-inner text"><p>dadas</p></div><div class="editlist" style="visibility: hidden;"><ul class="list-inline editbtns3"><li><button class="movebottom"><span class="glyphicon glyphicon-arrow-down"></span> Move To Bottom</button></li><li><button class="movedown"><span class="glyphicon glyphicon-chevron-down"></span> Move Down</button></li><li><button class="editItem" onclick="edit_addon('2', 'text', 'addon', 'edit', 'new')"><span class="glyphicon glyphicon-edit"></span> Edit</button></li><li><button class="deleteItem"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button></li><li class="right sort"><span class="sort-item ui-sortable-handle"><span class="glyphicon glyphicon-move"></span> Sort this item</span></li></ul></div></div><div class="add-item-area"><div class="append-new-item" style="display: none;"></div><div class="add-inner" style="visibility: hidden;"><div class="show-append-here"></div><div class="item-btn-con" style=""><div class="item-hr"><hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area(2)">Add New Addon</a></div></div></div></div><input type="hidden" class="type" value="text"><input type="hidden" class="kind" value="new"></li><li class="ui-state-default added-addon" value="3"><div class="item-added-container"><div class="item-inner text"><p>yes</p></div><div class="editlist" style="visibility: hidden;"><ul class="list-inline editbtns2"><li><button class="movetop"><span class="glyphicon glyphicon-arrow-up"></span> Move To Top</button></li><li><button class="moveup"><span class="glyphicon glyphicon-chevron-up"></span> Move Up</button></li><li><button class="editItem" onclick="edit_addon('3', 'text', 'addon', 'edit', 'new')"><span class="glyphicon glyphicon-edit"></span> Edit</button></li><li><button class="deleteItem"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button></li><li class="right sort"><span class="sort-item"><span class="glyphicon glyphicon-move"></span> Sort this item</span></li></ul></div></div><div class="add-item-area"><div class="append-new-item"></div><div class="add-inner" style="visibility: hidden;"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area(3)">Add New Addon</a></div></div></div></div><input type="hidden" class="type" value="text"><input type="hidden" class="kind" value="append"></li>
 							
 							
 							
@@ -25,11 +23,13 @@
 							
 							
 							
+							<li class="ui-state-default added-addon" value="1"><div class="item-added-container"><div class="item-inner text"><div class="image-container"><img class="image" src="/assets/images/attachments/Y9nmtAEjhiFa2Q5yMU0IT9HhzlZV4NFVJOXlYTl9.jpg" alt=""><p class="desc"></p></div></div><div class="editlist" style="visibility: visible;"><ul class="list-inline editbtns3"><li><button class="movebottom"><span class="glyphicon glyphicon-arrow-down"></span> Move To Bottom</button></li><li><button class="movedown"><span class="glyphicon glyphicon-chevron-down"></span> Move Down</button></li><li><button class="editItem" onclick="edit_addon('1', 'picture', 'addon', 'edit', 'new')"><span class="glyphicon glyphicon-edit"></span> Edit</button></li><li><button class="deleteItem"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button></li><li class="right sort"><span class="sort-item"><span class="glyphicon glyphicon-move"></span> Sort this item</span></li></ul></div></div><div class="add-item-area"><div class="append-new-item"></div><div class="add-inner" style="visibility: hidden;"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area(1)">Add New Addon</a></div></div></div></div><input type="hidden" class="type" value="picture"><input type="hidden" class="kind" value="new"></li>
 							
 							
 							
 							
 							
+							<li class="ui-state-default added-addon" value="2"><div class="item-added-container"><div class="item-inner text"><div class="image-container"><img class="image" src="" alt=""><p class="desc">dkjfhdjk</p></div></div><div class="editlist" style="visibility: hidden;"><ul class="list-inline editbtns4"><li><button class="movetop"><span class="glyphicon glyphicon-arrow-up"></span> Move to Top</button></li><li><button class="moveup"><span class="glyphicon glyphicon-chevron-up"></span> Move Up</button></li><li><button class="movebottom"><span class="glyphicon glyphicon-arrow-down"></span> Move To Bottom</button></li><li><button class="movedown"><span class="glyphicon glyphicon-chevron-down"></span> Move Down</button></li><li><button class="editItem" onclick="edit_addon('2', 'picture', 'addon', 'edit', 'new')"><span class="glyphicon glyphicon-edit"></span> Edit</button></li><li><button class="deleteItem"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button></li><li class="right sort"><span class="sort-item ui-sortable-handle"><span class="glyphicon glyphicon-move"></span> Sort this item</span></li></ul></div></div><div class="add-item-area"><div class="append-new-item"></div><div class="add-inner" style="visibility: hidden;"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area(2)">Add New Addon</a></div></div></div></div><input type="hidden" class="type" value="picture"><input type="hidden" class="kind" value="new"></li>
 							
 							
 							
@@ -41,6 +41,7 @@
 							
 							
 							
+							<li class="ui-state-default added-addon" value="3"><div class="item-added-container"><div class="item-inner text"><div class="image-container"><img class="image" src="/assets/images/attachments/unLH6Ru6KZCGLGg4Zt9apFDpBn5XSNTcDNV4ryiY.jpg" alt=""><p class="desc">yes this is</p></div></div><div class="editlist" style="visibility: hidden;"><ul class="list-inline editbtns4"><li><button class="movetop"><span class="glyphicon glyphicon-arrow-up"></span> Move to Top</button></li><li><button class="moveup"><span class="glyphicon glyphicon-chevron-up"></span> Move Up</button></li><li><button class="movebottom"><span class="glyphicon glyphicon-arrow-down"></span> Move To Bottom</button></li><li><button class="movedown"><span class="glyphicon glyphicon-chevron-down"></span> Move Down</button></li><li><button class="editItem" onclick="edit_addon('3', 'picture', 'addon', 'edit', 'new')"><span class="glyphicon glyphicon-edit"></span> Edit</button></li><li><button class="deleteItem"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button></li><li class="right sort"><span class="sort-item ui-sortable-handle"><span class="glyphicon glyphicon-move"></span> Sort this item</span></li></ul></div></div><div class="add-item-area"><div class="append-new-item" style="display: none;"></div><div class="add-inner" style="visibility: hidden;"><div class="show-append-here"></div><div class="item-btn-con" style="display: block;"><div class="item-hr"><hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area(3)">Add New Addon</a></div></div></div></div><input type="hidden" class="type" value="picture"><input type="hidden" class="kind" value="new"></li>
 							
 							
 							
@@ -51,6 +52,7 @@
 							
 							
 							
+							<li class="ui-state-default added-addon" value="4"><div class="item-added-container"><div class="item-inner text"><p>dadas</p></div><div class="editlist" style="visibility: hidden;"><ul class="list-inline editbtns4"><li><button class="movetop"><span class="glyphicon glyphicon-arrow-up"></span> Move to Top</button></li><li><button class="moveup"><span class="glyphicon glyphicon-chevron-up"></span> Move Up</button></li><li><button class="movebottom"><span class="glyphicon glyphicon-arrow-down"></span> Move To Bottom</button></li><li><button class="movedown"><span class="glyphicon glyphicon-chevron-down"></span> Move Down</button></li><li><button class="editItem" onclick="edit_addon('4', 'text', 'addon', 'edit', 'new')"><span class="glyphicon glyphicon-edit"></span> Edit</button></li><li><button class="deleteItem"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button></li><li class="right sort"><span class="sort-item ui-sortable-handle"><span class="glyphicon glyphicon-move"></span> Sort this item</span></li></ul></div></div><div class="add-item-area"><div class="append-new-item" style="display: none;"></div><div class="add-inner" style="visibility: hidden;"><div class="show-append-here"></div><div class="item-btn-con" style=""><div class="item-hr"><hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area(4)">Add New Addon</a></div></div></div></div><input type="hidden" class="type" value="text"><input type="hidden" class="kind" value="new"></li><li class="ui-state-default added-addon" value="5"><div class="item-added-container"><div class="item-inner text"><p>yes</p></div><div class="editlist" style="visibility: hidden;"><ul class="list-inline editbtns2"><li><button class="movetop"><span class="glyphicon glyphicon-arrow-up"></span> Move To Top</button></li><li><button class="moveup"><span class="glyphicon glyphicon-chevron-up"></span> Move Up</button></li><li><button class="editItem" onclick="edit_addon('5', 'text', 'addon', 'edit', 'new')"><span class="glyphicon glyphicon-edit"></span> Edit</button></li><li><button class="deleteItem"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button></li><li class="right sort"><span class="sort-item ui-sortable-handle"><span class="glyphicon glyphicon-move"></span> Sort this item</span></li></ul></div></div><div class="add-item-area"><div class="append-new-item"></div><div class="add-inner" style="visibility: hidden;"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area(5)">Add New Addon</a></div></div></div></div><input type="hidden" class="type" value="text"><input type="hidden" class="kind" value="append"></li>
 							
 							
 							
@@ -95,4 +97,38 @@
 							
 							
 							
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																													
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																					

@@ -545,9 +545,21 @@ function validate_addon(li, type, kind){
 			}
 			else{
 				var image = $(".new-addon .new-item .picture .url-upload .upload-img").val();
+				var img_hid = $(".new-addon .new-item .picture .img-hid").val();
 				if(image == ""){
 					setTimeout(function(){
-						$("<span class='label label-danger err'>Choose A file to upload.</span>").insertBefore(".new-addon .new-item .upload-img");
+						$("<span class='label label-danger err'>Choose A file to upload</span>").insertBefore(".new-addon .new-item .upload-img");
+					}, 1000);
+					setTimeout(function(){
+						$(".new-item span.err").hide('slow', function(){
+							$(".new-item span.err").remove();
+						});
+					}, 5000);
+					checker++;
+				}
+				else if(img_hid == ""){
+					setTimeout(function(){
+						$("<span class='label label-danger err'>Click check button.</span>").insertBefore(".new-addon .new-item .upload-img");
 					}, 1000);
 					setTimeout(function(){
 						$(".new-item span.err").hide('slow', function(){
@@ -596,9 +608,21 @@ function validate_addon(li, type, kind){
 			}
 			else{
 				var image = $("ul.sortable li[value='"+li+"'] .picture .url-upload .upload-img").val();
+				var img_hid = $("ul.sortable li[value='"+li+"'] .img-hid").val();
 				if(image == ""){
 					setTimeout(function(){
-						$("<span class='label label-danger err'>Choose A file to upload.</span>").insertBefore("ul.sortable li[value='"+li+"'] .upload-img");
+						$("<span class='label label-danger err'>Choose A file to upload</span>").insertBefore("ul.sortable li[value='"+li+"'] .upload-img");
+					}, 1000);
+					setTimeout(function(){
+						$("ul.sortable li[value='"+li+"'] span.err").hide('slow', function(){
+							$("ul.sortable li[value='"+li+"'] span.err").remove();
+						});
+					}, 5000);
+					checker++;
+				}
+				else if(img_hid == ""){
+					setTimeout(function(){
+						$("<span class='label label-danger err'>Click Check button.</span>").insertBefore("ul.sortable li[value='"+li+"'] .upload-img");
 					}, 1000);
 					setTimeout(function(){
 						$("ul.sortable li[value='"+li+"'] span.err").hide('slow', function(){
@@ -654,6 +678,49 @@ function validate_addon(li, type, kind){
 			else{
 				return true;
 			}
+		}
+	}
+}
+function check_image(li, type, kind){
+	var checker = 0;
+	if(kind == 'new'){
+		var image = $(".new-addon .new-item .picture .url-upload .upload-img").val();
+		if(image == ""){
+			setTimeout(function(){
+				$("<span class='label label-danger err'>Choose A file to upload</span>").insertBefore(".new-addon .new-item .upload-img");
+			}, 1000);
+			setTimeout(function(){
+				$(".new-addon .new-item span.err").hide('slow', function(){
+					$("ul.sortable li[value='"+li+"'] span.err").remove();
+				});
+			}, 5000);
+			checker++;
+		}
+		if(checker > 0){
+			return false;
+		}
+		else{
+			return true;
+		}
+	}
+	else{
+		var image = $("ul.sortable li[value='"+li+"'] .picture .url-upload .upload-img").val();
+		if(image == ""){
+			setTimeout(function(){
+				$("<span class='label label-danger err'>Choose A file to upload</span>").insertBefore("ul.sortable li[value='"+li+"'] .upload-img");
+			}, 1000);
+			setTimeout(function(){
+				$("ul.sortable li[value='"+li+"'] span.err").hide('slow', function(){
+					$("ul.sortable li[value='"+li+"'] span.err").remove();
+				});
+			}, 5000);
+			checker++;
+		}
+		if(checker > 0){
+			return false;
+		}
+		else{
+			return true;
 		}
 	}
 }

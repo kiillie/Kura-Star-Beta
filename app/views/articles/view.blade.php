@@ -23,7 +23,6 @@
 							<a href="#">Preview</a>
 						</div>
 					</div>
-					
 				</div>
 			</div>
 			<div class="count-cat">

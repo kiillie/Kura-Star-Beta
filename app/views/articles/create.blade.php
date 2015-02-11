@@ -285,7 +285,7 @@ function upload_image(li, type, kind){
 	if(kind == 'new'){
 			$(".new-addon .new-item #upload-addon").one('submit', function(e){
 				e.preventDefault();
-				if(validate_addon(li, type, kind)){
+				if(check_image(li, type, kind)){
 					$(".loader").show();
 					$.ajax({
 						url	: '/file/upload',
@@ -329,7 +329,7 @@ function upload_image(li, type, kind){
 		$("ul.sortable li[value='"+li+"'] #upload-addon"). one('submit', function(e){
 			e.preventDefault();
 			alert("hi");
-			if(validate_addon(li, type, kind)){
+			if(check_image(li, type, kind)){
 				$(".loader").show();
 				$.ajax({
 					url	: '/file/upload',
@@ -411,5 +411,8 @@ function publish_article(id){
 		}
 	});
 }
+// var mock = new Image();
+// mock.src = $(".image-container img").attr("src");
+// alert(mock.width);
 </script>
 @stop

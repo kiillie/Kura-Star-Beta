@@ -603,6 +603,55 @@
 	list-style: none;
 	padding: 10px 0;
 }
-.article-container .lists .image img{
+.article-container .lists .art- img{
 	width: 70px;
+}
+.preview .details{
+	list-style: none;
+	padding: 0;
+}
+.preview .details li{
+	padding: 5px;
+}
+.preview .details img{
+	width: 100%;
+}
+.preview .fave-views .views, .preview .fave-views .fave{
+	margin: 10px;
+}
+.preview .art-desc{
+	font-size: 13px;
+}
+.preview .fave-wrapper .views{
+	font-weight: bold;
+	font-size: 20px;
+}
+.preview .fave-wrapper .views span{
+	font-weight: normal;
+	font-size: 14px;
+}
+.article-container .lists .art-enum{
+	margin: 10px 0;
+}
+.article-container .lists .art-enum img{
+	width: 70px;
+}
+.article-container .detail-wrap{
+	margin-left: 10px;
+}
+.article-container .detail-wrap .cat span{
+	background: rgb(84, 158, 186);
+	padding: 3px;
+	color: white;
+}
+.article-container .detail-wrap .date{
+	position: absolute;
+	bottom: 0;
+}
+.article-container .detail-wrap .cat, .article-container .detail-wrap .title, .article-container .detail-wrap .date{
+	display: block;
+}
+.article-container .detail-wrap .date span{
+	color: gray;
+	font-size: 12px;
 }

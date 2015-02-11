@@ -17,17 +17,18 @@
 			<div class="alert alert-danger">There no Articles made yet.</div>
 		@else
 			@foreach($articles as $article)
-				<div class="col-md-8 image">
-					<a href="{{URL::route('article.create', $article->CURATION_ID)}}"><img src="/assets/images/small-default.png" alt="{{$article->CURATION_TITLE}}" /></a>
-					<div class="detail-wrap">
+				<div class="col-md-8 art-enum">
+					<a href="{{URL::route('article.create', $article->CURATION_ID)}}" class="a-image left"><img src="/assets/images/small-default.png" alt="{{$article->CURATION_TITLE}}" /></a>
+					<div class="detail-wrap left">
 						@foreach($categories as $category)
 							@if($article->CATEGORY_ID == $category->CATEGORY_ID)
-								<span>{{$category->CATEGORY_NAME}}</span>
+								<div class="cat"><span>{{$category->CATEGORY_NAME}}</span></div>
 							@endif
 						@endforeach
-						<a href="{{URL::route('article.create', $article->CURATION_ID)}}"><span class="title">{{$article->CURATION_TITLE}}</span></a>
-						<span>{{date("F j, Y", strtotime($article->UPDATE_DATE))}}</span>
+						<div class="title"><a href="{{URL::route('article.create', $article->CURATION_ID)}}"><span class="title">{{$article->CURATION_TITLE}}</span></a></div>
+						<div class="date"><span>{{date("F j, Y", strtotime($article->UPDATE_DATE))}}</span></div>
 					</div>
+					<div class="clear"></div>
 				</div>
 				<div class="col-md-2">
 					{{$article->VIEWS}}

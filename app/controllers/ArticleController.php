@@ -98,7 +98,7 @@ class ArticleController extends BaseController{
 				->withCountry($country)
 				->withCategory($category)
 				->withRank($ranking)
-				->withCtryrank($ctry_rank);;
+				->withCtryrank($ctry_rank);
 	}
 
 	public function preview($id){
@@ -107,13 +107,20 @@ class ArticleController extends BaseController{
 		$categories = $this->category->show();
 		$continents = $this->continent->show();
 		$user = $this->user->getUserById(Auth::user()->CURATER_ID);
+		$ranking = $this->article->getByRanking();
+		$ctry_rank = [];
+		foreach($countries as $country){
+			$ctry_rank [$country->COUNTRY_ID] = $this->article->countByCountry($country->COUNTRY_ID);
+		}
 
 		return View::make('articles.preview')
 				->withContinents($continents)
 				->withCountries($countries)
 				->withCategories($categories)
 				->withArticle($article)
-				->withUser($user);
+				->withUser($user)
+				->withRank($ranking)
+				->withCtryrank($ctry_rank);
 	}
 
 	public function showArticlesByUser($id){

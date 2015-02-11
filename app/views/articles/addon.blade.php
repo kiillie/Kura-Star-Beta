@@ -55,8 +55,8 @@ else if($addon['type'] == 'picture'){
 					'<input type="button" class="btn btn-default" value="Cancel" onclick="cancel_add(\''+li+'\', \''+type+'\', \''+kind+'\')">'+
 					'</div>'+
 					'</div>'+
-					'</div>'+
 					'<input type="hidden" class="img-hid" />'+
+					'</div>'+
 					'{{Form::close()}}';
 
 	if(kind == 'new'){
