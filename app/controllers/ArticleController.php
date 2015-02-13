@@ -98,9 +98,6 @@ class ArticleController extends BaseController{
 					->withRank($ranking)
 					->withCtryrank($ctry_rank);
 		}
-		else{
-			return "no";
-		}
 	}
 
 	public function preview($id){

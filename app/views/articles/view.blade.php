@@ -21,7 +21,10 @@
 						<input type="button" class="btn btn-info" value="Google+">
 						<i></i>
 						<div class="right">
-							<span class="views">{{$article->VIEWS}} Views</span> <span><a href="javascript:void(0);" onclick="favorite_article({{$article->CURATION_ID}}, {{Auth::user()->CURATER_ID}})">Favorite</a></span>
+							<span class="views">{{$article->VIEWS}} Views</span> 
+							@if(Auth::check())
+							<span><a href="javascript:void(0);" onclick="favorite_article({{$article->CURATION_ID}}, {{Auth::user()->CURATER_ID}})">Favorite</a></span>
+							@endif
 						</div>
 					</div>
 				</div>
