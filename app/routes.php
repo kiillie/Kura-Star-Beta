@@ -78,6 +78,11 @@ Route::get('article/test', [
 	'as'	=>	'article.test'
 ]);
 
+Route::get('article/preview/{id}',[
+	'uses'	=>	'ArticleController@preview',
+	'as'	=>	'article.preview'
+]);
+
 Route::post('addon/new', [
 	'uses'	=>	'ArticleController@addon',
 	'as'	=>	'article.addon'
@@ -93,11 +98,10 @@ Route::post('addon/insert', [
 	'as'	=>	'article.addoninsert'
 ]);
 
-Route::get('article/preview/{id}',[
-	'uses'	=>	'ArticleController@preview',
-	'as'	=>	'article.preview'
+Route::post('addon/delete', [
+	'uses'	=>	'ArticleController@addonDelete',
+	'as'	=>	'addon.delete'
 ]);
-
 /** Login **/
 
 Route::get('login',[

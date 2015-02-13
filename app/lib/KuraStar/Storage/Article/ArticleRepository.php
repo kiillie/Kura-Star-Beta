@@ -14,6 +14,8 @@ interface ArticleRepository{
 
 	public function publish($article);
 
+	public function incrementView($id);
+
 	public function getByUser($user);
 
 	public function countArticlesByUser($id);

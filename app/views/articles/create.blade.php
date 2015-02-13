@@ -12,7 +12,7 @@
 		@if(Session::has('article'))
 			<?php $article = Session::get('article'); ?>
 		@endif
-		<div class="article-menu">
+		<div class="article-menu"> 
 			<div class="row">
 				<div class="col-md-6">
 					{{ Form::open(['name'=>'article', 'role'=>'form', 'route'=>'article.store', 'method'=>'post']) }}
@@ -78,7 +78,7 @@
 						@else
 							<a class="btn btn-default preview" href="{{URL::route('article.preview', $curation)}}"> Preview </a>
 						@endif
-						<input type="submit" class="btn btn-default save" onclick="save_article()" value="Save" />
+						<input type="submit" class="btn btn-default save" value="Save" />
 						@if(Session::has('curation'))
 							@if(Session::has('status'))
 								@if(Session::get('status') == 0)

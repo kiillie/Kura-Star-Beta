@@ -288,15 +288,16 @@ function added_addon_val(type, kind){
 		$("ul.sortable li.added-addon").eq(i).find(".remove-appended a").attr("onclick", "close_appended("+(i+1)+")");
 		var type = $("ul.sortable li.added-addon").eq(i).find(".type").val();
 		$("ul.sortable li.added-addon").eq(i).find(".editItem").attr("onclick", "edit_addon('"+(i+1)+"', '"+type+"', 'addon', 'edit', 'new')");
+		$("ul.sortable li.added-addon").eq(i).find(".deleteItem").attr("onclick", "delete_item('"+(i+1)+"', '"+type+"', 'new')");
 	}
 	$(".loader").hide();
 }
 
 function addonHovered(type, kind){
-	var editbtns1 = '<ul class="list-inline editbtns1"><li><button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button></li><li><button class="deleteItem"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button></li><li class="right sort"><span class="sort-item"><span class="glyphicon glyphicon-move"></span> Sort this item</span></li></ul>';
-	var editbtns2 = '<ul class="list-inline editbtns2"><li><button class="movetop"><span class="glyphicon glyphicon-arrow-up"></span> Move To Top</button></li><li><button class="moveup"><span class="glyphicon glyphicon-chevron-up"></span> Move Up</button></li><li><button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button></li><li><button class="deleteItem"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button></li><li class="right sort"><span class="sort-item"><span class="glyphicon glyphicon-move"></span> Sort this item</span></li></ul>';
-	var editbtns3 = '<ul class="list-inline editbtns3"><li><button class="movebottom"><span class="glyphicon glyphicon-arrow-down"></span> Move To Bottom</button></li><li><button class="movedown"><span class="glyphicon glyphicon-chevron-down"></span> Move Down</button></li><li><button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button></li><li><button class="deleteItem"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button></li><li class="right sort"><span class="sort-item"><span class="glyphicon glyphicon-move"></span> Sort this item</span></li></ul>';
-	var editbtns4 = '<ul class="list-inline editbtns4"><li><button class="movetop"><span class="glyphicon glyphicon-arrow-up"></span> Move to Top</button></li><li><button class="moveup"><span class="glyphicon glyphicon-chevron-up"></span> Move Up</button></li><li><button class="movebottom"><span class="glyphicon glyphicon-arrow-down"></span> Move To Bottom</button></li><li><button class="movedown"><span class="glyphicon glyphicon-chevron-down"></span> Move Down</button></li><li><button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button></li><li><button class="deleteItem"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button></li><li class="right sort"><span class="sort-item"><span class="glyphicon glyphicon-move"></span> Sort this item</span></li></ul>';
+	var editbtns1 = '<ul class="list-inline editbtns1"><li><button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button></li><li><button class="deleteItem" onclick="delete_item(\''+type+'\', \''+kind+'\')"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button></li><li class="right sort"><span class="sort-item"><span class="glyphicon glyphicon-move"></span> Sort this item</span></li></ul>';
+	var editbtns2 = '<ul class="list-inline editbtns2"><li><button class="movetop"><span class="glyphicon glyphicon-arrow-up"></span> Move To Top</button></li><li><button class="moveup"><span class="glyphicon glyphicon-chevron-up"></span> Move Up</button></li><li><button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button></li><li><button class="deleteItem" onclick="delete_item(\''+type+'\', \''+kind+'\')"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button></li><li class="right sort"><span class="sort-item"><span class="glyphicon glyphicon-move"></span> Sort this item</span></li></ul>';
+	var editbtns3 = '<ul class="list-inline editbtns3"><li><button class="movebottom"><span class="glyphicon glyphicon-arrow-down"></span> Move To Bottom</button></li><li><button class="movedown"><span class="glyphicon glyphicon-chevron-down"></span> Move Down</button></li><li><button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button></li><li><button class="deleteItem" onclick="delete_item(\''+type+'\', \''+kind+'\')"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button></li><li class="right sort"><span class="sort-item"><span class="glyphicon glyphicon-move"></span> Sort this item</span></li></ul>';
+	var editbtns4 = '<ul class="list-inline editbtns4"><li><button class="movetop"><span class="glyphicon glyphicon-arrow-up"></span> Move to Top</button></li><li><button class="moveup"><span class="glyphicon glyphicon-chevron-up"></span> Move Up</button></li><li><button class="movebottom"><span class="glyphicon glyphicon-arrow-down"></span> Move To Bottom</button></li><li><button class="movedown"><span class="glyphicon glyphicon-chevron-down"></span> Move Down</button></li><li><button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button></li><li><button class="deleteItem" onclick="delete_item(\''+type+'\', \''+kind+'\')"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button></li><li class="right sort"><span class="sort-item"><span class="glyphicon glyphicon-move"></span> Sort this item</span></li></ul>';
 	var ind = "";
 	$(".item-added-container").hover(function(){
 		$(this).find('.editlist').css('visibility', 'visible');
@@ -305,26 +306,22 @@ function addonHovered(type, kind){
 		
 		if(countchildren == 1 && ind == 0){
 			$(this).find('.editlist').html(editbtns1);
-			delete_item(type, kind);
 			moveUpAndDown(type, kind);
 			added_addon_val(type, kind);
 		}
 		else if(countchildren > 1){
 			if(ind == 0){
 				$(this).find('.editlist').html(editbtns3);
-				delete_item(type, kind);
 				moveUpAndDown(type, kind);
 				added_addon_val(type, kind);
 			}
 			else if(ind == (countchildren-1)){
 				$(this).find('.editlist').html(editbtns2);
-				delete_item(type, kind);
 				moveUpAndDown(type, kind);
 				added_addon_val(type, kind);
 			}
 			else{
 				$(this).find('.editlist').html(editbtns4);
-				delete_item(type, kind);
 				moveUpAndDown(type, kind);
 				added_addon_val(type, kind);
 			}
@@ -341,16 +338,34 @@ function addonHovered(type, kind){
 
 }
 
-function delete_item(type, kind){
-	$('.deleteItem').on('click', function(){
-		var conf = confirm("Do you really want to delete this item?");
+function delete_item(li, type, kind){
+	var item = $("ul.sortable li[value='"+li+"']");
+	var conf = confirm("Do you really want to delete this item?");
+
+	if(type == 'picture'){
+		var img = $("ul.sortable li[value='"+li+"'] .image-container img").attr("src");
 		if(conf){
-			$(this).parent().parent().parent().parent().parent().remove();
+			$(".loader").show();
+			$.post("/addon/delete", {
+				'image' : img
+			}).done(function(res){
+				if(res == "true"){
+					$(".loader").hide();
+					item.remove();
+					added_addon_val(type, kind);
+					insert_addon();
+				}
+			});
 		}
-	});
-	added_addon_val(type, kind);
-	insert_addon();
-}
+	}
+	else{
+		if(conf){
+			item.remove();
+			added_addon_val(type, kind);
+			insert_addon();
+		}
+	}
+	}
 
 function moveUpAndDown(type, kind){
 
@@ -723,4 +738,12 @@ function check_image(li, type, kind){
 			return true;
 		}
 	}
+}
+function favorite_article(article, user){
+	$.post('article/favorited', {
+		'article' : article,
+		'user'	: user
+	}).done(function(){
+		alert("Favorited!");
+	});
 }

@@ -41,6 +41,28 @@ class EloquentArticleRepository implements ArticleRepository{
 		return $publish;
 	}
 
+	public function incrementView($id){
+		$article = Article::where('CURATION_ID', '=', $id)->first();
+		$views = $article->VIEWS;
+
+		if(\Auth::check()){
+			if($article->CURATER_ID != \Auth::user()->CURATER_ID){
+				$views = $views + 1;
+				$increment = Article::where('CURATION_ID', '=', $id)->update(['VIEWS' => $views]);
+
+				return $increment;
+			}
+			else{
+				return true;
+			}
+		}
+		else{
+			$views = $views + 1;
+			$increment = Article::where('CURATION_ID', '=', $id)->update(['VIEWS' => $views]);
+			return $increment;
+		}
+	}
+
 	public function getByUser($id){
 		return Article::where('CURATER_ID', '=', $id)->get();
 	}

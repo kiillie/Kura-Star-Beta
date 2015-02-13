@@ -1,9 +1,10 @@
 @extends('layouts.main')
 @section('content')
+<script language="javascript" src="/assets/js/temp_art.js"></script>
 <div class="container article">
 	{{ Breadcrumbs::render('view_article') }}
 	<div class="row details">
-		<div class="col-md-9">
+		<div class="col-md-9 view">
 			<div class="row article-view">
 				<div class="col-md-3">
 					<img src="/assets/images/article-default.png" alt="Title" width="150" height="215" />
@@ -20,24 +21,28 @@
 						<input type="button" class="btn btn-info" value="Google+">
 						<i></i>
 						<div class="right">
-							<a href="#">Preview</a>
+							<span class="views">{{$article->VIEWS}} Views</span> <span><a href="javascript:void(0);" onclick="favorite_article({{$article->CURATION_ID}}, {{Auth::user()->CURATER_ID}})">Favorite</a></span>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="count-cat">
 				<ul class="list-inline">
-					<li class="country"><a href="#">{{$country->COUNTRY_NAME}}</a></li>
-					<li class="category"><a href="#">{{$category->CATEGORY_NAME}}</a></li>
+					@foreach($countries as $country)
+						@if($article->COUNTRY_ID == $country->COUNTRY_ID)
+							<li class="country"><a href="{{URL::route('article.bycountry', $article->COUNTRY_ID)}}">{{$country->COUNTRY_NAME}}</a></li>
+						@endif
+					@endforeach
+					@foreach($categories as $category)
+						@if($article->CATEGORY_ID == $category->CATEGORY_ID)
+							<li class="category"><a href="{{URL::route('article.bycategory', $article->CATEGORY_ID)}}">{{$category->CATEGORY_NAME}}</a></li>
+						@endif
+					@endforeach
 				</ul>
 			</div>
 			<hr></hr>
 			<div class="extra-details">
-				<h2>{{$article->TAG}}</h2>
-				<hr></hr>
-				<p>
-					{{$article->CURATION_DETAIL}}
-				</p>
+				{{html_entity_decode($article->CURATION_DETAIL)}}
 			</div>
 			<div class="pages">
 				<ul class="pagination">

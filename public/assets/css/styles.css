@@ -334,7 +334,7 @@
 }
 .article .details .extra-details{
 	border: 2px solid #E5E5E5;
-	height: 730px;
+	min-height: 730px;
 	border-radius: 10px;
 	padding: 20px;
 }
@@ -606,27 +606,27 @@
 .article-container .lists .art- img{
 	width: 70px;
 }
-.preview .details{
+.preview .details, .view .details{
 	list-style: none;
 	padding: 0;
 }
-.preview .details li{
+.preview .details li, .view .details li{
 	padding: 5px;
 }
-.preview .details img{
+.preview .details img, .view .details img{
 	width: 100%;
 }
-.preview .fave-views .views, .preview .fave-views .fave{
+.preview .fave-views .views, .preview .fave-views .fave, .view .fave-views .views, .view .fave-views .fave{
 	margin: 10px;
 }
-.preview .art-desc{
+.preview .art-desc, .view .art-desc{
 	font-size: 13px;
 }
-.preview .fave-wrapper .views{
+.preview .fave-wrapper .views, .view .fave-wrapper .views{
 	font-weight: bold;
 	font-size: 20px;
 }
-.preview .fave-wrapper .views span{
+.preview .fave-wrapper .views span, .view .fave-wrapper .views span{
 	font-weight: normal;
 	font-size: 14px;
 }

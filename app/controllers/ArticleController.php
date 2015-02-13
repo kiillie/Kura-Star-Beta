@@ -82,23 +82,25 @@ class ArticleController extends BaseController{
 		$categories = $this->category->show();
 		$continents = $this->continent->show();
 		$article = $this->article->show($id);
-		$country = $this->country->getById($article->COUNTRY_ID);
-		$category = $this->category->getById($article->CATEGORY_ID);
 		$ranking = $this->article->getByRanking();
 		$ctry_rank = [];
-		foreach($countries as $country){
-			$ctry_rank [$country->COUNTRY_ID] = $this->article->countByCountry($country->COUNTRY_ID);
-		}
+		$views = $this->article->incrementView($id);
+		if($views){
+			foreach($countries as $country){
+				$ctry_rank [$country->COUNTRY_ID] = $this->article->countByCountry($country->COUNTRY_ID);
+			}
 
-		return View::make('articles.view')
-				->withCountries($countries)
-				->withCategories($categories)
-				->withContinents($continents)
-				->withArticle($article)
-				->withCountry($country)
-				->withCategory($category)
-				->withRank($ranking)
-				->withCtryrank($ctry_rank);
+			return View::make('articles.view')
+					->withCountries($countries)
+					->withCategories($categories)
+					->withContinents($continents)
+					->withArticle($article)
+					->withRank($ranking)
+					->withCtryrank($ctry_rank);
+		}
+		else{
+			return "no";
+		}
 	}
 
 	public function preview($id){
@@ -263,6 +265,13 @@ class ArticleController extends BaseController{
 	public function addonInsert(){
 		$addon = Input::all();
 		return View::make('articles.addon_insert')
+				->withAddon($addon);
+	}
+
+	public function addonDelete(){
+		$addon = Input::all();
+
+		return View::make('articles.delete_image')
 				->withAddon($addon);
 	}
 
