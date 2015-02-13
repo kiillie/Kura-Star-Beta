@@ -694,7 +694,7 @@ function validate_addon(li, type, kind){
 				return true;
 			}
 		}
-	}
+	} 
 }
 function check_image(li, type, kind){
 	var checker = 0;
