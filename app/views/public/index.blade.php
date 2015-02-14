@@ -67,7 +67,11 @@
 					<div class="latest-group">
 						<div class="row">
 							<div class="col-md-2 col-xs-6">
-								<img src="assets/images/temp/thumb62.jpg" alt="Name" />
+								@if($article->CURATION_IMAGE == "")
+									<img src="/assets/images/article-default.jpg" alt="Name" />
+								@else
+									<img src="{{$article->CURATION_IMAGE}}" alt="Name" />
+								@endif
 							</div>
 							<div class="col-md-8 col-xs-12">
 								<h3><a href="{{URL::route('article.view', $article->CURATION_ID)}}">{{$article->CURATION_TITLE}}</a></h3>

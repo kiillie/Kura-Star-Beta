@@ -15,7 +15,7 @@
 		<div class="article-menu"> 
 			<div class="row">
 				<div class="col-md-6">
-					{{ Form::open(['name'=>'article', 'role'=>'form', 'route'=>'article.store', 'method'=>'post']) }}
+					{{ Form::open(['name'=>'article', 'role'=>'form', 'route'=>'article.store', 'method'=>'post', 'enctype'=>"multipart/form-data"]) }}
 					<div class="row">
 						@if(Session::has('curation'))
 							<input type="hidden" class="cur-id" name="cur_id" value="{{Session::get('curation')}}">
@@ -117,7 +117,11 @@
 			<div class="title-desc">
 				<div class="row">
 					<div class="col-md-2 art-default-img">
-						<img src="/assets/images/article-default.png" />
+						@if($article->CURATION_IMAGE == "")
+							<img src="/assets/images/article-default.png" />
+						@else
+							<img src="{{$article->CURATION_IMAGE}}" />
+						@endif
 					</div>
 					<div class="col-md-10 art-title-desc">
 						<div class="form-group title">
@@ -164,12 +168,18 @@
 					<div class="addons-container">
 						<ul class="sortable list-unstyled">
 							<?php
-								echo file_get_contents(public_path()."/assets/articles/".$curation.".php");
+								try{
+									echo file_get_contents(public_path()."/assets/articles/".$curation.".php");
+								}
+								catch(Exception $e){
+									fopen(public_path()."/assets/articles/".$curation.".php", "w");
+								}
+								
 							?>
 						</ul>
 					</div>
 				</div>
-				<textarea name="inner-detail" class="detail-li" style="display:none;">{{$article->CURATION_DETAILS}}</textarea>
+				<textarea name="inner-detail" class="detail-li" style="display:none;">{{$article->CURATION_DETAIL}}</textarea>
 			</div>
 			{{Form::close()}}
 		</div>

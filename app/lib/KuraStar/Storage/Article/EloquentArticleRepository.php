@@ -7,9 +7,23 @@ class EloquentArticleRepository implements ArticleRepository{
 	public function store($input){
 		//
 		$details = htmlentities($input['inner-detail']);
-		$article = Article::where('CURATION_ID', '=', $input['cur_id'])
-						->update(['COUNTRY_ID' => $input['country'], 'CATEGORY_ID' => $input['category'], 'CURATION_TITLE' => $input['title'], 'CURATION_DESCRIPTION' => $input['description'], 'CURATION_DETAIL' => $details ]);
+		$imgname = str_random(40);
+		if(isset($input['imgUp'])){
+			$upload = $input['imgUp'];
+			$folder = public_path()."/assets/images/attachments/";
+			$move = $imgname.".".$upload->getClientOriginalExtension();
+			$upload->move($folder, $move);
+			$cur_img = "/assets/images/attachments/".$move;
 
+			$article = Article::where('CURATION_ID', '=', $input['cur_id'])
+						->update(['COUNTRY_ID' => $input['country'], 'CATEGORY_ID' => $input['category'], 'CURATION_TITLE' => $input['title'], 'CURATION_DESCRIPTION' => $input['description'], 'CURATION_DETAIL' => $details, 'CURATION_IMAGE' => $cur_img ]);
+
+		}
+		else{
+			$article = Article::where('CURATION_ID', '=', $input['cur_id'])
+						->update(['COUNTRY_ID' => $input['country'], 'CATEGORY_ID' => $input['category'], 'CURATION_TITLE' => $input['title'], 'CURATION_DESCRIPTION' => $input['description'], 'CURATION_DETAIL' => $details]);
+		}
+		
 		return $article;
 	}
 
@@ -24,6 +38,12 @@ class EloquentArticleRepository implements ArticleRepository{
 		$article = Article::where('CURATER_ID', '=', \Auth::user()->CURATER_ID)->max('REGISTER_DATE');
 		return Article::where('CURATER_ID', '=', \Auth::user()->CURATER_ID)
 						->where('REGISTER_DATE', '=', $article)->first();
+	}
+
+	public function getById($id){
+		$article = Article::where('CURATION_ID', '=', $id)->first();
+
+		return $article;
 	}
 
 	public function allArticles(){

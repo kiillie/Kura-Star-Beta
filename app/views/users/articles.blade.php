@@ -18,7 +18,13 @@
 		@else
 			@foreach($articles as $article)
 				<div class="col-md-8 art-enum">
-					<a href="{{URL::route('article.create', $article->CURATION_ID)}}" class="a-image left"><img src="/assets/images/small-default.png" alt="{{$article->CURATION_TITLE}}" /></a>
+					<a href="{{URL::route('article.create', $article->CURATION_ID)}}" class="a-image left">
+						@if($article->CURATION_IMAGE == "")
+							<img src="/assets/images/small-default.png" alt="{{$article->CURATION_TITLE}}" />
+						@else
+							<img src="{{$article->CURATION_IMAGE}}" alt="{{$article->CURATION_TITLE}}" />
+						@endif
+					</a>
 					<div class="detail-wrap left">
 						@foreach($categories as $category)
 							@if($article->CATEGORY_ID == $category->CATEGORY_ID)

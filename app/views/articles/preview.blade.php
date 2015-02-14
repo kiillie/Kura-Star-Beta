@@ -7,8 +7,12 @@
 	<div class="row details">
 		<div class="col-md-9 preview">
 			<div class="row article-view">
-				<div class="col-md-3">
-					<img src="/assets/images/article-default.png" alt="Title" width="150" height="215" />
+				<div class="col-md-3 art-image">
+					@if($article->CURATION_IMAGE == "")
+						<img src="/assets/images/article-default.png" alt="{{$article->CURATION_TITLE}}" />
+					@else
+						<img src="{{$article->CURATION_IMAGE}}" alt="{$article->CURATION_TITLE}}" />
+					@endif
 				</div>
 				<div class="col-md-9">
 					<h2>{{$article->CURATION_TITLE}}</h2>
@@ -22,7 +26,8 @@
 						<input type="button" class="btn btn-info" value="Google+">
 						<i></i>
 						<div class="right">
-							<span>{{$article->VIEWS}} Views</span>
+							<span class="views"><span class="count">{{$article->VIEWS}}</span> Views</span> &nbsp;&nbsp;&nbsp;
+							<span class="fave"><a href="javascript:void(0);"><span class="glyphicon glyphicon-heart"></span> Favorite</a></span>
 						</div>
 					</div>
 				</div>

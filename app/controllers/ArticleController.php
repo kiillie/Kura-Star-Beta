@@ -6,6 +6,7 @@ use KuraStar\Storage\Category\CategoryRepository as Category;
 use KuraStar\Storage\Continent\ContinentRepository as Continent;
 use KuraStar\Storage\Article\ArticleRepository as Article;
 use KuraStar\Storage\User\UserRepository as User;
+use KuraStar\Storage\Favorite\FavoriteRepository as Favorite;
 
 class ArticleController extends BaseController{
 
@@ -14,13 +15,17 @@ class ArticleController extends BaseController{
 	protected $continent;
 	protected $article;
 	protected $user;
+	protected $favorite;
 
-	public function __construct(Country $country, Category $category, Continent $continent, Article $article, User $user){
+	public function __construct(Country $country, Category $category, Continent $continent, Article $article, User $user, Favorite $favorite){
+		
 		$this->country = $country;
 		$this->category = $category;
 		$this->continent = $continent;
 		$this->article = $article;
 		$this->user = $user;
+		$this->favorite = $favorite;
+
 	}
 
 	public function index($id){
@@ -76,6 +81,27 @@ class ArticleController extends BaseController{
 		}
 	}
 
+	public function favorite(){
+		$input = Input::all();
+		$article = $this->article->getById($input['article']);
+		if($article != NULL){
+			if($input['status'] == 'favorite'){
+				$favorite = $this->favorite->store($input['article'], $input['user']);
+			}
+			else{
+				$favorite = $this->favorite->delete($input['article'], $input['user']);
+			}
+			
+			return View::make('articles.favorite')
+					->withFavorite($favorite)
+					->withStatus($input['status']);
+		}
+		else{
+			return View::make('article.favorite')
+					->withFavorite(false);
+		}
+	}
+
 	public function show($id){
 		$users = $this->user->allUsers();
 		$countries = $this->country->showCountryByContinent();
@@ -89,14 +115,20 @@ class ArticleController extends BaseController{
 			foreach($countries as $country){
 				$ctry_rank [$country->COUNTRY_ID] = $this->article->countByCountry($country->COUNTRY_ID);
 			}
-
+		if(\Auth::check()){
+			$check = $this->favorite->check($id, \Auth::user()->CURATION_ID);
+		}
+		else{
+			$check = false;
+		}
 			return View::make('articles.view')
 					->withCountries($countries)
 					->withCategories($categories)
 					->withContinents($continents)
 					->withArticle($article)
 					->withRank($ranking)
-					->withCtryrank($ctry_rank);
+					->withCtryrank($ctry_rank)
+					->withCheck($check);
 		}
 	}
 

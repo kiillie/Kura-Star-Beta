@@ -11,7 +11,7 @@ if(isset($image['image'])){
 		if($upload->getSize() > 100000){
 			$upload->move($folder, $move);
 			echo "/assets/images/attachments/".$move;
-		}
+		} 
 		else{
 			echo "size";
 		}

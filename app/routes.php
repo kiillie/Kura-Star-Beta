@@ -88,6 +88,11 @@ Route::post('addon/new', [
 	'as'	=>	'article.addon'
 ]);
 
+Route::post('article/favorited', [
+	'uses'	=>	'ArticleController@favorite',
+	'as'	=>	'article.favorite'
+]);
+
 Route::post('addon/edit', [
 	'uses'	=>	'ArticleController@addonEdit',
 	'as'	=>	'article.addonedit'
@@ -102,6 +107,7 @@ Route::post('addon/delete', [
 	'uses'	=>	'ArticleController@addonDelete',
 	'as'	=>	'addon.delete'
 ]);
+
 /** Login **/
 
 Route::get('login',[

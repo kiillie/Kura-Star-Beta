@@ -6,8 +6,12 @@
 	<div class="row details">
 		<div class="col-md-9 view">
 			<div class="row article-view">
-				<div class="col-md-3">
-					<img src="/assets/images/article-default.png" alt="Title" width="150" height="215" />
+				<div class="col-md-3 art-image">
+					@if($article->CURATION_IMAGE == "")
+						<img src="/assets/images/article-default.png" alt="{{$article->CURATION_TITLE}}"/>
+					@else
+						<img src="{{$article->CURATION_IMAGE}}" alt="{{$article->CURATION_TITLE}}"/>
+					@endif
 				</div>
 				<div class="col-md-9">
 					<h2>{{$article->CURATION_TITLE}}</h2>
@@ -21,9 +25,13 @@
 						<input type="button" class="btn btn-info" value="Google+">
 						<i></i>
 						<div class="right">
-							<span class="views">{{$article->VIEWS}} Views</span> 
+							<span class="views"><span class="count">{{$article->VIEWS}}</span> Views</span> &nbsp;&nbsp;&nbsp;
 							@if(Auth::check())
-							<span><a href="javascript:void(0);" onclick="favorite_article({{$article->CURATION_ID}}, {{Auth::user()->CURATER_ID}})">Favorite</a></span>
+								@if($check)
+									<span class="fave"><a href="javascript:void(0);" class="stat favorite" onclick="favorite_article({{$article->CURATION_ID}}, {{Auth::user()->CURATER_ID}}, 'favorite')"><span class="glyphicon glyphicon-heart"></span> <i>Favorite</i></a></a></span>
+								@else
+									<span class="fave"><a href="javascript:void(0);" class="stat unfavorite" onclick="favorite_article({{$article->CURATION_ID}}, {{Auth::user()->CURATER_ID}}, 'unfavorite')"><span class="glyphicon glyphicon-heart"></span> <i>Unfavorite</i></a></a></span>
+								@endif
 							@endif
 						</div>
 					</div>

@@ -14,7 +14,7 @@
 	<div class="rank-title"><h4>Ranking Article</h4><hr></hr></div>
 	<ul>
 		@foreach($rank as $ranking)
-			<li><span class="glyphicon glyphicon-bookmark"></span> <a href="{{URL::route('article.view', $ranking->CURATION_ID)}}"><img src="/assets/images/rank-article-default.png" alt="Title" /> {{$ranking->CURATION_TITLE}}</a></li>
+			<li><span class="glyphicon glyphicon-bookmark"></span> <a href="{{URL::route('article.view', $ranking->CURATION_ID)}}"><img src="{{$ranking->CURATION_IMAGE}}" alt="Title" /> {{$ranking->CURATION_TITLE}}</a></li>
 		@endforeach
 	</ul>
 </div>
