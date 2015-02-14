@@ -27,7 +27,7 @@
 						<div class="right">
 							<span class="views"><span class="count">{{$article->VIEWS}}</span> Views</span> &nbsp;&nbsp;&nbsp;
 							@if(Auth::check())
-								@if($check)
+								@if(!$check)
 									<span class="fave"><a href="javascript:void(0);" class="stat favorite" onclick="favorite_article({{$article->CURATION_ID}}, {{Auth::user()->CURATER_ID}}, 'favorite')"><span class="glyphicon glyphicon-heart"></span> <i>Favorite</i></a></a></span>
 								@else
 									<span class="fave"><a href="javascript:void(0);" class="stat unfavorite" onclick="favorite_article({{$article->CURATION_ID}}, {{Auth::user()->CURATER_ID}}, 'unfavorite')"><span class="glyphicon glyphicon-heart"></span> <i>Unfavorite</i></a></a></span>
