@@ -27,7 +27,11 @@
 								<div class="article-group">
 									<div class="row">
 										<div class="col-md-2 col-xs-6">
-											<img src="/assets/images/temp/thumb50.JPG" alt="Name" />
+											@if($article->CURATION_IMAGE == ""){
+												<img src="/assets/images/article-default.png" alt="{{$article->CURATION_TITLE}}" />
+											@else
+												<img src="{{$article->CURATION_IMAGE}}" alt="{{$article->CURATION_TITLE}}" />
+											@endif
 										</div>
 										<div class="col-md-8 col-xs-12">
 											<h3><a href="{{URL::route('article.view', $article->CURATION_ID)}}">{{$article->CURATION_TITLE}}</a></h3>
@@ -37,8 +41,8 @@
 										<div class="col-md-2 user-detail col-xs-12">
 											@foreach($users as $user)
 												@if($user->CURATER_ID == $article->CURATER_ID)
-													<span class="hidden-xs"><a href="#">{{$user->CURATER}}</a></span>
-													<span class="visible-xs"><i>- <a href="#">{{$user->CURATER}}</a></i></span>
+													<span class="hidden-xs"><a href="{{URL::route('user.profile', $article->CURATER_ID)}}">{{$user->CURATER}}</a></span>
+													<span class="visible-xs"><i>- <a href="{{URL::route('user.profile', $article->CURATER_ID)}}">{{$user->CURATER}}</a></i></span>
 												@endif
 											@endforeach
 										</div>

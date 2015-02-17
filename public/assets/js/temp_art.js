@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	addonHovered("", "");
+	count_image();
 });
-
 function addItem(li, type, kind){
 	if(type == 'text'){
 		if(validate_addon(li, type, kind)){
@@ -81,6 +81,7 @@ function addItem(li, type, kind){
 				$("ul.sortable li[value='"+li+"'] .append-new-item").hide();
 				current.after(content);
 			}
+			count_image();
 			$(".loader").hide();
 			addonHovered(type, kind);
 		}
@@ -806,6 +807,43 @@ function favorite_article(article, user, status){
 			else{
 				alert("Not removed from your Favorites");
 			}	
+		}
+	});
+}
+function validate_article(){
+	$("form[name='article']").one('submit', function(e){
+		e.preventDefault();
+		var error = 0;
+		if($(".article-menu .nav-ctry input[name='country']").val() == 0){
+			$("<span class='err' style='color: red;'>Select a Country</span>").insertAfter($(".article-menu .country button"));
+			error++;
+			setTimeout(function(){
+				$(".article-menu .country span.err").fadeOut("slow", function(){
+					$(".article-menu .country span.err").remove();
+				});
+			}, 6000);
+		}
+		if($(".article-menu .nav-cat input[name='category']").val() == 0){
+			$("<span class='err' style='color: red;'>Select a Category</span>").insertAfter($(".article-menu .category button"));
+			error++;
+			setTimeout(function(){
+				$(".article-menu .category span.err").fadeOut("slow", function(){
+					$(".article-menu .country span.err").remove();
+				});
+			}, 6000);
+		}
+		if($(".art-title-desc input[name='title']").val() == ""){
+			$("<span class='err' style='color: red;'>Please input a title</span>").insertAfter($(".art-title-desc input[name='title']"));
+			error++;
+			setTimeout(function(){
+				$(".art-title-desc span.err").fadeOut("slow", function(){
+					$(".article-title-desc span.err").remove();
+				});
+			}, 6000);
+		}
+
+		if(error == 0){
+			$(this).submit();
 		}
 	});
 }

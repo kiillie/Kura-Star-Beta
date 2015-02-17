@@ -21,13 +21,13 @@ class EloquentFavoriteRepository implements FavoriteRepository{
 	}
 
 	public function check($article, $user){
-		$check = Favorite::where('CURATION_ID', '=', $article)->where('CURATER_ID', '=', $user)->first();
+		$check = Favorite::where('CURATION_ID', '=', $article)->where('CURATER_ID', '=', $user)->get();
 
-		if($check != NULL){
-			return true;
+		if(count($check) > 0){
+			return false;
 		}
 		else{
-			return false;
+			return true;
 		}
 	}
 

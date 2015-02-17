@@ -78,7 +78,7 @@
 						@else
 							<a class="btn btn-default preview" href="{{URL::route('article.preview', $curation)}}"> Preview </a>
 						@endif
-						<input type="submit" class="btn btn-default save" value="Save" />
+						<input type="submit" class="btn btn-default save" onclick="validate_article()" value="Save" />
 						@if(Session::has('curation'))
 							@if(Session::has('status'))
 								@if(Session::get('status') == 0)
@@ -338,7 +338,6 @@ function upload_image(li, type, kind){
 	else{
 		$("ul.sortable li[value='"+li+"'] #upload-addon"). one('submit', function(e){
 			e.preventDefault();
-			alert("hi");
 			if(check_image(li, type, kind)){
 				$(".loader").show();
 				$.ajax({
@@ -421,8 +420,22 @@ function publish_article(id){
 		}
 	});
 }
-// var mock = new Image();
-// mock.src = $(".image-container img").attr("src");
-// alert(mock.width);
+function count_image(){
+	var count_img = $(".image-container").length;
+	var cont = $(".image-container").width();
+	for(i = 0; i < count_img; i++){
+		$(".image-container img").eq(i).load(function(){
+			var pic = new Image();
+			pic.src = $(this).attr("src");
+
+			if(pic.width < cont){
+				$(this).css("width", pic.width);
+			}
+			else{
+				$(this).css("width", "100%");
+			}
+		});
+	}
+}
 </script>
 @stop

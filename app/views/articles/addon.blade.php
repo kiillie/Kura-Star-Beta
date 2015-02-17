@@ -51,7 +51,7 @@ else if($addon['type'] == 'picture'){
 					'<a href="javascript:void(0)" class="search-anchor"><span class="glyphicon glyphicon-search"></span> Search for image</a>'+
 					'<div class="img-desc-con">'+
 					'<textarea class="form-control img-desc"></textarea>'+
-					'<input type="button" class="btn btn-default" value="Add" onclick="addItem(\''+li+'\', \''+type+'\', \''+kind+'\')">'+
+					'<input type="button" class="btn btn-default pic-add" value="Add" onclick="addItem(\''+li+'\', \''+type+'\', \''+kind+'\')">'+
 					'<input type="button" class="btn btn-default" value="Cancel" onclick="cancel_add(\''+li+'\', \''+type+'\', \''+kind+'\')">'+
 					'</div>'+
 					'</div>'+

@@ -55,7 +55,6 @@ $(".url-setting .img-btns input[name='art-submit']").on('click', function(e){
 		e.preventDefault();
 		var val = $(".url-setting .img-url input").val();
 		$(".article-details .art-default-img img").attr("src", val);
-		$(".url-setting .img-url input").val("");
 	}
 	else{
 		e.preventDefault();

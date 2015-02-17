@@ -68,9 +68,9 @@
 						<div class="row">
 							<div class="col-md-2 col-xs-6">
 								@if($article->CURATION_IMAGE == "")
-									<img src="/assets/images/article-default.jpg" alt="Name" />
+									<a href="{{URL::route('article.view', $article->CURATION_ID)}}"><img src="/assets/images/article-default.png" alt="Name" /></a>
 								@else
-									<img src="{{$article->CURATION_IMAGE}}" alt="Name" />
+									<a href="{{URL::route('article.view', $article->CURATION_ID)}}"><img src="{{$article->CURATION_IMAGE}}" alt="Name" /></a>
 								@endif
 							</div>
 							<div class="col-md-8 col-xs-12">
@@ -81,8 +81,8 @@
 							<div class="col-md-2 user-detail col-xs-12">
 								@foreach($users as $user)
 									@if($user->CURATER_ID == $article->CURATER_ID)
-										<span class="hidden-xs"><a href="">{{$user->CURATER}}</a></span>
-										<span class="visible-xs"><i>- <a href="#">{{$user->CURATER}}</a></i></span>
+										<span class="hidden-xs"><a href="{{URL::route('user.profile', $article->CURATER_ID)}}">{{$user->CURATER}}</a></span>
+										<span class="visible-xs"><i>- <a href="{{URL::route('user.profile', $article->CURATER_ID)}}">{{$user->CURATER}}</a></i></span>
 									@endif
 								@endforeach
 							</div>
@@ -109,7 +109,7 @@
 				</div>
 			@endif
 		</div>
-		<div class="col-md-3 advertisement">
+		<div class="col-md-3 hidden-xs advertisement">
 			<h2>Advertisements</h2>
 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 			<!-- Stinger スマホ用 -->

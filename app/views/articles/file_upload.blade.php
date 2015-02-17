@@ -8,13 +8,8 @@ if(isset($image['image'])){
 	$move = $name.".".$upload->getClientOriginalExtension();
 
 	if($upload->getMimeType() == 'image/jpeg' || $upload->getMimeType() == 'image/png'){
-		if($upload->getSize() > 100000){
 			$upload->move($folder, $move);
 			echo "/assets/images/attachments/".$move;
-		} 
-		else{
-			echo "size";
-		}
 	}
 	else{
 		echo "type";

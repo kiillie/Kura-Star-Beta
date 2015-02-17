@@ -111,16 +111,14 @@ class ArticleController extends BaseController{
 		$ranking = $this->article->getByRanking();
 		$ctry_rank = [];
 		$views = $this->article->incrementView($id);
+		$tocheck = "";
 		if($views){
 			foreach($countries as $country){
 				$ctry_rank [$country->COUNTRY_ID] = $this->article->countByCountry($country->COUNTRY_ID);
 			}
-		if(\Auth::check()){
-			$check = $this->favorite->check($id, \Auth::user()->CURATION_ID);
-		}
-		else{
-			$check = false;
-		}
+			if(\Auth::check()){
+				$check = $this->favorite->check($id, Auth::user()->CURATER_ID);
+			}
 			return View::make('articles.view')
 					->withCountries($countries)
 					->withCategories($categories)
@@ -129,7 +127,9 @@ class ArticleController extends BaseController{
 					->withRank($ranking)
 					->withCtryrank($ctry_rank)
 					->withCheck($check);
+
 		}
+
 	}
 
 	public function preview($id){

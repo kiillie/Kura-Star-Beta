@@ -19,9 +19,13 @@ class EloquentArticleRepository implements ArticleRepository{
 						->update(['COUNTRY_ID' => $input['country'], 'CATEGORY_ID' => $input['category'], 'CURATION_TITLE' => $input['title'], 'CURATION_DESCRIPTION' => $input['description'], 'CURATION_DETAIL' => $details, 'CURATION_IMAGE' => $cur_img ]);
 
 		}
+		else if($input['imageUrl'] != ""){
+			$article = Article::where('CURATION_ID', '=', $input['cur_id'])
+						->update(['COUNTRY_ID' => $input['country'], 'CATEGORY_ID' => $input['category'], 'CURATION_TITLE' => $input['title'], 'CURATION_DESCRIPTION' => $input['description'], 'CURATION_DETAIL' => $details, 'CURATION_IMAGE' => $input['imageUrl']]);
+		}
 		else{
 			$article = Article::where('CURATION_ID', '=', $input['cur_id'])
-						->update(['COUNTRY_ID' => $input['country'], 'CATEGORY_ID' => $input['category'], 'CURATION_TITLE' => $input['title'], 'CURATION_DESCRIPTION' => $input['description'], 'CURATION_DETAIL' => $details]);
+						->update(['COUNTRY_ID' => $input['country'], 'CATEGORY_ID' => $input['category'], 'CURATION_TITLE' => $input['title'], 'CURATION_DESCRIPTION' => $input['description'], 'CURATION_DETAIL' => $details]);	
 		}
 		
 		return $article;
