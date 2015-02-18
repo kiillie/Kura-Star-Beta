@@ -111,7 +111,7 @@ class ArticleController extends BaseController{
 		$ranking = $this->article->getByRanking();
 		$ctry_rank = [];
 		$views = $this->article->incrementView($id);
-		$tocheck = "";
+		$check = false;
 		if($views){
 			foreach($countries as $country){
 				$ctry_rank [$country->COUNTRY_ID] = $this->article->countByCountry($country->COUNTRY_ID);
