@@ -36,6 +36,7 @@ function addItem(li, type, kind){
 				var current = $('ul.sortable li[value="'+li+'"]');
 				$("ul.sortable li[value='"+li+"'] .append-new-item").hide();
 				current.after(content);
+				insert_addon();
 			}
 			$(".loader").hide();
 			addonHovered(type, kind);
@@ -80,6 +81,7 @@ function addItem(li, type, kind){
 				var current = $('ul.sortable li[value="'+li+'"]');
 				$("ul.sortable li[value='"+li+"'] .append-new-item").hide();
 				current.after(content);
+				insert_addon();
 			}
 			count_image();
 			$(".loader").hide();
@@ -92,7 +94,7 @@ function addItem(li, type, kind){
 			var desc = $(".new-addon .new-item .vid-desc").val();
 
 			var video = '<iframe class="vid-display" src="'+src+'" width="400" height="400">#</iframe>'+
-						'<p>'+desc+'</p>';
+						'<p class="vid-p-desc">'+desc+'</p>';
 			$('.new-addon .new-item').html("");
 		}
 		else{
@@ -100,7 +102,7 @@ function addItem(li, type, kind){
 			var desc = $("ul.sortable li[value='"+li+"'] .vid-desc").val();
 
 			var video =  '<iframe class="vid-display" src="'+src+'" width="400" height="400">#</iframe>'+
-						 '<p>'+desc+'</p>';
+						 '<p class="vid-p-desc">'+desc+'</p>';
 			$('ul.sortable li[value="'+li+'"] .append-new-item').html("");
 			$('ul.sortable li[value="'+li+'"] .add-inner .item-btn-con').show();
 		}
@@ -126,6 +128,7 @@ function addItem(li, type, kind){
 			var current = $('ul.sortable li[value="'+li+'"]');
 			$("ul.sortable li[value='"+li+"'] .append-new-item").hide();
 			current.after(content);
+			insert_addon();
 		}
 
 		$(".loader").hide();
@@ -182,6 +185,7 @@ function addItem(li, type, kind){
 				var current = $('ul.sortable li[value="'+li+'"]');
 				$("ul.sortable li[value='"+li+"'] .append-new-item").hide();
 				current.after(content);
+				insert_addon();
 			}
 			$(".loader").hide();
 			addonHovered(type, kind);
@@ -223,6 +227,7 @@ function editItem(li, type, kind){
 		$("ul.sortable li[value='"+li+"']").html(content);
 		$(".loader").hide();
 		addonHovered(type, kind);
+		insert_addon();
 	}
 	else if(type == 'picture'){
 		var src = $(".new-addon .new-item .img-hid").val();
@@ -246,6 +251,31 @@ function editItem(li, type, kind){
 			$("ul.sortable li[value='"+li+"']").html(content);
 			$(".loader").hide();
 			addonHovered(type, kind);
+			insert_addon();
+	}
+	else if(type == 'video'){
+		var src = $(".new-addon .new-item iframe").attr("src");
+		var desc = $(".new-addon .new-item .vid-desc").val();
+		var video = '<iframe class="vid-display" src="'+src+'" width="400" height="400">#</iframe>'+
+					'<p class="vid-p-desc">'+desc+'</p>';
+		$('.new-addon .new-item').html("");
+
+		$(".loader").show();
+		var content = 	'<div class="item-added-container">'+
+						'<div class="item-inner text">'+
+						'<div class="vid-wrapper">'+video+"</div>"+
+						'</div>'+
+						'<div class="editlist">'+
+						'<button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button>'+
+						'</div>'+
+						'</div>'+
+						'<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div></div>'+
+						'<input type="hidden" class="type" value="'+type+'">'+
+						'<input type="hidden" class="kind" value="'+kind+'">';
+			$("ul.sortable li[value='"+li+"']").html(content);
+			$(".loader").hide();
+			addonHovered(type, kind);
+			insert_addon();
 	}
 	else if(type == "tag"){
 		var color = "";
@@ -277,6 +307,7 @@ function editItem(li, type, kind){
 
 		$(".loader").hide();
 		addonHovered(type, kind);
+		insert_addon();
 	}
 }
 
@@ -408,25 +439,30 @@ function moveUpAndDown(type, kind){
 		insert_addon();
 	});
 }
-
 function extract_video(li, type, kind){
 	if(validate_addon(li, type, kind)){
 		if(kind == 'new'){
 			var url = $(".new-addon .new-item .vid-url").val();
 			vid = url.replace('watch?v=', 'embed/');
+			$(".loader").show();
 			$(".new-addon .new-item iframe").attr("src", vid);
-
-			$(".new-addon .new-item .extracted-vid").show();
-			$(".new-addon .new-item .vid-url-container").hide();
+			$(".new-addon .new-item iframe").load(function(){
+				$(".loader").hide();
+				$(".new-addon .new-item .extracted-vid").show();
+				$(".new-addon .new-item .vid-url-container").hide();
+			});
+			
 		}
 		else{
 			var url = $("ul.sortable li[value='"+li+"'] .vid-url").val();
 			vid = url.replace('watch?v=', 'embed/');
-
+			$(".loader").show();
 			$("ul.sortable li[value='"+li+"'] iframe").attr("src", vid);
+			$("ul.sortable li[value='"+li+"'] iframe").load(function(){
+				$("ul.sortable li[value='"+li+"'] .extracted-vid").show();
+				$("ul.sortable li[value='"+li+"'] .vid-url-container").hide();
+			});
 
-			$("ul.sortable li[value='"+li+"'] .extracted-vid").show();
-			$("ul.sortable li[value='"+li+"'] .vid-url-container").hide();
 		}
 	}
 }
@@ -680,6 +716,17 @@ function validate_addon(li, type, kind){
 				}, 5000);
 				checker++;
 			}
+			else if(is_youtube_video(vid) === false){
+				setTimeout(function(){
+					$("<span class='label label-danger err'>Please input a valid youtube url</span>").insertBefore(".new-addon .new-item .vid-url");
+				}, 1000);
+				setTimeout(function(){
+					$(".new-item span.err").fadeOut('slow', function(){
+					$('.new-item span.err').remove();
+					});
+				}, 5000);
+				checker++;
+			}
 			if(checker > 0){
 				return false;
 			}
@@ -688,7 +735,35 @@ function validate_addon(li, type, kind){
 			}
 		}
 		else{
-
+			var vid = $("ul.sortable li[value='"+li+"'] .vid-url").val();
+			if(vid == ""){
+				setTimeout(function(){
+					$("<span class='label label-danger err'>Please input a url</span>").insertBefore("ul.sortable li[value='"+li+"'] .vid-url");
+				}, 1000);
+				setTimeout(function(){
+					$("ul.sortable li[value='"+li+"'] span.err").hide('slow', function(){
+					$("ul.sortable li[value='"+li+"'] span.err").remove();
+					});
+				}, 5000);
+				checker++;
+			}
+			else if(is_youtube_video(vid) === false){
+				setTimeout(function(){
+					$("<span class='label label-danger err'>Please input a valid youtube url</span>").insertBefore("ul.sortable li[value='"+li+"'] .vid-url");
+				}, 1000);
+				setTimeout(function(){
+					$("ul.sortable li[value='"+li+"'] span.err").fadeOut('slow', function(){
+					$("ul.sortable li[value='"+li+"'] span.err").remove();
+					});
+				}, 5000);
+				checker++;
+			}
+			if(checker > 0){
+				return false;
+			}
+			else{
+				return true;
+			}
 		}
 	}
 	else if(type == 'tag'){
@@ -732,6 +807,12 @@ function validate_addon(li, type, kind){
 		}
 	} 
 }
+
+function is_youtube_video(url) {
+    var p = /^(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?(?=.*v=((\w|-){11}))(?:\S+)?$/;
+    return (url.match(p)) ? RegExp.$1 : false;
+}
+
 function check_image(li, type, kind){
 	var checker = 0;
 	if(kind == 'new'){

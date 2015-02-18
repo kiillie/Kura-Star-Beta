@@ -625,9 +625,6 @@
 .preview .details li, .view .details li{
 	padding: 5px;
 }
-.preview .details img, .view .details img{
-	width: 100%;
-}
 .preview .fave-views .views, .preview .fave-views .fave, .view .fave-views .views, .view .fave-views .fave{
 	margin: 10px;
 }

@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+var def_image = $(".art-default-img img").attr("src");
 // For Upload Image
 $(".url-setting .img-btns a").on('click', function(e){
 	e.preventDefault();
@@ -8,6 +8,8 @@ $(".url-setting .img-btns a").on('click', function(e){
 		$(".url-setting .img-btns input").addClass("art-img-submit");
 		$(".url-setting .img-upload").css('display', 'block');
 		$(".url-setting .img-url").css('display', 'none');
+		$(".url-setting .img-upload input").val("");
+		$(".art-default-img img").attr("src", def_image);
 		$(this).text("Click to Add an Image URL");
 		$(this).removeClass('disp-def');
 		$(this).addClass('disp-up');
@@ -17,6 +19,8 @@ $(".url-setting .img-btns a").on('click', function(e){
 		$(".url-setting .img-btns input").addClass("art-url-submit");
 		$(".url-setting .img-upload").css('display', 'none');
 		$(".url-setting .img-url").css('display', 'block');
+		$(".url-setting .img-url input").val("");
+		$(".art-default-img img").attr("src", def_image);
 		$(this).text("Click to Upload an Image");
 		$(this).removeClass('disp-up');
 		$(this).addClass('disp-def');
@@ -53,15 +57,98 @@ $(".url-setting .img-btns input[name='art-submit']").on('click', function(e){
 
 	if($(parent).find('a').hasClass("disp-def")){
 		e.preventDefault();
-		var val = $(".url-setting .img-url input").val();
-		$(".article-details .art-default-img img").attr("src", val);
+		if(validate_art_image('url')){
+			var val = $(".url-setting .img-url input").val();
+			$(".article-details .art-default-img img").attr("src", val);
+		}
 	}
 	else{
 		e.preventDefault();
-		$(".art-default-img img").attr("src", imgresult);
+		if(validate_art_image('upload')){
+			$(".art-default-img img").attr("src", imgresult);
+		}
 	}
 });
 
+function validate_art_image(type){
+	if(type == 'url'){
+		var inp = $(".img-url input[name='imageUrl']").val();
+		if(inp == ""){
+			setTimeout(function(){
+				$(".img-url .err").text("");
+				$("<span class='err' style='color:red;'>Please input a url</span>").insertAfter(".img-url input[name='imageUrl']");
+			}, 100);
+			setTimeout(function(){
+				$(".img-url span.err").fadeOut("slow", function(){
+					$(this).remove();
+				});
+			}, 5000);
+			$(".img-url input[name='imageUrl']").val("");
+			return false;
+		}
+		else if(!isURL(inp)){
+			setTimeout(function(){
+				$(".img-url .err").text("");
+				$("<span class='err' style='color:red;'>Not a valid url.</span>").insertAfter(".img-url input[name='imageUrl']");
+			}, 100);
+			setTimeout(function(){
+				$(".img-url span.err").fadeOut("slow", function(){
+					$(this).remove();
+				});
+			}, 5000);
+			$(".img-url input[name='imageUrl']").val("");
+			return false;
+		}
+		else if(!check_exist(inp)){
+			setTimeout(function(){
+				$(".img-url .err").text("");
+				$("<span class='err' style='color:red;'>No image found.</span>").insertAfter(".img-url input[name='imageUrl']");
+			}, 100);
+			setTimeout(function(){
+				$(".img-url span.err").fadeOut("slow", function(){
+					$(this).remove();
+				});
+			}, 5000);
+			$(".img-url input[name='imageUrl']").val("");
+			return false;
+		}
+		else{
+			return true;
+		}
+	}
+	else{
+		var inp = $(".img-upload input[name='imgUp']").val();
+		if(inp == ""){
+			setTimeout(function(){
+				$(".img-upload .err").text("");
+				$("<span class='err' style='color:red;'>Please select an image</span>").insertAfter(".img-upload input[name='imgUp']");
+			}, 100);
+			setTimeout(function(){
+				$(".img-upload span.err").fadeOut("slow", function(){
+					$(this).remove();
+				});
+			}, 5000);
+			return false;
+		}
+		else{
+			return true;
+		}
+	}
+}
+$(".img-url input[name='imageUrl']").on('change', function(){
+	check_exist($(this).val());
+});
+
+function check_exist(src){
+	var img = new Image();
+	img.src = src;
+	if(img.width == 0){
+		return false;
+	}
+	else{
+		return true;
+	}
+}
 //Link
 
 

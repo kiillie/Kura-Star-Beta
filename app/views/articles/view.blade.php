@@ -74,4 +74,23 @@
 		</div>
 	</div>
 </div>
+<script>
+function count_image(){
+	var count_img = $(".image-container").length;
+	var cont = $(".image-container").width();
+	for(i = 0; i < count_img; i++){
+		$(".image-container img").eq(i).load(function(){
+			var pic = new Image();
+			pic.src = $(this).attr("src");
+
+			if(pic.width < cont){
+				$(this).css("width", pic.width);
+			}
+			else{
+				$(this).css("width", "100%");
+			}
+		});
+	}
+}
+</script>
 @stop

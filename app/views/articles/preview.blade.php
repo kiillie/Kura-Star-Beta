@@ -1,6 +1,7 @@
 @extends('layouts.main')
 @section('content')
 <link rel="stylesheet" type="text/css" href="/assets/css/temp.css"></link>
+<script language="javascript" src="/assets/js/temp_art.js"></script>
 <div class="container article">
 	{{ Breadcrumbs::render('view_article') }}
 	<div class="prev-message alert alert-info"><span>This is a Preview Page. Only the curator can see this page.</span></div>
@@ -69,4 +70,23 @@
 		</div>
 	</div>
 </div>
+<script>
+function count_image(){
+	var count_img = $(".image-container").length;
+	var cont = $(".image-container").width();
+	for(i = 0; i < count_img; i++){
+		$(".image-container img").eq(i).load(function(){
+			var pic = new Image();
+			pic.src = $(this).attr("src");
+
+			if(pic.width < cont){
+				$(this).css("width", pic.width);
+			}
+			else{
+				$(this).css("width", "100%");
+			}
+		});
+	}
+}
+</script>
 @stop

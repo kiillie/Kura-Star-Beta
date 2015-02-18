@@ -58,6 +58,31 @@ else if($addon['type'] == 'picture'){
 </script>
 <?php
 }
+else if($addon['type'] == 'video'){
+?>
+<script>
+	$(".loader").hide();
+	var li = "{{$addon['li']}}";
+	var type = "{{$addon['type']}}";
+	var kind = "{{$addon['kind']}}";
+	var src = $("ul.sortable li[value='"+li+"'] iframe").attr("src");
+	var vid_dsc = $("ul.sortable li[value='"+li+"'] .vid-p-desc").text();
+	var content = '{{Form::open(["name"=>"video"])}}'+
+					'<div class="extracted-vid row" style="display: block;">'+
+					'<div class="col-md-7">'+
+					'<iframe src="'+src+'" width="300" height="300">#document</iframe>'+
+					'</div>'+
+					'<div class="col-md-5">'+
+					'<textarea class="vid-desc form-control" placeholder="Video Description">'+vid_dsc+'</textarea>'+
+					'<input type="button" class="btn btn-default" onclick="editItem(\''+li+'\', \''+type+'\', \''+kind+'\')" value="Add" />'+
+					'<input type="button" class="btn btn-default" onclick="cancel_add(\''+li+'\', \''+type+'\', \''+kind+'\')" value="Cancel">'+
+					'</div>'+
+					'</div>'+
+					'{{Form::close()}}';
+		$(".new-addon .new-item").html(content);
+</script>
+<?php
+}
 else if($addon['type'] == 'tag'){
 ?>
 <script>
