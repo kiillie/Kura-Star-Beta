@@ -31,6 +31,7 @@ class SessionController extends BaseController{
 	}
 
 	public function store(){
+		$remember = (Input::has('remember')) ? true : false;
 		$credentials = [
 			'MAIL_ADDRESS' 	=>	Input::get('log_email'),
 			'password'	=>	Input::get('password')
@@ -45,7 +46,7 @@ class SessionController extends BaseController{
 		$validator =  Validator::make($credentials, $rules);
 
 		if($validator->passes()){
-			if(Auth::attempt($credentials)){
+			if(Auth::attempt($credentials, $remember)){
 				return Redirect::route('index')
 						->with('message', 'Welcome!');
 			}

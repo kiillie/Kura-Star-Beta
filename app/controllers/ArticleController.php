@@ -68,6 +68,14 @@ class ArticleController extends BaseController{
 
 	}
 
+	public function insertImg(){
+		$input  = Input::all();
+		$image = $this->article->insertImage($input);
+
+		return View::make('articles.article_image')
+				->withImage($image);
+	}
+
 	public function publish(){
 		$publish = $this->article->publish(Input::all());
 		$input = Input::all();
@@ -152,6 +160,10 @@ class ArticleController extends BaseController{
 				->withUser($user)
 				->withRank($ranking)
 				->withCtryrank($ctry_rank);
+	}
+
+	public function twitter(){
+		return View::make('articles.addon_twitter');
 	}
 
 	public function showArticlesByUser($id){

@@ -4,6 +4,8 @@ interface ArticleRepository{
 	
 	public function store($input);
 
+	public function insertImage($input);
+
 	public function insert();
 
 	public function getArticle();

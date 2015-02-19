@@ -83,6 +83,11 @@ Route::get('article/preview/{id}',[
 	'as'	=>	'article.preview'
 ]);
 
+Route::post('article/image', [
+	'uses'	=>	'ArticleController@insertImg',
+	'as'	=>	'article.image'
+]);
+
 Route::post('addon/new', [
 	'uses'	=>	'ArticleController@addon',
 	'as'	=>	'article.addon'
@@ -106,6 +111,11 @@ Route::post('addon/insert', [
 Route::post('addon/delete', [
 	'uses'	=>	'ArticleController@addonDelete',
 	'as'	=>	'addon.delete'
+]);
+
+Route::get('addon/twitter', [
+	'uses'	=>	'ArticleController@twitter',
+	'as'	=>	'addon.twitter'
 ]);
 
 /** Login **/

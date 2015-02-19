@@ -134,7 +134,10 @@
 					</div>
 				</div>
 			</div>
+			<textarea name="inner-detail" class="detail-li" style="display:none;">{{$article->CURATION_DETAIL}}</textarea>
+			{{Form::close()}}
 			<div class="url-setting inline row">
+				{{Form::open(['name'=>'insert-img', 'class'=>'img-form', 'role'=>'form', 'method'=>'post', 'enctype'=>'multipart/form-data', 'url' => 'article/image'])}}
 					<div class="img-url col-md-4">
 						<input type="text" placeholder="URL" name="imageUrl" class="form-control" />
 					</div>
@@ -145,6 +148,12 @@
 						<input type="submit" class="btn btn-default art-url-submit" name="art-submit" value="Set">
 						<a href="#" class="disp-def">Click to Upload an Image</a>
 					</div>
+					@if(Session::has('curation'))
+							<input type="hidden" class="cur-id" name="cur_id" value="{{Session::get('curation')}}">
+						@else
+							<input type="hidden" class="cur-id" name="cur_id" value="{{$curation}}">
+						@endif
+				{{Form::close()}}
 			</div>
 			<div class="art-addons">
 				<ul class="nav nav-tabs">
@@ -152,7 +161,7 @@
 					<li class="add-image"><a href="javascript:void(0)" onclick="edit_addon('0', 'picture', 'addon', 'new', 'new')"><span class="glyphicon glyphicon-camera" ></span> Picture</a></li>
 					<li class="add-reference"><a href="javascript:void(0)"><span class="glyphicon glyphicon-hdd"></span> Reference</a></li>
 					<li class="add-link"><a href="javascript:void(0)" onclick="edit_addon('0', 'link', 'addon', 'new', 'new')"><span class="glyphicon glyphicon-link"></span> Link</a></li>
-					<li class="add-twitter"><a href="javascript:void(0)"><span class="glyphicon glyphicon-retweet"></span> Twitter</a></li>
+					<li class="add-twitter"><a href="javascript:void(0)" onclick="edit_addon('0', 'twitter', 'addon', 'new', 'new')"><span class="glyphicon glyphicon-retweet"></span> Twitter</a></li>
 					<li class="add-video"><a href="javascript:void(0)" onclick="edit_addon('0', 'video', 'addon', 'new', 'new')"><span class="glyphicon glyphicon-hd-video"></span> Youtube</a></li>
 					<li class="add-heading"><a href="javascript:void(0)"  onclick="edit_addon('0', 'tag', 'addon', 'new', 'new')"><span class="glyphicon glyphicon-header"></span> h2 Tag</a></li>
 				</ul>
@@ -179,9 +188,7 @@
 						</ul>
 					</div>
 				</div>
-				<textarea name="inner-detail" class="detail-li" style="display:none;">{{$article->CURATION_DETAIL}}</textarea>
 			</div>
-			{{Form::close()}}
 		</div>
 	</div>
 <script>
@@ -239,7 +246,7 @@ function show_appended_item_area(li){
 	addon += '<li><a href="javascript:void(0);" onclick="edit_addon(\''+li+'\', \'picture\', \'addon\', \'new\', \'append\')">Picture</a></li>';
 	addon += '<li><a href="javascript:void(0);" onclick="edit_addon("text", "addon", "new")">Reference</a></li>';
 	addon += '<li><a href="javascript:void(0);" onclick="edit_addon("text", "addon", "new")">Link</a></li>';
-	addon += '<li><a href="javascript:void(0);" onclick="edit_addon("text", "addon", "new")">Twitter</a></li>';
+	addon += '<li><a href="javascript:void(0);" onclick="edit_addon(\''+li+'\', \'twitter\', \'addon\', \'new\', \'append\')">Twitter</a></li>';
 	addon += '<li><a href="javascript:void(0);" onclick="edit_addon(\''+li+'\', \'video\', \'addon\', \'new\', \'append\')">Youtube</a></li>';
 	addon += '<li><a href="javascript:void(0);" onclick="edit_addon(\''+li+'\', \'tag\', \'addon\', \'new\', \'append\')">H2 Tag</a></li>';
 	addon += '<li class="remove-appended right"><a href="javascript:void(0);" onclick="close_appended('+li+')"><span class="glyphicon glyphicon-remove-circle"></span></a></li>';

@@ -50,22 +50,41 @@ function imageIsLoaded(e) {
 	$(".img-upload input").css("color","green");
 	imgresult = e.target.result;
 }
-$(".url-setting .img-btns input[name='art-submit']").on('click', function(e){
+$(".url-setting .img-form").on('submit', function(e){
 	
 	var parent = $(this).parent();
-	var vparent = $(parent).parent();
 
-	if($(parent).find('a').hasClass("disp-def")){
+	if($(this).find('a').hasClass("disp-def")){
 		e.preventDefault();
 		if(validate_art_image('url')){
-			var val = $(".url-setting .img-url input").val();
-			$(".article-details .art-default-img img").attr("src", val);
+			$.ajax({
+						url	: '/article/image',
+						type : 'POST',
+						data : new FormData(this),
+						contentType : false,
+						cache : false,
+						processData : false,
+						success : function(res){			
+							var val = $(".url-setting .img-url input").val();
+							$(".article-details .art-default-img img").attr("src", val);
+						}
+				});
 		}
 	}
 	else{
 		e.preventDefault();
 		if(validate_art_image('upload')){
-			$(".art-default-img img").attr("src", imgresult);
+			$.ajax({
+						url	: '/article/image',
+						type : 'POST',
+						data : new FormData(this),
+						contentType : false,
+						cache : false,
+						processData : false,
+						success : function(res){			
+							$(".art-default-img img").attr("src", imgresult);
+						}
+				});
 		}
 	}
 });

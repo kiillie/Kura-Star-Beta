@@ -56,8 +56,8 @@
 						{{Form::password('password', ['class' => 'form-control', 'placeholder' => 'Password'])}}
 					</div>
 					<div class="form-group">
-						{{Form::checkbox('remember_me')}}
-						{{Form::label('remember_me', 'Remember Me', ['style' => 'vertical-align:top; font-weight: normal;'])}}
+						{{Form::checkbox('remember')}}
+						{{Form::label('remember', 'Remember Me', ['style' => 'vertical-align:top; font-weight: normal;'])}}
 					</div>
 					<div>{{Form::submit('Login', ['class'	=> 'form-control btn btn-primary'])}}</div>
 				{{Form::close()}}
