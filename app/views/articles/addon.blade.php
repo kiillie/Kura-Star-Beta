@@ -1,5 +1,4 @@
 <?php
-
 if($addon['type'] == 'text'){
 ?>
 <script>
@@ -93,6 +92,7 @@ else if($addon['type'] == 'link'){
 <?php
 }
 else if($addon['type'] == 'twitter'){
+
 ?>
 <script>
 	$(".loader").hide();
@@ -101,8 +101,8 @@ else if($addon['type'] == 'twitter'){
 	var type = "{{$addon['type']}}";
 	var content =	'{{Form::open(["name" => "twitter"])}}'+
 				  	'<input type="text" class="form-control url-tweet" placeholder="Put the URL of a tweet here">'+
-				  	'<input type="button" class="btn btn-default check-tweet" onclick="" value="Check">'+
-				  	'<input type="button" class="btn btn-default" onclick="" value="Cancel">'+
+				  	'<input type="button" class="btn btn-default check-tweet" onclick="addItem(\''+li+'\', \''+type+'\', \''+kind+'\')" value="Check">'+
+				  	'<input type="button" class="btn btn-default" onclick="cancel_add(\''+li+'\', \''+type+'\', \''+kind+'\')" value="Cancel">'+
 				  	'{{Form::close()}}';
 	if(kind == 'new'){
 		$('.new-addon .new-item').html(content);
@@ -177,6 +177,4 @@ else if($addon['type'] == 'tag'){
 <?php
 
 }
-// $files = fopen(public_path()."/assets/articles/boang.html", "w");
-// fwrite($files, $addon['content']);
 ?>

@@ -118,6 +118,11 @@ Route::get('addon/twitter', [
 	'as'	=>	'addon.twitter'
 ]);
 
+Route::post('addon/tweet', [
+	'uses'	=> 	'ArticleController@tweet',
+	'as'	=>	'addon.tweet'
+]);
+
 /** Login **/
 
 Route::get('login',[

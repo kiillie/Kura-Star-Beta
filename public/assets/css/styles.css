@@ -297,7 +297,7 @@
 	margin: 0;
 }
 .article .details p{
-	font-size: 12px;
+	font-size: 14px;
 }
 .article .details .count-cat{
 	position: absolute;
@@ -664,4 +664,21 @@
 .article-container .detail-wrap .date span{
 	color: gray;
 	font-size: 12px;
+}
+/**** Twitter ****/
+.article .tweet-wrapper .tweet .tweet-img img{
+	border-radius: 5px;
+}
+.article .tweet-wrapper .tweet .info .screen{
+	font-size: 12px;
+	color: gray;
+	margin: 0 0 0 10px;
+}
+.article .tweet-wrapper .tweet .tweet-text{
+	margin: 10px 0;
+	font-size: 16px;
+}
+.article .tweet-wrapper .tweet .date{
+	font-size: 12px;
+	color: rgb(176, 172, 172);
 }

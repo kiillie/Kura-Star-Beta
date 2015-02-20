@@ -195,3 +195,19 @@
 .append-new-item .picture .url-check, .append-new-item .picture .url-cancel{
 	margin: 10px 10px 10px 0;
 }
+/**** Twitter ****/
+.addons-container .tweet-wrapper .tweet .tweet-img img{
+	border-radius: 5px;
+}
+.addons-container .tweet-wrapper .tweet .info .screen{
+	font-size: 12px;
+	color: gray;
+	margin: 0 0 0 10px;
+}
+.addons-container .tweet-wrapper .tweet .tweet-text{
+	margin: 10px 0;
+}
+.addons-container .tweet-wrapper .tweet .date{
+	font-size: 12px;
+	color: rgb(176, 172, 172);
+}

@@ -11,7 +11,7 @@ define('ACCESS_TOKEN_SECRET', '6gOj8RsTQUt1VknTXmZ6TBHL0O5ctWJGlGrAvCDnco4Fy');
 function search(array $query)
 {
   $toa = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET);
-  return $toa->get('search/tweets', $query);
+  return $toa->get('statuses/show/563689631867076609');
 }
  
 $query = array(
@@ -24,13 +24,18 @@ $query = array(
 <div class="twitter-result">
 <?php
 $results = search($query);
-if(isset($results->statuses)){
-	foreach ($results->statuses as $result) {
-	  echo $result->user->screen_name . ": " . $result->text . "<br/>";
-	}
-}
-else{
-	echo "No Results Found!";
-}
+print_r($results);
+// echo $results->extended_entities->media[0]->media_url_https;
+// if(isset($results->statuses)){
+// 	foreach ($results->statuses as $result) {
+// 	  echo $result->user->screen_name . ": " . $result->text . "<br/>";
+// 	}
+// }
+// else{
+// 	echo "No Results Found!";
+// }
 ?>
+@if(isset($results->extended_entities))
+	<img src="{{$results->extended_entities->media[0]->media_url_https}}">
+@endif
 </div>

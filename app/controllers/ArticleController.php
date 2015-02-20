@@ -166,6 +166,12 @@ class ArticleController extends BaseController{
 		return View::make('articles.addon_twitter');
 	}
 
+	public function tweet(){
+		$tid = Input::all();
+		return View::make('articles.tweet_by_id')
+					->withTweet($tid);
+	}
+
 	public function showArticlesByUser($id){
 		$articles = $this->article->getByUser($id);
 		$user = $this->user->getUserById($id);
