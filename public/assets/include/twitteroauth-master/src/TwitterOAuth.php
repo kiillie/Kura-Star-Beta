@@ -5,7 +5,7 @@
  * @license MIT
  */
 namespace Abraham\TwitterOAuth;
-require_once('/../autoload.php');
+require_once('../autoload.php');
 
 
 use Abraham\TwitterOAuth\Util\JsonDecoder;
