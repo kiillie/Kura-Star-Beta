@@ -11,31 +11,40 @@ define('ACCESS_TOKEN_SECRET', '6gOj8RsTQUt1VknTXmZ6TBHL0O5ctWJGlGrAvCDnco4Fy');
 function search(array $query)
 {
   $toa = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET);
-  return $toa->get('statuses/show/563689631867076609');
+  return $toa->get('search/tweets', $query);
 }
  
 $query = array(
-  "q" => "",
-  'count' => 15
+  "q" => $search['search'],
+  'count' => 100
 );
-?>
-
-<input type="text" class="form-control tweet" name="tweets"/><input type="button" class="btn btn-default" value="Search" />
-<div class="twitter-result">
-<?php
 $results = search($query);
-print_r($results);
-// echo $results->extended_entities->media[0]->media_url_https;
-// if(isset($results->statuses)){
-// 	foreach ($results->statuses as $result) {
-// 	  echo $result->user->screen_name . ": " . $result->text . "<br/>";
-// 	}
-// }
-// else{
-// 	echo "No Results Found!";
-// }
+
 ?>
-@if(isset($results->extended_entities))
-	<img src="{{$results->extended_entities->media[0]->media_url_https}}">
+Tweet Results ...
+<hr></hr>
+@if($results != NULL)
+	@foreach($results->statuses as $result)
+	<?php
+		$time = strtotime($result->created_at);
+	?>
+		<div class="tweet row">
+			<div class="tweet-img col-md-1">
+				<a href="https://twitter.com/{{$result->user->screen_name}}"><img src="{{$result->user->profile_image_url}}" alt="{{$result->user->screen_name}}" /></a>
+			</div>
+			<div class="tweet-info col-md-11">
+				<div class="info">
+					<span class="name"><a href="https://twitter.com/{{$result->user->screen_name}}">{{$result->user->name}}</a></span>
+					<span class="screen">&#64;{{$result->user->screen_name}}</span>
+				</div>
+				<p class="tweet-text"><?php echo preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $result->text); ?></p>
+				@if(isset($result->extended_entities))
+					<div class="tweet-extra"><img src="{{$result->extended_entities->media[0]->media_url_https}}" /></div>
+				@endif
+				<span class="date">{{date("Y-m-d", $time)}}</span>
+			</div>
+		</div>
+	@endforeach
+@else
+	<div class="label label-danger">No Tweets Found.</div>
 @endif
-</div>

@@ -191,6 +191,11 @@
 			</div>
 		</div>
 	</div>
+	<div class="twitter-search">
+		@include('articles.twitter_search')
+		@section('twitterSearch')
+		@show
+	</div>
 <script>
 function edit_addon(li, type, controller, action, kind){
 	$(".loader").show();

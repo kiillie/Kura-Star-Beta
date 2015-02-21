@@ -113,7 +113,7 @@ Route::post('addon/delete', [
 	'as'	=>	'addon.delete'
 ]);
 
-Route::get('addon/twitter', [
+Route::post('addon/twitter', [
 	'uses'	=>	'ArticleController@twitter',
 	'as'	=>	'addon.twitter'
 ]);

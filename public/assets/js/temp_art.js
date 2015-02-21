@@ -98,27 +98,36 @@ function addItem(li, type, kind){
 				var ind = tweet.indexOf("status") + 7;
 				var id = tweet.substring(ind);
 				$('.new-addon .new-item').html("");
+				$(".loader").show();
 				$.post("/addon/tweet", {
 					'id' : id
 				}).done(function(res){
 					var tweet = res;
 					var content =	'<li class="ui-state-default added-addon">'+
-							'<div class="item-added-container">'+
-							'<div class="item-inner text">'+
-							'<div class="tweet-wrapper">'+tweet+"</div>"+
-							'</div>'+
-							'<div class="editlist">'+
-							'<button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button>'+
-							'</div>'+
-							'</div>'+
-							'<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div></div>'+
-							'<input type="hidden" class="type" value="'+type+'">'+
-							'<input type="hidden" class="kind" value="'+kind+'">'+
-							'</li>';
+									'<div class="item-added-container">'+
+									'<div class="item-inner text">'+
+									'<div class="tweet-wrapper">'+tweet+"</div>"+
+									'</div>'+
+									'<div class="editlist">'+
+									'<button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button>'+
+									'</div>'+
+									'</div>'+
+									'<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div></div>'+
+									'<input type="hidden" class="type" value="'+type+'">'+
+									'<input type="hidden" class="kind" value="'+kind+'">'+
+									'</li>';
 					$(".addons-container .sortable").prepend(content);
 					insert_addon();
 					$(".loader").hide();
 					addonHovered(type, kind);
+				}).fail(function(){
+					$(".new-addon .new-item").html("<span class='label label-danger err'>No tweets found.</span>");
+					setTimeout(function(){
+						$(".new-addon .new-item .err").fadeOut(function(){
+							$(".new-addon .new-item .err").remove();
+						});
+						
+					}, 5000)
 				});
 			}
 		}
@@ -368,27 +377,47 @@ function addonHovered(type, kind){
 	var editbtns2 = '<ul class="list-inline editbtns2"><li><button class="movetop"><span class="glyphicon glyphicon-arrow-up"></span> Move To Top</button></li><li><button class="moveup"><span class="glyphicon glyphicon-chevron-up"></span> Move Up</button></li><li><button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button></li><li><button class="deleteItem" onclick="delete_item(\''+type+'\', \''+kind+'\')"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button></li><li class="right sort"><span class="sort-item"><span class="glyphicon glyphicon-move"></span> Sort this item</span></li></ul>';
 	var editbtns3 = '<ul class="list-inline editbtns3"><li><button class="movebottom"><span class="glyphicon glyphicon-arrow-down"></span> Move To Bottom</button></li><li><button class="movedown"><span class="glyphicon glyphicon-chevron-down"></span> Move Down</button></li><li><button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button></li><li><button class="deleteItem" onclick="delete_item(\''+type+'\', \''+kind+'\')"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button></li><li class="right sort"><span class="sort-item"><span class="glyphicon glyphicon-move"></span> Sort this item</span></li></ul>';
 	var editbtns4 = '<ul class="list-inline editbtns4"><li><button class="movetop"><span class="glyphicon glyphicon-arrow-up"></span> Move to Top</button></li><li><button class="moveup"><span class="glyphicon glyphicon-chevron-up"></span> Move Up</button></li><li><button class="movebottom"><span class="glyphicon glyphicon-arrow-down"></span> Move To Bottom</button></li><li><button class="movedown"><span class="glyphicon glyphicon-chevron-down"></span> Move Down</button></li><li><button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button></li><li><button class="deleteItem" onclick="delete_item(\''+type+'\', \''+kind+'\')"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button></li><li class="right sort"><span class="sort-item"><span class="glyphicon glyphicon-move"></span> Sort this item</span></li></ul>';
-	var eidtbtns5 = '<ul class="list-inline editbtns2"><li><button class="movetop"><span class="glyphicon glyphicon-arrow-up"></span> Move To Top</button></li><li><button class="moveup"><span class="glyphicon glyphicon-chevron-up"></span> Move Up</button></li><li><button class="deleteItem" onclick="delete_item(\''+type+'\', \''+kind+'\')"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button></li><li class="right sort"><span class="sort-item"><span class="glyphicon glyphicon-move"></span> Sort this item</span></li></ul>';
+	
+	//Twitter
+	var editbtns5 = '<ul class="list-inline editbtns1"><li><button class="deleteItem" onclick="delete_item(\''+type+'\', \''+kind+'\')"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button></li><li class="right sort"><span class="sort-item"><span class="glyphicon glyphicon-move"></span> Sort this item</span></li></ul>';
+	var editbtns6 = '<ul class="list-inline editbtns5"><li><button class="movetop"><span class="glyphicon glyphicon-arrow-up"></span> Move To Top</button></li><li><button class="moveup"><span class="glyphicon glyphicon-chevron-up"></span> Move Up</button></li><li><button class="deleteItem" onclick="delete_item(\''+type+'\', \''+kind+'\')"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button></li><li class="right sort"><span class="sort-item"><span class="glyphicon glyphicon-move"></span> Sort this item</span></li></ul>';
+	var editbtns7 = '<ul class="list-inline editbtns3"><li><button class="movebottom"><span class="glyphicon glyphicon-arrow-down"></span> Move To Bottom</button></li><li><button class="movedown"><span class="glyphicon glyphicon-chevron-down"></span> Move Down</button></li><li><button class="deleteItem" onclick="delete_item(\''+type+'\', \''+kind+'\')"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button></li><li class="right sort"><span class="sort-item"><span class="glyphicon glyphicon-move"></span> Sort this item</span></li></ul>';
+	var editbtns8 = '<ul class="list-inline editbtns6"><li><button class="movetop"><span class="glyphicon glyphicon-arrow-up"></span> Move to Top</button></li><li><button class="moveup"><span class="glyphicon glyphicon-chevron-up"></span> Move Up</button></li><li><button class="movebottom"><span class="glyphicon glyphicon-arrow-down"></span> Move To Bottom</button></li><li><button class="movedown"><span class="glyphicon glyphicon-chevron-down"></span> Move Down</button></li><li><button class="deleteItem" onclick="delete_item(\''+type+'\', \''+kind+'\')"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button></li><li class="right sort"><span class="sort-item"><span class="glyphicon glyphicon-move"></span> Sort this item</span></li></ul>';
 	var ind = "";
 	$(".item-added-container").hover(function(){
 		$(this).find('.editlist').css('visibility', 'visible');
 		ind = $(this).parent().index();
 		var countchildren = $('.addons-container ul li.added-addon').length;
-		
+		type = $(this).parent().find(".type").val();
+
 		if(countchildren == 1 && ind == 0){
-			$(this).find('.editlist').html(editbtns1);
-			moveUpAndDown(type, kind);
-			added_addon_val(type, kind);
-		}
-		else if(countchildren > 1){
-			if(ind == 0){
-				$(this).find('.editlist').html(editbtns3);
+			if(type == 'twitter'){
+				$(this).find('.editlist').html(editbtns5);
 				moveUpAndDown(type, kind);
 				added_addon_val(type, kind);
 			}
+			else{
+				$(this).find('.editlist').html(editbtns1);
+				moveUpAndDown(type, kind);
+				added_addon_val(type, kind);
+			}
+		}
+		else if(countchildren > 1){
+			if(ind == 0){
+				if(type == 'twitter'){
+					$(this).find('.editlist').html(editbtns7);
+					moveUpAndDown(type, kind);
+					added_addon_val(type, kind);
+				}
+				else{
+					$(this).find('.editlist').html(editbtns3);
+					moveUpAndDown(type, kind);
+					added_addon_val(type, kind);
+				}
+			}
 			else if(ind == (countchildren-1)){
 				if(type == 'twitter'){
-					$(this).find('.editlist').html(editbtns5);
+					$(this).find('.editlist').html(editbtns6);
 					moveUpAndDown(type, kind);
 					added_addon_val(type, kind);
 				}
@@ -400,7 +429,7 @@ function addonHovered(type, kind){
 			}
 			else{
 				if(type == 'twitter'){
-					$(this).find('.editlist').html(editbtns5);
+					$(this).find('.editlist').html(editbtns8);
 					moveUpAndDown(type, kind);
 					added_addon_val(type, kind);
 				}
@@ -448,9 +477,10 @@ function delete_item(li, type, kind){
 			item.remove();
 			added_addon_val(type, kind);
 			insert_addon();
+			$(".loader").hide();
 		}
 	}
-	}
+}
 
 function moveUpAndDown(type, kind){
 
@@ -782,7 +812,7 @@ function validate_addon(li, type, kind){
 				}, 5000);
 				checker++;
 			}
-			else if(is_tweet === false){
+			else if(is_tweet(tweet) === false){
 				$(".new-item span.err").text("");
 				setTimeout(function(){
 					$("<span class='label label-danger err'>No tweets found</span>").insertBefore(".new-addon .new-item .url-tweet");
@@ -917,8 +947,10 @@ function is_youtube_video(url) {
     return (url.match(p)) ? RegExp.$1 : false;
 }
 function is_tweet(url) {
-    var p = /^(?:https?:\/\/)?(?:www\.)?twitter\.com\//;
-    return (url.match(p)) ? RegExp.$1 : false;
+    var p = /^(?:https?:\/\/)?(?:www\.)?twitter\.com/;
+    var res = (url.match(p)) ? RegExp.$1 : false;
+   return res;
+
 }
 function check_image(li, type, kind){
 	var checker = 0;

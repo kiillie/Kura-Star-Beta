@@ -163,7 +163,9 @@ class ArticleController extends BaseController{
 	}
 
 	public function twitter(){
-		return View::make('articles.addon_twitter');
+		$input = Input::all();
+		return View::make('articles.addon_twitter')
+				->withSearch($input);
 	}
 
 	public function tweet(){

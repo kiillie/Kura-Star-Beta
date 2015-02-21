@@ -211,3 +211,6 @@
 	font-size: 12px;
 	color: rgb(176, 172, 172);
 }
+.twitter-search .tweet-results{
+	padding: 40px 0;
+}

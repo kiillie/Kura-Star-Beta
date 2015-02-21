@@ -1,6 +1,3 @@
-<script>
-$(".loader").show();
-</script>
 <?php
 require_once(public_path().'/assets/include/twitteroauth-master/src/TwitterOAuth.php');
 require_once(public_path().'/assets/include/twitteroauth-master/autoload.php');
@@ -32,9 +29,9 @@ $time = strtotime($result->created_at);
 			<span class="name"><a href="https://twitter.com/{{$result->user->screen_name}}">{{$result->user->name}}</a></span>
 			<span class="screen">&#64;{{$result->user->screen_name}}</span>
 		</div>
-		<p class="tweet-text">{{$result->text}}</p>
+		<p class="tweet-text"><?php echo preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $result->text); ?></p>
 		@if(isset($result->extended_entities))
-			<div><img src="{{$result->extended_entities->media[0]->media_url_https}}" /></div>
+			<div class="tweet-extra"><img src="{{$result->extended_entities->media[0]->media_url_https}}" /></div>
 		@endif
 		<span class="date">{{date("Y-m-d", $time)}}</span>
 	</div>
