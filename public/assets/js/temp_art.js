@@ -91,7 +91,6 @@ function addItem(li, type, kind){
 		}
 	}
 	else if(type == 'twitter'){
-		
 		if(kind == 'new'){
 			if(validate_addon(li, type, kind)){
 				var tweet = $(".new-addon .new-item .url-tweet").val();
@@ -126,13 +125,48 @@ function addItem(li, type, kind){
 						$(".new-addon .new-item .err").fadeOut(function(){
 							$(".new-addon .new-item .err").remove();
 						});
-						
 					}, 5000)
 				});
 			}
 		}
 		else{
-			//
+			if(validate_addon(li, type, kind)){
+				var tweet = $("ul.sortable li[value='"+li+"'] .url-tweet").val();
+				var ind = tweet.indexOf("status") + 7;
+				var id = tweet.substring(ind);
+				$('.new-addon .new-item').html("");
+				$(".loader").show();
+				$.post("/addon/tweet", {
+					'id' : id
+				}).done(function(res){
+					var tweet = res;
+					var content =	'<li class="ui-state-default added-addon">'+
+									'<div class="item-added-container">'+
+									'<div class="item-inner text">'+
+									'<div class="tweet-wrapper">'+tweet+"</div>"+
+									'</div>'+
+									'<div class="editlist">'+
+									'<button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button>'+
+									'</div>'+
+									'</div>'+
+									'<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div></div>'+
+									'<input type="hidden" class="type" value="'+type+'">'+
+									'<input type="hidden" class="kind" value="'+kind+'">'+
+									'</li>';
+					var current = $('ul.sortable li[value="'+li+'"]');
+					$("ul.sortable li[value='"+li+"'] .append-new-item").hide();
+					current.after(content);
+					insert_addon();
+					addonHovered(type, kind);
+				}).fail(function(){
+					$('ul.sortable li[value="'+li+'"]').html("<span class='label label-danger err'>No tweets found.</span>");
+					setTimeout(function(){
+						$('ul.sortable li[value="'+li+'"] .err').fadeOut(function(){
+							$('ul.sortable li[value="'+li+'"] .err').remove();
+						});
+					}, 5000)
+				});
+			}
 		}
 	}
 	else if(type == 'video'){
@@ -832,7 +866,49 @@ function validate_addon(li, type, kind){
 			}
 		}
 		else{
-			//
+			var tweet = $("ul.sortable li[value="+li+"] .url-tweet").val();
+			if(tweet == ""){
+				$("ul.sortable li[value="+li+"] span.err").text("");
+				setTimeout(function(){
+					$("<span class='label label-danger err'>Please input a Twitter status url</span>").insertBefore("ul.sortable li[value="+li+"] .url-tweet");
+				}, 1000);
+				setTimeout(function(){
+					$("ul.sortable li[value="+li+"] span.err").fadeOut(function(){
+						$(this).remove();
+					});
+				}, 5000);
+				checker++;
+			}
+			else if(!isURL(tweet)){
+				$("ul.sortable li[value="+li+"] span.err").text("");
+				setTimeout(function(){
+					$("<span class='label label-danger err'>Please input a valid Twitter status url</span>").insertBefore("ul.sortable li[value="+li+"] .url-tweet");
+				}, 1000);
+				setTimeout(function(){
+					$("ul.sortable li[value="+li+"] span.err").fadeOut(function(){
+						$(this).remove();
+					});
+				}, 5000);
+				checker++;
+			}
+			else if(is_tweet(tweet) === false){
+				$("ul.sortable li[value="+li+"] span.err").text("");
+				setTimeout(function(){
+					$("<span class='label label-danger err'>No tweets found</span>").insertBefore("ul.sortable li[value="+li+"] .url-tweet");
+				}, 1000);
+				setTimeout(function(){
+					$("ul.sortable li[value="+li+"] span.err").fadeOut(function(){
+						$(this).remove();
+					});
+				}, 5000);
+				checker++;
+			}
+			if(checker > 0){
+				return false;
+			}
+			else{
+				return true;
+			}
 		}
 	}
 	else if(type == "video"){
@@ -1066,4 +1142,18 @@ function validate_article(){
 			$(this).submit();
 		}
 	});
+}
+function addclass_modal(pclass){
+	if(pclass == 'new-tweet'){
+		if(!$("#twitterSearch").hasClass(pclass)){
+			$("#twitterSearch").addClass("new-tweet");
+			$("#twitterSearch").removeClass("append-tweet");
+		}
+	}
+	else{
+		if(!$("#twitterSearch").hasClass(pclass)){
+			$("#twitterSearch").addClass("append-tweet");
+			$("#twitterSearch").removeClass("new-tweet");
+		}
+	}
 }

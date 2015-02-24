@@ -183,7 +183,6 @@
 								catch(Exception $e){
 									fopen(public_path()."/assets/articles/".$curation.".php", "w");
 								}
-								
 							?>
 						</ul>
 					</div>

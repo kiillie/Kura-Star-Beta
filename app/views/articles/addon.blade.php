@@ -99,9 +99,16 @@ else if($addon['type'] == 'twitter'){
 	var kind = "{{$addon['kind']}}";
 	var li = "{{$addon['li']}}";
 	var type = "{{$addon['type']}}";
+	var putclass = "";
+	if(kind == 'new'){
+		putclass = "new-tweet";
+	}
+	else{
+		putclass = "append-tweet";
+	}
 	var content =	'{{Form::open(["name" => "twitter"])}}'+
 				  	'<input type="text" class="form-control url-tweet" placeholder="Put the URL of a tweet here">'+
-				  	'<a href="javascript:void(0);" data-toggle="modal" data-target="#twitterSearch"><span class="glyphicon glyphicon-search"></span>Search for tweets.</a><br/><br/>'+
+				  	'<a href="javascript:void(0);" onclick="addclass_modal(\''+putclass+'\')" data-toggle="modal" data-target="#twitterSearch"><span class="glyphicon glyphicon-search"></span>Search for tweets.</a><br/><br/>'+
 				  	'<input type="button" class="btn btn-default check-tweet" onclick="addItem(\''+li+'\', \''+type+'\', \''+kind+'\')" value="Check">'+
 				  	'<input type="button" class="btn btn-default" onclick="cancel_add(\''+li+'\', \''+type+'\', \''+kind+'\')" value="Cancel">'+
 				  	'{{Form::close()}}';

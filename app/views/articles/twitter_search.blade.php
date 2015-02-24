@@ -13,9 +13,13 @@
 						<input type="text" class="form-control search-value" name="search" placeholder="Search for tweets" aria-describedby="sizing-addon1">
 				  	</div>
 				  	<div class="col-md-5">
+				  		<input type="hidden" name="type" value="new"/>
 				  		<input type="submit" class="btn btn-default" id="sizing-addon1" value="Search"/>
 				  	</div>
 					{{Form::close()}}
+				</div>
+				<div class="tweet-loading" style="text-align: center; margin: 20px 0; display: none;">
+					<img width="80" src="/assets/images/loader.gif" alt="loading..."/>
 				</div>
 				<div class="tweet-results">
 
@@ -30,7 +34,7 @@
 <script>
 $(document).ready(function(){
 	$(".twitter-search #form-tweet").submit(function(e){
-
+		$(".tweet-loading").show();
 		e.preventDefault();
 		var search = $(".twitter-search .search-value").val();
 		$.ajax({
