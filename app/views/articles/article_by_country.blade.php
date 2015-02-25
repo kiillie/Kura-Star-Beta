@@ -9,7 +9,7 @@
 			<div class="row">
 					@foreach($categories as $category)
 						<div class="col-md-3 col-xs-3">
-									<a href="{{$category->CATEGORY_ID}}">{{$category->CATEGORY_NAME}}</a> <span><a class="label label-info" href="#">{{$artcount[$category->CATEGORY_ID]}}</a></span>
+									<a href="{{URL::route('article.bycategory', $category->CATEGORY_ID)}}">{{$category->CATEGORY_NAME}}</a> <span><a class="label label-info" href="{{URL::route('article.bycategory', $category->CATEGORY_ID)}}">{{$artcount[$category->CATEGORY_ID]}}</a></span>
 						</div>
 					@endforeach
 				</div>

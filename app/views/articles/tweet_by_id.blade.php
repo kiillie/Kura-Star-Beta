@@ -31,7 +31,7 @@ $time = strtotime($result->created_at);
 		</div>
 		<p class="tweet-text"><?php echo preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $result->text); ?></p>
 		@if(isset($result->extended_entities))
-			<div class="tweet-extra"><img src="{{$result->extended_entities->media[0]->media_url_https}}" /></div>
+			<div class="tweet-extra"><a class="art-added-img" href="{{$result->extended_entities->media[0]->media_url_https}}" data-fancybox-group="gallery" title="{{preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $result->text)}}"><img src="{{$result->extended_entities->media[0]->media_url_https}}" /></a></div>
 		@endif
 		<span class="date">{{date("Y-m-d", $time)}}</span>
 	</div>

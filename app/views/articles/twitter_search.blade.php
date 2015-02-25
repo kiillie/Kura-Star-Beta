@@ -13,7 +13,8 @@
 						<input type="text" class="form-control search-value" name="search" placeholder="Search for tweets" aria-describedby="sizing-addon1">
 				  	</div>
 				  	<div class="col-md-5">
-				  		<input type="hidden" name="type" value="new"/>
+				  		<input type="hidden" class="tweet-kind" name="type" />
+				  		<input type="hidden" class="tweet-li" name="li" />
 				  		<input type="submit" class="btn btn-default" id="sizing-addon1" value="Search"/>
 				  	</div>
 					{{Form::close()}}

@@ -26,6 +26,11 @@ Route::get('user/article/{id}', [
 	'uses'	=>	'ArticleController@showArticlesByUser',
 	'as'	=>	'user.articles'
 ]);
+
+Route::get('test', [
+	'uses'	=>	'PublicController@test',
+	'as'	=>	'public.test'
+]);
 /** Articles **/
 
 Route::get('article/{id}/create', [

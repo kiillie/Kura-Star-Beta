@@ -49,14 +49,14 @@ function addItem(li, type, kind){
 			if(kind == 'new'){
 				var src = $(".new-addon .new-item .img-hid").val();
 				var desc = $(".new-addon .new-item .img-desc").val();
-				var image = '<img class="image" src="'+src+'" alt="" />'+
+				var image = '<a class="art-added-img" href="'+src+'" title="'+desc+'" data-fancybox-group="gallery"><img class="image" src="'+src+'" alt="" /></a>'+
 							'<p class="desc">'+desc+'</p>';
 				$('.new-addon .new-item').html("");
 			}
 			else{
 				var src = $("ul.sortable li[value='"+li+"'] .img-hid").val();
 				var desc = $("ul.sortable li[value='"+li+"'] .img-desc").val();
-				var image = '<img class="image" src="'+src+'" alt="" />'+
+				var image = '<a class="art-added-img" href="'+src+'" title="'+desc+'" data-fancybox-group="gallery"><img class="image" src="'+src+'" alt="" /></a>'+
 							'<p class="desc">'+desc+'</p>';
 				$('ul.sortable li[value="'+li+'"] .append-new-item').html("");
 				$('ul.sortable li[value="'+li+'"] .add-inner .item-btn-con').show();
@@ -82,6 +82,7 @@ function addItem(li, type, kind){
 			else{
 				var current = $('ul.sortable li[value="'+li+'"]');
 				$("ul.sortable li[value='"+li+"'] .append-new-item").hide();
+
 				current.after(content);
 				insert_addon();
 			}
@@ -155,6 +156,7 @@ function addItem(li, type, kind){
 									'</li>';
 					var current = $('ul.sortable li[value="'+li+'"]');
 					$("ul.sortable li[value='"+li+"'] .append-new-item").hide();
+					$("ul.sortable li[value='"+li+"'] .item-btn-con").show();
 					current.after(content);
 					insert_addon();
 					addonHovered(type, kind);
@@ -247,7 +249,7 @@ function addItem(li, type, kind){
 			var content = '<li class="ui-state-default added-addon">'+
 							'<div class="item-added-container">'+
 							'<div class="item-inner">'+
-							'<div class="tag">'+text+'</div>';
+							'<div class="tag">'+text+'</div>'+
 							'</div>'+
 							'<div class="editlist">'+
 							'<button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button>'+
@@ -258,6 +260,7 @@ function addItem(li, type, kind){
 							'<input type="hidden" class="kind" value="'+kind+'">'+
 							'<input type="hidden" class="color-selected" value="'+color+'">'+
 							'</li>';
+
 			if(kind == 'new'){
 				$(".addons-container .sortable").prepend(content);
 				insert_addon();
@@ -1143,17 +1146,21 @@ function validate_article(){
 		}
 	});
 }
-function addclass_modal(pclass){
+function addclass_modal(pclass, li){
 	if(pclass == 'new-tweet'){
 		if(!$("#twitterSearch").hasClass(pclass)){
 			$("#twitterSearch").addClass("new-tweet");
 			$("#twitterSearch").removeClass("append-tweet");
+			$("#twitterSearch .tweet-kind").val('new');
 		}
 	}
 	else{
 		if(!$("#twitterSearch").hasClass(pclass)){
 			$("#twitterSearch").addClass("append-tweet");
+			$("#twitterSearch").attr("value", li);
 			$("#twitterSearch").removeClass("new-tweet");
+			$("#twitterSearch .tweet-li").val(li);
+			$("#twitterSearch .tweet-kind").val('append');
 		}
 	}
 }

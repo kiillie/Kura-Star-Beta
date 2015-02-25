@@ -2,6 +2,22 @@
 @section('content')
 <link rel="stylesheet" type="text/css" href="/assets/css/temp.css"></link>
 <script language="javascript" src="/assets/js/temp_art.js"></script>
+<script type="text/javascript" src="/assets/js/plugins/jquery.fancybox.js?v=2.1.5"></script>
+<link rel="stylesheet" type="text/css" href="/assets/css/plugins/jquery.fancybox.css?v=2.1.5" media="screen" />
+<script>
+$(document).ready(function(){
+	$(".art-added-img").fancybox({
+		openEffect	: 'elastic',
+    	closeEffect	: 'elastic',
+
+    	helpers : {
+    		title : {
+    			type : 'inside'
+    		}
+    	}
+    });
+});
+</script>
 <div class="container article">
 	{{ Breadcrumbs::render('view_article') }}
 	<div class="prev-message alert alert-info"><span>This is a Preview Page. Only the curator can see this page.</span></div>
