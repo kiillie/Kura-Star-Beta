@@ -543,7 +543,13 @@
 	position:relative;
 	margin:20px 0;
 }
-.image-search #content.row .image-res button{
+.img-srch #content .image-res img{
+	width: 100%;
+}
+.img-srch #content .page-con{
+	text-align: center;
+}
+.image-search #content.row .image-res .add-btn{
 	display: none;
 	width: 52px;
 	vertical-align: middle;

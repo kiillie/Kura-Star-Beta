@@ -21,6 +21,7 @@ $(document).ready(function(){
     		}
     	}
     });
+    $(".img-search").tabs();
 });
 </script>
 <div class="modal modal-loader"><div class="img-modal"><img src="/assets/images/loader.gif" /></div></div>
@@ -175,7 +176,7 @@ $(document).ready(function(){
 				<ul class="nav nav-tabs">
 					<li class="add-text"><a href="javascript:void(0)" onclick="edit_addon('0', 'text', 'addon', 'new', 'new')"><span class="glyphicon glyphicon-pencil"></span> Text</a></li>
 					<li class="add-image"><a href="javascript:void(0)" onclick="edit_addon('0', 'picture', 'addon', 'new', 'new')"><span class="glyphicon glyphicon-camera" ></span> Picture</a></li>
-					<li class="add-reference"><a href="javascript:void(0)"><span class="glyphicon glyphicon-hdd"></span> Reference</a></li>
+					<li class="add-reference"><a href="javascript:void(0)" onclick="edit_addon('0', 'reference', 'addon', 'new', 'new')"><span class="glyphicon glyphicon-hdd"></span> Reference</a></li>
 					<li class="add-link"><a href="javascript:void(0)" onclick="edit_addon('0', 'link', 'addon', 'new', 'new')"><span class="glyphicon glyphicon-link"></span> Link</a></li>
 					<li class="add-twitter"><a href="javascript:void(0)" onclick="edit_addon('0', 'twitter', 'addon', 'new', 'new')"><span class="glyphicon glyphicon-retweet"></span> Twitter</a></li>
 					<li class="add-video"><a href="javascript:void(0)" onclick="edit_addon('0', 'video', 'addon', 'new', 'new')"><span class="glyphicon glyphicon-hd-video"></span> Youtube</a></li>
@@ -209,6 +210,11 @@ $(document).ready(function(){
 	<div class="twitter-search">
 		@include('articles.twitter_search')
 		@section('twitterSearch')
+		@show
+	</div>
+	<div class="image-search">
+		@include('articles.image_search')
+		@section('imageSearch')
 		@show
 	</div>
 <script>
@@ -264,7 +270,7 @@ function show_appended_item_area(li){
 	addon += '<ul class="append-add-item list-inline">';
 	addon += '<li><a href="javascript:void(0);" onclick="edit_addon(\''+li+'\', \'text\', \'addon\', \'new\', \'append\')">Text</a></li>';
 	addon += '<li><a href="javascript:void(0);" onclick="edit_addon(\''+li+'\', \'picture\', \'addon\', \'new\', \'append\')">Picture</a></li>';
-	addon += '<li><a href="javascript:void(0);" onclick="edit_addon("text", "addon", "new")">Reference</a></li>';
+	addon += '<li><a href="javascript:void(0);" onclick="edit_addon((\''+li+'\', \'reference\', \'addon\', \'new\', \'append\')">Reference</a></li>';
 	addon += '<li><a href="javascript:void(0);" onclick="edit_addon("text", "addon", "new")">Link</a></li>';
 	addon += '<li><a href="javascript:void(0);" onclick="edit_addon(\''+li+'\', \'twitter\', \'addon\', \'new\', \'append\')">Twitter</a></li>';
 	addon += '<li><a href="javascript:void(0);" onclick="edit_addon(\''+li+'\', \'video\', \'addon\', \'new\', \'append\')">Youtube</a></li>';

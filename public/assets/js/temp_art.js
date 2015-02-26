@@ -91,6 +91,56 @@ function addItem(li, type, kind){
 			addonHovered(type, kind);
 		}
 	}
+	else if(type == 'reference'){
+		if(kind == 'new'){
+			var text = $(".new-addon .new-item .ref-desc").val();
+			var url = $(".new-addon .new-item .ref-url").val();
+			if(url == ""){
+				var quote = '<div class="quote"><p><span class="quote-img">"</span> '+text+'</p></div>';
+			}
+			else{
+				var quote = '<div class="quote"><p><span class="quote-img">"</span> '+text+'</p></div>'+
+						'<div class="quote-url"><span>Source:</span><span class="url-val"> <a href="'+url+'" target="_blank">'+url+'</span></div>';
+			}
+		}
+		else{
+			var text = $("ul.sortable li[value='"+li+"'] .ref-desc").val();
+			var url = $("ul.sortable li[value='"+li+"'] .ref-url").val();
+			if(url == ""){
+				var quote = '<div class="quote"><p><span class="quote-img">"</span> '+text+'</p></div>';
+			}
+			else{
+				var quote = '<div class="quote"><p>'+text+'</p></div>'+
+							'<div class="quote-url"><span>Source:</span><span class="url-val"> <a href="'+url+'" target="_blank">'+url+'</a></span></div>';
+			}
+		}
+		var content =	'<li class="ui-state-default added-addon">'+
+						'<div class="item-added-container">'+
+						'<div class="item-inner text">'+
+						'<div class="ref-container">'+quote+'</div>'+
+						'</div>'+
+						'<div class="editlist">'+
+						'<button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button>'+
+						'</div>'+
+						'</div>'+
+						'<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div></div>'+
+						'<input type="hidden" class="type" value="'+type+'">'+
+						'<input type="hidden" class="kind" value="'+kind+'">'+
+						'</li>';
+		if(kind == 'new'){
+				$(".addons-container .sortable").prepend(content);
+				insert_addon();
+		}
+		else{
+			var current = $('ul.sortable li[value="'+li+'"]');
+			$("ul.sortable li[value='"+li+"'] .append-new-item").hide();
+			current.after(content);
+			insert_addon();
+		}
+		count_image();
+		$(".loader").hide();
+		addonHovered(type, kind);
+	}
 	else if(type == 'twitter'){
 		if(kind == 'new'){
 			if(validate_addon(li, type, kind)){
@@ -1162,5 +1212,15 @@ function addclass_modal(pclass, li){
 			$("#twitterSearch .tweet-li").val(li);
 			$("#twitterSearch .tweet-kind").val('append');
 		}
+	}
+}
+function add_img_class(li, type, kind){
+	if(kind == 'new'){
+		$(".image-search .search-li").val(li);
+		$(".image-search .search-kind").val(kind);
+	}
+	else{
+		$(".image-search .search-li").val(li);
+		$(".image-search .search-kind").val(kind);
 	}
 }

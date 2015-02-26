@@ -36,6 +36,7 @@
 $(document).ready(function(){
 	$(".twitter-search #form-tweet").submit(function(e){
 		$(".tweet-loading").show();
+		$(".twitter-search .tweet-results").html("");
 		e.preventDefault();
 		var search = $(".twitter-search .search-value").val();
 		$.ajax({
@@ -48,6 +49,10 @@ $(document).ready(function(){
 			success : function(res){
 				$(".twitter-search .tweet-results").html(res);
 			}
+		}).fail(function(){
+			$(".tweet-loading").hide();
+			var content = "<div class='alert alert-danger'>Please search again.</div>";
+			$(".twitter-search .tweet-results").html(content);
 		});
 	});
 });

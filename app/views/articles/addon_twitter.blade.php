@@ -16,7 +16,9 @@ function search(array $query)
  
 $query = array(
   "q" => $search['search'],
-  'count' => 100
+  'count' => 100,
+  'include_entities' => true,
+  'result_type'	=>	'mixed'
 );
 $results = search($query);
 $count = 1;
@@ -28,6 +30,7 @@ $count = 1;
 	<?php
 		$time = strtotime($result->created_at);
 	?>
+
 	<div class="result-wrap" value="{{$count}}">
 		<div class="tweet row">
 			<div class="tweet-img col-md-2">

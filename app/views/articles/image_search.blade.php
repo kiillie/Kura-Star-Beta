@@ -10,17 +10,21 @@
 	      	</div>
 	    	<div class="modal-body">
 	    		<div class="img-search">
-		        	<ul class="nav nav-tabs">
+		        	<ul class="nav nav-tabs" id="img-tabs">
 		        		<li><a href="#google"><span><img width="20" src="/assets/images/google-icon.jpg" /></span> Google</a></li>
 		        		<li><a href="#instagram"><span><img width="20" src="/assets/images/insta-icon.jpg" /></span> Instagram</a></li>
 		        	</ul>
-		        	<div class="img-srch" id="google">
-		        		<div class="google-input"><input type="text" class="form-control img-text"/></div>
-		        		<br />
-    					<div id="content" class="row" >Loading...</div>
-		        	</div>
-		        	<div class="img-srch" id="instagram">
-		        		Instagram
+		        	<div class="tab-content">
+			        	<div class="img-srch" id="google">
+			        		<div class="google-input"><input type="text" class="form-control img-text"/></div>
+			        		<input type="hidden" class="search-li" />
+			        		<input type="hidden" class="search-kind">
+			        		<br />
+	    					<div id="content" class="row" >Loading...</div>
+			        	</div>
+			        	<div class="img-srch" id="instagram">
+			        		Instagram
+			        	</div>
 		        	</div>
 		        </div>
 			</div>
@@ -31,4 +35,6 @@
 		</div>
 	</div>
 </div>
+<script>
+</script>
 @stop

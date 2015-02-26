@@ -38,7 +38,7 @@
 	padding: 20px;
 }
 .new-addon textarea{
-	height: 235px;
+	height: 200px;
 }
 .new-addon input[type='button']{
 	margin: 10px 10px 10px 0;
@@ -213,4 +213,23 @@
 }
 .twitter-search .tweet-results{
 	padding: 40px 0;
+}
+.ref-desc{
+	margin-bottom: 20px;
+}
+.ref-container .quote{
+	margin: 10px;
+	padding: 10px 5px 5px 10px;
+	background: rgb(223, 223, 223);
+}
+.ref-container .quote p{
+	font-size: 16px;
+}
+.ref-container .quote-img{
+	color: rgb(150, 150, 150);
+	font-size: 40px;
+}
+.ref-container .quote-url, .ref-container .quote-url a{
+	font-size: 12px;
+	color: rgb(165, 165, 165);
 }

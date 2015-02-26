@@ -47,7 +47,7 @@ else if($addon['type'] == 'picture'){
 					'<input type="button" class="btn btn-default url-cancel" value="Cancel" onclick="cancel_add(\''+li+'\', \''+type+'\', \''+kind+'\')">'+
 					'</div>'+
 					'<a href="javascript:void(0)" class="img-anchor a-url" onclick="select_img_type(\''+li+'\', \''+type+'\', \''+kind+'\')">Upload an Image</a><br/><br/>'+
-					'<a href="javascript:void(0)" class="search-anchor"><span class="glyphicon glyphicon-search"></span> Search for image</a>'+
+					'<a href="javascript:void(0)" class="search-anchor" onclick="add_img_class('+li+', \''+type+'\', \''+kind+'\')" data-toggle="modal" data-target="#imageSearch"><span class="glyphicon glyphicon-search"></span> Search for image</a>'+
 					'<div class="img-desc-con">'+
 					'<textarea class="form-control img-desc"></textarea>'+
 					'<input type="button" class="btn btn-default pic-add" value="Add" onclick="addItem(\''+li+'\', \''+type+'\', \''+kind+'\')">'+
@@ -56,6 +56,30 @@ else if($addon['type'] == 'picture'){
 					'</div>'+
 					'<input type="hidden" class="img-hid" />'+
 					'</div>'+
+					'{{Form::close()}}';
+
+	if(kind == 'new'){
+		$('.new-addon .new-item').html(content);
+	}
+	else{
+		$("ul.sortable li[value='"+li+"'] .append-new-item").html(content);
+		$("ul.sortable li[value='"+li+"'] .add-inner .show-append-here").html("");
+	}
+</script>
+<?php
+}
+else if($addon['type'] == 'reference'){
+?>
+<script>
+$(".loader").hide();
+	var kind = "{{$addon['kind']}}";
+	var li = "{{$addon['li']}}";
+	var type = "{{$addon['type']}}";
+	var content = 	'<div class="row reference">'+
+					'{{Form::open(["name"=>"reference"])}}'+
+					'<textarea class="form-control ref-desc" name="ref-desc"></textarea>'+
+					'<input type="text" placeholder="Please put the URL of the reference" class="form-control ref-url"/>'+
+					'<input type="button" class="btn btn-default" value="Add" onclick="addItem(\''+li+'\', \''+type+'\', \''+kind+'\')"/><input type="button" class="btn btn-default" value="Cancel" onclick="cancel_add(\''+li+'\', \''+type+'\', \''+kind+'\')"/>'+
 					'{{Form::close()}}';
 
 	if(kind == 'new'){
@@ -108,7 +132,7 @@ else if($addon['type'] == 'twitter'){
 	}
 	var content =	'{{Form::open(["name" => "twitter"])}}'+
 				  	'<input type="text" class="form-control url-tweet" placeholder="Put the URL of a tweet here">'+
-				  	'<a href="javascript:void(0);" onclick="addclass_modal(\''+putclass+'\', '+li+')" data-toggle="modal" data-target="#twitterSearch"><span class="glyphicon glyphicon-search"></span>Search for tweets.</a><br/><br/>'+
+				  	'<a href="javascript:void(0)" onclick="addclass_modal(\''+putclass+'\', '+li+')" data-toggle="modal" data-target="#twitterSearch"><span class="glyphicon glyphicon-search"></span>Search for tweets.</a><br/><br/>'+
 				  	'<input type="button" class="btn btn-default check-tweet" onclick="addItem(\''+li+'\', \''+type+'\', \''+kind+'\')" value="Add">'+
 				  	'<input type="button" class="btn btn-default" onclick="cancel_add(\''+li+'\', \''+type+'\', \''+kind+'\')" value="Cancel">'+
 				  	'{{Form::close()}}';

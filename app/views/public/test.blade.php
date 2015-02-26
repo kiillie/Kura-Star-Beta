@@ -61,7 +61,7 @@
             var newImg = document.createElement('img');
 
             // There is also a result.url property which has the escaped version
-            newImg.src="/image-search/v1/result.tbUrl;"
+            newImg.src= result.url;
             imgContainer.appendChild(title);
             imgContainer.appendChild(newImg);
 
