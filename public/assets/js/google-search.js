@@ -76,6 +76,7 @@ function add_google_image(res){
 
     $(".addons-container .sortable").prepend(content);
     insert_addon();
+    count_image();
     }
     else{
     var image = '<a class="art-added-img" href="'+res+'" title="'+res+'" data-fancybox-group="gallery"><img class="image" src="'+res+'" alt="" /></a>';

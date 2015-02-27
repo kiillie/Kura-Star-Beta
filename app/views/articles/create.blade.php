@@ -456,18 +456,15 @@ function publish_article(id){
 function count_image(){
 	var count_img = $(".image-container").length;
 	var cont = $(".image-container").width();
+	
 	for(i = 0; i < count_img; i++){
-		$(".image-container img").eq(i).load(function(){
-			var pic = new Image();
-			pic.src = $(this).attr("src");
-
-			if(pic.width < cont){
-				$(this).css("width", pic.width);
+			var pic_width = $(".image-container img").eq(i).width();
+			if(pic_width < cont){
+				$(".image-container img").eq(i).css("width", pic_width);
 			}
 			else{
-				$(this).css("width", "100%");
+				$(".image-container img").eq(i).css("width", "100%");
 			}
-		});
 	}
 }
 </script>
