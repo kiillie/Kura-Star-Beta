@@ -8,6 +8,7 @@
 <script type="text/javascript" src="/assets/js/plugins/jscolor.js"></script>
 <link rel="stylesheet" type="text/css" href="/assets/css/temp.css"></link>
 <script type="text/javascript" src="/assets/js/plugins/jquery.fancybox.js?v=2.1.5"></script>
+<script type="text/javascript" src="/assets/js/linkScrapper.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/assets/css/plugins/jquery.fancybox.css?v=2.1.5" media="screen" />
 <script>
 $(document).ready(function(){

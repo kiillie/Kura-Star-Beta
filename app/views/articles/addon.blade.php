@@ -80,7 +80,8 @@ $(".loader").hide();
 					'<textarea class="form-control ref-desc" name="ref-desc"></textarea>'+
 					'<input type="text" placeholder="Please put the URL of the reference" class="form-control ref-url"/>'+
 					'<input type="button" class="btn btn-default" value="Add" onclick="addItem(\''+li+'\', \''+type+'\', \''+kind+'\')"/><input type="button" class="btn btn-default" value="Cancel" onclick="cancel_add(\''+li+'\', \''+type+'\', \''+kind+'\')"/>'+
-					'{{Form::close()}}';
+					'{{Form::close()}}'+
+					'</div>';
 
 	if(kind == 'new'){
 		$('.new-addon .new-item').html(content);
@@ -100,9 +101,19 @@ else if($addon['type'] == 'link'){
 	var li = "{{$addon['li']}}";
 	var type = "{{$addon['type']}}";
 	var content =	'{{Form::open(["name"=>"link"])}}'+
+					'<div class="link-wrap">'+
 					'<input type="text" class="form-control link-url" placeholder="URL of the Link"/>'+
-					'<input type="button" class="btn btn-default check-link" value="Check" />'+
+					'<input type="button" class="btn btn-default check-link" value="Check" onclick="link_check()"/>'+
 					'<input type="button" class="btn btn-default cancel-link" onclick="cancel_add(\''+li+'\', \''+type+'\', \''+kind+'\')" value="Cancel">'+
+					'</div>'+
+					'<div class="link-result">'+
+					'<input type="text" class="form-control link-title">'+
+					'<textarea class="form-control link-description"></textarea>'+
+					'<span>URL: <span class="link-url-text"></span></span>'+
+					'<textarea class="form-control link-extra-text" placeholder="Description of the URL type here"></textarea>'+
+					'<input type="button" class="btn btn-default add-btn" value="Add" onclick="addItem(\''+li+'\', \''+type+'\', \''+kind+'\')">'+
+					'<input type="button" class="btn btn-default cancel-link" onclick="cancel_add(\''+li+'\', \''+type+'\', \''+kind+'\')" value="Cancel">'+
+					'</div>'+
 					'{{Form::close()}}';
 
 	if(kind == 'new'){

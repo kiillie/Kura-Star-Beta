@@ -180,6 +180,18 @@
 .new-item .extracted-vid iframe, .item-added-container iframe{
 	border: none;
 }
+.new-item .link-result{
+	display: none;
+}
+.new-item .link-title{
+	margin-bottom: 20px;
+}
+.new-item .link-description{
+	margin-bottom: 20px;
+}
+.new-item .link-extra-text{
+	margin-top: 20px;
+}
 .add-item-area .extracted-vid{
 	display: none;
 }

@@ -97,10 +97,10 @@ function addItem(li, type, kind){
 				var text = $(".new-addon .new-item .ref-desc").val();
 				var url = $(".new-addon .new-item .ref-url").val();
 				if(url == ""){
-					var quote = '<div class="quote"><p><span class="quote-img">"</span> '+text+'</p></div>';
+					var quote = '<div class="quote"><p><span class="quote-img">"</span> <span class="quote-text">'+text+'</span></p></div>';
 				}
 				else{
-					var quote = '<div class="quote"><p><span class="quote-img">"</span> '+text+'</p></div>'+
+					var quote = '<div class="quote"><p><span class="quote-img">"</span> <span class="quote-text">'+text+'</span></p></div>'+
 							'<div class="quote-url"><span>Source:</span><span class="url-val"> <a href="'+url+'" target="_blank">'+url+'</span></div>';
 				}
 			}
@@ -108,10 +108,10 @@ function addItem(li, type, kind){
 				var text = $("ul.sortable li[value='"+li+"'] .ref-desc").val();
 				var url = $("ul.sortable li[value='"+li+"'] .ref-url").val();
 				if(url == ""){
-					var quote = '<div class="quote"><p><span class="quote-img">"</span> '+text+'</p></div>';
+					var quote = '<div class="quote"><p><span class="quote-img">"</span> <span class="quote-text">'+text+'</span></p></div>';
 				}
 				else{
-					var quote = '<div class="quote"><p>'+text+'</p></div>'+
+					var quote = '<div class="quote"><p><span class="quote-img">"</span> <span class="quote-text">'+text+'</span></p></div>'+
 								'<div class="quote-url"><span>Source:</span><span class="url-val"> <a href="'+url+'" target="_blank">'+url+'</a></span></div>';
 				}
 			}
@@ -143,6 +143,48 @@ function addItem(li, type, kind){
 			$(".loader").hide();
 			addonHovered(type, kind);
 		}
+	}
+	else if(type == 'link'){
+		if(kind == 'new'){
+			var title = $(".new-addon .new-item .link-title").val();
+			var linkdesc = $(".new-addon .new-item .link-description").val();
+			var url = $(".new-addon .new-item .link-url-text").text();
+			var desc = $(".new-addon .new-item .link-extra-text").val();
+			var link =	'<h2 class="link-title"><a href="'+url+'" target="_blank">'+title+'</a></h2>'+
+						'<div class="link-desc"><p>'+linkdesc+'</p></div>'+
+						'<div class="lik-extra"><p>'+desc+'</p></div>';
+			
+			$(".new-addon .new-item").html("");
+		}
+		else{
+			//
+		}
+		var content =	'<li class="ui-state-default added-addon">'+
+						'<div class="item-added-container">'+
+						'<div class="item-inner text">'+
+						'<div class="link-wrapper">'+link+"</div>"+
+						'</div>'+
+						'<div class="editlist">'+
+						'<button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button>'+
+						'</div>'+
+						'</div>'+
+						'<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div></div>'+
+						'<input type="hidden" class="type" value="'+type+'">'+
+						'<input type="hidden" class="kind" value="'+kind+'">'+
+						'</li>';
+		if(kind == 'new'){
+			$(".addons-container .sortable").prepend(content);
+			insert_addon();
+		}
+		else{
+			var current = $('ul.sortable li[value="'+li+'"]');
+			$("ul.sortable li[value='"+li+"'] .append-new-item").hide();
+			current.after(content);
+			insert_addon();
+		}
+		count_image();
+		$(".loader").hide();
+		addonHovered(type, kind);
 	}
 	else if(type == 'twitter'){
 		if(kind == 'new'){
@@ -389,6 +431,48 @@ function editItem(li, type, kind){
 			$(".loader").hide();
 			addonHovered(type, kind);
 			insert_addon();
+	}
+	else if(type == 'reference'){
+		if(validate_addon(li, type, kind)){
+			if(kind == 'new'){
+				var text = $(".new-addon .new-item .ref-desc").val();
+				var url = $(".new-addon .new-item .ref-url").val();
+				if(url == ""){
+					var quote = '<div class="quote"><p><span class="quote-img">"</span> <span class="quote-text">'+text+'</span></p></div>';
+				}
+				else{
+					var quote = '<div class="quote"><p><span class="quote-img">"</span> <span class="quote-text">'+text+'</span></p></div>'+
+							'<div class="quote-url"><span>Source:</span><span class="url-val"> <a href="'+url+'" target="_blank">'+url+'</span></div>';
+				}
+			}
+			else{
+				var text = $("ul.sortable li[value='"+li+"'] .ref-desc").val();
+				var url = $("ul.sortable li[value='"+li+"'] .ref-url").val();
+				if(url == ""){
+					var quote = '<div class="quote"><p><span class="quote-img">"</span> <span class="quote-text">'+text+'</span></p></div>';
+				}
+				else{
+					var quote = '<div class="quote"><p><span class="quote-img">"</span> <span class="quote-text">'+text+'</span></p></div>'+
+								'<div class="quote-url"><span>Source:</span><span class="url-val"> <a href="'+url+'" target="_blank">'+url+'</a></span></div>';
+				}
+			}
+			var content =	'<div class="item-added-container">'+
+							'<div class="item-inner text">'+
+							'<div class="ref-container">'+quote+'</div>'+
+							'</div>'+
+							'<div class="editlist">'+
+							'<button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button>'+
+							'</div>'+
+							'</div>'+
+							'<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div></div>'+
+							'<input type="hidden" class="type" value="'+type+'">'+
+							'<input type="hidden" class="kind" value="'+kind+'">';
+			$(".new-addon .new-item").html("");
+			$("ul.sortable li[value='"+li+"']").html(content);
+			$(".loader").hide();
+			addonHovered(type, kind);
+			insert_addon();
+		}
 	}
 	else if(type == 'video'){
 		var src = $(".new-addon .new-item iframe").attr("src");

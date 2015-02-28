@@ -58,6 +58,28 @@ else if($addon['type'] == 'picture'){
 </script>
 <?php
 }
+else if($addon['type'] == 'reference'){
+?>
+<script>
+	$(".loader").hide();
+	var li = "{{$addon['li']}}";
+	var type = "{{$addon['type']}}";
+	var kind = "{{$addon['kind']}}";
+	var quote = $("ul.sortable li[value='"+li+"'] .quote-text").text();
+	var url = $("ul.sortable li[value='"+li+"'] .url-val a").attr("href");
+
+	var content = 	'<div class="row reference">'+
+					'{{Form::open(["name"=>"reference"])}}'+
+					'<textarea class="form-control ref-desc" name="ref-desc">'+quote+'</textarea>'+
+					'<input type="text" placeholder="Please put the URL of the reference" class="form-control ref-url" value="'+url+'"/>'+
+					'<input type="button" class="btn btn-default" value="Add" onclick="editItem(\''+li+'\', \''+type+'\', \''+kind+'\')"/><input type="button" class="btn btn-default" value="Cancel" onclick="cancel_add(\''+li+'\', \''+type+'\', \''+kind+'\')"/>'+
+					'{{Form::close()}}'+
+					'</div>';
+
+	$(".new-addon .new-item").html(content);
+</script>
+<?php	
+}
 else if($addon['type'] == 'video'){
 ?>
 <script>
