@@ -13,6 +13,18 @@ class EloquentFavoriteRepository implements FavoriteRepository{
 		return $favorite->save();
 	}
 
+	public function count_favorite_by_user($id){
+		$favorite = Favorite::where('CURATER_ID', '=', $id)->count();
+
+		return $favorite;
+	}
+
+	public function get_favorite_by_user($id){
+		$favorites = Favorite::where('CURATER_ID', '=', $id)->get();
+
+		return $favorites;
+	}
+
 	public function delete($article, $user){
 
 		$favorite = Favorite::where('CURATION_ID', '=', $article)->where('CURATER_ID', '=', $user);

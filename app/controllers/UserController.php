@@ -5,6 +5,7 @@ use KuraStar\Storage\Continent\ContinentRepository as Continent;
 use KuraStar\Storage\Country\CountryRepository as Country;
 use KuraStar\Storage\Category\CategoryRepository as Category;
 use KuraStar\Storage\Article\ArticleRepository as Article;
+use KuraStar\Storage\Favorite\FavoriteRepository as Favorite;
 
 class UserController extends BaseController{
 	
@@ -13,13 +14,15 @@ class UserController extends BaseController{
 	protected $country;
 	protected $category;
 	protected $article;
+	protected $favorite;
 
-	public function __construct(User $user, Continent $continent, Country $country, Category $category, Article $article){
+	public function __construct(User $user, Continent $continent, Country $country, Category $category, Article $article, Favorite $favorite){
 		$this->user = $user;
 		$this->continent = $continent;
 		$this->country = $country;
 		$this->category = $category;
 		$this->article = $article;
+		$this->favorite = $favorite;
 	}
 
 	public function store(){
@@ -78,13 +81,28 @@ class UserController extends BaseController{
 		$continents = $this->continent->show();
 		$user = $this->user->getUserById($id);
 		$count = $this->article->countArticlesByUser($id);
+		$favorites = $this->favorite->count_favorite_by_user($id);
 
-		return View::make('users.profile')
+		return View::make('users.notifications')
 					->withUser($user)
 					->withContinents($continents)
 					->withCountries($countries)
 					->withCategories($categories)
-					->withCount($count);
+					->withCount($count)
+					->withFavorites($favorites);
+	}
+
+	public function edit($id){
+		$countries = $this->country->showCountryByContinent();
+		$categories = $this->category->show();
+		$continents = $this->continent->show();
+		$user = $this->user->getUserById($id);
+
+		return View::make('users.edit')
+					->withUser($user)
+					->withContinents($continents)
+					->withCountries($countries)
+					->withCategories($categories);
 	}
 }
 

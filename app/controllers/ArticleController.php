@@ -181,14 +181,15 @@ class ArticleController extends BaseController{
 		$categories = $this->category->show();
 		$continents = $this->continent->show();
 		$count = $this->article->countArticlesByUser($id);
-
+		$favorites = $this->favorite->count_favorite_by_user($id);
 		return View::make('users.articles')
 				->withContinents($continents)
 				->withCountries($countries)
 				->withCategories($categories)
 				->withArticles($articles)
 				->withUser($user)
-				->withCount($count);
+				->withCount($count)
+				->withFavorites($favorites);
 	}
 
 	public function showByCategory($id){
@@ -303,6 +304,32 @@ class ArticleController extends BaseController{
 		$addon = Input::all();
 		return View::make('articles.addon')
 				->withAddon($addon);
+	}
+
+	public function showFavoritedArticles($id){
+		$countries = $this->country->showCountryByContinent();
+		$categories = $this->category->show();
+		$continents = $this->continent->show();
+		$user = $this->user->getUserById($id);
+		$users = $this->user->allUsers();
+		$count = $this->article->countArticlesByUser($id);
+		$favorites = $this->favorite->count_favorite_by_user($id);
+		$favorited = $this->favorite->get_favorite_by_user($id);
+		$counter = 0;
+		$articles = [];
+		foreach($favorited as $favorite){
+			$articles[$counter] = $this->article->getById($favorite->CURATION_ID);
+		}
+
+		return View::make('users.favorites')
+					->withUser($user)
+					->withUsers($users)
+					->withContinents($continents)
+					->withCountries($countries)
+					->withCategories($categories)
+					->withCount($count)
+					->withFavorites($favorites)
+					->withFavorited($articles);
 	}
 
 	public function addonEdit(){

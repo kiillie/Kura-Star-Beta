@@ -1061,6 +1061,41 @@ function validate_addon(li, type, kind){
 			}
 		}
 	}
+	else if(type == 'link'){
+		if(kind == 'new'){
+			var link = $(".new-addon .new-item .link-url").val();
+			if(link == ""){
+				setTimeout(function(){
+					$(".new-addon .new-item span.err").html("");
+					$("<span class='err label label-danger'>Please enter the URL of the link.</span>").insertBefore(".new-addon .new-item .link-url");
+				}, 1000);
+				setTimeout(function(){
+					$(".new-addon .new-item span.err").fadeOut(function(){
+						$(".new-addon .new-item span.err").remove();
+					});
+				}, 5000);
+				checker++;
+			}
+			else if(!isURL(link)){
+				setTimeout(function(){
+					$(".new-addon .new-item span.err").html("");
+					$("<span class='err label label-danger'>Invalid link URL.</span>").insertBefore(".new-addon .new-item .link-url");
+				}, 1000);
+				setTimeout(function(){
+					$(".new-addon .new-item span.err").fadeOut(function(){
+						$(".new-addon .new-item span.err").remove();
+					});
+				}, 5000);
+				checker++;
+			}
+			if(checker > 0){
+				return false;
+			}
+			else{
+				return true;
+			}
+		}
+	}
 	else if(type == "twitter"){
 		if(kind == 'new'){
 			var tweet = $(".new-addon .new-item .url-tweet").val();

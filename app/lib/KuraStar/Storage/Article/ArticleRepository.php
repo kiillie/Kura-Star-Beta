@@ -30,8 +30,6 @@ interface ArticleRepository{
 
 	public function countCategoryByCountry($country, $category);
 
-	public function viewById();
-
 	public function getByRanking();
 
 	public function countByCountry($country);

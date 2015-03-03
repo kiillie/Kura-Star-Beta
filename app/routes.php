@@ -103,6 +103,11 @@ Route::post('article/favorited', [
 	'as'	=>	'article.favorite'
 ]);
 
+Route::get('article/{id}/favorites', [
+	'uses'	=>	'ArticleController@showFavoritedArticles',
+	'as'	=>	'articles.favorited'
+]);
+
 Route::post('addon/edit', [
 	'uses'	=>	'ArticleController@addonEdit',
 	'as'	=>	'article.addonedit'
@@ -143,6 +148,12 @@ Route::post('user/login', [
 Route::get('user/logout', [
 	'uses'	=>	'SessionController@destroy',
 	'as'	=>	'logout'
+]);
+
+
+Route::get('user/{id}/edit', [
+	'uses'	=> 'UserController@edit',
+	'as'	=> 'user.edit'
 ]);
 
 /** Continent & Countries **/

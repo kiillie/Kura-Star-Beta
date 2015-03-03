@@ -126,10 +126,6 @@ class EloquentArticleRepository implements ArticleRepository{
 						->count();
 	}
 
-	public function viewById(){
-		//
-	}
-
 	public function getByRanking(){
 		return Article::where('CURATION_STATUS', '=', 1)
 				->orderBy('VIEWS', 'desc')

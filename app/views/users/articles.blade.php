@@ -1,9 +1,9 @@
 @extends('users.profile')
 @section('profile_content')
 <div class="article-container">
+	<h2>My Articles</h2>
 	<div class="row table">
 		<div class="col-md-8">
-			<span>Articles</span>
 		</div>
 		<div class="col-md-2">
 			<span>Views</span>

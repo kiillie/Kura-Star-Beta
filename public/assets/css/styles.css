@@ -645,30 +645,34 @@
 	font-weight: normal;
 	font-size: 14px;
 }
-.article-container .lists .art-enum{
+.article-container .lists .art-enum, .favorites-container .lists .art-enum{
 	margin: 10px 0;
 	min-height: 70px;
 }
-.article-container .lists .art-enum img{
+.article-container .lists .art-enum img, .favorites-container .lists .art-enum img{
 	width: 70px;
 }
-.article-container .detail-wrap{
+.article-container .detail-wrap, .favorites-container .detail-wrap{
 	margin-left: 10px;
 }
-.article-container .detail-wrap .cat span{
+.article-container .detail-wrap .cat span, .favorites-container .detail-wrap .cat span{
 	background: rgb(84, 158, 186);
 	padding: 3px;
 	color: white;
 }
-.article-container .detail-wrap .date{
+.article-container .detail-wrap .date, .favorites-container .detail-wrap .date{
 	position: absolute;
 	bottom: 0;
 }
 .article-container .detail-wrap .cat, .article-container .detail-wrap .title, .article-container .detail-wrap .date{
 	display: block;
 }
-.article-container .detail-wrap .date span{
+.article-container .detail-wrap .date span, .favorites-container .detail-wrap .date span{
 	color: gray;
+	font-size: 12px;
+}
+.favorites-container .tb-title{
+	color: rgb(155, 155, 155);
 	font-size: 12px;
 }
 /**** Twitter ****/
