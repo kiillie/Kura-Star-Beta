@@ -104,6 +104,18 @@ class UserController extends BaseController{
 					->withCountries($countries)
 					->withCategories($categories);
 	}
+
+	public function update(){
+		$input = Input::all();
+		$update = $this->user->update($input['id'], $input);
+		if(isset($input['prof-pic'])){
+			return Redirect::back();
+		}
+		else{
+			return View::make('users.update')
+					->withInput($input);
+		}
+	}
 }
 
 ?>

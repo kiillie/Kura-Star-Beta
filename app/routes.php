@@ -150,10 +150,14 @@ Route::get('user/logout', [
 	'as'	=>	'logout'
 ]);
 
-
 Route::get('user/{id}/edit', [
 	'uses'	=> 'UserController@edit',
 	'as'	=> 'user.edit'
+]);
+
+Route::post('user/update', [
+	'uses'	=>	'UserController@update',
+	'as'	=>	'user.update'
 ]);
 
 /** Continent & Countries **/
