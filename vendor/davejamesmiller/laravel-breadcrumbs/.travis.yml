@@ -7,8 +7,9 @@ php:
   - 5.3
   - hhvm
 
-before_script:
-  - composer install --dev --no-interaction --prefer-source
+install:
+  - composer self-update # https://github.com/phpspec/prophecy/issues/149
+  - travis_retry composer install --no-interaction --prefer-source
 
 script:
   - phpunit --coverage-clover build/logs/clover.xml

@@ -29,6 +29,10 @@ class StorageServiceProvider extends ServiceProvider{
 				'KuraStar\Storage\Favorite\FavoriteRepository',
 				'KuraStar\Storage\Favorite\EloquentFavoriteRepository'
 			);
+		$this->app->bind(
+				'KuraStar\Storage\Facebook\FacebookRepository',
+				'KuraStar\Storage\Facebook\EloquentFacebookRepository'
+			);
 	}
 }
 

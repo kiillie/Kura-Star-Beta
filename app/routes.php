@@ -207,4 +207,11 @@ Route::get('tester', [
 	'uses'	=>	'PublicController@tester',
 	'as'	=>	'tester'
 ]);
+
+//Facebook Authentication
+Route::get('fb/authenticate', [
+	'uses'	=> 'FacebookController@authenticate',
+	'as'	=> 'fb.authenticate'
+]);
+
 ?>

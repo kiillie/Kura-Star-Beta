@@ -5,6 +5,7 @@
 	"license": "MIT",
 	"type": "project",
 	"require": {
+		"facebook/php-sdk-v4" : "4.0.*",
 		"laravel/framework": "4.2.*",
 		"davejamesmiller/laravel-breadcrumbs": "~2.3"
 	},
@@ -36,4 +37,5 @@
 		"preferred-install": "dist"
 	},
 	"minimum-stability": "stable"
+	
 }
