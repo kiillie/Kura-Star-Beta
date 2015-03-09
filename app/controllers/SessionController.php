@@ -11,12 +11,14 @@ class SessionController extends BaseController{
 	protected $continent;
 	protected $country;
 	protected $category;
+	protected $oauth;
 
 	public function __construct(User $user, Continent $continent, Country $country, Category $category){
 		$this->user = $user;
 		$this->continent = $continent;
 		$this->country = $country;
 		$this->category = $category;
+		$this->oauth = new Hybrid_Auth(app_path().'/config/fb_auth.php');
 	}	
 
 	public function create(){

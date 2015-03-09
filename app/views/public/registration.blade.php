@@ -1,7 +1,4 @@
 @extends('layouts.main')
-<?php
-include(app_path().'\include\fb_authentication.php');
-?>
 @section('content')
 <div class="container">
 	{{ Breadcrumbs::render('registration') }}
@@ -68,9 +65,7 @@ include(app_path().'\include\fb_authentication.php');
 					<br/>
 					<h6>Or Login with:</h6>
 					<div class="facebook col-md-6">
-					<?php
-					    echo '<a href="' . $helper->getLoginUrl() . '"><img src="/assets/images/facebook.png"></a>';
-					?>
+					   <a href="fbauth"><img src="/assets/images/facebook.png"></a>
 					</div>
 					<div class="twitter col-md-6">
 						{{HTML::image('assets/images/twitter.png')}}

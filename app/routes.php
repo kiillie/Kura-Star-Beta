@@ -209,9 +209,13 @@ Route::get('tester', [
 ]);
 
 //Facebook Authentication
-Route::get('fb/authenticate', [
-	'uses'	=> 'FacebookController@authenticate',
-	'as'	=> 'fb.authenticate'
+Route::get('fbauth/{auth?}', [
+	'uses'	=> 'FacebookController@getFbAuth',
+	'as'	=> 'auth.authenticate'
 ]);
 
+Route::get('authlogout', [
+	'uses'	=> 'FacebookController@getLogout',
+	'as'	=>	'auth.logout'
+]);
 ?>

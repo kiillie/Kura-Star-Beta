@@ -5,7 +5,12 @@
 		<div class="col-md-3">
 			<div class="row prof-img-wrapper">
 				<div class="col-md-6">
-					<img src="/assets/images/picture-default.png" />
+					
+					@if($user->CURATER_IMAGE == "")
+						<img src="/assets/images/picture-default.png" />
+					@else
+						<img src="{{$user->CURATER_IMAGE}}" alt="{{$user->CURATER}}"/>
+					@endif
 				</div>
 				<div class="col-md-6">
 					<ul>

@@ -14,7 +14,7 @@ class CreateFbUsersTable extends Migration {
 	{
 		//
 		Schema::create('fb_users', function($table){
-			$table->bigIncrements('FB_ID', false);
+			$table->bigIncrements('CURATER_ID', false);
 			$table->string('CURATER', 80);
 			$table->string('CURATER_IMAGE', 100)->nullable();
 			$table->string('CURATER_DESCRIPTION', 500)->nullable();

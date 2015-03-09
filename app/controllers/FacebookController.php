@@ -1,54 +1,49 @@
 <?php
-session_start();
-use Facebook\FacebookSession;
-use Facebook\FacebookRequest;
-use Facebook\GraphUser;
-use Facebook\FacebookRequestException;
-use Facebook\FacebookRedirectLoginHelper;
 use KuraStar\Storage\Facebook\FacebookRepository as FacebookUser;
 
 class FacebookController extends BaseController{
 
 	protected $fbuser;
+	protected $oauth;
 
 	public function __construct(FacebookUser $fbuser){
 		$this->fbuser = $fbuser;
+		$this->oauth = new Hybrid_Auth(app_path()."/config/fb_auth.php");
 	}
 
-	public function authenticate(){
-		FacebookSession::setDefaultApplication('787791034642434','ffda8364faf1732e895ef7084a26a4d3');
-		$helper = new FacebookRedirectLoginHelper('http://localhost:8000/fb/authenticate');
-
-		try {
-		  $session = $helper->getSessionFromRedirect();
-		} catch(FacebookRequestException $ex) {
-		  // When Facebook returns an error
-		} catch(\Exception $ex) {
-		  // When validation fails or other local issues
-		}
-		if($session){
+	public function getFbAuth($auth=NULL){
+		if($auth == 'auth'){
 			try{
-				$user_profile = (new FacebookRequest(
-					$session, 'GET', '/me'
-					))->execute()->getGraphObject(GraphUser::className());
-				$user_image = (new FacebookRequest(
-					$session, 'GET', '/me/picture'
-					))->execute()->getGraphObject();
-				$cred = [
-							'id'=>$user_profile->getId(),
-							'name'=>$user_profile->getName()
-						];
-
-				$save = $this->fbuser->store($cred);
-
-				return Redirect::route('/');
+				Hybrid_Endpoint::process();
 			}
 			catch(Exception $e){
-				return Redirect::route('login');
+				return Redirect::to('fbauth');
 			}
+
+			return;
 		}
+		$provider = $this->oauth->authenticate('Facebook');
+		$profile = $provider->getUserProfile();
+
+		if(!$this->fbuser->check('fb'.$profile->identifier)){
+			$cred = [
+				'id'	=>	$profile->identifier,
+				'name'	=>	$profile->displayName,
+				'image'	=>	$profile->photoURL,
+				'site'	=>	$profile->profileURL
+			];
+			$save = $this->fbuser->store($cred);
+		}
+		
+		return  Redirect::route('index')->withProfile($profile);
 	}
 
+	public function getLogout(){
+		$this->oauth->logoutAllProviders();
+
+		return Redirect::route('index');
+
+	}
 
 }
 

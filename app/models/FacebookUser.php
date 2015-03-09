@@ -13,7 +13,7 @@ class FacebookUser extends Eloquent implements UserInterface, RemindableInterfac
 	
 	protected $table = 'fb_users';
 
-	protected $fillable = ['FB_ID', 'CURATER', 'CURATER_IMAGE', 'CURATER_DESCRIPTION'];
+	protected $fillable = ['FB_ID', 'CURATER'];
 }
 
 ?>

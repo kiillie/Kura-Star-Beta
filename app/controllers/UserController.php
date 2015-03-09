@@ -6,6 +6,7 @@ use KuraStar\Storage\Country\CountryRepository as Country;
 use KuraStar\Storage\Category\CategoryRepository as Category;
 use KuraStar\Storage\Article\ArticleRepository as Article;
 use KuraStar\Storage\Favorite\FavoriteRepository as Favorite;
+use KuraStar\Storage\Facebook\FacebookRepository as FacebookUser;
 
 class UserController extends BaseController{
 	
@@ -15,14 +16,18 @@ class UserController extends BaseController{
 	protected $category;
 	protected $article;
 	protected $favorite;
+	protected $fbuser;
+	protected $oauth;
 
-	public function __construct(User $user, Continent $continent, Country $country, Category $category, Article $article, Favorite $favorite){
+	public function __construct(User $user, Continent $continent, Country $country, Category $category, Article $article, Favorite $favorite, FacebookUser $fbuser){
 		$this->user = $user;
 		$this->continent = $continent;
 		$this->country = $country;
 		$this->category = $category;
 		$this->article = $article;
 		$this->favorite = $favorite;
+		$this->fbuser = $fbuser;
+		$this->oauth = new Hybrid_Auth(app_path().'/config/fb_auth.php');
 	}
 
 	public function store(){
@@ -79,7 +84,17 @@ class UserController extends BaseController{
 		$countries = $this->country->showCountryByContinent();
 		$categories = $this->category->show();
 		$continents = $this->continent->show();
-		$user = $this->user->getUserById($id);
+		$exist = strpos($id, 'fb');
+		$profile = "";
+		if($exist !== FALSE){
+			$provider = $this->oauth->authenticate('Facebook');
+			$profile = $provider->getUserProfile();
+			$user = $this->fbuser->getUserById($id);
+		}
+		else{
+			$user = $this->user->getUserById($id);
+		}
+		
 		$count = $this->article->countArticlesByUser($id);
 		$favorites = $this->favorite->count_favorite_by_user($id);
 
@@ -89,7 +104,8 @@ class UserController extends BaseController{
 					->withCountries($countries)
 					->withCategories($categories)
 					->withCount($count)
-					->withFavorites($favorites);
+					->withFavorites($favorites)
+					->withProfile($profile);
 	}
 
 	public function edit($id){

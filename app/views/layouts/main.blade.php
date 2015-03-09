@@ -125,14 +125,20 @@ $(document).ready(function(){
 			</div>
 			<div class="col-md-4">
 				<ul class="list-inline">
-					@if(Auth::check())
-					<li><span class="glyphicon glyphicon-list-alt"></span> <a href="{{URL::route('article.insert')}}">Make an Article</a></li>
-					<li><span class="glyphicon glyphicon-user"></span>  <a href="{{URL::route('user.profile', Auth::user()->CURATER_ID)}}">{{Auth::user()->CURATER}}</a></li>
-					<li><span class="glyphicon glyphicon-log-out"></span> <a href="{{URL::route('logout')}}">Logout</a></li>
+					@if(Hybrid_Auth::isConnectedWith('Facebook'))
+						<li><span class="glyphicon glyphicon-list-alt"></span> <a href="{{URL::route('article.insert')}}">Make an Article</a></li>
+						<li><span class="glyphicon glyphicon-user"></span>  <a href="{{URL::route('user.profile', 'fb'.$profile->identifier)}}">{{$profile->displayName}}</a></li>
+						<li><span class="glyphicon glyphicon-log-out"></span> <a href="{{URL::route('auth.logout')}}">Logout</a></li>
 					@else
-					<li><span class="glyphicon glyphicon-list-alt"></span> <a href="{{URL::route('registration')}}">Make an Article</a></li>
-					<li><span class="glyphicon glyphicon-file"></span> <a href="{{URL::route('registration')}}">Sign Up</a></li>
-					<li><span class="glyphicon glyphicon-log-in"></span> <a href="{{URL::route('login')}}">Login</a></li>
+						@if(Auth::check())
+						<li><span class="glyphicon glyphicon-list-alt"></span> <a href="{{URL::route('article.insert')}}">Make an Article</a></li>
+						<li><span class="glyphicon glyphicon-user"></span>  <a href="{{URL::route('user.profile', Auth::user()->CURATER_ID)}}">{{Auth::user()->CURATER}}</a></li>
+						<li><span class="glyphicon glyphicon-log-out"></span> <a href="{{URL::route('logout')}}">Logout</a></li>
+						@else
+						<li><span class="glyphicon glyphicon-list-alt"></span> <a href="{{URL::route('registration')}}">Make an Article</a></li>
+						<li><span class="glyphicon glyphicon-file"></span> <a href="{{URL::route('registration')}}">Sign Up</a></li>
+						<li><span class="glyphicon glyphicon-log-in"></span> <a href="{{URL::route('login')}}">Login</a></li>
+						@endif
 					@endif
 				</ul>
 			</div>

@@ -35,16 +35,16 @@ class EloquentArticleRepository implements ArticleRepository{
 		return $article;
 	}
 
-	public function insert(){
+	public function insert($user, $id){
 		$article = new Article;
-		$article->CURATER_ID = \Auth::user()->CURATER_ID;
+		$article->CURATER_ID = $id;
 
 		return $article->save();
 	}
 
-	public function getArticle(){
-		$article = Article::where('CURATER_ID', '=', \Auth::user()->CURATER_ID)->max('REGISTER_DATE');
-		return Article::where('CURATER_ID', '=', \Auth::user()->CURATER_ID)
+	public function getArticle($id){
+		$article = Article::where('CURATER_ID', '=', $id)->max('REGISTER_DATE');
+		return Article::where('CURATER_ID', '=', $id)
 						->where('REGISTER_DATE', '=', $article)->first();
 	}
 

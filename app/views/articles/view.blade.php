@@ -49,6 +49,13 @@ $(document).ready(function(){
 									<span class="fave"><a href="javascript:void(0);" class="stat unfavorite" onclick="favorite_article({{$article->CURATION_ID}}, {{Auth::user()->CURATER_ID}}, 'unfavorite')"><span class="glyphicon glyphicon-heart"></span> <i>Unfavorite</i></a></a></span>
 								@endif
 							@endif
+							@if(Hybrid_Auth::isConnectedWith('Facebook'))
+								@if($check)
+									<span class="fave"><a href="javascript:void(0);" class="stat favorite" onclick="favorite_article({{$article->CURATION_ID}}, '{{'fb'.$profile->identifier}}', 'favorite')"><span class="glyphicon glyphicon-heart"></span> <i>Favorite</i></a></a></span>
+								@else
+									<span class="fave"><a href="javascript:void(0);" class="stat unfavorite" onclick="favorite_article({{$article->CURATION_ID}}, '{{'fb'.$profile->identifier}}', 'unfavorite')"><span class="glyphicon glyphicon-heart"></span> <i>Unfavorite</i></a></a></span>
+								@endif
+							@endif
 						</div>
 					</div>
 				</div>

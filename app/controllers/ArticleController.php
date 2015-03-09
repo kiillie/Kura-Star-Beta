@@ -7,6 +7,7 @@ use KuraStar\Storage\Continent\ContinentRepository as Continent;
 use KuraStar\Storage\Article\ArticleRepository as Article;
 use KuraStar\Storage\User\UserRepository as User;
 use KuraStar\Storage\Favorite\FavoriteRepository as Favorite;
+use KuraStar\Storage\Facebook\FacebookRepository as FacebookUser;
 
 class ArticleController extends BaseController{
 
@@ -16,8 +17,10 @@ class ArticleController extends BaseController{
 	protected $article;
 	protected $user;
 	protected $favorite;
+	protected $fbuser;
+	protected $oauth;
 
-	public function __construct(Country $country, Category $category, Continent $continent, Article $article, User $user, Favorite $favorite){
+	public function __construct(Country $country, Category $category, Continent $continent, Article $article, User $user, Favorite $favorite, FacebookUser $fbuser){
 		
 		$this->country = $country;
 		$this->category = $category;
@@ -25,6 +28,8 @@ class ArticleController extends BaseController{
 		$this->article = $article;
 		$this->user = $user;
 		$this->favorite = $favorite;
+		$this->fbuser = $fbuser;
+		$this->oauth = new Hybrid_Auth(app_path().'/config/fb_auth.php');
 
 	}
 
@@ -33,20 +38,38 @@ class ArticleController extends BaseController{
 		$categories = $this->category->show();
 		$continents = $this->continent->show();
 		$article = $this->article->show($id);
+		$profile = "";
 
+		if(Hybrid_Auth::isConnectedWith('Facebook')){
+			$provider = $this->oauth->authenticate('Facebook');
+			$profile = $provider->getUserProfile();
+		}
 		return View::make('articles.create')
 				->withCountries($countries)
 				->withCategories($categories)
 				->withContinents($continents)
 				->with('curation', $id)
 				->with('status', $article->CURATION_STATUS)
-				->with('article', $article);
+				->with('article', $article)
+				->withProfile($profile);
 	}
 
 	public function insert(){
-		$insert = $this->article->insert();
+		if(Hybrid_Auth::isConnectedWith('Facebook')){
+			$provider = $this->oauth->authenticate('Facebook');
+			$profile = $provider->getUserProfile();
+			$insert = $this->article->insert('fb', 'fb'.$profile->identifier);
+		}
+		else{
+			$insert = $this->article->insert('raw', \Auth::user()->CURATER_ID);
+		}
 		if($insert){
-			$article = $this->article->getArticle();
+			if(Hybrid_Auth::isConnectedWith('Facebook')){
+				$article = $this->article->getArticle('fb'.$profile->identifier);
+			}
+			else{
+				$article = $this->article->getArticle(\Auth::user()->CURATER_ID);
+			}
 			$files = fopen(public_path()."/assets/articles/".$article->CURATION_ID.".php", "w");
 			$id = $article->CURATION_ID;
 			$publish = $article->CURATION_STATUS;
@@ -115,6 +138,11 @@ class ArticleController extends BaseController{
 		$countries = $this->country->showCountryByContinent();
 		$categories = $this->category->show();
 		$continents = $this->continent->show();
+		$profile = "";
+		if(Hybrid_Auth::isConnectedWith('Facebook')){
+			$provider = $this->oauth->authenticate('Facebook');
+			$profile = $provider->getUserProfile();
+		}
 		$article = $this->article->show($id);
 		$ranking = $this->article->getByRanking();
 		$ctry_rank = [];
@@ -127,6 +155,9 @@ class ArticleController extends BaseController{
 			if(\Auth::check()){
 				$check = $this->favorite->check($id, Auth::user()->CURATER_ID);
 			}
+			else if(Hybrid_Auth::isConnectedWith('Facebook')){
+				$check = $this->favorite->check($id, 'fb'.$profile->identifier);
+			}
 			return View::make('articles.view')
 					->withCountries($countries)
 					->withCategories($categories)
@@ -134,10 +165,10 @@ class ArticleController extends BaseController{
 					->withArticle($article)
 					->withRank($ranking)
 					->withCtryrank($ctry_rank)
-					->withCheck($check);
+					->withCheck($check)
+					->withProfile($profile);
 
 		}
-
 	}
 
 	public function preview($id){
@@ -145,7 +176,16 @@ class ArticleController extends BaseController{
 		$countries = $this->country->showCountryByContinent();
 		$categories = $this->category->show();
 		$continents = $this->continent->show();
-		$user = $this->user->getUserById(Auth::user()->CURATER_ID);
+		$profile = "";
+		if(Hybrid_Auth::isConnectedWith('Facebook')){
+			$provider = $this->oauth->authenticate('Facebook');
+			$profile = $provider->getUserProfile();
+
+			$user = $this->user->getUserById('fb'.$profile->identifier);
+		}
+		else{
+			$user = $this->user->getUserById(Auth::user()->CURATER_ID);
+		}
 		$ranking = $this->article->getByRanking();
 		$ctry_rank = [];
 		foreach($countries as $country){
@@ -159,7 +199,8 @@ class ArticleController extends BaseController{
 				->withArticle($article)
 				->withUser($user)
 				->withRank($ranking)
-				->withCtryrank($ctry_rank);
+				->withCtryrank($ctry_rank)
+				->withProfile($profile);
 	}
 
 	public function twitter(){
@@ -176,7 +217,16 @@ class ArticleController extends BaseController{
 
 	public function showArticlesByUser($id){
 		$articles = $this->article->getByUser($id);
-		$user = $this->user->getUserById($id);
+		$exist = strpos($id, 'fb');
+		$profile = "";
+		if($exist !== false){
+			$provider = $this->oauth->authenticate('Facebook');
+			$profile = $provider->getUserProfile();
+			$user = $this->fbuser->getUserById($id);
+		}
+		else{
+			$user = $this->user->getUserById($id);
+		}
 		$countries = $this->country->showCountryByContinent();
 		$categories = $this->category->show();
 		$continents = $this->continent->show();
@@ -189,7 +239,8 @@ class ArticleController extends BaseController{
 				->withArticles($articles)
 				->withUser($user)
 				->withCount($count)
-				->withFavorites($favorites);
+				->withFavorites($favorites)
+				->withProfile($profile);
 	}
 
 	public function showByCategory($id){
@@ -310,8 +361,18 @@ class ArticleController extends BaseController{
 		$countries = $this->country->showCountryByContinent();
 		$categories = $this->category->show();
 		$continents = $this->continent->show();
-		$user = $this->user->getUserById($id);
 		$users = $this->user->allUsers();
+		$profile = "";
+		$exist = strpos($id, 'fb');
+		$fbusers = $this->fbuser->getAllUsers();
+		if($exist !== false){
+			$provider = $this->oauth->authenticate('Facebook');
+			$profile = $provider->getUserProfile();
+			$user = $this->fbuser->getUserById($id);
+		}
+		else{
+			$user = $this->user->getUserById($id);	
+		}
 		$count = $this->article->countArticlesByUser($id);
 		$favorites = $this->favorite->count_favorite_by_user($id);
 		$favorited = $this->favorite->get_favorite_by_user($id);
@@ -319,6 +380,7 @@ class ArticleController extends BaseController{
 		$articles = [];
 		foreach($favorited as $favorite){
 			$articles[$counter] = $this->article->getById($favorite->CURATION_ID);
+			$counter++;
 		}
 
 		return View::make('users.favorites')
@@ -329,7 +391,9 @@ class ArticleController extends BaseController{
 					->withCategories($categories)
 					->withCount($count)
 					->withFavorites($favorites)
-					->withFavorited($articles);
+					->withFavorited($articles)
+					->withProfile($profile)
+					->withFbusers($fbusers);
 	}
 
 	public function addonEdit(){
