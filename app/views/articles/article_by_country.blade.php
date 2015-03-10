@@ -39,12 +39,28 @@
 											<p>{{$article->CURATION_DESCRIPTION}}</p>
 										</div>
 										<div class="col-md-2 user-detail col-xs-12">
-											@foreach($users as $user)
-												@if($user->CURATER_ID == $article->CURATER_ID)
-													<span class="hidden-xs"><a href="{{URL::route('user.profile', $article->CURATER_ID)}}">{{$user->CURATER}}</a></span>
-													<span class="visible-xs"><i>- <a href="{{URL::route('user.profile', $article->CURATER_ID)}}">{{$user->CURATER}}</a></i></span>
+											<?php
+												$exist = strpos($article->CURATER_ID, 'fb');
+												if($exist !== false){
+													?>
+														@foreach($fbusers as $fbuser)
+															@if($fbuser->CURATER_ID == $article->CURATER_ID)
+																<span class="hidden-xs"><a href="{{URL::route('user.profile', $article->CURATER_ID)}}">{{$fbuser->CURATER}}</a></span>
+																<span class="visible-xs"><i>- <a href="{{URL::route('user.profile', $article->CURATER_ID)}}">{{$fbuser->CURATER}}</a></i></span>
+															@endif
+														@endforeach
+													<?php
+												}
+												else{
+											?>
+											@foreach($users as $raw)
+												@if($raw->CURATER_ID == $article->CURATER_ID)
+													<span class="hidden-xs"><a href="{{URL::route('user.profile', $article->CURATER_ID)}}">{{$raw->CURATER}}</a></span>
+													<span class="visible-xs"><i>- <a href="{{URL::route('user.profile', $article->CURATER_ID)}}">{{$raw->CURATER}}</a></i></span>
 												@endif
 											@endforeach
+
+											<?php } ?>
 										</div>
 									</div>
 									<div class="count-cat">

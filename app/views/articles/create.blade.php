@@ -272,7 +272,7 @@ function show_appended_item_area(li){
 	addon += '<li><a href="javascript:void(0);" onclick="edit_addon(\''+li+'\', \'text\', \'addon\', \'new\', \'append\')">Text</a></li>';
 	addon += '<li><a href="javascript:void(0);" onclick="edit_addon(\''+li+'\', \'picture\', \'addon\', \'new\', \'append\')">Picture</a></li>';
 	addon += '<li><a href="javascript:void(0);" onclick="edit_addon((\''+li+'\', \'reference\', \'addon\', \'new\', \'append\')">Reference</a></li>';
-	addon += '<li><a href="javascript:void(0);" onclick="edit_addon("text", "addon", "new")">Link</a></li>';
+	addon += '<li><a href="javascript:void(0);" onclick="edit_addon(\''+li+'\', \'link\', \'addon\', \'new\', \'append\')">Link</a></li>';
 	addon += '<li><a href="javascript:void(0);" onclick="edit_addon(\''+li+'\', \'twitter\', \'addon\', \'new\', \'append\')">Twitter</a></li>';
 	addon += '<li><a href="javascript:void(0);" onclick="edit_addon(\''+li+'\', \'video\', \'addon\', \'new\', \'append\')">Youtube</a></li>';
 	addon += '<li><a href="javascript:void(0);" onclick="edit_addon(\''+li+'\', \'tag\', \'addon\', \'new\', \'append\')">H2 Tag</a></li>';

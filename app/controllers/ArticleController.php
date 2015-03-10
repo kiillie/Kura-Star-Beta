@@ -252,6 +252,13 @@ class ArticleController extends BaseController{
 		$selected_category = $this->category->getById($id);
 		$ranking = $this->article->getByRanking();
 		$ctry_rank = [];
+		$profile = "";
+		$fbusers = $this->fbuser->getAllUsers();
+
+		if(Hybrid_Auth::isConnectedWith('Facebook')){
+			$provider = $this->oauth->authenticate('Facebook');
+			$profile = $provider->getUserProfile();
+		}
 		foreach($countries as $country){
 			$ctry_rank[$country->COUNTRY_ID] = $this->article->countByCountry($country->COUNTRY_ID);
 		}
@@ -264,7 +271,9 @@ class ArticleController extends BaseController{
 				->withArticles($articles)
 				->withUsers($users)
 				->withRank($ranking)
-				->withCtryrank($ctry_rank);
+				->withCtryrank($ctry_rank)
+				->withProfile($profile)
+				->withFbusers($fbusers);
 	}
 
 	public function showByCountry($id){
@@ -276,6 +285,12 @@ class ArticleController extends BaseController{
 		$selected_country = $this->country->getById($id);
 		$ranking = $this->article->getByRanking();
 		$ctry_rank = [];
+		$profile = "";
+		$fbusers = $this->fbuser->getAllUsers();
+		if(Hybrid_Auth::isConnectedWith('Facebook')){
+			$provider = $this->oauth->authenticate('Facebook');
+			$profile = $provider->getUserProfile();
+		}
 		foreach($countries as $country){
 			$ctry_rank [$country->COUNTRY_ID] = $this->article->countByCountry($country->COUNTRY_ID);
 		}
@@ -294,7 +309,9 @@ class ArticleController extends BaseController{
 				->withUsers($users)
 				->withArtcount($count)
 				->withRank($ranking)
-				->withCtryrank($ctry_rank);
+				->withCtryrank($ctry_rank)
+				->withProfile($profile)
+				->withFbusers($fbusers);
 	}
 
 	public function searchArticle(){
@@ -315,6 +332,13 @@ class ArticleController extends BaseController{
 			$continents = $this->continent->show();
 			$ranking = $this->article->getByRanking();
 			$ctry_rank = [];
+			$profile = "";
+			$fbusers = $this->fbuser->getAllUsers();
+
+			if(Hybrid_Auth::isConnectedWith('Facebook')){
+				$provider = $this->oauth->authenticate('Facebook');
+				$profile = $provider->getUserProfile();
+			}
 
 			foreach($categories as $category){
 				$count[$category->CATEGORY_ID] = $this->article->countCategoryByCountry(Input::get('ctry-sel'), $category->CATEGORY_ID);
@@ -330,7 +354,9 @@ class ArticleController extends BaseController{
 					->withUsers($users)
 					->withArtcount($count)
 					->withRank($ranking)
-					->withCtryrank($ctry_rank);
+					->withCtryrank($ctry_rank)
+					->withProfile($profile)
+					->withFbusers($fbusers);
 
 		}
 	}

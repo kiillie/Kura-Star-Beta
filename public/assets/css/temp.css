@@ -50,7 +50,7 @@
 	margin: 0;
 }
 .addons-container ul li .item-inner{
-	padding: 10px;
+	padding: 5px;
 }
 .addons-container ul li .item-added-container:hover{
 	background: rgb(215, 215, 215);
@@ -60,7 +60,11 @@
 }
 .addons-container ul li .add-item-area .add-inner{
 	visibility: hidden;
-	padding: 10px;
+	padding: 5px;
+}
+.addons-container ul li .add-item-area .add-inner hr{
+	margin-bottom: 10px;
+	margin-top: 10px;
 }
 .editlist ul{
 	background: rgb(8, 182, 163);
@@ -70,8 +74,10 @@
 	background: rgb(8, 182, 163);
 	border: none;
 	color: white;
-	height: 30px;
+	height: 25px;
 	vertical-align: middle;
+	font-size: 13px;
+
 }
 .tag-hr{
 	border-width: 4px;
@@ -82,13 +88,13 @@
 }
 .add-item-area .add-item-btn a{
 	background: rgb(213, 113, 113);
-	height: 29px;
+	height: 23px;
 	display: table-cell;
 	color: white;
 	vertical-align: middle;
 	border-bottom-left-radius: 20px;
 	border-top-left-radius: 20px;
-	padding: 0 20px;
+	padding: 0 10px;
 	text-decoration: none;
 }
 .add-item-area{
@@ -110,7 +116,7 @@
 .add-item-area .add-item-btn{
 	position: absolute;
 	right: -88px;
-	top: 16px;
+	top: 3px;
 }
 .add-item-area .add-item-btn a:hover{
 	background: rgb(182, 100, 100);
@@ -129,7 +135,7 @@
 }
 .add-item-area .append-add-item li a{
 	display: block;
-	padding: 10px;
+	padding: 5px;
 }
 .addons-container .editlist button:hover, .editlist span.sort-item:hover{
 	background: rgb(17, 131, 118);
@@ -180,7 +186,7 @@
 .new-item .extracted-vid iframe, .item-added-container iframe{
 	border: none;
 }
-.new-item .link-result{
+.new-item .link-result, ul.sortable .link-result{
 	display: none;
 }
 .new-item .link-title{

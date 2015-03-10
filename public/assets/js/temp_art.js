@@ -157,7 +157,13 @@ function addItem(li, type, kind){
 			$(".new-addon .new-item").html("");
 		}
 		else{
-			//
+			var title = $("ul.sortable li[value='"+li+"'] .link-title").val();
+			var linkdesc = $("ul.sortable li[value='"+li+"'] .link-description").val();
+			var url = $("ul.sortable li[value='"+li+"'] .link-url-text").text();
+			var desc = $("ul.sortable li[value='"+li+"'] .link-extra-text").val();
+			var link =	'<h2 class="link-title"><a href="'+url+'" target="_blank">'+title+'</a></h2>'+
+						'<div class="link-desc"><p>'+linkdesc+'</p></div>'+
+						'<div class="lik-extra"><p>'+desc+'</p></div>';
 		}
 		var content =	'<li class="ui-state-default added-addon">'+
 						'<div class="item-added-container">'+
@@ -179,6 +185,7 @@ function addItem(li, type, kind){
 		else{
 			var current = $('ul.sortable li[value="'+li+'"]');
 			$("ul.sortable li[value='"+li+"'] .append-new-item").hide();
+			$("ul.sortable li[value='"+li+"'] .item-btn-con").show();
 			current.after(content);
 			insert_addon();
 		}
@@ -271,7 +278,7 @@ function addItem(li, type, kind){
 			var src = $(".new-addon .new-item iframe").attr("src");
 			var desc = $(".new-addon .new-item .vid-desc").val();
 
-			var video = '<iframe class="vid-display" src="'+src+'" width="400" height="400">#</iframe>'+
+			var video = '<iframe class="vid-display" src="'+src+'" width="600" height="400">#</iframe>'+
 						'<p class="vid-p-desc">'+desc+'</p>';
 			$('.new-addon .new-item').html("");
 		}
@@ -279,7 +286,7 @@ function addItem(li, type, kind){
 			var src = $("ul.sortable li[value='"+li+"'] iframe").attr("src");
 			var desc = $("ul.sortable li[value='"+li+"'] .vid-desc").val();
 
-			var video =  '<iframe class="vid-display" src="'+src+'" width="400" height="400">#</iframe>'+
+			var video =  '<iframe class="vid-display" src="'+src+'" width="600" height="400">#</iframe>'+
 						 '<p class="vid-p-desc">'+desc+'</p>';
 			$('ul.sortable li[value="'+li+'"] .append-new-item').html("");
 			$('ul.sortable li[value="'+li+'"] .add-inner .item-btn-con').show();
@@ -1084,6 +1091,39 @@ function validate_addon(li, type, kind){
 				setTimeout(function(){
 					$(".new-addon .new-item span.err").fadeOut(function(){
 						$(".new-addon .new-item span.err").remove();
+					});
+				}, 5000);
+				checker++;
+			}
+			if(checker > 0){
+				return false;
+			}
+			else{
+				return true;
+			}
+		}
+		else{
+			var link = $("ul.sortable li[value='"+li+"'] .link-url").val();
+			if(link == ""){
+				setTimeout(function(){
+					$("ul.sortable li[value='"+li+"'] span.err").html("");
+					$("<span class='err label label-danger'>Please enter the URL of the link.</span>").insertBefore("ul.sortable li[value='"+li+"'] .link-url");
+				}, 1000);
+				setTimeout(function(){
+					$("ul.sortable li[value='"+li+"'] span.err").fadeOut(function(){
+						$("ul.sortable li[value='"+li+"'] span.err").remove();
+					});
+				}, 5000);
+				checker++;
+			}
+			else if(!isURL(link)){
+				setTimeout(function(){
+					$("ul.sortable li[value='"+li+"'] span.err").html("");
+					$("<span class='err label label-danger'>Invalid link URL.</span>").insertBefore("ul.sortable li[value='"+li+"'] .link-url");
+				}, 1000);
+				setTimeout(function(){
+					$("ul.sortable li[value='"+li+"'] span.err").fadeOut(function(){
+						$("ul.sortable li[value='"+li+"'] span.err").remove();
 					});
 				}, 5000);
 				checker++;

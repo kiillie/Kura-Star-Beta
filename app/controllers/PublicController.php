@@ -4,6 +4,7 @@ use KuraStar\Storage\Continent\ContinentRepository as Continent;
 use KuraStar\Storage\Category\CategoryRepository as Category;
 use KuraStar\Storage\Article\ArticleRepository as Article;
 use KuraStar\Storage\User\UserRepository as User;
+use KuraStar\Storage\Facebook\FacebookRepository as FacebookUser;
 
 class PublicController extends BaseController{
 	protected $country;
@@ -11,14 +12,16 @@ class PublicController extends BaseController{
 	protected $category;
 	protected $article;
 	protected $user;
+	protected $fbuser;
 	protected $oauth;
 
-	public function __construct(Continent $continent, Country $country, Category $category, Article $article, User $user){
+	public function __construct(Continent $continent, Country $country, Category $category, Article $article, User $user, FacebookUser $fbuser){
 		$this->continent = $continent;
 		$this->country = $country;
 		$this->category = $category;
 		$this->article = $article;
 		$this->user = $user;
+		$this->fbuser = $fbuser;
 		$this->oauth = new Hybrid_Auth(app_path()."/config/fb_auth.php");
 	}
 
@@ -28,6 +31,7 @@ class PublicController extends BaseController{
 		$categories = $this->category->show();
 		$articles = $this->article->allArticles();
 		$users = $this->user->allUsers();
+		$fbusers = $this->fbuser->getAllUsers();
 		if(Hybrid_Auth::isConnectedWith('Facebook')){
 			$provider = $this->oauth->authenticate('Facebook');
 			$profile = $provider->getUserProfile();
@@ -39,7 +43,8 @@ class PublicController extends BaseController{
 				->withCategories($categories)
 				->withArticles($articles)
 				->withUsers($users)
-				->withProfile($profile);
+				->withProfile($profile)
+				->withFbusers($fbusers);;
 		}
 		else{
 			return View::make('public.index')
@@ -47,7 +52,8 @@ class PublicController extends BaseController{
 				->withContinents($continents)
 				->withCategories($categories)
 				->withArticles($articles)
-				->withUsers($users);
+				->withUsers($users)
+				->withFbusers($fbusers);
 		}
 	}
 
