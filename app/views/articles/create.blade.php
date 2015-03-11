@@ -15,7 +15,6 @@ $(document).ready(function(){
 	$(".art-added-img").fancybox({
 		openEffect	: 'elastic',
     	closeEffect	: 'elastic',
-
     	helpers : {
     		title : {
     			type : 'inside'
@@ -126,7 +125,11 @@ $(document).ready(function(){
 								@endif
 							@endif
 						@endif
-						
+						@if(Session::has('curation'))
+							<input type="button" class="btn btn-default delete" value="Delete" onclick="delete_article({{Session::get('curation')}})" />
+						@else
+							<input type="button" class="btn btn-default delete" value="Delete" onclick="delete_article({{$curation}})" />
+						@endif
 					</div>
 				</div>
 			</div>

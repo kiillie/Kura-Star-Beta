@@ -167,7 +167,7 @@ $(document).ready(function(){
 							<p>
 								<ul class="list-inline">
 									@foreach($countries as $country)
-										<li><a href="">{{$country->COUNTRY_NAME}}</a></li>
+										<li><a href="{{URL::route('article.bycountry', $country->COUNTRY_ID)}}">{{$country->COUNTRY_NAME}}</a></li>
 									@endforeach
 								</ul>
 							</p>
@@ -176,7 +176,7 @@ $(document).ready(function(){
 							<h3>Category</h3>
 							<p><ul class="list-inline">
 								@foreach($categories as $category)
-									<li><a href="">{{$category->CATEGORY_NAME}}</a></li>
+									<li><a href="{{URL::route('article.bycategory', $category->CATEGORY_ID)}}">{{$category->CATEGORY_NAME}}</a></li>
 								@endforeach
 							</ul></p>
 						</div>

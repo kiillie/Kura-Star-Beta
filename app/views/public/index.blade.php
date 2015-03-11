@@ -121,6 +121,9 @@
 						</div>
 					</div>
 				@endforeach
+				<div class="pagination">
+						{{$articles->links()}}
+					</div>
 			@else
 				<div class="alert alert-danger">
 					<span>There are no articles yet.</span>

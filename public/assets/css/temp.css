@@ -59,7 +59,7 @@
 	display: block;
 }
 .addons-container ul li .add-item-area .add-inner{
-	visibility: hidden;
+	display: none;
 	padding: 5px;
 }
 .addons-container ul li .add-item-area .add-inner hr{
@@ -115,7 +115,7 @@
 }
 .add-item-area .add-item-btn{
 	position: absolute;
-	right: -88px;
+	right: 5px;
 	top: 3px;
 }
 .add-item-area .add-item-btn a:hover{
@@ -250,4 +250,8 @@
 .ref-container .quote-url, .ref-container .quote-url a{
 	font-size: 12px;
 	color: rgb(165, 165, 165);
+}
+.link-wrapper .link-extra{
+	color: rgb(134, 134, 134);
+	font-size: 12px;
 }

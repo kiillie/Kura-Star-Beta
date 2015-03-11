@@ -86,10 +86,19 @@ class UserController extends BaseController{
 		$continents = $this->continent->show();
 		$exist = strpos($id, 'fb');
 		$profile = "";
-		if($exist !== FALSE){
+		$logged = false;
+		if($exist !== FALSE && Hybrid_Auth::isConnectedWith('Facebook')){
 			$provider = $this->oauth->authenticate('Facebook');
 			$profile = $provider->getUserProfile();
 			$user = $this->fbuser->getUserById($id);
+			$logged = true;
+		}
+		else if($exist !== FALSE && !Hybrid_Auth::isConnectedWith('Facebook')){
+			$user = $this->fbuser->getUserById($id);
+		}
+		else if(Auth::check()){
+			$user = $this->user->getUserById($id);
+			$logged = true;
 		}
 		else{
 			$user = $this->user->getUserById($id);
@@ -98,14 +107,26 @@ class UserController extends BaseController{
 		$count = $this->article->countArticlesByUser($id);
 		$favorites = $this->favorite->count_favorite_by_user($id);
 
-		return View::make('users.notifications')
-					->withUser($user)
-					->withContinents($continents)
-					->withCountries($countries)
-					->withCategories($categories)
-					->withCount($count)
-					->withFavorites($favorites)
-					->withProfile($profile);
+		if($logged){
+			return View::make('users.notifications')
+						->withUser($user)
+						->withContinents($continents)
+						->withCountries($countries)
+						->withCategories($categories)
+						->withCount($count)
+						->withFavorites($favorites)
+						->withProfile($profile);
+		}
+		else{
+			return View::make('users.view_profile')
+						->withUser($user)
+						->withContinents($continents)
+						->withCountries($countries)
+						->withCategories($categories)
+						->withCount($count)
+						->withFavorites($favorites)
+						->withProfile($profile);
+		}
 	}
 
 	public function edit($id){

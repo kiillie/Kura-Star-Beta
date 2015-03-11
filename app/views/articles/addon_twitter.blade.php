@@ -18,7 +18,8 @@ $query = array(
   "q" => $search['search'],
   'count' => 100,
   'include_entities' => true,
-  'result_type'	=>	'mixed'
+  'result_type'	=>	'mixed',
+  'lang'	=>	'ja'
 );
 $results = search($query);
 $count = 1;

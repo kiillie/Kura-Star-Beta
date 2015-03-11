@@ -152,7 +152,7 @@ function addItem(li, type, kind){
 			var desc = $(".new-addon .new-item .link-extra-text").val();
 			var link =	'<h2 class="link-title"><a href="'+url+'" target="_blank">'+title+'</a></h2>'+
 						'<div class="link-desc"><p>'+linkdesc+'</p></div>'+
-						'<div class="lik-extra"><p>'+desc+'</p></div>';
+						'<div class="link-extra"><p>'+desc+'</p></div>';
 			
 			$(".new-addon .new-item").html("");
 		}
@@ -163,7 +163,7 @@ function addItem(li, type, kind){
 			var desc = $("ul.sortable li[value='"+li+"'] .link-extra-text").val();
 			var link =	'<h2 class="link-title"><a href="'+url+'" target="_blank">'+title+'</a></h2>'+
 						'<div class="link-desc"><p>'+linkdesc+'</p></div>'+
-						'<div class="lik-extra"><p>'+desc+'</p></div>';
+						'<div class="link-extra"><p>'+desc+'</p></div>';
 		}
 		var content =	'<li class="ui-state-default added-addon">'+
 						'<div class="item-added-container">'+
@@ -481,10 +481,39 @@ function editItem(li, type, kind){
 			insert_addon();
 		}
 	}
+	else if(type == 'link'){
+		var title = $(".new-addon .new-item .link-title").val();
+		var linkdesc = $(".new-addon .new-item .link-description").val();
+		var url = $(".new-addon .new-item .link-url-text").text();
+		var desc = $(".new-addon .new-item .link-extra-text").val();
+		var link =	'<h2 class="link-title"><a href="'+url+'" target="_blank">'+title+'</a></h2>'+
+					'<div class="link-desc"><p>'+linkdesc+'</p></div>'+
+					'<div class="link-extra"><p>'+desc+'</p></div>';
+			
+		$(".new-addon .new-item").html("");
+
+		var content =	'<div class="item-added-container">'+
+						'<div class="item-inner text">'+
+						'<div class="link-wrapper">'+link+"</div>"+
+						'</div>'+
+						'<div class="editlist">'+
+						'<button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button>'+
+						'</div>'+
+						'</div>'+
+						'<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div></div>'+
+						'<input type="hidden" class="type" value="'+type+'">'+
+						'<input type="hidden" class="kind" value="'+kind+'">';
+
+
+		$("ul.sortable li[value='"+li+"']").html(content);
+		$(".loader").hide();
+		addonHovered(type, kind);
+		insert_addon();
+	}
 	else if(type == 'video'){
 		var src = $(".new-addon .new-item iframe").attr("src");
 		var desc = $(".new-addon .new-item .vid-desc").val();
-		var video = '<iframe class="vid-display" src="'+src+'" width="400" height="400">#</iframe>'+
+		var video = '<iframe class="vid-display" src="'+src+'" width="600" height="400">#</iframe>'+
 					'<p class="vid-p-desc">'+desc+'</p>';
 		$('.new-addon .new-item').html("");
 
@@ -626,9 +655,9 @@ function addonHovered(type, kind){
 		$(this).find('.editlist').css('visibility', 'hidden');
 	});
 	$(".addons-container ul li.added-addon").hover(function(){
-		$(this).find('.add-inner').css('visibility', 'visible');
+		$(this).find('.add-inner').css('display', 'block');
 	}, function(){
-		$(this).find('.add-inner').css('visibility', 'hidden');
+		$(this).find('.add-inner').css('display', 'none');
 	});
 
 }

@@ -80,6 +80,32 @@ else if($addon['type'] == 'reference'){
 </script>
 <?php	
 }
+else if($addon['type'] == 'link'){
+?>
+<script>
+	$(".loader").hide();
+	var li = "{{$addon['li']}}";
+	var type = "{{$addon['type']}}";
+	var kind = "{{$addon['kind']}}";
+	var title = $("ul.sortable li[value='"+li+"'] .link-title a").text();
+	var content = $("ul.sortable li[value='"+li+"'] .link-desc p").text();
+	var extra = $("ul.sortable li[value='"+li+"'] .link-extra p").text();
+	var src = $("ul.sortable li[value='"+li+"'] .link-title a").attr("href");
+	var content =	'{{Form::open(["name"=>"link"])}}'+
+					'<div class="link-result" style="display:block;">'+
+					'<input type="text" class="form-control link-title" value="'+title+'">'+
+					'<textarea class="form-control link-description">'+content+'</textarea>'+
+					'<span>URL: <span class="link-url-text">'+src+'</span></span>'+
+					'<textarea class="form-control link-extra-text" placeholder="Description of the URL type here">'+extra+'</textarea>'+
+					'<input type="button" class="btn btn-default add-btn" value="Add" onclick="editItem(\''+li+'\', \''+type+'\', \''+kind+'\')">'+
+					'<input type="button" class="btn btn-default cancel-link" onclick="cancel_add(\''+li+'\', \''+type+'\', \''+kind+'\')" value="Cancel">'+
+					'</div>'+
+					'{{Form::close()}}';
+
+	$(".new-addon .new-item").html(content);
+</script>
+<?php
+}
 else if($addon['type'] == 'video'){
 ?>
 <script>
