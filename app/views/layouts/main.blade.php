@@ -145,40 +145,38 @@ $(document).ready(function(){
 		</div>
 	</div>
 @yield('content')
-<div class="container">
 	<div class="foobar">
 		<div class="footer">
 			<div class="row">
 				<div class="row vertical-align foologo">
-			        <!--
-			            Using col-xs-* classes are recommended.
-			            Otherwise you may run into a trouble.
-			         -->
-			        <div class="col-xs-6 col-md-3">
+			        <div class="col-xs-6 col-md-2 logo">
 			            <img src="/assets/images/logo.png" alt="Kurastar" />
 			        </div>
-			        <!--
-			            Using col-xs-* classes are recommended.
-			            Otherwise you may run into a trouble.
-			         -->
-			        <div class="col-xs-6 col-md-9">
-			            <div class="foo-country">
-							<h3>Country</h3>
-							<p>
-								<ul class="list-inline">
-									@foreach($countries as $country)
-										<li><a href="{{URL::route('article.bycountry', $country->COUNTRY_ID)}}">{{$country->COUNTRY_NAME}}</a></li>
-									@endforeach
-								</ul>
-							</p>
-						</div>
-						<div class="foo-category">
-							<h3>Category</h3>
-							<p><ul class="list-inline">
-								@foreach($categories as $category)
-									<li><a href="{{URL::route('article.bycategory', $category->CATEGORY_ID)}}">{{$category->CATEGORY_NAME}}</a></li>
+			        <div class="col-xs-6 col-md-10">
+			        	<div class="row">
+							<div class="inline row foo-country col-md-8">
+								<h3>Countries</h3>
+								@foreach($continents as $continent)
+								<div class="col-md-2">
+									<span>{{$continent->CONTINENT_NAME}}</span>
+									<ul>
+										@foreach($countries as $country)
+											@if($continent->CONTINENT_ID == $country->CONTINENT_ID)
+												<li><span class="fl-img"><img src="{{$country->FLAG_IMAGE}}" alt="{{$country->COUNTRY_NAME}}" /></span> <a href="{{URL::route('article.bycountry', $country->COUNTRY_ID)}}">{{$country->COUNTRY_NAME}}</a></li>
+											@endif
+										@endforeach
+									</ul>
+								</div>
 								@endforeach
-							</ul></p>
+							</div>
+							<div class="foo-category col-md-4">
+								<h3>Categories</h3>
+								<p><ul class="list-inline">
+									@foreach($categories as $category)
+										<li><a href="{{URL::route('article.bycategory', $category->CATEGORY_ID)}}">{{$category->CATEGORY_NAME}}</a></li>
+									@endforeach
+								</ul></p>
+							</div>
 						</div>
 			        </div>
 			    </div>
@@ -193,6 +191,5 @@ $(document).ready(function(){
 			</ul>
 		</div>
 	</div>
-</div>
 </body>
 </html>

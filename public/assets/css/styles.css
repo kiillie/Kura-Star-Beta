@@ -279,6 +279,13 @@
 .foo-country p, .foo-category p{
 	font-size: 12px;
 }
+.foo-country ul{
+	padding: 0;
+	list-style: none;
+}
+.foo-country .col-md-2{
+	padding: 0;
+}
 /** Article Menu **/
 .article-details{
 	margin: 30px 0;
@@ -568,7 +575,6 @@
 	padding-top:35px;
 }
 .foobar{
-	border-radius: 10px;
 	background: #DFDFDF;
 	padding: 30px;
 }
@@ -578,7 +584,7 @@
 .add-continent{
 	margin-bottom: 40px;
 }
-.footer img{
+.footer .logo img{
 	width: 130px;
 }
 
