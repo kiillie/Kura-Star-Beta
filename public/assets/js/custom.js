@@ -7,7 +7,7 @@ $(document).ready(function(){
 			alert("Please select a Country or a Category");
 		}
 		else{
-			// $(this).submit();
+			$(this).submit();
 		}
 	});
 });

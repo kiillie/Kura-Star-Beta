@@ -171,7 +171,7 @@ $(document).ready(function(){
 							</div>
 							<div class="foo-category col-md-4">
 								<h3>Categories</h3>
-								<p><ul class="list-inline">
+								<p><ul>
 									@foreach($categories as $category)
 										<li><a href="{{URL::route('article.bycategory', $category->CATEGORY_ID)}}">{{$category->CATEGORY_NAME}}</a></li>
 									@endforeach
