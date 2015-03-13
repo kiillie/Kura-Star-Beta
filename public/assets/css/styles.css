@@ -1,6 +1,10 @@
 .main-header{
 	height: 65px;
 }
+@font-face{
+	font-family: "Bebas";
+	src: url(BEBAS.ttf);
+}
 .logo{
 	text-align: center;
 }
@@ -32,17 +36,20 @@
 .menu-header .header-slide .container{
 	height: auto;
 	margin: 0 auto;
-	top: 60%;
+	top: 30%;
 	position: absolute;
 	right: 0;
 	left: 0;
 }
 .search-form{
-	background: rgba(255, 255, 255, 0.7);
+	margin: 0 auto;
+	width: 50%;
 }
 .search-form .country, .search-form .category{
+	border: none;
 	padding:0;
-	border: 1px solid #ffffff;
+	color: white;
+	margin-bottom: 10px;
 }
 .search-form .search-title{
 	padding: 0;
@@ -56,13 +63,17 @@
 	text-shadow: 0 -1px 0 rgba(100, 89, 89, 0.71);
 }
 .search-form .country button, .search-form .category button{
-	background: #FFD34E;
+	background: rgba(255, 211, 78, 1);
+	font-size: 25px;
 	width: 100%;
 	border: 0;
 	border-radius: 0;
 	text-shadow: none;
+	height: 60px;
+	font-family: 'Bebas';
 }
 .search-form .country ul, .search-form .category ul{
+	background: #FFD34E;
 	width: 100%;
 	padding: 10px;
 	height: 225px;
@@ -247,9 +258,16 @@
 	border-radius: 0;
 }
 .head-search .search-btn input{
-	border-top-right-radius: 5px;
-	border-bottom-right-radius: 5px;
-	width: 100%;
+	height: 50px;
+	color: #FFD34E;
+	border: 5px solid #BD4932;
+	background: none;
+	font-size: 20px;
+	font-family: 'bebas';
+	text-shadow: 2px 2px gray;
+}
+.head-search .search-btn input:hover{
+	color: white;
 }
 .head-search select, .head-search input{
 	width: 100%;

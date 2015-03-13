@@ -110,7 +110,7 @@ $(document).ready(function(){
 			</div><!-- /.container-fluid -->
 		</nav>
 	</div>
-	<div class="container main-header hidden-xs">
+	<div class="container-fluid main-header hidden-xs">
 		<div class="row">
 			<div class="col-md-4">
 				<div class="input-group">

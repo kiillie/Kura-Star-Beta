@@ -12,12 +12,9 @@
 		</div>
 		<div class="container hidden-xs">
 			<div class="search-form">
-				<div class="row head-search">
-					<div class="col-md-2 search-title">
-						<h2>Search</h2>
-					</div>
-					<div class="col-md-4 country">
-						{{Form::open(['name'=>'search', 'role'=>'form', 'method'=>'post', 'route'=>'article.search'])}}
+				<div class="head-search">
+					{{Form::open(['name'=>'search', 'role'=>'form', 'method'=>'post', 'route'=>'article.search'])}}
+					<div class="country">
 							<div class="dropdown">
 					       		<button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"><span class="val-select">Select A Country</span> <span class="caret"></span></button>
 					        	<input type="hidden" class="sel-id" name="ctry-sel">
@@ -33,7 +30,7 @@
 						    	</ul>
 						    </div>
 						</div>
-						<div class="col-md-4 category">
+						<div class="category">
 							<div class="dropdown">
 						    	<button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"><span class="val-select">Select A Category</span> <span class="caret"></span></button>
 					        	<input type="hidden" class="sel-id" name="cat-sel">
@@ -44,10 +41,8 @@
 						    	</ul>
 						    </div>
 						</div>
-						<div class="col-md-1 search-btn">
-							<input type="submit" class="form-control btn btn-primary" href="article.view" value="Search"/>
-						</div>
-						<div class="col-md-1 search-btn">
+						<div class="search-btn">
+							<input type="submit" class="form-control" href="article.view" value="Search"/>
 						</div>
 						{{Form::close()}}
 				</div>

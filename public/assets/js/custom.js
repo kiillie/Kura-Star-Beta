@@ -3,7 +3,6 @@ $(document).ready(function(){
 		e.preventDefault();
 		var ctry = $(this).find("input[name='ctry-sel']").val();
 		var cat = $(this).find("input[name='cat-sel']").val();
-		alert(ctry+"-"+cat);
 		if(ctry == "" && cat == ""){
 			alert("Please select a Country or a Category");
 		}
