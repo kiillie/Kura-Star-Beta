@@ -218,4 +218,5 @@ Route::get('authlogout', [
 	'uses'	=> 'FacebookController@getLogout',
 	'as'	=>	'auth.logout'
 ]);
+
 ?>

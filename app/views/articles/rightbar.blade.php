@@ -24,7 +24,6 @@
 		<?php
 			$count = 0;
 			$limit = 5;
-
 		?>
 		@foreach($ctryrank as $ctry => $val)
 		<?php 
@@ -38,9 +37,7 @@
 		<?php
 		}
 		$count++;
-
-			?>
-
+		?>
 		@endforeach
 	</ul>
 </div>

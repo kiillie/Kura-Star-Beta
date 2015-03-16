@@ -15,9 +15,10 @@
 				<div class="head-search">
 					{{Form::open(['name'=>'search', 'role'=>'form', 'method'=>'post', 'route'=>'article.search'])}}
 					<div class="country">
+
 							<div class="dropdown">
 					       		<button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"><span class="val-select">Select A Country</span> <span class="caret"></span></button>
-					        	<input type="hidden" class="sel-id" name="ctry-sel">
+					        	<input type="hidden" class="sel-id ctry" name="ctry-sel"/>
 					        	<ul class="dropdown-menu nav-ctry" role="menu">
 					        		@foreach($continents as $continent)
 					        			<li class="disabled">{{$continent->CONTINENT_NAME}}</li>
@@ -33,7 +34,7 @@
 						<div class="category">
 							<div class="dropdown">
 						    	<button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"><span class="val-select">Select A Category</span> <span class="caret"></span></button>
-					        	<input type="hidden" class="sel-id" name="cat-sel">
+					        	<input type="hidden" class="sel-id cat" name="cat-sel" />
 					        	<ul class="dropdown-menu nav-cat" role="menu">
 									@foreach($categories as $category)
 										<li class="item" value="{{$category->CATEGORY_ID}}">{{$category->CATEGORY_NAME}}</li>
@@ -41,16 +42,16 @@
 						    	</ul>
 						    </div>
 						</div>
-						<div class="search-btn">
-							<input type="submit" class="form-control" href="article.view" value="Search"/>
-						</div>
 						{{Form::close()}}
+						<div class="search-btn">
+							<button class="form-control search"/>Search</button>
+						</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-<div class="container">
+<div class="container main">
 	<div class="row">
 		<div class="col-md-2 hidden-xs cat-sidebar">
 			@include('articles.leftbar')
@@ -125,17 +126,10 @@
 				</div>
 			@endif
 		</div>
-		<div class="col-md-3 hidden-xs advertisement">
-			<h2>Advertisements</h2>
-			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-			<!-- Stinger スマホ用 -->
-			<ins class="adsbygoogle"
-			     style="display:inline-block;width:100%;height:250px"
-			     data-ad-client="ca-pub-7072204464883997"
-			     data-ad-slot="8045729462"></ins>
-			<script>
-			(adsbygoogle = window.adsbygoogle || []).push({});
-			</script>
+		<div class="col-md-3 right-bar hidden-xs">
+			@include('articles.rightbar')
+			@section('rightbar')
+			@show
 		</div>
 	</div>
 </div>

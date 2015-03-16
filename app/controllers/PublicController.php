@@ -35,7 +35,12 @@ class PublicController extends BaseController{
 		if(Hybrid_Auth::isConnectedWith('Facebook')){
 			$provider = $this->oauth->authenticate('Facebook');
 			$profile = $provider->getUserProfile();
-			
+
+		$ranking = $this->article->getByRanking();
+		$ctry_rank = [];
+		foreach($countries as $country){
+			$ctry_rank [$country->COUNTRY_ID] = $this->article->countByCountry($country->COUNTRY_ID);
+		}
 
 			return View::make('public.index')
 				->withCountries($countries)
@@ -43,16 +48,27 @@ class PublicController extends BaseController{
 				->withCategories($categories)
 				->withArticles($articles)
 				->withUsers($users)
+				->withRank($ranking)
+				->withCtryrank($ctry_rank)
 				->withProfile($profile)
-				->withFbusers($fbusers);;
+				->withFbusers($fbusers);
 		}
 		else{
+
+		$ranking = $this->article->getByRanking();
+		$ctry_rank = [];
+		foreach($countries as $country){
+			$ctry_rank [$country->COUNTRY_ID] = $this->article->countByCountry($country->COUNTRY_ID);
+		}
+
 			return View::make('public.index')
 				->withCountries($countries)
 				->withContinents($continents)
 				->withCategories($categories)
 				->withArticles($articles)
 				->withUsers($users)
+				->withRank($ranking)
+				->withCtryrank($ctry_rank)
 				->withFbusers($fbusers);
 		}
 	}

@@ -149,27 +149,32 @@ $(document).ready(function(){
 		<div class="footer">
 			<div class="row">
 				<div class="row vertical-align foologo">
-			        <div class="col-xs-6 col-md-2 logo">
+			        <div class="col-md-3 logo hidden-xs">
 			            <img src="/assets/images/logo.png" alt="Kurastar" />
 			        </div>
-			        <div class="col-xs-6 col-md-10">
-			        	<div class="row">
-							<div class="inline row foo-country col-md-8">
+			        <div class="col-xs-6 col-md-9" style="margin: 0 auto;">
+			        	<div class="row" style="margin: auto;">
+			        		<div class="col-xs-12 logo visible-xs">
+					            <img src="/assets/images/logo.png" alt="Kurastar" />
+					        </div>
+							<div class="inline col-xs-12 foo-country col-md-8">
 								<h3>Countries</h3>
-								@foreach($continents as $continent)
-								<div class="col-md-2">
-									<span>{{$continent->CONTINENT_NAME}}</span>
-									<ul>
-										@foreach($countries as $country)
-											@if($continent->CONTINENT_ID == $country->CONTINENT_ID)
-												<li><span class="fl-img"><img src="{{$country->FLAG_IMAGE}}" alt="{{$country->COUNTRY_NAME}}" /></span> <a href="{{URL::route('article.bycountry', $country->COUNTRY_ID)}}">{{$country->COUNTRY_NAME}}</a></li>
-											@endif
-										@endforeach
-									</ul>
+								<div class="row" style="margin: auto;">
+									@foreach($continents as $continent)
+									<div class="col-md-2">
+										<span>{{$continent->CONTINENT_NAME}}</span>
+										<ul>
+											@foreach($countries as $country)
+												@if($continent->CONTINENT_ID == $country->CONTINENT_ID)
+													<li><span class="fl-img"><img src="{{$country->FLAG_IMAGE}}" alt="{{$country->COUNTRY_NAME}}" /></span> <a href="{{URL::route('article.bycountry', $country->COUNTRY_ID)}}">{{$country->COUNTRY_NAME}}</a></li>
+												@endif
+											@endforeach
+										</ul>
+									</div>
+									@endforeach
 								</div>
-								@endforeach
 							</div>
-							<div class="foo-category col-md-4">
+							<div class="foo-category col-xs-12 col-md-4">
 								<h3>Categories</h3>
 								<p><ul>
 									@foreach($categories as $category)

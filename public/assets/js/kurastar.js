@@ -12,6 +12,20 @@ $(document).ready(function(){
 		});
 	});
 
+	//Search Submit
+	$(".search-btn .search").click(function(){
+		var form = $("form[name='search']");
+		var ctry = $(form).find(".ctry").val();
+		var cat = $(form).find(".cat").val();
+
+		if(ctry == "" && cat == ""){
+			alert("Please select a Country or Category");
+		}
+		else{
+			$(form).submit();
+		}
+	});
+
 	//For Modal Preview
 	$("button.preview").on('click', function(){
 		var country = $(".country .dropdown .val-select").text();

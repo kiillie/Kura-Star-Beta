@@ -257,7 +257,7 @@
 .head-search .count .country, .head-search .cat .category, .head-search .search-btn input{
 	border-radius: 0;
 }
-.head-search .search-btn input{
+.head-search .search-btn button{
 	height: 50px;
 	color: #FFD34E;
 	border: 5px solid #BD4932;
@@ -266,7 +266,7 @@
 	font-family: 'bebas';
 	text-shadow: 2px 2px gray;
 }
-.head-search .search-btn input:hover{
+.head-search .search-btn button:hover{
 	color: white;
 }
 .head-search select, .head-search input{
@@ -349,10 +349,10 @@
 .article .details .count-cat .country a, .article .details .count-cat .category a{
 	color: #ffffff;
 }
-.article .rank-article ul, .article .rank-country ul{
+.article .rank-article ul, .article .rank-country ul, .main .rank-article ul, .main .rank-country ul{
 	padding: 0;
 }
-.article .rank-article ul li, .article .rank-country ul li{
+.article .rank-article ul li, .article .rank-country ul li, .main .rank-article ul li, .main .rank-country ul li{
 	list-style: none;
 }
 .article{
@@ -364,7 +364,7 @@
 	border-radius: 10px;
 	padding: 20px;
 }
-.article .rank-article img, .article .rank-country img{
+.article .rank-article img, .article .rank-country img, .main .rank-article img, .main .rank-country img{
 	width: 70px;
 	margin: 10px 0;
 }
@@ -606,7 +606,10 @@
 .footer .logo img{
 	width: 130px;
 }
-
+.footer .foo-category ul{
+	padding: 0;
+	list-style: none;
+}
 .foologo {
   display: flex;
   flex-direction: row;
