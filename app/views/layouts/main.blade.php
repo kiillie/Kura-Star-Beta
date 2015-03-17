@@ -123,7 +123,7 @@ $(document).ready(function(){
 	</div>
 	<div class="container-fluid main-header hidden-xs">
 		<div class="row">
-			<div class="col-md-4">
+			<div class="col-md-4 top-menu">
 				<div class="input-group">
 					<span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
 					{{Form::text('search', '', ['placeholder' => 'Search', 'class' => 'form-control'])}}
@@ -134,7 +134,7 @@ $(document).ready(function(){
 					<a href="{{URL::route('index')}}"><img src="/assets/images/logo.png" alt="Kurastar" /></a>
 				</div>
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-4 top-menu">
 				<ul class="list-inline">
 					@if(Hybrid_Auth::isConnectedWith('Facebook'))
 						<li><span class="glyphicon glyphicon-list-alt"></span> <a href="{{URL::route('article.insert')}}">Make an Article</a></li>

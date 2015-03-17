@@ -1,5 +1,5 @@
 .main-header{
-	height: 65px;
+	height: auto;
 }
 @font-face{
 	font-family: "Bebas";
@@ -9,13 +9,16 @@
 	text-align: center;
 }
 .logo img{
-	width: 90px;
+	width: 210px;
 }
 .main-header .row{
 	display:inline;
 }
 .main-header .row ul{
 	margin: 10px 0 0 0;
+}
+.main-header .top-menu{
+	top: 15px;
 }
 .mobile-header{
 	min-height: 80px;
@@ -45,6 +48,11 @@
 	margin: 0 auto;
 	width: 50%;
 }
+.search-form .head-search{
+	border-radius: 10px;
+	background: rgba(192, 192, 192, 0.62);
+	padding: 20px;
+}
 .search-form .country, .search-form .category{
 	border: none;
 	padding:0;
@@ -63,7 +71,7 @@
 	text-shadow: 0 -1px 0 rgba(100, 89, 89, 0.71);
 }
 .search-form .country button, .search-form .category button{
-	background: rgba(255, 211, 78, 1);
+	background: rgba(225, 120, 25, 1);
 	font-size: 25px;
 	width: 100%;
 	border: 0;
@@ -130,7 +138,7 @@
 .nav-category .navbar .search button{
 	width: 100%;
 	margin: 0 0 10px 0;
-	background: #288A5D;
+	background: rgba(225, 120, 25, 1);
 	color: white;
 	border: none;
 	border-radius: 0;
@@ -259,8 +267,8 @@
 }
 .head-search .search-btn button{
 	height: 50px;
-	color: #FFD34E;
-	border: 5px solid #BD4932;
+	color: #E47F23;
+	border: 5px solid #E17819;
 	background: none;
 	font-size: 20px;
 	font-family: 'bebas';
@@ -607,7 +615,7 @@
 	margin-bottom: 40px;
 }
 .footer .logo img{
-	width: 130px;
+	width: 240px;
 }
 .footer .foo-category ul{
 	padding: 0;

@@ -86,8 +86,26 @@ $(document).ready(function(){
 					<li><a href="#">&raquo;</a></li>
 				</ul>
 			</div>
-			<div class="ex-advertisement">
-				<img src="/assets/images/Google-Adsense.jpg" alt="Advertisement"/> <img src="/assets/images/Google-Adsense.jpg" alt="Advertisement"/>
+			<div class="ex-advertisement inline">
+				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<!-- Stinger スマホ用 -->
+				<ins class="adsbygoogle"
+				     style="display:inline-block;width:100%;height:250px"
+				     data-ad-client="ca-pub-7072204464883997"
+				     data-ad-slot="8045729462"></ins>
+				<script>
+					(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+
+				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<!-- Stinger スマホ用 -->
+				<ins class="adsbygoogle"
+				     style="display:inline-block;width:100%;height:250px"
+				     data-ad-client="ca-pub-7072204464883997"
+				     data-ad-slot="8045729462"></ins>
+				<script>
+					(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
 			</div>
 		</div>
 		<div class="col-md-3 right-bar hidden-xs">
