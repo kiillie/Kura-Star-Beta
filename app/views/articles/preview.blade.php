@@ -19,7 +19,7 @@ $(document).ready(function(){
 });
 </script>
 <div class="container article">
-	{{ Breadcrumbs::render('view_article') }}
+	{{ Breadcrumbs::render('article', $article) }}
 	<div class="prev-message alert alert-info"><span>This is a Preview Page. Only the curator can see this page.</span></div>
 	<div class="row details">
 		<div class="col-md-9 preview">

@@ -12,6 +12,8 @@ interface FavoriteRepository{
 
 	public function check($article, $user);
 
+	public function delete_by_article_id($article);
+
 }
 
 ?>

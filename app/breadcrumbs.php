@@ -19,14 +19,14 @@ Breadcrumbs::register('article_category', function($breadcrumbs){
     $breadcrumbs->parent('index');
     $breadcrumbs->push('Category', route('article.bycategory'));
 });
-Breadcrumbs::register('category', function($breadcrumbs, $category) {
-    $breadcrumbs->parent('blog');
+Breadcrumbs::register('article', function($breadcrumbs, $article) {
+    $breadcrumbs->parent('index');
 
-    foreach ($category->ancestors as $ancestor) {
-        $breadcrumbs->push($ancestor->title, route('category', $ancestor->id));
-    }
+    // foreach ($article->ancestors as $ancestor) {
+    //     $breadcrumbs->push($ancestor->CURATION_TITLE, route('ARTICLE.VIEW', $ancestor->CURATION_ID));
+    // }
 
-    $breadcrumbs->push($category->title, route('category', $category->id));
+    $breadcrumbs->push($article->CURATION_TITLE, route('article.view', $article->CURATION_ID));
 });
 
 Breadcrumbs::register('page', function($breadcrumbs, $page) {

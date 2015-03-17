@@ -364,8 +364,11 @@
 	border-radius: 10px;
 	padding: 20px;
 }
-.article .rank-article img, .article .rank-country img, .main .rank-article img, .main .rank-country img{
+.article .rank-article img, .main .rank-article img{
 	width: 70px;
+	margin: 10px 0;
+}
+.article .rank-country img, .main .rank-country img{
 	margin: 10px 0;
 }
 .article .article-view{

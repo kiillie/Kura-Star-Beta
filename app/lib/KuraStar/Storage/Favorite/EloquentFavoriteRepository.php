@@ -43,6 +43,12 @@ class EloquentFavoriteRepository implements FavoriteRepository{
 		}
 	}
 
+	public function delete_by_article_id($article){
+		$favorites = Favorite::where('CURATION_ID', '=', $article)->get();
+		
+		return $favorites->delete();
+	}
+
 }
 
 

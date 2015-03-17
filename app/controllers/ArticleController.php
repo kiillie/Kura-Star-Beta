@@ -446,6 +446,10 @@ class ArticleController extends BaseController{
 		return View::make('articles.file_upload')
 				->withImage($image);
 	}
+
+	public function delete($id){
+
+	}
 }
 
 ?>

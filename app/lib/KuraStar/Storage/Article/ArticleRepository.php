@@ -33,6 +33,8 @@ interface ArticleRepository{
 	public function getByRanking();
 
 	public function countByCountry($country);
+
+	public function delete($id);
 }
 
 ?>

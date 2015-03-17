@@ -3,7 +3,7 @@
 <head>
 	<title>Kura-Star</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" type="image/png" href="/assets/images/logo.png" /></link>
+	<link rel="icon" type="image/png" href="/assets/images/favicon.jpg" /></link>
 	{{ HTML::style('/assets/css/bootstrap.css') }}
 	{{ HTML::style('/assets/css/bootstrap.min.css') }}
 	{{ HTML::style('/assets/css/bootstrap-theme.css') }}
@@ -20,6 +20,17 @@
 	{{ HTML::script('/assets/js/kurastar.js')}}
 	{{ HTML::script('/assets/js/jquery.bxslider.js') }}
 	{{ HTML::script('/assets/js/jquery.bxslider.min.js') }}
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-60838164-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 </head>
 <script>
 $(document).ready(function(){

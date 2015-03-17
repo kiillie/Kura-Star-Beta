@@ -140,5 +140,10 @@ class EloquentArticleRepository implements ArticleRepository{
 
 	}
 
+	public function delete($id){
+		$article = Article::where('CURATION_ID', '=', $id)->get();
+		return $article->delete();
+	}
+
 }
 ?>
