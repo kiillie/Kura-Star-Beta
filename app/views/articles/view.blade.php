@@ -1,5 +1,9 @@
 @extends('layouts.main')
 @section('content')
+<script>
+	$("title").text("{{$article->CURATION_TITLE}}");
+	$("head").append('<meta name="description" content="{{addslashes($article->CURATION_DESCRIPTION)}}">');
+</script>
 <link rel="stylesheet" type="text/css" href="/assets/css/temp.css"></link>
 <script language="javascript" src="/assets/js/temp_art.js"></script>
 <script type="text/javascript" src="/assets/js/plugins/jquery.fancybox.js?v=2.1.5"></script>
@@ -79,25 +83,7 @@ $(document).ready(function(){
 			<div class="extra-details">
 				{{html_entity_decode($article->CURATION_DETAIL)}}
 			</div>
-			<div class="pages">
-				<ul class="pagination">
-					<li><a href="#">&laquo;</a></li>
-					<li><a href="#">1</a></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">&raquo;</a></li>
-				</ul>
-			</div>
 			<div class="ex-advertisement inline">
-				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-				<!-- Stinger スマホ用 -->
-				<ins class="adsbygoogle"
-				     style="display:inline-block;width:100%;height:250px"
-				     data-ad-client="ca-pub-7072204464883997"
-				     data-ad-slot="8045729462"></ins>
-				<script>
-					(adsbygoogle = window.adsbygoogle || []).push({});
-				</script>
-
 				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 				<!-- Stinger スマホ用 -->
 				<ins class="adsbygoogle"

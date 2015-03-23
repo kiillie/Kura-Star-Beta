@@ -64,17 +64,16 @@ google.load('search', '1');
             var result = results[i];
             var imgContainer = document.createElement('div');
             var addBtn = document.createElement('input');
+            var img = result.url;
+            img = decodeURIComponent(decodeURIComponent(img));
 
             addBtn.type = 'button';
             addBtn.className = 'btn add-btn btn-default';
-            addBtn.setAttribute("onclick", "add_google_image('"+result.url+"')");
+            addBtn.setAttribute("onclick", "add_google_image('"+img+"')");
             addBtn.value = "Add";
           	imgContainer.className = 'col-md-4 image-res';
             
             var newImg = document.createElement('img');
-
-            var img = result.url;
-            img = decodeURIComponent(decodeURIComponent(img));
             newImg.src=img;
   
             //if(imageExists(img) != 0){
@@ -97,10 +96,13 @@ function imageExists(url) {
 function add_google_image(res){
   var kind = $(".image-search .search-kind").val();
   var li = $(".image-search .search-li").val();
-
+  var resource = getRootUrl(res);
+  var orig = getOrigin(res);
   if(kind == 'new'){
     $(".new-addon .new-item").html("");
-    var image = '<a class="art-added-img" href="'+res+'" title="'+res+'" data-fancybox-group="gallery"><img class="image" src="'+res+'" alt="" /></a>';
+    var image = '<a class="art-added-img" href="'+res+'" title="'+res+'" data-fancybox-group="gallery"><img class="image" src="'+res+'" alt="" /></a>'+
+                '<div class="url-source"><span>Source: <a href="'+orig+'" target="_blank" alt="'+resource+'">'+resource+'</a></span></div>';
+
     var content =   '<li class="ui-state-default added-addon">'+
               '<div class="item-added-container">'+
               '<div class="item-inner text">'+
@@ -120,7 +122,8 @@ function add_google_image(res){
     count_image();
     }
     else{
-    var image = '<a class="art-added-img" href="'+res+'" title="'+res+'" data-fancybox-group="gallery"><img class="image" src="'+res+'" alt="" /></a>';
+    var image = '<a class="art-added-img" href="'+res+'" title="'+res+'" data-fancybox-group="gallery"><img class="image" src="'+res+'" alt="" /></a>'+
+                '<div class="url-source"><span>Source: <a href="'+orig+'" target="_blank" alt="'+resource+'">'+resource+'</a></span></div>';
     var content =   '<li class="ui-state-default added-addon">'+
               '<div class="item-added-container">'+
               '<div class="item-inner text">'+
@@ -147,13 +150,6 @@ function add_google_image(res){
 $(document).ready(function(){
   $(".img-srch .img-text").on('keyup',function(){
     var search = $(this).val();
-    // postLoad(search);
-    // function postLoad(value){
-    //   imageSearch = new google.search.ImageSearch();
-    //   imageSearch.setSearchCompleteCallback(this, postSearch, null);
-    //   imageSearch.setResultSetSize(6);
-    //   imageSearch.execute(value);
-    // }
     OnLoad(search);
     function OnLoad(value) {
       imageSearch = new google.search.ImageSearch();

@@ -145,6 +145,14 @@
 	display: block;
 	padding: 5px;
 }
+.addons-container .url-source{
+	font-size: 12px;
+	color: rgb(163, 163, 163);
+}
+.addons-container .url-source a {
+	font-size: 12px;
+	color: rgb(163, 163, 163);
+}
 .addons-container .editlist button:hover, .editlist span.sort-item:hover{
 	background: rgb(17, 131, 118);
 }

@@ -277,16 +277,22 @@ function addItem(li, type, kind){
 		if(kind == 'new'){
 			var src = $(".new-addon .new-item iframe").attr("src");
 			var desc = $(".new-addon .new-item .vid-desc").val();
-
+			var resource = getRootUrl(src);
+			var orig = getOrigin(src);
+			alert(orig);
 			var video = '<iframe class="vid-display" src="'+src+'" width="600" height="400">#</iframe>'+
+						'<div class="url-source"><span>Source: <a href="'+orig+'" target="_blank" alt="'+resource+'">'+resource+'</a></span></div>'+
 						'<p class="vid-p-desc">'+desc+'</p>';
 			$('.new-addon .new-item').html("");
 		}
 		else{
 			var src = $("ul.sortable li[value='"+li+"'] iframe").attr("src");
 			var desc = $("ul.sortable li[value='"+li+"'] .vid-desc").val();
+			var resource = getRootUrl(src);
+			var orig = getOrigin(src);
 
-			var video =  '<iframe class="vid-display" src="'+src+'" width="600" height="400">#</iframe>'+
+			var video =  '<iframe class="vid-display" src="'+src+'" width="600" height="400">#</iframe>'+		 
+						 '<div class="url-source"><span>Source: <a href="'+orig+'" target="_blank" alt="'+resource+'">'+resource+'</a></span></div>'+
 						 '<p class="vid-p-desc">'+desc+'</p>';
 			$('ul.sortable li[value="'+li+'"] .append-new-item').html("");
 			$('ul.sortable li[value="'+li+'"] .add-inner .item-btn-con').show();
@@ -751,6 +757,17 @@ function extract_video(li, type, kind){
 
 		}
 	}
+}
+function getRootUrl(url) {
+	var src = document.createElement ('a');
+	src.href = url;
+	return src.hostname;
+}
+function getOrigin(url) {
+	var src = document.createElement ('a');
+	src.href = url;
+
+	return src.protocol+"//"+src.hostname;
 }
 
 function isURL(text){

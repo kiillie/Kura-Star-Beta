@@ -1,10 +1,10 @@
-<li class="ui-state-default added-addon" value="1"><div class="item-added-container"><div class="item-inner"><div class="text"><p>Hello to you</p></div></div><div class="editlist" style="visibility: hidden;"><ul class="list-inline editbtns3"><li><button class="movebottom"><span class="glyphicon glyphicon-arrow-down"></span> Move To Bottom</button></li><li><button class="movedown"><span class="glyphicon glyphicon-chevron-down"></span> Move Down</button></li><li><button class="editItem" onclick="edit_addon('1', 'text', 'addon', 'edit', 'new')"><span class="glyphicon glyphicon-edit"></span> Edit</button></li><li><button class="deleteItem" onclick="delete_item('1', 'text', 'new')"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button></li><li class="right sort"><span class="sort-item"><span class="glyphicon glyphicon-move"></span> Sort this item</span></li></ul></div></div><div class="add-item-area"><div class="append-new-item" style="display: none;"><div class="row reference"><form method="POST" action="http://localhost:8000/addon/new" accept-charset="UTF-8" name="reference"><input name="_token" type="hidden" value="3nYOOAGDUiFYkFIQPQqeEpQu0ZbthUwVeiCkA36X"><textarea class="form-control ref-desc" name="ref-desc"></textarea><input type="text" placeholder="Please put the URL of the reference" class="form-control ref-url"><input type="button" class="btn btn-default" value="Add" onclick="addItem('1', 'reference', 'append')"><input type="button" class="btn btn-default" value="Cancel" onclick="cancel_add('1', 'reference', 'append')"></form></div></div><div class="add-inner" style="display: block;"><div class="show-append-here"></div><div class="item-btn-con" style="display: none;"><div class="item-hr"><hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area(1)">Add New Addon</a></div></div></div></div><input type="hidden" class="type" value="text"><input type="hidden" class="kind" value="new"></li><li class="ui-state-default added-addon"><div class="item-added-container"><div class="item-inner text"><div class="ref-container"><div class="quote"><p><span class="quote-img">"</span> <span class="quote-text">There's not enough rain in Oklahoma</span></p></div><div class="quote-url"><span>Source:</span><span class="url-val"> <a href="http://asian-gate.net/" target="_blank">http://asian-gate.net/</a></span></div></div></div><div class="editlist"><button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button></div></div><div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div><input type="hidden" class="type" value="reference"><input type="hidden" class="kind" value="append"></li>
+<li class="ui-state-default added-addon"><div class="item-added-container"><div class="item-inner text"><div class="image-container"><a class="art-added-img" href="http://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_corazón.svg/2000px-Heart_corazón.svg.png" title="http://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_corazón.svg/2000px-Heart_corazón.svg.png" data-fancybox-group="gallery"><img class="image" src="http://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_corazón.svg/2000px-Heart_corazón.svg.png" alt=""></a><div class="url-source"><span>Source: <a href="http://upload.wikimedia.org" alt="upload.wikimedia.org">upload.wikimedia.org</a></span></div></div></div><div class="editlist"><button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button></div></div><div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div><input type="hidden" class="type" value="picture"><input type="hidden" class="kind" value="new"></li>
 							
+							<li class="ui-state-default added-addon" value="1"><div class="item-added-container"><div class="item-inner text"><div class="vid-wrapper"><iframe class="vid-display" src="https://www.youtube.com/embed/vNoKguSdy4Y" width="600" height="400">#</iframe><div class="url-source"><span>Source: <a href="https://www.youtube.com" alt="www.youtube.com">www.youtube.com</a></span></div><p class="vid-p-desc">I knew</p></div></div><div class="editlist" style="visibility: hidden;"><ul class="list-inline editbtns3"><li><button class="movebottom"><span class="glyphicon glyphicon-arrow-down"></span> Move To Bottom</button></li><li><button class="movedown"><span class="glyphicon glyphicon-chevron-down"></span> Move Down</button></li><li><button class="editItem" onclick="edit_addon('1', 'video', 'addon', 'edit', 'new')"><span class="glyphicon glyphicon-edit"></span> Edit</button></li><li><button class="deleteItem" onclick="delete_item('1', 'video', 'new')"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button></li><li class="right sort"><span class="sort-item"><span class="glyphicon glyphicon-move"></span> Sort this item</span></li></ul></div></div><div class="add-item-area"><div class="append-new-item"></div><div class="add-inner" style="display: none;"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area(1)">Add New Addon</a></div></div></div></div><input type="hidden" class="type" value="video"><input type="hidden" class="kind" value="new"></li>
 							
 							
 							
 							
-							<li class="ui-state-default added-addon" value="2"></li>
 							
 							
 							
@@ -12,21 +12,22 @@
 							
 							
 							
-							<li class="ui-state-default added-addon" value="3"></li><li class="ui-state-default added-addon" value="4"></li>
 							
+							<li class="ui-state-default added-addon" value="2"><div class="item-added-container"><div class="item-inner"><div class="text"><p>Hello to you</p></div></div><div class="editlist" style="visibility: hidden;"><ul class="list-inline editbtns4"><li><button class="movetop"><span class="glyphicon glyphicon-arrow-up"></span> Move to Top</button></li><li><button class="moveup"><span class="glyphicon glyphicon-chevron-up"></span> Move Up</button></li><li><button class="movebottom"><span class="glyphicon glyphicon-arrow-down"></span> Move To Bottom</button></li><li><button class="movedown"><span class="glyphicon glyphicon-chevron-down"></span> Move Down</button></li><li><button class="editItem" onclick="edit_addon('2', 'text', 'addon', 'edit', 'new')"><span class="glyphicon glyphicon-edit"></span> Edit</button></li><li><button class="deleteItem" onclick="delete_item('2', 'text', 'new')"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button></li><li class="right sort"><span class="sort-item ui-sortable-handle"><span class="glyphicon glyphicon-move"></span> Sort this item</span></li></ul></div></div><div class="add-item-area"><div class="append-new-item" style="display: none;"><div class="row reference"><form method="POST" action="http://localhost:8000/addon/new" accept-charset="UTF-8" name="reference"><input name="_token" type="hidden" value="3nYOOAGDUiFYkFIQPQqeEpQu0ZbthUwVeiCkA36X"><textarea class="form-control ref-desc" name="ref-desc"></textarea><input type="text" placeholder="Please put the URL of the reference" class="form-control ref-url"><input type="button" class="btn btn-default" value="Add" onclick="addItem('1', 'reference', 'append')"><input type="button" class="btn btn-default" value="Cancel" onclick="cancel_add('1', 'reference', 'append')"></form></div></div><div class="add-inner" style="display: none;"><div class="show-append-here"></div><div class="item-btn-con" style="display: none;"><div class="item-hr"><hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area(2)">Add New Addon</a></div></div></div></div><input type="hidden" class="type" value="text"><input type="hidden" class="kind" value="new"></li><li class="ui-state-default added-addon" value="3"><div class="item-added-container"><div class="item-inner text"><div class="ref-container"><div class="quote"><p><span class="quote-img">"</span> <span class="quote-text">There's not enough rain in Oklahoma</span></p></div><div class="quote-url"><span>Source:</span><span class="url-val"> <a href="http://asian-gate.net/" target="_blank">http://asian-gate.net/</a></span></div></div></div><div class="editlist" style="visibility: hidden;"><ul class="list-inline editbtns4"><li><button class="movetop"><span class="glyphicon glyphicon-arrow-up"></span> Move to Top</button></li><li><button class="moveup"><span class="glyphicon glyphicon-chevron-up"></span> Move Up</button></li><li><button class="movebottom"><span class="glyphicon glyphicon-arrow-down"></span> Move To Bottom</button></li><li><button class="movedown"><span class="glyphicon glyphicon-chevron-down"></span> Move Down</button></li><li><button class="editItem" onclick="edit_addon('3', '0', 'addon', 'edit', 'new')"><span class="glyphicon glyphicon-edit"></span> Edit</button></li><li><button class="deleteItem" onclick="delete_item('3', '0', 'new')"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button></li><li class="right sort"><span class="sort-item"><span class="glyphicon glyphicon-move"></span> Sort this item</span></li></ul></div></div><div class="add-item-area"><div class="append-new-item"></div><div class="add-inner" style="display: none;"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area(3)">Add New Addon</a></div></div></div></div><input type="hidden" class="type" value="0"><input type="hidden" class="kind" value="new"></li>
 							
 							
 							
 							
 							
+							<li class="ui-state-default added-addon" value="4"></li>
 							
 							
-							<li class="ui-state-default added-addon" value="5"></li>
 							
 							
 							
 							
 							
+							<li class="ui-state-default added-addon" value="5"></li><li class="ui-state-default added-addon" value="6"></li>
 							
 							
 							
@@ -35,9 +36,9 @@
 							
 							
 							
+							<li class="ui-state-default added-addon" value="7"></li>
 							
 							
-							<li class="ui-state-default added-addon" value="6"></li>
 							
 							
 							
@@ -51,6 +52,7 @@
 							
 							
 							
+							<li class="ui-state-default added-addon" value="8"></li>
 							
 							
 							
@@ -85,4 +87,17 @@
 							
 							
 							
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																	
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																											
