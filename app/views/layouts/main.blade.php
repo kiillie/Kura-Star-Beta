@@ -59,13 +59,20 @@ $(document).ready(function(){
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				    <ul class="nav navbar-nav">
 					    <li><a href="{{URL::route('index')}}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-						<li><a href="{{URL::route('article.create')}}"><span class="glyphicon glyphicon-file"></span> Make an Article</a></li>
-						@if(Auth::check())
-						<li><a href="{{URL::route('user.profile', Auth::user()->CURATER_ID)}}"><span class="glyphicon glyphicon-user"></span> {{Auth::user()->name}}</a></li>
-						<li><a href="{{URL::route('logout')}}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+						@if(Hybrid_Auth::isConnectedWith('Facebook'))
+							<li><span class="glyphicon glyphicon-list-alt"></span> <a href="{{URL::route('article.insert')}}">Make an Article</a></li>
+							<li><span class="glyphicon glyphicon-user"></span>  <a href="{{URL::route('user.profile', 'fb'.$profile->identifier)}}">{{$profile->displayName}}</a></li>
+							<li><span class="glyphicon glyphicon-log-out"></span> <a href="{{URL::route('auth.logout')}}">Logout</a></li>
 						@else
-						<li><a href="{{URL::route('registration')}}"><span class="glyphicon glyphicon-registration-mark"></span> Sign Up</a></li>
-						<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+							@if(Auth::check())
+							<li><span class="glyphicon glyphicon-list-alt"></span> <a href="{{URL::route('article.insert')}}">Make an Article</a></li>
+							<li><span class="glyphicon glyphicon-user"></span>  <a href="{{URL::route('user.profile', Auth::user()->CURATER_ID)}}">{{Auth::user()->CURATER}}</a></li>
+							<li><span class="glyphicon glyphicon-log-out"></span> <a href="{{URL::route('logout')}}">Logout</a></li>
+							@else
+							<li><span class="glyphicon glyphicon-list-alt"></span> <a href="{{URL::route('registration')}}">Make an Article</a></li>
+							<li><span class="glyphicon glyphicon-file"></span> <a href="{{URL::route('registration')}}">Sign Up</a></li>
+							<li><span class="glyphicon glyphicon-log-in"></span> <a href="{{URL::route('login')}}">Login</a></li>
+							@endif
 						@endif
 						<li class="dropdown">
 				          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-list-alt"></span> Categories<span class="caret"></span></a>
