@@ -440,7 +440,7 @@ class ArticleController extends BaseController{
 		return View::make('articles.delete_image')
 				->withAddon($addon);
 	}
-
+	
 	public function upload(){
 		$image = Input::all();
 		return View::make('articles.file_upload')
@@ -448,7 +448,7 @@ class ArticleController extends BaseController{
 	}
 
 	public function delete($id){
-
+		
 	}
 }
 

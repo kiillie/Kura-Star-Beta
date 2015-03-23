@@ -14,7 +14,7 @@
 	<div class="rank-title"><h4>Ranking Article</h4><hr></hr></div>
 	<ul>
 		@foreach($rank as $ranking)
-			<li><a href="{{URL::route('article.view', $ranking->CURATION_ID)}}"><img src="{{$ranking->CURATION_IMAGE}}" alt="Title" /> {{$ranking->CURATION_TITLE}}</a></li>
+			<li><a href="{{URL::route('article.view', $ranking->CURATION_ID)}}"><div class="img-cont"><img src="{{$ranking->CURATION_IMAGE}}" alt="Title" /></div> {{$ranking->CURATION_TITLE}}</a></li>
 		@endforeach
 	</ul>
 </div>

@@ -77,7 +77,7 @@ $(".loader").hide();
 	var type = "{{$addon['type']}}";
 	var content = 	'<div class="row reference">'+
 					'{{Form::open(["name"=>"reference"])}}'+
-					'<textarea class="form-control ref-desc" name="ref-desc"></textarea>'+
+					'<textarea class="form-control ref-desc" name="ref-desc" placeholder="Add a description"></textarea>'+
 					'<input type="text" placeholder="Please put the URL of the reference" class="form-control ref-url"/>'+
 					'<input type="button" class="btn btn-default" value="Add" onclick="addItem(\''+li+'\', \''+type+'\', \''+kind+'\')"/><input type="button" class="btn btn-default" value="Cancel" onclick="cancel_add(\''+li+'\', \''+type+'\', \''+kind+'\')"/>'+
 					'{{Form::close()}}'+
@@ -203,10 +203,9 @@ else if($addon['type'] == 'tag'){
 					'<option value="normal">Normal Heading</option>'+
 					'<option value="sub">Subheading</option>'+
 					'</select>'+
-					'<span class="tag-bullet">■</span>'+
+					'<span class="tag-bullet" style="color: rgba(237, 113, 0, 1);">■</span>'+
 					'<input type="text" class="form-control tag" placeholder="Tag Title"/>'+
-					'<hr class="tag-hr"></hr>'+
-					'<input type="color" class="form-control colorpicker" onchange="color_changed(\'{{$addon["li"]}}\', \'{{$addon["type"]}}\', \'{{$addon["kind"]}}\')"/>'+
+					'<hr class="tag-hr" style="border-color: rgba(237, 113, 0, 1)"></hr>'+
 					'<input type="button" value="Add" class="btn btn-default add" onclick="addItem(\'{{$addon["li"]}}\', \'{{$addon["type"]}}\', \'{{$addon["kind"]}}\')"/><input type="button" class="btn btn-default cancel" onclick="cancel_add(\'{{$addon["li"]}}\', \'{{$addon["type"]}}\', \'{{$addon["kind"]}}\')" value="Cancel"/>'+
 					'{{Form::close()}}';
 	if(kind == 'new'){

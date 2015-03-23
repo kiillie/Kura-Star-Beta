@@ -20,21 +20,20 @@
 			        		<input type="hidden" class="search-li" />
 			        		<input type="hidden" class="search-kind">
 			        		<br />
-	    					<div id="content" class="row" >Loading...</div>
+	    					<div id="content" class="row" ></div>
 			        	</div>
 			        	<div class="img-srch" id="instagram">
 			        		Instagram
 			        	</div>
 		        	</div>
+		        	<div id="hide-loaded" style="display:none;">
+		        	</div>
 		        </div>
 			</div>
 			<div class="modal-footer">
 		    	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		    	<button type="button" class="btn btn-primary">Add</button>
 			</div>
 		</div>
 	</div>
 </div>
-<script>
-</script>
 @stop

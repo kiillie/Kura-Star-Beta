@@ -6,11 +6,11 @@ if($addon['type'] == 'text'){
 	var li = "{{$addon['li']}}";
 	var type = "{{$addon['type']}}";
 	var kind = "{{$addon['kind']}}";
-	var text = $("ul.sortable li[value='"+li+"'] .item-inner p").html();
+	var text = $("ul.sortable li[value='"+li+"'] .item-inner pre").html();
 	var content =	'{{Form::open(["name"=>"text"])}}'+
 					'<textarea placeholder="Put your text here" class="form-control texts">'+text+
 					'</textarea>'+
-					'<input type="button" value="Add" class="btn btn-default add" onclick="editItem(\'{{$addon["li"]}}\', \'{{$addon["type"]}}\', \'{{$addon["kind"]}}\')"/><input type="button" class="btn btn-default cancel" value="Cancel"/>'+
+					'<input type="button" value="Add" class="btn btn-default add" onclick="editItem(\'{{$addon["li"]}}\', \'{{$addon["type"]}}\', \'{{$addon["kind"]}}\')"/><input type="button" class="btn btn-default cancel" onclick="cancel_add(\''+li+'\', \''+type+'\', \''+kind+'\')" value="Cancel"/>'+
 					'<input type="hidden" class="type" value="'+li+'">'+
 					'{{Form::close()}}';
 	$(".new-addon .new-item").html(content);
@@ -48,7 +48,7 @@ else if($addon['type'] == 'picture'){
 					'<div class="img-desc-con" style="display:block;">'+
 					'<textarea class="form-control img-desc">'+desc+'</textarea>'+
 					'<input type="button" class="btn btn-default" value="Add" onclick="editItem(\''+li+'\', \''+type+'\', \''+kind+'\')">'+
-					'<input type="button" class="btn btn-default" value="Cancel">'+
+					'<input type="button" class="btn btn-default" onclick="cancel_add(\''+li+'\', \''+type+'\', \''+kind+'\')" value="Cancel">'+
 					'</div>'+
 					'</div>'+
 					'</div>'+
@@ -68,9 +68,12 @@ else if($addon['type'] == 'reference'){
 	var quote = $("ul.sortable li[value='"+li+"'] .quote-text").text();
 	var url = $("ul.sortable li[value='"+li+"'] .url-val a").attr("href");
 
+	if(url == undefined){
+		url = "";
+	}
 	var content = 	'<div class="row reference">'+
 					'{{Form::open(["name"=>"reference"])}}'+
-					'<textarea class="form-control ref-desc" name="ref-desc">'+quote+'</textarea>'+
+					'<textarea class="form-control ref-desc" name="ref-desc" placeholder="Add a quotation">'+quote+'</textarea>'+
 					'<input type="text" placeholder="Please put the URL of the reference" class="form-control ref-url" value="'+url+'"/>'+
 					'<input type="button" class="btn btn-default" value="Add" onclick="editItem(\''+li+'\', \''+type+'\', \''+kind+'\')"/><input type="button" class="btn btn-default" value="Cancel" onclick="cancel_add(\''+li+'\', \''+type+'\', \''+kind+'\')"/>'+
 					'{{Form::close()}}'+
@@ -138,18 +141,16 @@ else if($addon['type'] == 'tag'){
 	var li = "{{$addon['li']}}";
 	var type = "{{$addon['type']}}";
 	var kind = "{{$addon['kind']}}";
-	var color = $("ul.sortable li[value='"+li+"'] .color-selected").val();
 	var text = $("ul.sortable li[value='"+li+"'] h2 .inner-tag").html();
 	var content = 	'{{Form::open(["name"=>"tag"])}}'+
 					'<select class="form-control tag-heading" onchange="select_htype(\'{{$addon["li"]}}\', \'{{$addon["type"]}}\', \'{{$addon["kind"]}}\')">'+
 					'<option value="normal">Normal Heading</option>'+
 					'<option value="sub">Subheading</option>'+
 					'</select>'+
-					'<span class="tag-bullet" style="color: '+color+';">■</span>'+
+					'<span class="tag-bullet" style="color: rgba(237, 113, 0, 1);">■</span>'+
 					'<input type="text" class="form-control tag" placeholder="Tag Title" value="'+text+'"/>'+
-					'<hr class="tag-hr" style="border-color: '+color+';"></hr>'+
-					'<input type="color" class="form-control colorpicker" value="'+color+'" onchange="color_changed(\'{{$addon["li"]}}\', \'{{$addon["type"]}}\', \'{{$addon["kind"]}}\')"/>'+
-					'<input type="button" value="Add" class="btn btn-default add" onclick="editItem(\'{{$addon["li"]}}\', \'{{$addon["type"]}}\', \'{{$addon["kind"]}}\')"/><input type="button" class="btn btn-default cancel" value="Cancel"/>'+
+					'<hr class="tag-hr" style="border-color: rgba(237, 113, 0, 1);"></hr>'+
+					'<input type="button" value="Add" class="btn btn-default add" onclick="editItem(\'{{$addon["li"]}}\', \'{{$addon["type"]}}\', \'{{$addon["kind"]}}\')"/><input type="button" class="btn btn-default cancel" onclick="cancel_add(\''+li+'\', \''+type+'\', \''+kind+'\')" value="Cancel"/>'+
 					'{{Form::close()}}';
 
 	$(".new-addon .new-item").html(content);

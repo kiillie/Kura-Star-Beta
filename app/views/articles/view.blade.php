@@ -1,5 +1,6 @@
 @extends('layouts.main')
 @section('content')
+<link rel="stylesheet" type="text/css" href="/assets/css/temp.css"></link>
 <script language="javascript" src="/assets/js/temp_art.js"></script>
 <script type="text/javascript" src="/assets/js/plugins/jquery.fancybox.js?v=2.1.5"></script>
 <link rel="stylesheet" type="text/css" href="/assets/css/plugins/jquery.fancybox.css?v=2.1.5" media="screen" />

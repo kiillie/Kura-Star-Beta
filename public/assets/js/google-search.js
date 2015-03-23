@@ -25,16 +25,46 @@ google.load('search', '1');
         var contentDiv = document.getElementById('content');
         contentDiv.appendChild(pagesDiv);
       }
-
-      function searchComplete() {
+      function postSearch(){
         if(imageSearch.results && imageSearch.results.length > 0) {
           var contentDiv = document.getElementById('content');
+          var hiddenDiv = document.getElementById('hide-loaded');
           contentDiv.innerHTML = '';
           var results = imageSearch.results;
           for (var i = 0; i < results.length; i++) {
             var result = results[i];
             var imgContainer = document.createElement('div');
             var addBtn = document.createElement('input');
+
+            addBtn.type = 'button';
+            addBtn.className = 'btn add-btn btn-default';
+            addBtn.setAttribute("onclick", "add_google_image('"+result.url+"')");
+            addBtn.value = "Add";
+            imgContainer.className = 'col-md-4 image-res';
+            
+            var newImg = document.createElement('img');
+
+            var img = result.url;
+            img = decodeURIComponent(decodeURIComponent(img));
+            newImg.src=img;
+
+            imgContainer.appendChild(newImg);
+            imgContainer.appendChild(addBtn);
+            hiddenDiv.appendChild(imgContainer);
+          }
+      }
+    }
+      function searchComplete() {
+        if(imageSearch.results && imageSearch.results.length > 0) {
+          var contentDiv = document.getElementById('content');
+          contentDiv.innerHTML = '';
+          var results = imageSearch.results;
+
+          for (var i = 0; i < results.length; i++) {
+            var result = results[i];
+            var imgContainer = document.createElement('div');
+            var addBtn = document.createElement('input');
+
             addBtn.type = 'button';
             addBtn.className = 'btn add-btn btn-default';
             addBtn.setAttribute("onclick", "add_google_image('"+result.url+"')");
@@ -43,16 +73,27 @@ google.load('search', '1');
             
             var newImg = document.createElement('img');
 
-            newImg.src=result.url;
-           
-            imgContainer.appendChild(newImg);
-            imgContainer.appendChild(addBtn);
-            contentDiv.appendChild(imgContainer);
+            var img = result.url;
+            img = decodeURIComponent(decodeURIComponent(img));
+            newImg.src=img;
+  
+            //if(imageExists(img) != 0){
+              imgContainer.appendChild(newImg);
+              imgContainer.appendChild(addBtn);
+              contentDiv.appendChild(imgContainer);
+           // }
+            
           }
           addPaginationLinks(imageSearch);
         }
         image_hovered();
       }
+
+function imageExists(url) {
+  var img = new Image();
+  img.src = url;
+  return img.width;
+}
 function add_google_image(res){
   var kind = $(".image-search .search-kind").val();
   var li = $(".image-search .search-li").val();
@@ -106,6 +147,13 @@ function add_google_image(res){
 $(document).ready(function(){
   $(".img-srch .img-text").on('keyup',function(){
     var search = $(this).val();
+    // postLoad(search);
+    // function postLoad(value){
+    //   imageSearch = new google.search.ImageSearch();
+    //   imageSearch.setSearchCompleteCallback(this, postSearch, null);
+    //   imageSearch.setResultSetSize(6);
+    //   imageSearch.execute(value);
+    // }
     OnLoad(search);
     function OnLoad(value) {
       imageSearch = new google.search.ImageSearch();

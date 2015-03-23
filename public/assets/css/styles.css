@@ -351,6 +351,16 @@
 .article .right-bar .user, .article .right-bar .advertisement, .article .right-bar .rank-article, .article .right-bar .rank-country{
 	margin: 30px 0;
 }
+.rank-article, .rank-country{
+	border: 1px solid rgb(186, 186, 186);
+	padding: 10px;
+	margin-bottom: 20px;
+}
+.rank-article .img-cont{
+	display: inline;
+	min-height: 90px;
+	overflow: hidden;
+}
 .article .details .count-cat .category{
 	background: #C26A2B;
 }
@@ -362,6 +372,7 @@
 }
 .article .rank-article ul li, .article .rank-country ul li, .main .rank-article ul li, .main .rank-country ul li{
 	list-style: none;
+	border-bottom: 1px solid rgb(186, 186, 186);
 }
 .article{
 	margin-bottom: 40px;
@@ -666,6 +677,14 @@
 .preview .details, .view .details{
 	list-style: none;
 	padding: 0;
+}
+.preview .details .text pre, .view .details .text pre{
+	border: none;
+	background: none;
+	margin: 0;
+	padding: 0;
+	font-family: Arial;
+	font-size: 14px;
 }
 .preview .details li, .view .details li{
 	padding: 5px;

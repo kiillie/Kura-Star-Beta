@@ -19,7 +19,7 @@ function addItem(li, type, kind){
 							'<div class="item-added-container">'+
 							'<div class="item-inner">'+
 							'<div class="text">'+
-							'<p>'+text+'</p>'+
+							'<pre>'+text+'</pre>'+
 							'</div>'+
 							'</div>'+
 							'<div class="editlist">'+
@@ -321,30 +321,27 @@ function addItem(li, type, kind){
 	}
 	else if(type == 'tag'){
 		if(validate_addon(li, type, kind)){
-			var color = "";
 			if(kind == 'new'){
-				color = $('.new-addon .new-item .colorpicker').val();
 				var text = $(".new-item .tag").val();
 				var tagtype = $(".new-addon .new-item .tag-heading").val();
 				$('.new-addon .new-item').html("");
 				if(tagtype != 'normal'){
-					text = '<h2 class="subheading"><span class="tag-bul" style="color: '+color+'">■</span> <span class="inner-tag">'+text+'</span></h2>';
+					text = '<h2 class="subheading"><span class="tag-bul" style="color: rgba(237, 113, 0, 1);">■</span> <span class="inner-tag">'+text+'</span></h2>';
 				}
 				else{
-					text = '<h2 class="normal" style="border-bottom: 4px solid; border-color: '+color+'"><span class="inner-tag">'+text+'</span></h2>';
+					text = '<h2 class="normal" style="border-bottom: 4px solid; border-color: rgba(237, 113, 0, 1);"><span class="inner-tag">'+text+'</span></h2>';
 				}
 			}
 			else{
-				color = $("ul.sortable li[value='"+li+"'] .colorpicker").val();
 				var text = $("ul.sortable li[value='"+li+"'] .append-new-item .tag").val();
 				var tagtype = $('ul.sortable li[value="'+li+'"] .tag-heading').val();
 				$('ul.sortable li[value="'+li+'"] .append-new-item').html("");
 				$('ul.sortable li[value="'+li+'"] .add-inner .item-btn-con').show();
 				if(tagtype != 'normal'){
-					text = '<h2 class="subheading"><span class="tag-bul" style="color: '+color+'">■</span> <span class="inner-tag">'+text+'</span></h2>';
+					text = '<h2 class="subheading"><span class="tag-bul" style="color: rgba(237, 113, 0, 1);">■</span> <span class="inner-tag">'+text+'</span></h2>';
 				}
 				else{
-					text = '<h2 class="normal" style="border-bottom: 4px solid; border-color: '+color+'"><span class="inner-tag">'+text+'</span></h2>';
+					text = '<h2 class="normal" style="border-bottom: 4px solid; border-color: rgba(237, 113, 0, 1);"><span class="inner-tag">'+text+'</span></h2>';
 				}
 			}
 			$(".loader").show();
@@ -360,7 +357,6 @@ function addItem(li, type, kind){
 							'<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div></div>'+
 							'<input type="hidden" class="type" value="'+type+'">'+
 							'<input type="hidden" class="kind" value="'+kind+'">'+
-							'<input type="hidden" class="color-selected" value="'+color+'">'+
 							'</li>';
 
 			if(kind == 'new'){
@@ -400,7 +396,7 @@ function editItem(li, type, kind){
 		$(".loader").show();
 		var content = 	'<div class="item-added-container">'+
 						'<div class="item-inner text">'+
-						'<p>'+text+'</p>'+
+						'<pre>'+text+'</pre>'+
 						'</div>'+
 						'<div class="editlist">'+
 						'<button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button>'+
@@ -535,16 +531,14 @@ function editItem(li, type, kind){
 			insert_addon();
 	}
 	else if(type == "tag"){
-		var color = "";
-			color = $('.new-addon .new-item .colorpicker').val();
-			var text = $(".new-item .tag").val();
-			var tagtype = $(".new-addon .new-item .tag-heading").val();
+		var text = $(".new-item .tag").val();
+		var tagtype = $(".new-addon .new-item .tag-heading").val();
 			$('.new-addon .new-item').html("");
 			if(tagtype != 'normal'){
-				text = '<h2 class="subheading"><span class="tag-bul" style="color: '+color+'">■</span> <span class="inner-tag">'+text+'</span></h2>';
+				text = '<h2 class="subheading"><span class="tag-bul" style="color: rgba(237, 113, 0, 1);">■</span> <span class="inner-tag">'+text+'</span></h2>';
 			}
 			else{
-				text = '<h2 class="normal" style="border-bottom: 4px solid; border-color: '+color+'"><span class="inner-tag">'+text+'</span></h2>';
+				text = '<h2 class="normal" style="border-bottom: 4px solid; border-color: rgba(237, 113, 0, 1);"><span class="inner-tag">'+text+'</span></h2>';
 			}
 		$(".loader").show();
 		var content = 	'<div class="item-added-container">'+
@@ -557,8 +551,7 @@ function editItem(li, type, kind){
 						'</div>'+
 						'<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div></div>'+
 						'<input type="hidden" class="type" value="'+type+'">'+
-						'<input type="hidden" class="kind" value="'+kind+'">'+
-						'<input type="hidden" class="color-selected" value="'+color+'">';
+						'<input type="hidden" class="kind" value="'+kind+'">';
 
 		$("ul.sortable li[value='"+li+"']").html(content);
 

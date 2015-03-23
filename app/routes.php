@@ -108,6 +108,11 @@ Route::get('article/{id}/favorites', [
 	'as'	=>	'articles.favorited'
 ]);
 
+Route::post('article/{id}/delete', [
+	'uses'	=>	'ArticleController@delete',
+	'as'	=>	'article.delete'
+]);
+
 Route::post('addon/edit', [
 	'uses'	=>	'ArticleController@addonEdit',
 	'as'	=>	'article.addonedit'

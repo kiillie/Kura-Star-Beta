@@ -66,6 +66,14 @@
 	margin-bottom: 10px;
 	margin-top: 10px;
 }
+.addons-container ul li .item-inner pre{
+	border: none;
+	background: none;
+	margin: 0;
+	padding: 0;
+	font-family: Arial;
+	font-size: 14px;
+}
 .editlist ul{
 	background: rgb(8, 182, 163);
 	margin: 0;
@@ -111,7 +119,7 @@
 	margin: 20px 0;
 }
 .add-item-area .append-new-item input{
-	margin: 0 10px 0 0;
+	margin: 10px 10px 0 0;
 }
 .add-item-area .add-item-btn{
 	position: absolute;

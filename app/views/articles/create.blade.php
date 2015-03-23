@@ -471,5 +471,12 @@ function count_image(){
 			}
 	}
 }
+function delete_article(id){
+	var conf = confirm("Are you sure you want to delete this article?");
+
+	if(conf){
+		
+	}
+}
 </script>
 @stop
