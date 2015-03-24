@@ -25,6 +25,9 @@ else if($addon['type'] == 'picture'){
 	var kind = "{{$addon['kind']}}";
 	var image = $("ul.sortable li[value='"+li+"'] .item-inner .image-container img").attr("src");
 	var desc = $("ul.sortable li[value='"+li+"'] .item-inner .desc").html();
+	if(desc == undefined){
+		desc = "";
+	}
 	var content = 	'<div class="row picture">'+
 					'<div class="col-md-6 def-image">'+
 					'<img src="'+image+'" width="200" alt="Image">'+

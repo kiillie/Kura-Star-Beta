@@ -423,7 +423,16 @@ function editItem(li, type, kind){
 		var desc = $("ul.sortable li[value='"+li+"'] .add-item-area .img-desc").val();
 		var image = '<img class="image" src="'+src+'" alt="" />'+
 					'<p class="desc">'+desc+'</p>';
-		$("ul.sortable li[value='"+li+"'] .add-item-area").html("");
+		if($("ul.sortable li[value='"+li+"'] div").hasClass("url-source")){
+			var resource = getRootUrl(src);
+  			var orig = getOrigin(src);
+			var image = '<a class="art-added-img" href="'+src+'" title="'+src+'" data-fancybox-group="gallery"><img class="image" src="'+src+'" alt="" /></a>'+
+                		'<div class="url-source"><span>Source: <a href="'+orig+'" target="_blank" alt="'+resource+'">'+resource+'</a></span></div>'+
+                		'<p class="desc">'+desc+'</p>';
+		}
+		else{
+			alert("nope");
+		}
 
 		var content = 	'<div class="item-added-container">'+
 						'<div class="item-inner text">'+
@@ -445,6 +454,7 @@ function editItem(li, type, kind){
 		if(validate_addon(li, type, kind)){
 			var text = $("ul.sortable li[value='"+li+"'] .ref-desc").val();
 			var url = $("ul.sortable li[value='"+li+"'] .ref-url").val();
+			
 			if(url == ""){
 				var quote = '<div class="quote"><p><span class="quote-img">"</span> <span class="quote-text">'+text+'</span></p></div>';
 			}
@@ -502,8 +512,9 @@ function editItem(li, type, kind){
 		var src = $("ul.sortable li[value='"+li+"'] iframe").attr("src");
 		var desc = $("ul.sortable li[value='"+li+"'] .vid-desc").val();
 		var resource = getRootUrl(src);
-			var orig = getOrigin(src);
-			var video = '<iframe class="vid-display" src="'+src+'" width="600" height="400">#</iframe>'+
+		var orig = getOrigin(src);
+
+		var video = '<iframe class="vid-display" src="'+src+'" width="600" height="400">#</iframe>'+
 						'<div class="url-source"><span>Source: <a href="'+orig+'" target="_blank" alt="'+resource+'">'+resource+'</a></span></div>'+
 						'<p class="vid-p-desc">'+desc+'</p>';
 
