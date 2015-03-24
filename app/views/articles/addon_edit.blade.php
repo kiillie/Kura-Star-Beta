@@ -2,7 +2,6 @@
 if($addon['type'] == 'text'){
 ?>
 <script>
-	$(".loader").hide();
 	var li = "{{$addon['li']}}";
 	var type = "{{$addon['type']}}";
 	var kind = "{{$addon['kind']}}";
@@ -13,7 +12,7 @@ if($addon['type'] == 'text'){
 					'<input type="button" value="Add" class="btn btn-default add" onclick="editItem(\'{{$addon["li"]}}\', \'{{$addon["type"]}}\', \'{{$addon["kind"]}}\')"/><input type="button" class="btn btn-default cancel" onclick="cancel_add(\''+li+'\', \''+type+'\', \''+kind+'\')" value="Cancel"/>'+
 					'<input type="hidden" class="type" value="'+li+'">'+
 					'{{Form::close()}}';
-	$(".new-addon .new-item").html(content);
+	$("ul.sortable li[value='"+li+"'] .add-item-area").append("<div class='edit-area'>"+content+"</div>");
 </script>
 <?php
 }
@@ -54,7 +53,7 @@ else if($addon['type'] == 'picture'){
 					'</div>'+
 					'<input type="hidden" class="img-hid" value="'+image+'"/>'+
 					'{{Form::close()}}';
-	$(".new-addon .new-item").html(content);
+	$("ul.sortable li[value='"+li+"'] .add-item-area").append("<div class='edit-area'>"+content+"</div>");
 </script>
 <?php
 }
@@ -79,7 +78,7 @@ else if($addon['type'] == 'reference'){
 					'{{Form::close()}}'+
 					'</div>';
 
-	$(".new-addon .new-item").html(content);
+	$("ul.sortable li[value='"+li+"'] .add-item-area").append("<div class='edit-area'>"+content+"</div>");
 </script>
 <?php	
 }
@@ -105,7 +104,7 @@ else if($addon['type'] == 'link'){
 					'</div>'+
 					'{{Form::close()}}';
 
-	$(".new-addon .new-item").html(content);
+	$("ul.sortable li[value='"+li+"'] .add-item-area").append("<div class='edit-area'>"+content+"</div>");
 </script>
 <?php
 }
@@ -130,7 +129,7 @@ else if($addon['type'] == 'video'){
 					'</div>'+
 					'</div>'+
 					'{{Form::close()}}';
-		$(".new-addon .new-item").html(content);
+		$("ul.sortable li[value='"+li+"'] .add-item-area").append("<div class='edit-area'>"+content+"</div>");
 </script>
 <?php
 }
@@ -153,7 +152,7 @@ else if($addon['type'] == 'tag'){
 					'<input type="button" value="Add" class="btn btn-default add" onclick="editItem(\'{{$addon["li"]}}\', \'{{$addon["type"]}}\', \'{{$addon["kind"]}}\')"/><input type="button" class="btn btn-default cancel" onclick="cancel_add(\''+li+'\', \''+type+'\', \''+kind+'\')" value="Cancel"/>'+
 					'{{Form::close()}}';
 
-	$(".new-addon .new-item").html(content);
+	$("ul.sortable li[value='"+li+"'] .add-item-area").append("<div class='edit-area'>"+content+"</div>");
 </script>
 <?php
 }

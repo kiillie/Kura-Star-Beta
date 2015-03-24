@@ -223,15 +223,15 @@ $(document).ready(function(){
 	</div>
 <script>
 function edit_addon(li, type, controller, action, kind){
-	$(".loader").show();
+	
 	if(action == 'new'){
+		$(".loader").show();
 		post_addon_data(li, type, controller, action, kind);
 	}
 	else if(action == 'edit'){
 		edit_addon_data(li, type, controller, action, kind);
 	}
 }
-
 function edit_addon_data(li, type, controller, action, kind){
 	$.post(
 		'/'+controller+"/"+action,
@@ -240,7 +240,7 @@ function edit_addon_data(li, type, controller, action, kind){
 			'type' : type,
 			'kind' : kind
 		}).done(function(data){
-			$(".new-addon .new-item").html(data);
+			$("ul.sortable li[value='"+li+"'] .add-item-area").append("<div class='edit-area'>"+data+"</div>");
 		});
 }
 
@@ -416,7 +416,6 @@ function upload_image(li, type, kind){
 }
 
 function insert_addon(){
-	$(".loader").show();
 	var insert = $("ul.sortable").html();
 	var det = $("ul.sortable li .item-inner").length;
 	var det_con = "<ul class='details'>";

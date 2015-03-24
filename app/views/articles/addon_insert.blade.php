@@ -4,6 +4,3 @@
 	echo public_path()."/assets/articles/".$addon['id'].".php";
 	fclose($file);
 ?>
-<script>
-	$(".loader").hide();
-</script>
