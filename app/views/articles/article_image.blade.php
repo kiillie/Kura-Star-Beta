@@ -1,10 +1,5 @@
 <?php
 
-if($image){
-	return "true";
-}
-else{
-	return "false";
-}
+echo $article->CURATION_IMAGE;
 
 ?>

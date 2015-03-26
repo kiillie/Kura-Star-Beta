@@ -47,17 +47,39 @@ function addItem(li, type, kind){
 	else if(type == 'picture'){
 		if(validate_addon(li, type, kind)){
 			if(kind == 'new'){
-				var src = $(".new-addon .new-item .img-hid").val();
 				var desc = $(".new-addon .new-item .img-desc").val();
-				var image = '<a class="art-added-img" href="'+src+'" title="'+desc+'" data-fancybox-group="gallery"><img class="image" src="'+src+'" alt="" /></a>'+
-							'<p class="desc">'+desc+'</p>';
+
+				if($(".new-addon .new-item .img-anchor").hasClass("a-url")){
+					var res = $(".new-addon .new-item .imgurl").val();
+					var resource = getRootUrl(res);
+					var orig = getOrigin(res);
+					var src = $(".new-addon .new-item .img-hid").val();
+					var image = '<a class="art-added-img" href="'+src+'" title="'+src+'" data-fancybox-group="gallery"><img class="image" src="'+src+'" alt="'+res+'" /></a>'+
+                				'<div class="url-source"><span>Source: <a href="'+orig+'" target="_blank" alt="'+resource+'">'+resource+'</a></span></div>';
+				}
+				else{
+					var src = $(".new-addon .new-item .img-hid").val();
+					var image = '<a class="art-added-img" href="'+src+'" title="'+desc+'" data-fancybox-group="gallery"><img class="image" src="'+src+'" alt="'+src+'" /></a>'+
+								'<p class="desc">'+desc+'</p>';
+				}
 				$('.new-addon .new-item').html("");
 			}
 			else{
-				var src = $("ul.sortable li[value='"+li+"'] .img-hid").val();
 				var desc = $("ul.sortable li[value='"+li+"'] .img-desc").val();
-				var image = '<a class="art-added-img" href="'+src+'" title="'+desc+'" data-fancybox-group="gallery"><img class="image" src="'+src+'" alt="" /></a>'+
-							'<p class="desc">'+desc+'</p>';
+
+				if($("ul.sortable li[value='"+li+"'] .img-anchor").hasClass("a-url")){
+					var res = $("ul.sortable li[value='"+li+"'] .imgurl").val();
+					var resource = getRootUrl(res);
+					var orig = getOrigin(res);
+					var src = $("ul.sortable li[value='"+li+"'] .img-hid").val();
+					var image = '<a class="art-added-img" href="'+src+'" title="'+src+'" data-fancybox-group="gallery"><img class="image" src="'+src+'" alt="'+res+'" /></a>'+
+                				'<div class="url-source"><span>Source: <a href="'+orig+'" target="_blank" alt="'+resource+'">'+resource+'</a></span></div>';
+				}
+				else{
+					var src = $("ul.sortable li[value='"+li+"'] .img-hid").val();
+					var image = '<a class="art-added-img" href="'+src+'" title="'+desc+'" data-fancybox-group="gallery"><img class="image" src="'+src+'" alt="'+src+'" /></a>'+
+								'<p class="desc">'+desc+'</p>';
+				}
 				$('ul.sortable li[value="'+li+'"] .append-new-item').html("");
 				$('ul.sortable li[value="'+li+'"] .add-inner .item-btn-con').show();
 			}
@@ -421,17 +443,14 @@ function editItem(li, type, kind){
 	else if(type == 'picture'){
 		var src = $("ul.sortable li[value='"+li+"'] .add-item-area .img-hid").val();
 		var desc = $("ul.sortable li[value='"+li+"'] .add-item-area .img-desc").val();
-		var image = '<img class="image" src="'+src+'" alt="" />'+
+		var image = '<img class="image" src="'+src+'" alt="'+src+'" />'+
 					'<p class="desc">'+desc+'</p>';
 		if($("ul.sortable li[value='"+li+"'] div").hasClass("url-source")){
 			var resource = getRootUrl(src);
   			var orig = getOrigin(src);
-			var image = '<a class="art-added-img" href="'+src+'" title="'+src+'" data-fancybox-group="gallery"><img class="image" src="'+src+'" alt="" /></a>'+
-                		'<div class="url-source"><span>Source: <a href="'+orig+'" target="_blank" alt="'+resource+'">'+resource+'</a></span></div>'+
+			var image = '<a class="art-added-img" href="'+src+'" title="'+src+'" data-fancybox-group="gallery"><img class="image" src="'+src+'" alt="'+src+'" /></a>'+
+                		'<div class="url-source"><span>Source: <a href="'+orig+'" target="_blank" alt="'+resource+'">'+resource+'</a></span></div>'+  
                 		'<p class="desc">'+desc+'</p>';
-		}
-		else{
-			alert("nope");
 		}
 
 		var content = 	'<div class="item-added-container">'+
@@ -449,6 +468,7 @@ function editItem(li, type, kind){
 			$(".loader").hide();
 			addonHovered(type, kind);
 			insert_addon();
+			count_image();
 	}
 	else if(type == 'reference'){
 		if(validate_addon(li, type, kind)){
@@ -777,21 +797,46 @@ function extract_image(li, type, kind){
 		if(kind == 'new'){
 			var imgtype = $(".new-addon .new-item .picture .img-anchor").hasClass("a-upload");
 			if(!imgtype){
-				var image = $(".new-addon .new-item .picture .url-img .imgurl").val();
-				$(".new-addon .new-item .picture .def-image img").attr("src", image);
-				$(".new-addon .new-item .img-hid").val(image);
-				$(".new-addon .new-item .img-desc-con").show();
-				$(".loader").hide();
+				$(".new-addon .new-item form.pic-addon").submit(function(e){
+					e.preventDefault();
+					$.ajax({
+						url	: '/addon/picture',
+						type : 'POST',
+						data : new FormData(this),
+						contentType : false,
+						cache : false,
+						processData : false,
+						success : function(res){
+							$(".new-addon .new-item .picture .def-image img").attr("src", res);
+							$(".new-addon .new-item .img-hid").val(res);
+							$(".new-addon .new-item .img-desc-con").show();
+							$(".loader").hide();
+						}
+					});
+				});
+				
 			}
 		}
 		else{
 			var imgtype = $("ul.sortable li[value='"+li+"'] .picture .img-anchor").hasClass("a-upload");
 			if(!imgtype){
-				var image = $("ul.sortable li[value='"+li+"'] .picture .url-img .imgurl").val();
-				$("ul.sortable li[value='"+li+"'] .picture .def-image img").attr("src", image);
-				$("ul.sortable li[value='"+li+"'] .img-hid").val(image);
-				$("ul.sortable li[value='"+li+"'] .img-desc-con").show();
-				$(".loader").hide();
+				$("ul.sortable li[value='"+li+"'] form.pic-addon").submit(function(e){
+					e.preventDefault();
+					$.ajax({
+						url	: '/addon/picture',
+						type : 'POST',
+						data : new FormData(this),
+						contentType : false,
+						cache : false,
+						processData : false,
+						success : function(res){
+							$("ul.sortable li[value='"+li+"'] .picture .def-image img").attr("src", res);
+							$("ul.sortable li[value='"+li+"'] .img-hid").val(res);
+							$("ul.sortable li[value='"+li+"'] .img-desc-con").show();
+							$(".loader").hide();
+						}
+					});
+				});
 			}
 		}
 	}

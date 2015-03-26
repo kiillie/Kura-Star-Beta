@@ -96,56 +96,65 @@ function imageExists(url) {
 function add_google_image(res){
   var kind = $(".image-search .search-kind").val();
   var li = $(".image-search .search-li").val();
+
   var resource = getRootUrl(res);
   var orig = getOrigin(res);
+
   if(kind == 'new'){
     $(".new-addon .new-item").html("");
-    var image = '<a class="art-added-img" href="'+res+'" title="'+res+'" data-fancybox-group="gallery"><img class="image" src="'+res+'" alt="" /></a>'+
-                '<div class="url-source"><span>Source: <a href="'+orig+'" target="_blank" alt="'+resource+'">'+resource+'</a></span></div>';
+    $.post('/addon/picture', 
+    {picture : res}).done(function(saved){
+        var image = '<a class="art-added-img" href="'+saved+'" title="'+saved+'" data-fancybox-group="gallery"><img class="image" src="'+saved+'" alt="'+res+'" /></a>'+
+                    '<div class="url-source"><span>Source: <a href="'+orig+'" target="_blank" alt="'+resource+'">'+resource+'</a></span></div>';
 
-    var content =   '<li class="ui-state-default added-addon">'+
-              '<div class="item-added-container">'+
-              '<div class="item-inner text">'+
-              '<div class="image-container">'+image+'</div>'+
-              '</div>'+
-              '<div class="editlist">'+
-              '<button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button>'+
-              '</div>'+
-              '</div>'+
-              '<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div></div>'+
-              '<input type="hidden" class="type" value="picture">'+
-              '<input type="hidden" class="kind" value="'+kind+'">'+
-              '</li>';
+        var content =   '<li class="ui-state-default added-addon">'+
+                  '<div class="item-added-container">'+
+                  '<div class="item-inner text">'+
+                  '<div class="image-container">'+image+'</div>'+
+                  '</div>'+
+                  '<div class="editlist">'+
+                  '<button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button>'+
+                  '</div>'+
+                  '</div>'+
+                  '<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div></div>'+
+                  '<input type="hidden" class="type" value="picture">'+
+                  '<input type="hidden" class="kind" value="'+kind+'">'+
+                  '</li>';
 
-    $(".addons-container .sortable").prepend(content);
-    insert_addon();
-    count_image();
+        $(".addons-container .sortable").prepend(content);
+        insert_addon();
+        count_image();
+      });
     }
     else{
-    var image = '<a class="art-added-img" href="'+res+'" title="'+res+'" data-fancybox-group="gallery"><img class="image" src="'+res+'" alt="" /></a>'+
-                '<div class="url-source"><span>Source: <a href="'+orig+'" target="_blank" alt="'+resource+'">'+resource+'</a></span></div>';
-    var content =   '<li class="ui-state-default added-addon">'+
-              '<div class="item-added-container">'+
-              '<div class="item-inner text">'+
-              '<div class="image-container">'+image+'</div>'+
-              '</div>'+
-              '<div class="editlist">'+
-              '<button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button>'+
-              '</div>'+
-              '</div>'+
-              '<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div></div>'+
-              '<input type="hidden" class="type" value="picture">'+
-              '<input type="hidden" class="kind" value="'+kind+'">'+
-              '</li>';
-        var current = $('ul.sortable li[value="'+li+'"]');
-        $("ul.sortable li[value='"+li+"'] .append-new-item").hide();
+    $.post('/addon/picture', 
+    {picture : res}).done(function(saved){
+      var image = '<a class="art-added-img" href="'+saved+'" title="'+saved+'" data-fancybox-group="gallery"><img class="image" src="'+saved+'" alt="'+res+'" /></a>'+
+                  '<div class="url-source"><span>Source: <a href="'+orig+'" target="_blank" alt="'+resource+'">'+resource+'</a></span></div>';
+      var content =   '<li class="ui-state-default added-addon">'+
+                '<div class="item-added-container">'+
+                '<div class="item-inner text">'+
+                '<div class="image-container">'+image+'</div>'+
+                '</div>'+
+                '<div class="editlist">'+
+                '<button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button>'+
+                '</div>'+
+                '</div>'+
+                '<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div></div>'+
+                '<input type="hidden" class="type" value="picture">'+
+                '<input type="hidden" class="kind" value="'+kind+'">'+
+                '</li>';
+          var current = $('ul.sortable li[value="'+li+'"]');
+          $("ul.sortable li[value='"+li+"'] .append-new-item").hide();
 
-        $("ul.sortable li[value='"+li+"'] .item-btn-con").show();
-        current.after(content);
-        insert_addon();
+          $("ul.sortable li[value='"+li+"'] .item-btn-con").show();
+          current.after(content);
+          insert_addon();
+        });
       }
       count_image();
       addonHovered(type, kind);
+
 }
 $(document).ready(function(){
   $(".img-srch .img-text").on('keyup',function(){

@@ -95,8 +95,11 @@ class ArticleController extends BaseController{
 		$input  = Input::all();
 		$image = $this->article->insertImage($input);
 
-		return View::make('articles.article_image')
-				->withImage($image);
+		if($image){
+			$article = $this->article->getById($input['cur_id']);
+			return View::make('articles.article_image')
+				->withArticle($article);
+		}
 	}
 
 	public function publish(){
@@ -213,6 +216,13 @@ class ArticleController extends BaseController{
 		$tid = Input::all();
 		return View::make('articles.tweet_by_id')
 					->withTweet($tid);
+	}
+
+	public function addonPic(){
+		$input  = Input::all();
+		
+		return View::make('articles.addon_pic')
+				->withInput($input);
 	}
 
 	public function showArticlesByUser($id){

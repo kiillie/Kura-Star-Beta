@@ -25,12 +25,18 @@ else if($addon['type'] == 'picture'){
 	var kind = "{{$addon['kind']}}";
 	var image = $("ul.sortable li[value='"+li+"'] .item-inner .image-container img").attr("src");
 	var desc = $("ul.sortable li[value='"+li+"'] .item-inner .desc").html();
+	var alt = $("ul.sortable li[value='"+li+"'] .item-inner .image-container img").attr("alt");
+	alert(image);
 	if(desc == undefined){
 		desc = "";
 	}
+	if(image != alt){
+		image = alt;
+	}
+	alert(image);
 	var content = 	'<div class="row picture">'+
 					'<div class="col-md-6 def-image">'+
-					'<img src="'+image+'" width="200" alt="Image">'+
+					'<img src="'+alt+'" width="200" alt="Image">'+
 					'</div>'+
 					'<div class="col-md-6 url-upload">'+
 					'<div class="upload-img-con">'+
@@ -54,9 +60,10 @@ else if($addon['type'] == 'picture'){
 					'</div>'+
 					'</div>'+
 					'</div>'+
-					'<input type="hidden" class="img-hid" value="'+image+'"/>'+
+					'<input type="hidden" class="img-hid" value="'+alt+'"/>'+
 					'{{Form::close()}}';
 	$("ul.sortable li[value='"+li+"'] .add-item-area").append("<div class='edit-area'>"+content+"</div>");
+	count_image();
 </script>
 <?php
 }

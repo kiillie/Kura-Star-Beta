@@ -64,9 +64,21 @@ $(".url-setting .img-form").on('submit', function(e){
 						contentType : false,
 						cache : false,
 						processData : false,
-						success : function(res){			
-							var val = $(".url-setting .img-url input").val();
-							$(".article-details .art-default-img img").attr("src", val);
+						error: function(res){
+							setTimeout(function(){
+								$(".img-url .err").text("");
+								$("<span class='err' style='color:red;'>No image found.</span>").insertAfter(".img-url input[name='imageUrl']");
+							}, 100);
+							setTimeout(function(){
+								$(".img-url span.err").fadeOut("slow", function(){
+									$(this).remove();
+								});
+							}, 5000);
+						},
+						success : function(res){
+							if(res == ""){		
+								$(".article-details .art-default-img img").attr("src", res);
+							}
 						}
 				});
 		}
@@ -82,7 +94,7 @@ $(".url-setting .img-form").on('submit', function(e){
 						cache : false,
 						processData : false,
 						success : function(res){			
-							$(".art-default-img img").attr("src", imgresult);
+							$(".art-default-img img").attr("src", res);
 						}
 				});
 		}
@@ -159,13 +171,13 @@ $(".img-url input[name='imageUrl']").on('change', function(){
 });
 
 function check_exist(src){
-	var img = new Image();
-	img.src = src;
-	if(img.width == 0){
-		return false;
+	var arr = [ "jpeg", "jpg", "gif", "png" ];
+	var ext = src.substring(src.lastIndexOf(".")+1);
+	if($.inArray(ext,arr){
+		return true;
 	}
 	else{
-		return true;
+		return false;
 	}
 }
 //Link

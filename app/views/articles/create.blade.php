@@ -370,7 +370,6 @@ function upload_image(li, type, kind){
 
 				}
 			});
-
 	}
 	else{
 		$("ul.sortable li[value='"+li+"'] #upload-addon"). one('submit', function(e){
@@ -414,7 +413,6 @@ function upload_image(li, type, kind){
 		});
 	}
 }
-
 function insert_addon(){
 	var insert = $("ul.sortable").html();
 	var det = $("ul.sortable li .item-inner").length;
@@ -430,7 +428,6 @@ function insert_addon(){
 		'id'	 : id
 	});
 }
-
 function publish_article(id){
 	var publish = $(".publish").hasClass("published");
 	var value = 0;

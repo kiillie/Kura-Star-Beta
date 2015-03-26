@@ -138,6 +138,11 @@ Route::post('addon/tweet', [
 	'as'	=>	'addon.tweet'
 ]);
 
+Route::post('addon/picture', [
+	'uses'	=>	'ArticleController@addonPic',
+	'as'	=>	'addon.picture'
+]);
+
 /** Login **/
 
 Route::get('login',[
