@@ -406,7 +406,20 @@ function addItem(li, type, kind){
 
 function cancel_add(li, type, kind){
 	if(kind == 'new'){
-		$(".new-addon .new-item").html("");
+		
+		if(type == 'picture'){
+			//
+			var image = $(".new-addon .new-item .def-img img").attr("src");
+			if(image != "/assets/images/article-default.png"){
+
+			}
+			else{
+				$(".new-addon .new-item").html("");
+			}
+		}
+		else{
+			$(".new-addon .new-item").html("");
+		}
 	}
 	else{
 		$("ul.sortable li[value='"+li+"'] .add-item-area .edit-area").remove();
@@ -444,7 +457,7 @@ function editItem(li, type, kind){
 	else if(type == 'picture'){
 		var src = $("ul.sortable li[value='"+li+"'] .def-image img").attr("src");
 		var desc = $("ul.sortable li[value='"+li+"'] .add-item-area .img-desc").val();
-		var image = '<img class="image" src="'+src+'" alt="'+src+'" />'+
+		var image = '<a class="art-added-img" href="'+src+'" title="'+src+'" data-fancybox-group="gallery"><img class="image" src="'+src+'" alt="'+src+'" /></a>'+
 					'<p class="desc">'+desc+'</p>';
 		var source = $("ul.sortable li[value='"+li+"'] .add-item-area .img-hid").val();
 		if(src != source){
