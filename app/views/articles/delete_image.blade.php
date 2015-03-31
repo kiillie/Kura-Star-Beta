@@ -10,10 +10,8 @@ if($str_exist && $exists){
 	else{
 		echo "false";
 	}
-
 }
 else{
 	echo "true";
 }
-
 ?>

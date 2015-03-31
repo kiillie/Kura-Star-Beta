@@ -29,12 +29,9 @@ else if($addon['type'] == 'picture'){
 	if(desc == undefined){
 		desc = "";
 	}
-	if(image != alt){
-		image = alt;
-	}
 	var content = 	'<div class="row picture">'+
 					'<div class="col-md-6 def-image">'+
-					'<img src="'+alt+'" width="200" alt="Image">'+
+					'<img src="'+image+'" width="200" alt="Image">'+
 					'</div>'+
 					'<div class="col-md-6 url-upload">'+
 					'<div class="upload-img-con">'+

@@ -442,14 +442,15 @@ function editItem(li, type, kind){
 		}
 	}
 	else if(type == 'picture'){
-		var src = $("ul.sortable li[value='"+li+"'] .add-item-area .img-hid").val();
+		var src = $("ul.sortable li[value='"+li+"'] .def-image img").attr("src");
 		var desc = $("ul.sortable li[value='"+li+"'] .add-item-area .img-desc").val();
 		var image = '<img class="image" src="'+src+'" alt="'+src+'" />'+
 					'<p class="desc">'+desc+'</p>';
-		if($("ul.sortable li[value='"+li+"'] div").hasClass("url-source")){
-			var resource = getRootUrl(src);
-  			var orig = getOrigin(src);
-			var image = '<a class="art-added-img" href="'+src+'" title="'+src+'" data-fancybox-group="gallery"><img class="image" src="'+src+'" alt="'+src+'" /></a>'+
+		var source = $("ul.sortable li[value='"+li+"'] .add-item-area .img-hid").val();
+		if(src != source){
+			var resource = getRootUrl(source);
+  			var orig = getOrigin(source);
+			var image = '<a class="art-added-img" href="'+src+'" title="'+src+'" data-fancybox-group="gallery"><img class="image" src="'+src+'" alt="'+source+'" /></a>'+
                 		'<div class="url-source"><span>Source: <a href="'+orig+'" target="_blank" alt="'+resource+'">'+resource+'</a></span></div>'+  
                 		'<p class="desc">'+desc+'</p>';
 		}

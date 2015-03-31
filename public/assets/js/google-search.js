@@ -124,9 +124,12 @@ function add_google_image(res){
                   '<input type="hidden" class="kind" value="'+kind+'">'+
                   '</li>';
         if(saved != ""){
-          $(".addons-container .sortable").prepend(content);
-          insert_addon();
-          count_image();
+          setTimeout(function(){
+            $(".addons-container .sortable").prepend(content);
+            insert_addon();
+            addonHovered(type, kind);
+            count_image();
+          }, 2000);
         }
       });
     }

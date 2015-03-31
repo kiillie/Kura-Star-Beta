@@ -25,9 +25,15 @@ class EloquentArticleRepository implements ArticleRepository{
 			$cur_img = "/assets/images/attachments/".$move;
 			
 			$picture = Article::where('CURATION_ID', '=', $input['cur_id'])->first();
-			if(unlink(public_path().$picture['CURATION_IMAGE'])){
+			if($picture['CURATION_IMAGE'] != ""){
+				if(unlink(public_path().$picture['CURATION_IMAGE'])){
+					$article = Article::where('CURATION_ID', '=', $input['cur_id'])
+								->update(['CURATION_IMAGE' => $cur_img ]);
+				}
+			}
+			else{
 				$article = Article::where('CURATION_ID', '=', $input['cur_id'])
-							->update(['CURATION_IMAGE' => $cur_img ]);
+					->update(['CURATION_IMAGE' => $cur_img ]);
 			}
 		}
 		else if($input['imageUrl'] != ""){
