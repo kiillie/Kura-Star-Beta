@@ -310,6 +310,7 @@ function addItem(li, type, kind){
 			var src = $("ul.sortable li[value='"+li+"'] iframe").attr("src");
 			var desc = $("ul.sortable li[value='"+li+"'] .vid-desc").val();
 			var resource = getRootUrl(src);
+
 			var orig = getOrigin(src);
 
 			var video =  '<iframe class="vid-display" src="'+src+'" width="600" height="400">#</iframe>'+		 
@@ -814,10 +815,10 @@ function extract_image(li, type, kind){
 						}
 					});
 				});
-				
 			}
 		}
 		else{
+			
 			var imgtype = $("ul.sortable li[value='"+li+"'] .picture .img-anchor").hasClass("a-upload");
 			if(!imgtype){
 				$("ul.sortable li[value='"+li+"'] form.pic-addon").submit(function(e){
@@ -1580,4 +1581,73 @@ function add_img_class(li, type, kind){
 		$(".image-search .search-li").val(li);
 		$(".image-search .search-kind").val(kind);
 	}
+}
+function delete_article(id, user){
+	var con = confirm("Are you sure you want to delete this article?");
+	if(con){
+		$.post("/article/delete", {
+			'id' : id,
+			'user' : user
+		}).done(function(res){
+			window.location.href = "/user/article/"+user;
+		});
+	}
+}
+function select_type_img(){
+	var def_image = $(".art-default-img img").attr("src");
+	if($(".url-setting .img-btns a").hasClass('disp-def')){
+		$(".url-setting .img-btns input").removeClass("art-url-submit");
+		$(".url-setting .img-btns input").addClass("art-img-submit");
+		$(".url-setting .img-upload").css('display', 'block');
+		$(".url-setting .img-url").css('display', 'none');
+		$(".url-setting .img-upload input").val("");
+		$(".art-default-img img").attr("src", def_image);
+		$(".url-setting .img-btns a").text("Click to Add an Image URL");
+		$(".url-setting .img-btns a").removeClass('disp-def');
+		$(".url-setting .img-btns a").addClass('disp-up');
+	}
+	else{
+		$(".url-setting .img-btns input").removeClass("art-img-submit");
+		$(".url-setting .img-btns input").addClass("art-url-submit");
+		$(".url-setting .img-upload").css('display', 'none');
+		$(".url-setting .img-url").css('display', 'block');
+		$(".url-setting .img-url input").val("");
+		$(".art-default-img img").attr("src", def_image);
+		$(".url-setting .img-btns a").text("Click to Upload an Image");
+		$(".url-setting .img-btns a").removeClass('disp-up');
+		$(".url-setting .img-btns a").addClass('disp-def');
+	}
+}
+function record(url, result) {
+     if(result == 'error'){
+        return false;   
+    }
+    else if(result == 'success'){
+        return true;   
+    }
+    else{
+        return false;
+    }
+}
+function testImage(url, callback, timeout) {
+    timeout = timeout || 5000;
+    var timedOut = false, timer;
+    var img = new Image();
+    img.onerror = img.onabort = function() {
+        if (!timedOut) {
+            clearTimeout(timer);
+            callback(url, "error");
+        }
+    };
+    img.onload = function() {
+        if (!timedOut) {
+            clearTimeout(timer);
+            callback(url, "success");
+        }
+    };
+    img.src = url;
+    timer = setTimeout(function() {
+        timedOut = true;
+        callback(url, "timeout");
+    }, timeout); 
 }

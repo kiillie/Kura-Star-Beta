@@ -38,9 +38,6 @@ $(document).ready(function(){
 						{{$article->CURATION_DESCRIPTION}}
 					</p>
 					<div class="social">
-						<input type="button" class="btn btn-info" value="Like">
-						<input type="button" class="btn btn-info" value="Tweet">
-						<input type="button" class="btn btn-info" value="Google+">
 						<i></i>
 						<div class="right">
 							<span class="views"><span class="count">{{$article->VIEWS}}</span> Views</span> &nbsp;&nbsp;&nbsp;
@@ -67,16 +64,16 @@ $(document).ready(function(){
 			<div class="extra-details">
 				{{html_entity_decode($article->CURATION_DETAIL)}}
 			</div>
-			<div class="pages">
-				<ul class="pagination">
-					<li><a href="#">&laquo;</a></li>
-					<li><a href="#">1</a></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">&raquo;</a></li>
-				</ul>
-			</div>
-			<div class="ex-advertisement">
-				<img src="/assets/images/Google-Adsense.jpg" alt="Advertisement"/> <img src="/assets/images/Google-Adsense.jpg" alt="Advertisement"/>
+			<div class="ex-advertisement inline">
+				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<!-- Stinger スマホ用 -->
+				<ins class="adsbygoogle"
+				     style="display:inline-block;width:100%;height:250px"
+				     data-ad-client="ca-pub-7072204464883997"
+				     data-ad-slot="8045729462"></ins>
+				<script>
+					(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
 			</div>
 		</div>
 		<div class="col-md-3 right-bar hidden-xs">

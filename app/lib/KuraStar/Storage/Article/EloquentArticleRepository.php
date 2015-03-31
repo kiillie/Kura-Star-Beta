@@ -23,13 +23,16 @@ class EloquentArticleRepository implements ArticleRepository{
 			$move = $imgname.".".$upload->getClientOriginalExtension();
 			$upload->move($folder, $move);
 			$cur_img = "/assets/images/attachments/".$move;
-
-			$article = Article::where('CURATION_ID', '=', $input['cur_id'])
-						->update(['CURATION_IMAGE' => $cur_img ]);
-
+			
+			$picture = Article::where('CURATION_ID', '=', $input['cur_id'])->first();
+			if(unlink(public_path().$picture['CURATION_IMAGE'])){
+				$article = Article::where('CURATION_ID', '=', $input['cur_id'])
+							->update(['CURATION_IMAGE' => $cur_img ]);
+			}
 		}
 		else if($input['imageUrl'] != ""){
-			$parts = pathinfo($input['imageUrl']);
+			$url = parse_url($input['imageUrl']);
+			$parts = pathinfo($url['path']);
 			$filename = $parts['filename'].".".$parts['extension'];
 			$path = public_path()."\\assets\\images\\attachments\\".$filename;
 			$file = "/assets/images/attachments/".$filename;
@@ -41,8 +44,11 @@ class EloquentArticleRepository implements ArticleRepository{
 			}
 			if(fopen($path, "w")){
 				if(copy($input['imageUrl'], $path)){
-					$article = Article::where('CURATION_ID', '=', $input['cur_id'])
-							->update(['CURATION_IMAGE' => $file]);
+					$picture = Article::where('CURATION_ID', '=', $input['cur_id'])->first();
+					if(unlink(public_path().$picture['CURATION_IMAGE'])){
+						$article = Article::where('CURATION_ID', '=', $input['cur_id'])
+								->update(['CURATION_IMAGE' => $file]);
+					}
 				}
 			}
 		}
@@ -155,8 +161,40 @@ class EloquentArticleRepository implements ArticleRepository{
 	}
 
 	public function delete($id){
-		$article = Article::where('CURATION_ID', '=', $id)->get();
-		return $article->delete();
+		$html = file_get_contents(public_path()."/assets/articles/{$id}.php");
+		$count = 0;
+		$selected = Article::where('CURATION_ID', '=', $id)->first();
+		if($html != ""){
+			$dom = new \DOMDocument();
+			$dom->loadHtml($html);
+			foreach($dom->getElementsByTagName('img') as $img){
+				if (filter_var($img->getAttribute('src'), FILTER_VALIDATE_URL) === false) {
+				    if(!unlink(public_path().$img->getAttribute('src'))){
+				    	$count++;
+				    }
+				}
+			}
+		}
+		if($count == 0){
+			if(unlink(public_path().'/assets/articles/'.$id.'.php')){
+				if($selected->CURATION_IMAGE == ""){
+					$article = Article::where('CURATION_ID', '=', $id);
+					return $article->delete();
+				}
+				else{
+					if(unlink(public_path().$selected->CURATION_IMAGE)){
+						$article = Article::where('CURATION_ID', '=', $id);
+						return $article->delete();
+					}
+					else{
+						return false;
+					}
+				}
+			}
+		}
+		else{
+			return false;
+		}
 	}
 
 }

@@ -102,8 +102,11 @@ function add_google_image(res){
 
   if(kind == 'new'){
     $(".new-addon .new-item").html("");
+    $(".loader").show();
     $.post('/addon/picture', 
     {picture : res}).done(function(saved){
+      $(".loader").hide();
+
         var image = '<a class="art-added-img" href="'+saved+'" title="'+saved+'" data-fancybox-group="gallery"><img class="image" src="'+saved+'" alt="'+res+'" /></a>'+
                     '<div class="url-source"><span>Source: <a href="'+orig+'" target="_blank" alt="'+resource+'">'+resource+'</a></span></div>';
 
@@ -120,10 +123,11 @@ function add_google_image(res){
                   '<input type="hidden" class="type" value="picture">'+
                   '<input type="hidden" class="kind" value="'+kind+'">'+
                   '</li>';
-
-        $(".addons-container .sortable").prepend(content);
-        insert_addon();
-        count_image();
+        if(saved != ""){
+          $(".addons-container .sortable").prepend(content);
+          insert_addon();
+          count_image();
+        }
       });
     }
     else{

@@ -457,8 +457,21 @@ class ArticleController extends BaseController{
 				->withImage($image);
 	}
 
-	public function delete($id){
-		
+	public function delete(){
+		$input = Input::all();
+		$favorites = $this->favorite->deleteByArticle($input['id']);
+		if($favorites){
+			$article = $this->article->delete($input['id']);
+		}
+		else{
+			$article = $this->article->delete($input['id']);
+		}
+		if($article){
+			return Redirect::route('user.articles', $input['user'])->with("message", "Article was deleted Successfully.");
+		}
+		else{
+			return Redirect::route('user.articles', $input['user'])->with("message", "Unable to delete this article.");	
+		}
 	}
 }
 

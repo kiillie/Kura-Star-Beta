@@ -13,6 +13,9 @@
 		</div>
 	</div>
 	<div class="row lists">
+		@if(Session::has('message'))
+			<div class="alert alert-danger">{{Session::get('message')}}</div>
+		@endif
 		@if(count($articles) == 0)
 			<div class="alert alert-danger">There no Articles made yet.</div>
 		@else

@@ -1,31 +1,6 @@
 $(document).ready(function(){
-var def_image = $(".art-default-img img").attr("src");
 // For Upload Image
-$(".url-setting .img-btns a").on('click', function(e){
-	e.preventDefault();
-	if($(this).hasClass('disp-def')){
-		$(".url-setting .img-btns input").removeClass("art-url-submit");
-		$(".url-setting .img-btns input").addClass("art-img-submit");
-		$(".url-setting .img-upload").css('display', 'block');
-		$(".url-setting .img-url").css('display', 'none');
-		$(".url-setting .img-upload input").val("");
-		$(".art-default-img img").attr("src", def_image);
-		$(this).text("Click to Add an Image URL");
-		$(this).removeClass('disp-def');
-		$(this).addClass('disp-up');
-	}
-	else{
-		$(".url-setting .img-btns input").removeClass("art-img-submit");
-		$(".url-setting .img-btns input").addClass("art-url-submit");
-		$(".url-setting .img-upload").css('display', 'none');
-		$(".url-setting .img-url").css('display', 'block');
-		$(".url-setting .img-url input").val("");
-		$(".art-default-img img").attr("src", def_image);
-		$(this).text("Click to Upload an Image");
-		$(this).removeClass('disp-up');
-		$(this).addClass('disp-def');
-	} 
-});
+
 $(".img-upload input").change(function() {
 	$("#message").empty(); // To remove the previous error message
 	var file = this.files[0];
@@ -57,6 +32,8 @@ $(".url-setting .img-form").on('submit', function(e){
 	if($(this).find('a').hasClass("disp-def")){
 		e.preventDefault();
 		if(validate_art_image('url')){
+			var main = $(this).find('a');
+			$("<img src='/assets/images/img-loader.gif' class='img-loader' alt='loading...' />").insertAfter(main);
 			$.ajax({
 						url	: '/article/image',
 						type : 'POST',
@@ -74,10 +51,12 @@ $(".url-setting .img-form").on('submit', function(e){
 									$(this).remove();
 								});
 							}, 5000);
+							$(".url-setting .img-btns .img-loader").remove();
 						},
 						success : function(res){
-							if(res == ""){		
+							if(res != ""){		
 								$(".article-details .art-default-img img").attr("src", res);
+								$(".url-setting .img-btns .img-loader").remove();
 							}
 						}
 				});
@@ -86,6 +65,8 @@ $(".url-setting .img-form").on('submit', function(e){
 	else{
 		e.preventDefault();
 		if(validate_art_image('upload')){
+		var main = $(this).find('a');
+		$("<img src='/assets/images/img-loader.gif' class='img-loader' alt='loading...' />").insertAfter(main);
 			$.ajax({
 						url	: '/article/image',
 						type : 'POST',
@@ -95,6 +76,7 @@ $(".url-setting .img-form").on('submit', function(e){
 						processData : false,
 						success : function(res){			
 							$(".art-default-img img").attr("src", res);
+							$(".url-setting .img-btns .img-loader").remove();
 						}
 				});
 		}
@@ -173,7 +155,7 @@ $(".img-url input[name='imageUrl']").on('change', function(){
 function check_exist(src){
 	var arr = [ "jpeg", "jpg", "gif", "png" ];
 	var ext = src.substring(src.lastIndexOf(".")+1);
-	if($.inArray(ext,arr){
+	if($.inArray(ext,arr)){
 		return true;
 	}
 	else{

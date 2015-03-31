@@ -126,9 +126,9 @@ $(document).ready(function(){
 							@endif
 						@endif
 						@if(Session::has('curation'))
-							<input type="button" class="btn btn-default delete" value="Delete" onclick="delete_article({{Session::get('curation')}})" />
+							<input type="button" class="btn btn-default delete" value="Delete" onclick="delete_article({{Session::get('curation')}}, {{$article->CURATER_ID}})" />
 						@else
-							<input type="button" class="btn btn-default delete" value="Delete" onclick="delete_article({{$curation}})" />
+							<input type="button" class="btn btn-default delete" value="Delete" onclick="delete_article({{$curation}}, {{$article->CURATER_ID}})" />
 						@endif
 					</div>
 				</div>
@@ -167,7 +167,7 @@ $(document).ready(function(){
 					</div>
 					<div class="col-md-8 img-btns">
 						<input type="submit" class="btn btn-default art-url-submit" name="art-submit" value="Set">
-						<a href="#" class="disp-def">Click to Upload an Image</a>
+						<a href="javascript:void(0)" class="disp-def" onclick="select_type_img()">Click to Upload an Image</a>
 					</div>
 					@if(Session::has('curation'))
 							<input type="hidden" class="cur-id" name="cur_id" value="{{Session::get('curation')}}">
@@ -465,13 +465,6 @@ function count_image(){
 			else{
 				$(".image-container img").eq(i).css("width", "100%");
 			}
-	}
-}
-function delete_article(id){
-	var conf = confirm("Are you sure you want to delete this article?");
-
-	if(conf){
-		
 	}
 }
 </script>

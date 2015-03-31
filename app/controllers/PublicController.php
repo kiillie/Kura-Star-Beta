@@ -85,11 +85,11 @@ class PublicController extends BaseController{
 	}
 
 	public function test(){
-		return View::make('public.test');
+		return View::make('articles.delete_article');
 	}
 
 	public function tester(){
-		return View::make('public.google');
+		return View::make('public.test');
 	}
 }
 

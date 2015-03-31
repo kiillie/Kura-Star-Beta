@@ -26,14 +26,12 @@ else if($addon['type'] == 'picture'){
 	var image = $("ul.sortable li[value='"+li+"'] .item-inner .image-container img").attr("src");
 	var desc = $("ul.sortable li[value='"+li+"'] .item-inner .desc").html();
 	var alt = $("ul.sortable li[value='"+li+"'] .item-inner .image-container img").attr("alt");
-	alert(image);
 	if(desc == undefined){
 		desc = "";
 	}
 	if(image != alt){
 		image = alt;
 	}
-	alert(image);
 	var content = 	'<div class="row picture">'+
 					'<div class="col-md-6 def-image">'+
 					'<img src="'+alt+'" width="200" alt="Image">'+
@@ -45,10 +43,10 @@ else if($addon['type'] == 'picture'){
 					'<input type="submit" class="btn btn-default upload-check" onclick="upload_image(\''+li+'\', \''+type+'\', \''+kind+'\')" value="Check">'+
 					'{{Form::close()}}'+
 					'</div>'+
-					'{{Form::open(["name"=>"picture"])}}'+
+					'{{Form::open(["name"=>"picture", "class"=>"pic-addon"])}}'+
 					'<div class="url-img">'+
 					'<input type="text" class="form-control imgurl" name="picture" placeholder="Url of the Image"/>'+
-					'<input type="button" class="btn btn-default url-check" value="Check" onclick="extract_image(\''+li+'\', \''+type+'\', \''+kind+'\')" />'+
+					'<input type="submit" class="btn btn-default url-check" value="Check" onclick="extract_image(\''+li+'\', \''+type+'\', \''+kind+'\')" />'+
 					'<input type="button" class="btn btn-default url-cancel" value="Cancel">'+
 					'</div>'+
 					'<a href="javascript:void(0)" class="img-anchor a-url" onclick="select_img_type(\''+li+'\', \''+type+'\', \''+kind+'\')">Upload an Image</a><br/><br/>'+

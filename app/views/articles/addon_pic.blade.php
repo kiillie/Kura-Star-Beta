@@ -1,5 +1,6 @@
 <?php
-$parts = pathinfo($input['picture']);
+		$url = parse_url($input['picture']);
+		$parts = pathinfo($url['path']);
 		$filename = $parts['filename'].".".$parts['extension'];
 		$path = public_path()."\\assets\\images\\attachments\\".$filename;
 		$file = "/assets/images/attachments/".$filename;

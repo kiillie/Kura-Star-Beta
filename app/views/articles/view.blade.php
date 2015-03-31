@@ -41,9 +41,7 @@ $(document).ready(function(){
 						{{$article->CURATION_DESCRIPTION}}
 					</p>
 					<div class="social">
-						<input type="button" class="btn btn-info" value="Like">
-						<input type="button" class="btn btn-info" value="Tweet">
-						<input type="button" class="btn btn-info" value="Google+">
+						
 						<i></i>
 						<div class="right">
 							<span class="views"><span class="count">{{$article->VIEWS}}</span> Views</span> &nbsp;&nbsp;&nbsp;
