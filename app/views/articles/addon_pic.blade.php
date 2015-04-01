@@ -11,7 +11,7 @@
 			$file = "/assets/images/attachments/".$filename;
 		}
 		if(fopen($path, "w")){
-			if(copy($input['picture'], $path)){
+			if(File::copy($input['picture'], $path)){
 				echo $file;
 			}
 		}

@@ -49,7 +49,7 @@ class EloquentArticleRepository implements ArticleRepository{
 				$file = "/assets/images/attachments/".$filename;
 			}
 			if(fopen($path, "w")){
-				if(copy($input['imageUrl'], $path)){
+				if(File::copy($input['imageUrl'], $path)){
 					$picture = Article::where('CURATION_ID', '=', $input['cur_id'])->first();
 					if($picture['CURATION_IMAGE'] != ""){
 						if(unlink(public_path().$picture['CURATION_IMAGE'])){
