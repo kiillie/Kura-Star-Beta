@@ -159,14 +159,14 @@ $(document).ready(function(){
 				<?php
 					$file = fopen(public_path().'/assets/articles/'.$article->CURATION_ID.".php", "w");
 					fwrite($file, $article->CURATION_DETAIL);
-					fclose();
+					fclose($file);
 				?>
 				<textarea name="inner-detail" class="detail-li" style="display:none;"></textarea>
 			@else
 				<?php
 					$file = fopen(public_path().'/assets/articles/'.$article->CURATION_ID.".php", "w");
 					fwrite($file, $article->CURATION_DETAIL);
-					fclose();
+					fclose($file);
 				?>	
 				<textarea name="inner-detail" class="detail-li" style="display:none;">{{$article->CURATION_DETAIL}}</textarea>
 			@endif
