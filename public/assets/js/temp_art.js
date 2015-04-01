@@ -436,8 +436,10 @@ function editItem(li, type, kind){
 		$(".loader").hide();
 		if(validate_addon(li, type, kind)){
 			var content = 	'<div class="item-added-container">'+
-							'<div class="item-inner text">'+
+							'<div class="item-inner">'+
+							'<div class="text">'+
 							'<pre>'+text+'</pre>'+
+							'</div>'
 							'</div>'+
 							'<div class="editlist">'+
 							'<button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button>'+
