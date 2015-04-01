@@ -156,6 +156,11 @@ $(document).ready(function(){
 				</div>
 			</div>
 			@if(trim($article->CURATION_DETAIL) == "")
+				<?php
+					$file = fopen(public_path().'/assets/articles/'.$article->CURATION_ID.".php", "w");
+					fwrite($file, $article->CURATION_DETAIL);
+					fclose();
+				?>
 				<textarea name="inner-detail" class="detail-li" style="display:none;"></textarea>
 			@else
 				<?php
