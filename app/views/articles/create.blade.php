@@ -209,7 +209,7 @@ $(document).ready(function(){
 						<ul class="sortable list-unstyled">
 							<?php
 								try{
-									html_entity_decode((file_get_contents(public_path()."/assets/articles/".$curation.".php"));
+									echo html_entity_decode(file_get_contents(public_path()."/assets/articles/".$curation.".php"));
 								}
 								catch(Exception $e){
 									fopen(public_path()."/assets/articles/".$curation.".php", "w");
