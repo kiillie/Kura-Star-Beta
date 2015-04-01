@@ -155,7 +155,17 @@ $(document).ready(function(){
 					</div>
 				</div>
 			</div>
-			<textarea name="inner-detail" class="detail-li" style="display:none;">{{$article->CURATION_DETAIL}}</textarea>
+			@if(trim($article->CURATION_DETAIL) == "")
+				<textarea name="inner-detail" class="detail-li" style="display:none;"></textarea>
+			@else
+				<?php
+					$file = fopen(public_path().'/assets/articles/'.$article->CURATION_ID.".php", "w");
+					fwrite($file, $article->CURATION_DETAIL);
+					fclose();
+				?>	
+				<textarea name="inner-detail" class="detail-li" style="display:none;">{{$article->CURATION_DETAIL}}</textarea>
+			@endif
+
 			{{Form::close()}}
 			<div class="url-setting inline row">
 				{{Form::open(['name'=>'insert-img', 'class'=>'img-form', 'role'=>'form', 'method'=>'post', 'enctype'=>'multipart/form-data', 'url' => 'article/image'])}}
