@@ -431,11 +431,9 @@ function upload_image(li, type, kind){
 function insert_addon(){
 	var insert = $("ul.sortable").html();
 	var det = $("ul.sortable li .item-inner").length;
-	var det_con = "<ul class='details'>";
 	for(var i = 0; i < det; i++){
 		det_con += "<li>"+$("ul.sortable li .item-inner").eq(i).html()+"</li>";
 	}
-	det_con += "</ul>";
 	$(".detail-li").val(det_con);
 	var id = $(".cur-id").val();
 	$.post('/addon/insert',{

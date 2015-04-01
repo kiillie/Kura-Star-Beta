@@ -79,7 +79,9 @@ $(document).ready(function(){
 			</div>
 			<hr></hr>
 			<div class="extra-details">
-				{{html_entity_decode($article->CURATION_DETAIL)}}
+				<ul class="details">
+					{{html_entity_decode($article->CURATION_DETAIL)}}
+				</ul>
 			</div>
 			<div class="ex-advertisement inline">
 				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
