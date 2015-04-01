@@ -28,6 +28,7 @@ function addItem(li, type, kind){
 							'</div>'+
 							'<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div></div>'+
 							'<input type="hidden" class="type" value="'+type+'">'+
+							'<input type="hidden" class="kind" value="'+kind+'">'+
 							'</li>';
 			if(kind == 'new'){
 				$(".addons-container .sortable").prepend(content);
@@ -94,6 +95,7 @@ function addItem(li, type, kind){
 							'</div>'+
 							'<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div></div>'+
 							'<input type="hidden" class="type" value="'+type+'">'+
+							'<input type="hidden" class="kind" value="'+kind+'">'+
 							'</li>';
 			if(kind == 'new'){
 				$(".addons-container .sortable").prepend(content);
@@ -146,6 +148,7 @@ function addItem(li, type, kind){
 							'</div>'+
 							'<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div></div>'+
 							'<input type="hidden" class="type" value="'+type+'">'+
+							'<input type="hidden" class="kind" value="'+kind+'">'+
 							'</li>';
 			if(kind == 'new'){
 					$(".new-addon .new-item").html("");
@@ -195,6 +198,7 @@ function addItem(li, type, kind){
 						'</div>'+
 						'<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div></div>'+
 						'<input type="hidden" class="type" value="'+type+'">'+
+						'<input type="hidden" class="kind" value="'+kind+'">'+
 						'</li>';
 		if(kind == 'new'){
 			$(".addons-container .sortable").prepend(content);
@@ -234,6 +238,7 @@ function addItem(li, type, kind){
 									'</div>'+
 									'<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div></div>'+
 									'<input type="hidden" class="type" value="'+type+'">'+
+									'<input type="hidden" class="kind" value="'+kind+'">'+
 									'</li>';
 					$(".addons-container .sortable").prepend(content);
 					insert_addon();
@@ -271,6 +276,7 @@ function addItem(li, type, kind){
 									'</div>'+
 									'<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div></div>'+
 									'<input type="hidden" class="type" value="'+type+'">'+
+									'<input type="hidden" class="kind" value="'+kind+'">'+
 									'</li>';
 					var current = $('ul.sortable li[value="'+li+'"]');
 					$("ul.sortable li[value='"+li+"'] .append-new-item").hide();
@@ -324,6 +330,7 @@ function addItem(li, type, kind){
 						'</div>'+
 						'<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div></div>'+
 						'<input type="hidden" class="type" value="'+type+'">'+
+						'<input type="hidden" class="kind" value="'+kind+'">'+
 						'</li>';
 
 		if(kind == 'new'){
@@ -377,6 +384,7 @@ function addItem(li, type, kind){
 							'</div>'+
 							'<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div></div>'+
 							'<input type="hidden" class="type" value="'+type+'">'+
+							'<input type="hidden" class="kind" value="'+kind+'">'+
 							'</li>';
 
 			if(kind == 'new'){
@@ -438,7 +446,8 @@ function editItem(li, type, kind){
 							'</div>'+
 							'</div>'+
 							'<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div></div>'+
-							'<input type="hidden" class="type" value="'+type+'">';
+							'<input type="hidden" class="type" value="'+type+'">'+
+							'<input type="hidden" class="kind" value="'+kind+'">';
 
 			$("ul.sortable li[value='"+li+"']").html(content);
 			
@@ -470,7 +479,8 @@ function editItem(li, type, kind){
 						'</div>'+
 						'</div>'+
 						'<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div></div>'+
-						'<input type="hidden" class="type" value="'+type+'">';
+						'<input type="hidden" class="type" value="'+type+'">'+
+						'<input type="hidden" class="kind" value="'+kind+'">';
 			$("ul.sortable li[value='"+li+"']").html(content);
 			$(".loader").hide();
 			addonHovered(type, kind);
@@ -498,7 +508,8 @@ function editItem(li, type, kind){
 							'</div>'+
 							'</div>'+
 							'<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div></div>'+
-							'<input type="hidden" class="type" value="'+type+'">';
+							'<input type="hidden" class="type" value="'+type+'">'+
+							'<input type="hidden" class="kind" value="'+kind+'">';
 			$(".new-addon .new-item").html("");
 			$("ul.sortable li[value='"+li+"']").html(content);
 			$(".loader").hide();
@@ -525,7 +536,8 @@ function editItem(li, type, kind){
 						'</div>'+
 						'</div>'+
 						'<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div></div>'+
-						'<input type="hidden" class="type" value="'+type+'">';
+						'<input type="hidden" class="type" value="'+type+'">'+
+						'<input type="hidden" class="kind" value="'+kind+'">';
 
 
 		$("ul.sortable li[value='"+li+"']").html(content);
@@ -553,7 +565,8 @@ function editItem(li, type, kind){
 						'</div>'+
 						'</div>'+
 						'<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div></div>'+
-						'<input type="hidden" class="type" value="'+type+'">';
+						'<input type="hidden" class="type" value="'+type+'">'+
+						'<input type="hidden" class="kind" value="'+kind+'">';
 			$("ul.sortable li[value='"+li+"']").html(content);
 			addonHovered(type, kind);
 			insert_addon();
@@ -578,7 +591,8 @@ function editItem(li, type, kind){
 						'</div>'+
 						'</div>'+
 						'<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div></div>'+
-						'<input type="hidden" class="type" value="'+type+'">';
+						'<input type="hidden" class="type" value="'+type+'">'+
+						'<input type="hidden" class="kind" value="'+kind+'">';
 
 		$("ul.sortable li[value='"+li+"']").html(content);
 		addonHovered(type, kind);
