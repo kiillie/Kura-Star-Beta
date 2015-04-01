@@ -110,8 +110,7 @@ function add_google_image(res){
         var image = '<a class="art-added-img" href="'+saved+'" title="'+saved+'" data-fancybox-group="gallery"><img class="image" src="'+saved+'" alt="'+res+'" /></a>'+
                     '<div class="url-source"><span>Source: <a href="'+orig+'" target="_blank" alt="'+resource+'">'+resource+'</a></span></div>';
 
-        var content =   '<li class="ui-state-default added-addon">'+
-                  '<div class="item-added-container">'+
+        var content =   '<div class="item-added-container">'+
                   '<div class="item-inner text">'+
                   '<div class="image-container">'+image+'</div>'+
                   '</div>'+
@@ -121,15 +120,19 @@ function add_google_image(res){
                   '</div>'+
                   '<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div></div>'+
                   '<input type="hidden" class="type" value="picture">'+
-                  '<input type="hidden" class="kind" value="'+kind+'">'+
-                  '</li>';
+                  '<input type="hidden" class="kind" value="'+kind+'">';
         if(saved != ""){
           setTimeout(function(){
-            $(".addons-container .sortable").prepend(content);
-            insert_addon();
-            addonHovered(type, kind);
-            count_image();
-          }, 2000);
+            $(".addons-container .sortable").prepend("<li class='ui-state-default added-addon'></li>");
+            $("ul.sortable li").eq(0).html(content);
+            $("ul.sortable li").eq(0).html("");
+            setTimeout(function(){
+              $("ul.sortable li").eq(0).html(content);
+              count_image();
+              insert_addon();
+              addonHovered(type, kind);
+            }, 1000);
+          }, 1000);
         }
       });
     }
@@ -156,12 +159,15 @@ function add_google_image(res){
 
           $("ul.sortable li[value='"+li+"'] .item-btn-con").show();
           current.after(content);
-          insert_addon();
+          setTimeout(function(){
+            count_image();
+            addonHovered(type, kind);
+            insert_addon();
+          }, 1000);
         });
       }
       count_image();
       addonHovered(type, kind);
-
 }
 $(document).ready(function(){
   $(".img-srch .img-text").on('keyup',function(){
