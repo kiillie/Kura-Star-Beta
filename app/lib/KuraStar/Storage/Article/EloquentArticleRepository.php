@@ -176,7 +176,8 @@ class EloquentArticleRepository implements ArticleRepository{
 		$html = file_get_contents(public_path()."/assets/articles/{$id}.php");
 		$count = 0;
 		$selected = Article::where('CURATION_ID', '=', $id)->first();
-		if($html != "" || !empty($html)){
+		$html = trim($html);
+		if($html != ""){
 			$dom = new \DOMDocument();
 			$dom->loadHtml($html);
 			foreach($dom->getElementsByTagName('img') as $img){
