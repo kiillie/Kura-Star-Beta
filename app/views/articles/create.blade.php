@@ -161,6 +161,7 @@ $(document).ready(function(){
 				$html = trim($html);
 				if($html == "" && $article->CURATION_DETAIL != ""){
 					$dom->loadHtml($article->CURATION_DETAIL);
+					echo "yes";
 					foreach($dom->getElementsByTagName("div") as $div){
 						echo $div->getAttribute('class');
 					}
