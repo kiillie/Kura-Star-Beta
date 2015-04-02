@@ -160,8 +160,7 @@ $(document).ready(function(){
 				$dom = new DOMDocument();
 				$html = trim($html);
 				if($html == "" && $article->CURATION_DETAIL != ""){
-					$dom->loadHtml($article->CURATION_DETAIL);
-					echo $article->CURATION_DETAIL;
+					$dom->loadHtml(html_entity_decode($article->CURATION_DETAIL));
 					foreach($dom->getElementsByTagName("div") as $div){
 						echo $div->getAttribute('class');
 					}
