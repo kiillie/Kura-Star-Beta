@@ -162,7 +162,7 @@ $(document).ready(function(){
 				if($html == "" && $article->CURATION_DETAIL != ""){
 					$dom->loadHtml(html_entity_decode($article->CURATION_DETAIL));
 					foreach($dom->getElementsByTagName("li") as $li){
-						echo $li->nodeValue;
+						//echo $li->nodeValue;
 					}
 				}
 			?>
