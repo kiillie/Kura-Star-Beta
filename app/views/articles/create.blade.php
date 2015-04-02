@@ -161,9 +161,10 @@ $(document).ready(function(){
 				$html = trim($html);
 				if($html == "" && $article->CURATION_DETAIL != ""){
 					$dom->loadHtml(html_entity_decode($article->CURATION_DETAIL));
-					foreach($dom->getElementsByTagName("div") as $div){
-						print_r($div);
-					}
+					print_r($dom);
+					// foreach($dom->getElementsByTagName("div") as $div){
+					// 	print_r($div);
+					// }
 				}
 			?>
 				<textarea name="inner-detail" class="detail-li" style="display:none;">{{$article->CURATION_DETAIL}}</textarea>
