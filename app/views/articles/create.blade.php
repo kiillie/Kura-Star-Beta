@@ -155,6 +155,17 @@ $(document).ready(function(){
 					</div>
 				</div>
 			</div>
+			<?php
+				$html = file_get_contents(public_path().'/assets/articles/'.$article->CURATION_ID.".php");
+				$dom = new DOMDocument();
+				$html = trim($html);
+				if($html == "" && $article->CURATION_DETAIL != ""){
+					$dom->loadHtml($article->CURATION_DETAIL);
+					foreach($dom->getElementsByTagName("div") as $div){
+						echo $div->getAttribute('class');
+					}
+				}
+			?>
 				<textarea name="inner-detail" class="detail-li" style="display:none;">{{$article->CURATION_DETAIL}}</textarea>
 			{{Form::close()}}
 			<div class="url-setting inline row">
