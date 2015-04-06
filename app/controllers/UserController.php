@@ -7,6 +7,7 @@ use KuraStar\Storage\Category\CategoryRepository as Category;
 use KuraStar\Storage\Article\ArticleRepository as Article;
 use KuraStar\Storage\Favorite\FavoriteRepository as Favorite;
 use KuraStar\Storage\Facebook\FacebookRepository as FacebookUser;
+use KuraStar\Storage\Notification\NotificationRepository as Notification;
 
 class UserController extends BaseController{
 	
@@ -18,8 +19,9 @@ class UserController extends BaseController{
 	protected $favorite;
 	protected $fbuser;
 	protected $oauth;
+	protected $notification;
 
-	public function __construct(User $user, Continent $continent, Country $country, Category $category, Article $article, Favorite $favorite, FacebookUser $fbuser){
+	public function __construct(User $user, Continent $continent, Country $country, Category $category, Article $article, Favorite $favorite, FacebookUser $fbuser, Notification $notification){
 		$this->user = $user;
 		$this->continent = $continent;
 		$this->country = $country;
@@ -28,6 +30,7 @@ class UserController extends BaseController{
 		$this->favorite = $favorite;
 		$this->fbuser = $fbuser;
 		$this->oauth = new Hybrid_Auth(app_path().'/config/fb_auth.php');
+		$this->notification = $notification;
 	}
 
 	public function store(){
@@ -106,9 +109,10 @@ class UserController extends BaseController{
 		
 		$count = $this->article->countArticlesByUser($id);
 		$favorites = $this->favorite->count_favorite_by_user($id);
-
-		if($logged){
+		$notifications = $this->notification->getByUserId($id);
+		if($logged && $user->CURATER_ID == $id){
 			return View::make('users.notifications')
+						->withNotifications($notifications)
 						->withUser($user)
 						->withContinents($continents)
 						->withCountries($countries)

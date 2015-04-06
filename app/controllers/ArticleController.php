@@ -8,6 +8,7 @@ use KuraStar\Storage\Article\ArticleRepository as Article;
 use KuraStar\Storage\User\UserRepository as User;
 use KuraStar\Storage\Favorite\FavoriteRepository as Favorite;
 use KuraStar\Storage\Facebook\FacebookRepository as FacebookUser;
+use KuraStar\Storage\Notification\NotificationRepository as Notification;
 
 class ArticleController extends BaseController{
 
@@ -19,9 +20,9 @@ class ArticleController extends BaseController{
 	protected $favorite;
 	protected $fbuser;
 	protected $oauth;
+	protected $notification;
 
-	public function __construct(Country $country, Category $category, Continent $continent, Article $article, User $user, Favorite $favorite, FacebookUser $fbuser){
-		
+	public function __construct(Country $country, Category $category, Continent $continent, Article $article, User $user, Favorite $favorite, FacebookUser $fbuser, Notification $notification){
 		$this->country = $country;
 		$this->category = $category;
 		$this->continent = $continent;
@@ -30,6 +31,7 @@ class ArticleController extends BaseController{
 		$this->favorite = $favorite;
 		$this->fbuser = $fbuser;
 		$this->oauth = new Hybrid_Auth(app_path().'/config/fb_auth.php');
+		$this->notification = $notification;
 
 	}
 
@@ -118,9 +120,17 @@ class ArticleController extends BaseController{
 	public function favorite(){
 		$input = Input::all();
 		$article = $this->article->getById($input['article']);
+		$data = [];
 		if($article != NULL){
 			if($input['status'] == 'favorite'){
-				$favorite = $this->favorite->store($input['article'], $input['user']);
+				$from = $this->user->getUserById(\Auth::user()->CURATER_ID);
+				$message = "<a href='/user/profile/{$from->CURATER_ID}'>".$from->CURATER."</a> favorited your <a href='/article/".$input['article']."/view'>Article</a>";
+				$data = ['to' => $article->CURATER_ID, 'from' => $input['user'],
+				'message' => $message];
+				$notification = $this->notification->store($data);
+				if($notification){
+					$favorite = $this->favorite->store($input['article'], $input['user']);
+				}
 			}
 			else{
 				$favorite = $this->favorite->delete($input['article'], $input['user']);

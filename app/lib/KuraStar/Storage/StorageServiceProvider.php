@@ -33,6 +33,10 @@ class StorageServiceProvider extends ServiceProvider{
 				'KuraStar\Storage\Facebook\FacebookRepository',
 				'KuraStar\Storage\Facebook\EloquentFacebookRepository'
 			);
+		$this->app->bind(
+				'KuraStar\Storage\Notification\NotificationRepository',
+				'KuraStar\Storage\Notification\EloquentNotificationRepository'
+			);
 	}
 }
 
