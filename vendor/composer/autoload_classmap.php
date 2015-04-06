@@ -43,6 +43,7 @@ return array(
     'CreateCurationTable' => $baseDir . '/app/database/migrations/2015_01_09_024124_create_curation_table.php',
     'CreateFavoriteTable' => $baseDir . '/app/database/migrations/2015_02_12_223544_create_favorite_table.php',
     'CreateFbUsersTable' => $baseDir . '/app/database/migrations/2015_03_05_234358_create_fb_users_table.php',
+    'CreateNotificationsTable' => $baseDir . '/app/database/migrations/2015_04_06_013745_create_notifications_table.php',
     'Crypt_AES' => $vendorDir . '/phpseclib/phpseclib/phpseclib/Crypt/AES.php',
     'Crypt_Base' => $vendorDir . '/phpseclib/phpseclib/phpseclib/Crypt/Base.php',
     'Crypt_Blowfish' => $vendorDir . '/phpseclib/phpseclib/phpseclib/Crypt/Blowfish.php',
