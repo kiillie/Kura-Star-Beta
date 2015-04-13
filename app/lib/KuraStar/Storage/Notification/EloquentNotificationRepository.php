@@ -15,7 +15,7 @@ class EloquentNotificationRepository implements NotificationRepository{
 	}
 
 	public function getByUserId($id){
-		$notifications = Notification::where('TO_ID', '=', $id)->get();
+		$notifications = Notification::where('TO_ID', '=', $id)->where('STATUS', '=', 0)->orderBy('REGISTER_DATE', 'DESC')->get();
 
 		return $notifications;
 	}

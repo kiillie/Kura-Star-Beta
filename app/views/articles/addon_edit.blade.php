@@ -12,7 +12,7 @@ if($addon['type'] == 'text'){
 					'<input type="button" value="Add" class="btn btn-default add" onclick="editItem(\'{{$addon["li"]}}\', \'{{$addon["type"]}}\', \'{{$addon["kind"]}}\')"/><input type="button" class="btn btn-default cancel" onclick="cancel_add(\''+li+'\', \''+type+'\', \''+kind+'\')" value="Cancel"/>'+
 					'<input type="hidden" class="type" value="'+li+'">'+
 					'{{Form::close()}}';
-	$("ul.sortable li[value='"+li+"'] .add-item-area").append("<div class='edit-area'>"+content+"</div>");
+	$("ul.sortable li[value='"+li+"'] .add-item-area").html("<div class='edit-area'>"+content+"</div>");
 </script>
 <?php
 }
@@ -44,7 +44,7 @@ else if($addon['type'] == 'picture'){
 					'<div class="url-img">'+
 					'<input type="text" class="form-control imgurl" name="picture" placeholder="Url of the Image"/>'+
 					'<input type="submit" class="btn btn-default url-check" value="Check" onclick="extract_image(\''+li+'\', \''+type+'\', \''+kind+'\')" />'+
-					'<input type="button" class="btn btn-default url-cancel" value="Cancel">'+
+					'<input type="button" class="btn btn-default url-cancel" value="Cancel" onclick="cancel_add(\''+li+'\', \''+type+'\', \''+kind+'\')">'+
 					'</div>'+
 					'<a href="javascript:void(0)" class="img-anchor a-url" onclick="select_img_type(\''+li+'\', \''+type+'\', \''+kind+'\')">Upload an Image</a><br/><br/>'+
 					'<a href="javascript:void(0)" class="search-anchor"><span class="glyphicon glyphicon-search"></span> Search for image</a>'+
@@ -57,7 +57,7 @@ else if($addon['type'] == 'picture'){
 					'</div>'+
 					'<input type="hidden" class="img-hid" value="'+alt+'"/>'+
 					'{{Form::close()}}';
-	$("ul.sortable li[value='"+li+"'] .add-item-area").append("<div class='edit-area'>"+content+"</div>");
+	$("ul.sortable li[value='"+li+"'] .add-item-area").html("<div class='edit-area'>"+content+"</div>");
 	count_image();
 </script>
 <?php
@@ -83,7 +83,7 @@ else if($addon['type'] == 'reference'){
 					'{{Form::close()}}'+
 					'</div>';
 
-	$("ul.sortable li[value='"+li+"'] .add-item-area").append("<div class='edit-area'>"+content+"</div>");
+	$("ul.sortable li[value='"+li+"'] .add-item-area").html("<div class='edit-area'>"+content+"</div>");
 </script>
 <?php	
 }
@@ -109,7 +109,7 @@ else if($addon['type'] == 'link'){
 					'</div>'+
 					'{{Form::close()}}';
 
-	$("ul.sortable li[value='"+li+"'] .add-item-area").append("<div class='edit-area'>"+content+"</div>");
+	$("ul.sortable li[value='"+li+"'] .add-item-area").html("<div class='edit-area'>"+content+"</div>");
 </script>
 <?php
 }
@@ -134,7 +134,7 @@ else if($addon['type'] == 'video'){
 					'</div>'+
 					'</div>'+
 					'{{Form::close()}}';
-		$("ul.sortable li[value='"+li+"'] .add-item-area").append("<div class='edit-area'>"+content+"</div>");
+		$("ul.sortable li[value='"+li+"'] .add-item-area").html("<div class='edit-area'>"+content+"</div>");
 </script>
 <?php
 }
@@ -157,7 +157,7 @@ else if($addon['type'] == 'tag'){
 					'<input type="button" value="Add" class="btn btn-default add" onclick="editItem(\'{{$addon["li"]}}\', \'{{$addon["type"]}}\', \'{{$addon["kind"]}}\')"/><input type="button" class="btn btn-default cancel" onclick="cancel_add(\''+li+'\', \''+type+'\', \''+kind+'\')" value="Cancel"/>'+
 					'{{Form::close()}}';
 
-	$("ul.sortable li[value='"+li+"'] .add-item-area").append("<div class='edit-area'>"+content+"</div>");
+	$("ul.sortable li[value='"+li+"'] .add-item-area").html("<div class='edit-area'>"+content+"</div>");
 </script>
 <?php
 }

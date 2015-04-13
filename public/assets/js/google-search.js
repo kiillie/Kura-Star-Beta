@@ -135,6 +135,21 @@ function add_google_image(res){
           }, 1000);
         }
       });
+      count_image();
+      addonHovered(type, kind);
+    }
+    else if(kind == 'main'){
+      $.post('/addon/picture', 
+        {picture : res}).done(function(saved){
+          $.post('/article/image',
+          {
+            cur_id : $(".article .cur-id").val(),
+            googleImage: saved
+          }).done(function(img){
+            $(".article-details .art-default-img img").attr("src", saved);
+            $(".article-details .google-img").val(saved);
+          });
+        });
     }
     else{
     $.post('/addon/picture', 
@@ -165,9 +180,9 @@ function add_google_image(res){
             insert_addon();
           }, 1000);
         });
-      }
       count_image();
       addonHovered(type, kind);
+      }
 }
 $(document).ready(function(){
   $(".img-srch .img-text").on('keyup',function(){

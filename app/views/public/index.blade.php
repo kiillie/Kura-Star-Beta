@@ -1,136 +1,162 @@
 @extends('../layouts.main')
 @section('content')
-<script src="/assets/js/custom.js"></script>
-<div class="menu-header">
-	<div class="header-slide">
-		<div class="header">
-			<ul class="bxslider">
-				<li><img src="/assets/images/header/header1.jpg" /></li>
-				<li><img src="/assets/images/header/header2.jpg" /></li>
-				<li><img src="/assets/images/header/header3.jpg" /></li>
-			</ul>
-		</div>
-		<div class="container hidden-xs">
-			<div class="search-form">
-				<div class="head-search">
-					{{Form::open(['name'=>'search', 'role'=>'form', 'method'=>'post', 'route'=>'article.search'])}}
-					<div class="country">
-
-							<div class="dropdown">
-					       		<button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"><span class="val-select">Select A Country</span> <span class="caret"></span></button>
-					        	<input type="hidden" class="sel-id ctry" name="ctry-sel"/>
-					        	<ul class="dropdown-menu nav-ctry" role="menu">
-					        		@foreach($continents as $continent)
-					        			<li class="disabled">{{$continent->CONTINENT_NAME}}</li>
-							    		@foreach($countries as $country)
-							    			@if($country->CONTINENT_ID == $continent->CONTINENT_ID)
-							    				<li class="item" value="{{$country->COUNTRY_ID}}">{{$country->COUNTRY_NAME}}</li>
-							    			@endif
-							    		@endforeach
-							    	@endforeach
-						    	</ul>
-						    </div>
-						</div>
-						<div class="category">
-							<div class="dropdown">
-						    	<button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"><span class="val-select">Select A Category</span> <span class="caret"></span></button>
-					        	<input type="hidden" class="sel-id cat" name="cat-sel" />
-					        	<ul class="dropdown-menu nav-cat" role="menu">
-									@foreach($categories as $category)
-										<li class="item" value="{{$category->CATEGORY_ID}}">{{$category->CATEGORY_NAME}}</li>
-									@endforeach
-						    	</ul>
-						    </div>
-						</div>
-						{{Form::close()}}
-						<div class="search-btn">
-							<button class="form-control search"/>Search</button>
-						</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<div class="container main">
-	<div class="row">
-		<div class="col-md-2 hidden-xs cat-sidebar">
-			@include('articles.leftbar')
-			@section('leftbar')
-			@show
-		</div>
-		<div class="col-md-7 col-xs-12 latest">
-			@if(count($articles) != 0)
-				@foreach($articles as $article)
-					<div class="latest-group">
-						<div class="row">
-							<div class="col-md-2 col-xs-6">
-								@if($article->CURATION_IMAGE == "")
-									<a href="{{URL::route('article.view', $article->CURATION_ID)}}"><img src="/assets/images/article-default.png" alt="Name" /></a>
-								@else
-									<a href="{{URL::route('article.view', $article->CURATION_ID)}}"><img src="{{$article->CURATION_IMAGE}}" alt="Name" /></a>
-								@endif
-							</div>
-							<div class="col-md-8 col-xs-12">
-								<h3><a href="{{URL::route('article.view', $article->CURATION_ID)}}">{{$article->CURATION_TITLE}}</a></h3>
-								<hr></hr>
-								<p>{{$article->CURATION_DESCRIPTION}}</p>
-							</div>
-							<div class="col-md-2 user-detail col-xs-12">
-								<?php
-									$exist = strpos($article->CURATER_ID, 'fb');
-									if($exist !== false){
-										?>
-											@foreach($fbusers as $fbuser)
-												@if($fbuser->CURATER_ID == $article->CURATER_ID)
-													<span class="hidden-xs"><a href="{{URL::route('user.profile', $article->CURATER_ID)}}">{{$fbuser->CURATER}}</a></span>
-													<span class="visible-xs"><i>- <a href="{{URL::route('user.profile', $article->CURATER_ID)}}">{{$fbuser->CURATER}}</a></i></span>
-												@endif
-											@endforeach
-									<?php
-									}
-									else{
-								?>
-									@foreach($users as $raw)
-										@if($raw->CURATER_ID == $article->CURATER_ID)
-											<span class="hidden-xs"><a href="{{URL::route('user.profile', $article->CURATER_ID)}}">{{$raw->CURATER}}</a></span>
-											<span class="visible-xs"><i>- <a href="{{URL::route('user.profile', $article->CURATER_ID)}}">{{$raw->CURATER}}</a></i></span>
-										@endif
-									@endforeach
-								<?php
-									}
-								?>
-							</div>
-						</div>
-						<div class="count-cat">
-							<ul class="list-inline">
-								@foreach($countries as $country)
-									@if($country->COUNTRY_ID == $article->COUNTRY_ID)
-										<li class="country"><a href="{{URL::route('article.bycountry', $article->COUNTRY_ID)}}">{{$country->COUNTRY_NAME}}</a></li>
-									@endif
-								@endforeach
-								@foreach($categories as $category)
-									@if($category->CATEGORY_ID == $article->CATEGORY_ID)
-										<li class="category"><a href="{{URL::route('article.bycategory', $article->CATEGORY_ID)}}">{{$category->CATEGORY_NAME}}</a></li>
-									@endif
-								@endforeach
-							</ul>
-						</div>
+<!--------------------start main banner ------------------------->	
+				<div class="mainbanner">
+					<div class="flexslider">
+						<ul class="slides">
+							<li><img src="/assets/images/new/main_image.jpg" /></li>
+							<li><img src="/assets/images/new/main_image2.jpg" /></li>
+						</ul>
 					</div>
+					<div class="defaultWidth center searchwrap">
+					{{Form::open(['name'=>'search', 'role'=>'form', 'method'=>'post', 'route'=>'article.search'])}}
+						<div class="searchwrap-inner">
+							<div class="transwrap">
+								<input id="cty" type="text" value="Select a Country" readonly />
+							</div>
+							<div class="transwrap">
+								<input id="cat" type="text" value="Select a Category" readonly />
+							</div>
+							<input type="submit" class="search-btn" value="" />
+							
+							<div class="dropcountry">
+							<div class="pointer"></div>
+							
+							<div class="mCustomScrollbar light" data-mcs-theme="minimal-dark">
+							
+							<div class="droplistcountry">
+								<input type="hidden" class="sel-id ctry" name="ctry-sel"/>
+								@foreach($continents as $continent)
+									<div>
+								        <h4>{{$continent->CONTINENT_NAME}}</h4>
+								        <ul>
+										@foreach($countries as $country)
+											@if($country->CONTINENT_ID == $continent->CONTINENT_ID)
+												<li class="item" value="{{$country->COUNTRY_ID}}"><a>{{$country->COUNTRY_NAME}}</a></li>
+											@endif
+										@endforeach
+										</ul>
+									</div>
+								@endforeach
+								<div></div>
+							</div>
+		
+							</div>
+							
+							</div>
+							
+							
+							<div class="dropcategory">
+							<div class="pointer"></div>
+							
+							<div class="mCustomScrollbar light" data-mcs-theme="minimal-dark">
+								
+							
+								<div class="droplistcategory">
+									<input type="hidden" class="sel-id cat" name="cat-sel" />
+									<div>
+										<ul>
+											@foreach($categories as $category)
+											<li class="item" value="{{$category->CATEGORY_ID}}"><a>{{$category->CATEGORY_NAME}}</a></li>
+											@endforeach
+										</ul>
+									</div>
+									<div></div>
+								</div>
+							
+							
+							
+							
+							</div>
+							
+							</div>
+							
+						</div>
+					{{Form::close()}}
+					</div>
+				</div>
+<!--------------------end main banner ------------------------->					
+				
+				<!-------------->
+<div class="defaultWidth center clear-auto bodycontent">
+<div class="contentbox">
+<h2 class="whatsnew">What's New <span>Check the list below for our latest updates</span></h2>
+<ul class="post-list-thumb">
+@if(count($articles) != 0)
+@foreach($articles as $article)
+	<li>
+		<a href class="post-list-thumb-wrap">
+			@if($article->CURATION_IMAGE == "")
+				<div class="postimg" style="background-image:url(/assets/images/article-default.png);"></div>
+			@else
+				<div class="postimg" style="background-image:url({{$article->CURATION_IMAGE}});"></div>
+			@endif
+			
+			<div class="labels">
+			@foreach($countries as $country)
+				@if($country->COUNTRY_ID == $article->COUNTRY_ID)
+					<span class="countrylabel"><i class="fa fa-map-marker"></i> {{$country->COUNTRY_NAME}}</span>
+				@endif
+			@endforeach
+			@foreach($categories as $category)
+				@if($category->CATEGORY_ID == $article->CATEGORY_ID)
+					<span class="catlabel"><i class="fa fa-hotel"></i> {{$category->CATEGORY_NAME}}</span>
+				@endif
+			@endforeach
+			</div>
+			<div class="desc">
+				<h2>{{$article->CURATION_TITLE}}</h2>
+				<p>
+					{{$article->CURATION_DESCRIPTION}}
+				</p>
+			</div>
+			<div class="infobelow">
+				<span class="smallpoints smallpoints-left">{{$article->VIEWS}} Views</span>
+				<div class="profile-thumb-wrap">
+					<?php
+						$exist = strpos($article->CURATER_ID, 'fb');
+						if($exist !== false){
+					?>
+						@foreach($fbusers as $fbuser)
+							@if($fbuser->CURATER_ID == $article->CURATER_ID)
+								<img src="{{$fbuser->CURATER_IMAGE}}" />
+								<div class="curator">
+								<span>CURATOR</span><br />
+									<h3>{{$fbuser->CURATER}}</h3>
+								</div>
+							@endif
+						@endforeach
+					<?php
+						}
+						else{
+					?>
+					@foreach($users as $raw)
+						@if($raw->CURATER_ID == $article->CURATER_ID)
+								<img src="{{$raw->CURATER_IMAGE}}" />
+								<div class="curator">
+								<span>CURATOR</span><br />
+									<h3>{{$raw->CURATER}}</h3>
+								</div>
+						@endif
+					@endforeach
+					<?php
+					}
+					?>
+					
+								</div>
+							</div>
+							</a>
+					</li>
 				@endforeach
-				<div class="pagination">
+				</ul>
+				<!----- start pagination ------>
+					<div class="pagination">
 						{{$articles->links()}}
 					</div>
-			@else
-				<div class="alert alert-danger">
+				<!----- start pagination ------>
+				@else
 					<span>There are no articles yet.</span>
-				</div>
-			@endif
-		</div>
-		<div class="col-md-3 right-bar hidden-xs">
-			@include('articles.rightbar')
-			@section('rightbar')
-			@show
-		</div>
-	</div>
+				@endif
+	
 </div>
 @stop

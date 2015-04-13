@@ -398,12 +398,11 @@ function addItem(li, type, kind){
 
 function cancel_add(li, type, kind){
 	if(kind == 'new'){
-		
 		if(type == 'picture'){
 			//
 			var image = $(".new-addon .new-item .def-img img").attr("src");
 			if(image != "/assets/images/article-default.png"){
-
+				$(".new-addon .new-item").html("");
 			}
 			else{
 				$(".new-addon .new-item").html("");
@@ -420,6 +419,7 @@ function cancel_add(li, type, kind){
 		$("ul.sortable li[value='"+li+"'] .add-inner").show();
 		show_appended_item_area(li);
 	}
+	addonHovered(type, kind);
 }
 
 function editItem(li, type, kind){
@@ -571,7 +571,7 @@ function editItem(li, type, kind){
 		$(".loader").show();
 		var content = 	'<div class="item-added-container">'+
 						'<div class="item-inner tag">'+
-						text+
+						'<div class="tag">'+text+
 						'</div>'+
 						'<div class="editlist">'+
 						'<button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button>'+

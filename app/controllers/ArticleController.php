@@ -103,7 +103,7 @@ class ArticleController extends BaseController{
 				->withArticle($article);
 		}
 	}
-
+	
 	public function publish(){
 		$publish = $this->article->publish(Input::all());
 		$input = Input::all();

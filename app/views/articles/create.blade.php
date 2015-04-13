@@ -156,15 +156,56 @@ $(document).ready(function(){
 				</div>
 			</div>
 			<?php
+			try{
 				$html = file_get_contents(public_path().'/assets/articles/'.$article->CURATION_ID.".php");
 				$dom = new DOMDocument();
 				$html = trim($html);
 				if($html == "" && $article->CURATION_DETAIL != ""){
 					$dom->loadHtml(html_entity_decode($article->CURATION_DETAIL));
-					foreach($dom->getElementsByTagName("li") as $li){
-						//echo $li->nodeValue;
+					$length = $dom->getElementsByTagName("li")->length;
+					$classes = [];
+					$c = 0;
+
+					foreach($dom->getElementsByTagName('div') as $div){
+						if($div->getAttribute('class') == 'image-container'){
+							$classes[$c] = "picture";
+						}
+						else{
+							$classes[$c] = $div->getAttribute('class');
+						}
+						$c++;
+						echo $div->getAttribute('class');
 					}
+					$xpath = new DOMXpath($dom); 
+					$divTag = $xpath->evaluate("//li//div"); 
+					$content = "";
+					print_r($classes);
+					for($i = 0; $i < $length; $i++){
+
+						$divcontent = $divTag->item($i);
+						$content .= '<li class="ui-state-default added-addon">';
+						$content .= '<div class="item-added-container">';
+						$content .= '<div class="item-inner text">';
+						$content .= $dom->saveXML($divcontent);
+						$content .= '</div>';
+						$content .= '<div class="editlist">';
+						$content .= '<button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button>';
+						$content .= '</div>';
+						$content .= '</div>';
+						$content .= '<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div>';
+						$content .= '<input type="hidden" class="type" value="'.$classes[$i].'">';
+						$content .= '</li>';
+						
+						//echo $dom->saveXML($divcontent);
+					}
+					$file = fopen(public_path().'/assets/articles/'.$article->CURATION_ID.".php", "w");
+					fwrite($file, $content);
+					fclose($file);
 				}
+			}
+			catch(Exception $e){
+				fopen(public_path().'/assets/articles/'.$article->CURATION_ID.".php", "w");
+			}
 			?>
 				<textarea name="inner-detail" class="detail-li" style="display:none;">{{$article->CURATION_DETAIL}}</textarea>
 			{{Form::close()}}
@@ -178,7 +219,9 @@ $(document).ready(function(){
 					</div>
 					<div class="col-md-8 img-btns">
 						<input type="submit" class="btn btn-default art-url-submit" name="art-submit" value="Set">
-						<a href="javascript:void(0)" class="disp-def" onclick="select_type_img()">Click to Upload an Image</a>
+						<a href="javascript:void(0)" class="disp-def" onclick="select_type_img()">Click to Upload an Image</a>&nbsp;&nbsp;&nbsp;
+						<a href="javascript:void(0)" onclick="add_img_class(0, 'picture', 'main')" data-toggle="modal" data-target="#imageSearch"><span class="glyphicon glyphicon-search"></span> Search for Image</a>
+						<input type="hidden" class="google-img" name="google-main" />
 					</div>
 					@if(Session::has('curation'))
 							<input type="hidden" class="cur-id" name="cur_id" value="{{Session::get('curation')}}">

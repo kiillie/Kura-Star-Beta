@@ -15,7 +15,6 @@ class EloquentArticleRepository implements ArticleRepository{
 	}
 
 	public function insertImage($input){
-
 		$imgname = str_random(40);
 		if(isset($input['imgUp'])){
 			$upload = $input['imgUp'];
@@ -36,32 +35,47 @@ class EloquentArticleRepository implements ArticleRepository{
 					->update(['CURATION_IMAGE' => $cur_img ]);
 			}
 		}
-		else if($input['imageUrl'] != ""){
-			$url = parse_url($input['imageUrl']);
-			$parts = pathinfo($url['path']);
-			$filename = $parts['filename'].".".$parts['extension'];
-			$path = public_path()."\\assets\\images\\attachments\\".$filename;
-			$file = "/assets/images/attachments/".$filename;
-			if(file_exists($path)){
-				$rand = str_random(7);
-				$filename = $parts['filename']."_".$rand.".".$parts['extension'];
+		else if(isset($input['imageUrl'])){
+			if($input['imageUrl'] != ""){
+				$url = parse_url($input['imageUrl']);
+				$parts = pathinfo($url['path']);
+				$filename = $parts['filename'].".".$parts['extension'];
 				$path = public_path()."\\assets\\images\\attachments\\".$filename;
 				$file = "/assets/images/attachments/".$filename;
-			}
-			if(fopen($path, "w")){
-				if(File::copy($input['imageUrl'], $path)){
-					$picture = Article::where('CURATION_ID', '=', $input['cur_id'])->first();
-					if($picture['CURATION_IMAGE'] != ""){
-						if(unlink(public_path().$picture['CURATION_IMAGE'])){
+				if(file_exists($path)){
+					$rand = str_random(7);
+					$filename = $parts['filename']."_".$rand.".".$parts['extension'];
+					$path = public_path()."\\assets\\images\\attachments\\".$filename;
+					$file = "/assets/images/attachments/".$filename;
+				}
+				if(fopen($path, "w")){
+					if(File::copy($input['imageUrl'], $path)){
+						$picture = Article::where('CURATION_ID', '=', $input['cur_id'])->first();
+						if($picture['CURATION_IMAGE'] != ""){
+							if(unlink(public_path().$picture['CURATION_IMAGE'])){
+								$article = Article::where('CURATION_ID', '=', $input['cur_id'])
+									->update(['CURATION_IMAGE' => $file]);
+							}
+						}
+						else{
 							$article = Article::where('CURATION_ID', '=', $input['cur_id'])
-								->update(['CURATION_IMAGE' => $file]);
+									->update(['CURATION_IMAGE' => $file]);
 						}
 					}
-					else{
-						$article = Article::where('CURATION_ID', '=', $input['cur_id'])
-								->update(['CURATION_IMAGE' => $file]);
-					}
 				}
+			}
+		}
+		else if(isset($input['googleImage'])){
+			$picture = Article::where('CURATION_ID', '=', $input['cur_id'])->first();
+			if($picture['CURATION_IMAGE'] != ""){
+				if(unlink(public_path().$picture['CURATION_IMAGE'])){
+					$article = Article::where('CURATION_ID', '=', $input['cur_id'])
+								->update(['CURATION_IMAGE' => $input['googleImage']]);
+				}
+			}
+			else{
+				$article = Article::where('CURATION_ID', '=', $input['cur_id'])
+					->update(['CURATION_IMAGE' => $input['googleImage']]);
 			}
 		}
 		return $article;
@@ -88,7 +102,7 @@ class EloquentArticleRepository implements ArticleRepository{
 
 	public function allArticles(){
 		return Article::where('CURATION_STATUS', '=', 1)
-						->paginate(10);
+						->paginate(12);
 	}
 
 	public function show($id){
@@ -136,19 +150,19 @@ class EloquentArticleRepository implements ArticleRepository{
 		return Article::where('COUNTRY_ID', '=', $country)
 						->where('CATEGORY_ID', '=', $category)
 						->where('CURATION_STATUS', '=', 1)
-						->get();
+						->paginate(12);
 	}
 
 	public function getByCountry($country){
 		return Article::where('COUNTRY_ID', '=', $country)
 						->where('CURATION_STATUS', '=', 1)
-						->get();
+						->paginate(12);
 	}
 
 	public function getByCategory($category){
 		return Article::where('CATEGORY_ID', '=', $category)
 						->where('CURATION_STATUS', '=', 1)
-						->get();
+						->paginate(12);
 	}
 
 	public function countCategoryByCountry($country, $category){

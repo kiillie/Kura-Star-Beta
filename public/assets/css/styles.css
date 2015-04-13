@@ -477,7 +477,7 @@
 	display: inline-block;
 }
 .url-setting input[name='art-submit']{
-	vertical-align: top;
+	vertical-align: middle;
 }
 .art-addons .ui-state-active{
 	background: none;
