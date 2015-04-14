@@ -7,6 +7,13 @@ Route::get('/', [
 	'as'	=>	'index'
 ]);
 
+/****  DUMMY   ****/
+Route::get('/index', [
+	'uses'	=>	'PublicController@trial',
+	'as'	=>	'trial'
+]);
+/****  END   ****/
+
 Route::get('registration', [
 	'uses'	=>	'PublicController@registration',
 	'as'	=>	'registration'
@@ -18,7 +25,7 @@ Route::post('user/register', [
 ]);
  
 Route::get('user/profile/{id}', [
-	'uses'	=>	'UserController@profile',
+	'uses'	=>	'ArticleController@showArticlesByUser',
 	'as'	=>	'user.profile'
 ]);
 

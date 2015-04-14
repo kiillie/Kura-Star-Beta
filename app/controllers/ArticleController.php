@@ -237,6 +237,8 @@ class ArticleController extends BaseController{
 
 	public function showArticlesByUser($id){
 		$articles = $this->article->getByUser($id);
+		$users = $this->user->allUsers();
+		$fbusers = $this->fbuser->getAllUsers();
 		$exist = strpos($id, 'fb');
 		$profile = "";
 		if($exist !== false){
@@ -252,6 +254,13 @@ class ArticleController extends BaseController{
 		$continents = $this->continent->show();
 		$count = $this->article->countArticlesByUser($id);
 		$favorites = $this->favorite->count_favorite_by_user($id);
+		
+		$ranking = $this->article->getByRanking();
+		$ctry_rank = [];
+		foreach($countries as $country){
+			$ctry_rank [$country->COUNTRY_ID] = $this->article->countByCountry($country->COUNTRY_ID);
+		}
+		
 		return View::make('users.articles')
 				->withContinents($continents)
 				->withCountries($countries)
@@ -260,6 +269,10 @@ class ArticleController extends BaseController{
 				->withUser($user)
 				->withCount($count)
 				->withFavorites($favorites)
+				->withUsers($users)
+				->withFbusers($fbusers)
+				->withRank($ranking)
+				->withCtryrank($ctry_rank)
 				->withProfile($profile);
 	}
 

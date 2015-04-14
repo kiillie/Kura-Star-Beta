@@ -4,7 +4,7 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="ja"> <!--<![endif]-->
     
-<!-- Mirrored from 10.20.150.92/template/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 10 Apr 2015 02:13:00 GMT -->
+<!-- Mirrored from 10.20.150.92/template/index.php by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 13 Apr 2015 04:21:48 GMT -->
 <head>
         <!-- Le Meta Config -->
         <meta charset="utf-8">
@@ -29,6 +29,7 @@
 		<link rel="stylesheet" href="/assets/css/new/jquery.mCustomScrollbar.css">
 		<link rel="stylesheet" href="/assets/css/new/flexslider.css">
 		<link rel="stylesheet" href="/assets/css/new/custom.css" />
+		<link rel="stylesheet" href="/assets/css/new/responsive.css" />
     </head>
 	<body>
 		<div class="box100 mainWrap">
@@ -37,12 +38,24 @@
 					<div class="defaultWidth center headwrap">
 						<a class="menu-sp"></a>
 						<div class="logo">
-							<a href="index-2.html"><img src="/assets/images/new/logo.png" alt="株式会社 デュナレイト" title="株式会社 デュナレイト" /></a>
+							<a href="{{URL::route('index')}}"><img src="/assets/images/new/logo.png" alt="株式会社 デュナレイト" title="株式会社 デュナレイト" /></a>
 						</div>
 						<div class="actions">
-							<a href="#"><img src="/assets/images/new/icon_login.png" />LOGIN</a>
-							<a href="#"><img src="/assets/images/new/icon_signup.png" />REGISTER</a>
-							<a href="#"><img src="/assets/images/new/icon_write.png" />POST</a>
+						@if(Hybrid_Auth::isConnectedWith('Facebook'))
+							<a href="{{URL::route('auth.logout')}}"><img src="/assets/images/new/icon_login.png" />LOGOUT</a>
+							<a href="{{URL::route('user.profile', 'fb'.$profile->identifier)}}"><img src="/assets/images/new/icon_signup.png" />{{$profile->displayName}}</a>
+							<a href="{{URL::route('article.insert')}}"><img src="/assets/images/new/icon_write.png" />POST</a>
+						@else
+							@if(Auth::check())
+								<a href="{{URL::route('logout')}}"><img src="/assets/images/new/icon_login.png" />LOGOUT</a>
+								<a href="{{URL::route('user.profile', Auth::user()->CURATER_ID)}}"><img src="/assets/images/new/icon_signup.png" />{{Auth::user()->CURATER}}</a>
+								<a href="{{URL::route('article.insert')}}"><img src="/assets/images/new/icon_write.png" />POST</a>
+							@else
+								<a href="{{URL::route('login')}}"><img src="/assets/images/new/icon_login.png" />LOGIN</a>
+								<a href="{{URL::route('registration')}}"><img src="/assets/images/new/icon_signup.png" />REGISTER</a>
+								<a href="{{URL::route('registration')}}"><img src="/assets/images/new/icon_write.png" />POST</a>
+							@endif
+						@endif
 						</div>
 					</div>
 				</div>
@@ -50,7 +63,7 @@
 					<div class="defaultWidth center menuwrap">
 						<ul class="menu">
 							<img src="/assets/images/new/pointer1.png" />
-							<li><a href="/"><i class="fa fa-home fa-2x"></i>&nbsp; HOME</a></li>
+							<li><a href="{{URL::route('index')}}" class="selected"><i class="fa fa-home fa-2x"></i>&nbsp; HOME</a></li>
 							<li><a href="{{URL::route('article.bycategory', 1)}}"><i class="fa fa-cutlery fa-2x"></i>&nbsp; GOURMET</a></li>
 							<li><a href="{{URL::route('article.bycategory', 2)}}"><i class="fa fa-music fa-2x"></i>&nbsp; LEISURE</a></li>
 							<li><a href="{{URL::route('article.bycategory', 3)}}"><i class="fa fa-briefcase fa-2x"></i>&nbsp; FASHION</a></li>
@@ -62,28 +75,15 @@
 					</div>
 				</div>
 	
-			<!-- content -->		      
+			<!-- content -->
+
 				@yield('content')
-			
-			<!---- start sidebar ---->
-					
-				@include('articles.rightbar')
-				@section('rightbar')
-				@show
-					
-			<!----- end sidebar ----------->
-					
-					
-				</div>
-				
 
 				<!----- start footer --------->
 				
-				
-				
 				<div class="block-footer1">
 					<div class="defaultWidth center clear-auto">
-						<a href="#" class="logofooter">
+						<a href="{{URL::route('index')}}" class="logofooter">
 							<img src="/assets/images/new/logo_gray.png" />
 						</a>
 						<div class="footermenu">
@@ -91,7 +91,7 @@
 							<a href="#">Privacy Policy</a>
 							<a href="#">Contact Us</a>
 							<a href="#">About Us</a>
-							<a href="/">Home</a>
+							<a href="#">Home</a>
 						</div>
 					</div>
 				</div>
@@ -99,17 +99,74 @@
 					<div class="defaultWidth center clear-auto block-footer2-wrap">
 						<div class="footcountry">
 							<h3 class="footlabel">Countries</h3>
+							<?php
+								$ctr = 0;
+								$rev = 0;
+							?>
 							@foreach($continents as $continent)
-							<div>
-								<h4>{{$continent->CONTINENT_NAME}}</h4>
-								<ul>
-									@foreach($countries as $country)
-										@if($continent->CONTINENT_ID == $country->CONTINENT_ID)
-											<li><a href="{{URL::route('article.bycountry', $country->COUNTRY_ID)}}"><img src="{{$country->FLAG_IMAGE}}" />{{$country->COUNTRY_NAME}}</a></li>
-										@endif
-									@endforeach
-								</ul>
-							</div>
+								@if($ctr == $rev)
+									@if($ctr == 4)
+										<div class="group2">
+											<div class="origdiv div100">
+												<div class="div50">
+													<h4>{{$continent->CONTINENT_NAME}}</h4>
+													<ul>
+														@foreach($countries as $country)
+															@if($continent->CONTINENT_ID == $country->CONTINENT_ID)
+																<li><a href="{{URL::route('article.bycountry', $country->COUNTRY_ID)}}"><img src="{{$country->FLAG_IMAGE}}" />{{$country->COUNTRY_NAME}}</a></li>
+															@endif
+														@endforeach
+													</ul>
+												</div>
+									@else
+										<div class="group2">
+											<div class="origdiv">
+												<h4>{{$continent->CONTINENT_NAME}}</h4>
+												<ul>
+													@foreach($countries as $country)
+														@if($continent->CONTINENT_ID == $country->CONTINENT_ID)
+															<li><a href="{{URL::route('article.bycountry', $country->COUNTRY_ID)}}"><img src="{{$country->FLAG_IMAGE}}" />{{$country->COUNTRY_NAME}}</a></li>
+														@endif
+													@endforeach
+												</ul>
+											</div>
+									@endif
+								@else
+									@if($ctr == 5)
+												<div class="div50">
+													<h4>{{$continent->CONTINENT_NAME}}</h4>
+													<ul>
+														@foreach($countries as $country)
+															@if($continent->CONTINENT_ID == $country->CONTINENT_ID)
+																<li><a href="{{URL::route('article.bycountry', $country->COUNTRY_ID)}}"><img src="{{$country->FLAG_IMAGE}}" />{{$country->COUNTRY_NAME}}</a></li>
+															@endif
+														@endforeach
+													</ul>
+												</div>
+											</div>
+										</div>
+									@else
+											<div class="origdiv">
+												<h4>{{$continent->CONTINENT_NAME}}</h4>
+												<ul>
+													@foreach($countries as $country)
+														@if($continent->CONTINENT_ID == $country->CONTINENT_ID)
+															<li><a href="{{URL::route('article.bycountry', $country->COUNTRY_ID)}}"><img src="{{$country->FLAG_IMAGE}}" />{{$country->COUNTRY_NAME}}</a></li>
+														@endif
+													@endforeach
+												</ul>
+											</div>
+										</div>
+									@endif
+								@endif
+								@if($ctr == $rev)
+									<?php
+										$rev = $rev+2;
+									?>
+								@endif
+								<?php
+									$ctr++;
+								?>
 							@endforeach
 						</div>
 						<div class="footcategory">
@@ -117,9 +174,13 @@
 							<div>
 								<h4>Menu</h4>
 								<ul>
-									@foreach($categories as $category)
-										<li><a href="{{URL::route('article.bycategory', $category->CATEGORY_ID)}}">{{$category->CATEGORY_NAME}}</a></li>
-									@endforeach
+									<li><a href="{{URL::route('article.bycategory', 1)}}"><i class="fa fa-cutlery"></i>&nbsp;Gourmet</a></li>
+									<li><a href="{{URL::route('article.bycategory', 2)}}"><i class="fa fa-music"></i>&nbsp;Leisure</a></li>
+									<li><a href="{{URL::route('article.bycategory', 3)}}"><i class="fa fa-briefcase"></i>&nbsp;Fashion</a></li>
+									<li><a href="{{URL::route('article.bycategory', 4)}}"><i class="fa fa-leanpub"></i>&nbsp;Study</a></li>
+									<li><a href="{{URL::route('article.bycategory', 5)}}"><i class="fa fa-usd"></i>&nbsp;Business</a></li>
+									<li><a href="{{URL::route('article.bycategory', 6)}}"><i class="fa fa-hotel"></i>&nbsp;Hotel</a></li>
+									<li><a href="{{URL::route('article.bycategory', 7)}}"><i class="fa fa-bell"></i>&nbsp;Buzz</a></li>
 								</ul>
 							</div>
 						</div>
@@ -132,14 +193,22 @@
 				
 		</div>
 		<script src="/assets/js/new/jquery.js"></script>
-		<script src="../../code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+		<script src="/assets/js/new/jquery-ui.js"></script>
 		<script src="/assets/js/new/jquery.mCustomScrollbar.concat.min.js"></script>
 		<script src="/assets/js/new/jquery.flexslider.js"></script>
 		<script src="/assets/js/new/script.js"></script>
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+		  ga('create', 'UA-60838164-1', 'auto');
+		  ga('send', 'pageview');
+		</script>
 
 	
 	</body>
 
-<!-- Mirrored from 10.20.150.92/template/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 10 Apr 2015 02:13:41 GMT -->
+<!-- Mirrored from 10.20.150.92/template/index.php by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 13 Apr 2015 04:22:38 GMT -->
 </html>
