@@ -121,7 +121,7 @@ class EloquentArticleRepository implements ArticleRepository{
 
 		if(\Auth::check()){
 			if($article->CURATER_ID != \Auth::user()->CURATER_ID){
-				$views = $views + 1;
+				$views = $views + 3;
 				$increment = Article::where('CURATION_ID', '=', $id)->update(['VIEWS' => $views]);
 
 				return $increment;
@@ -222,6 +222,12 @@ class EloquentArticleRepository implements ArticleRepository{
 		else{
 			return false;
 		}
+	}
+	
+	public function getArticlesOrderBy(){
+		$articles = Article::where('CURATION_STATUS', '=', 1)->groupBy('CURATER_ID')->orderBy(count('CURATER_ID'), 'DESC')->paginate(12);
+	
+		return $articles;
 	}
 
 }

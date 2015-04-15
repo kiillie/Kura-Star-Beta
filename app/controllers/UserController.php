@@ -132,7 +132,19 @@ class UserController extends BaseController{
 						->withProfile($profile);
 		}
 	}
-
+	
+	public function curators(){
+		$fbusers = $this->fbuser->getAllUsers();
+		$users = $this->user->allUsers();
+		
+		$curators = $this->article->getArticlesOrderBy();
+		
+		return View::make('users.curators')
+					->withFbusers($fbusers)
+					->withUsers($users)
+					->withCurators($curators);
+	}
+	
 	public function edit($id){
 		$countries = $this->country->showCountryByContinent();
 		$categories = $this->category->show();

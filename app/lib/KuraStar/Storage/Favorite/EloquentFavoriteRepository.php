@@ -20,7 +20,7 @@ class EloquentFavoriteRepository implements FavoriteRepository{
 	}
 
 	public function get_favorite_by_user($id){
-		$favorites = Favorite::where('CURATER_ID', '=', $id)->get();
+		$favorites = Favorite::where('CURATER_ID', '=', $id)->paginate(12);
 
 		return $favorites;
 	}

@@ -35,6 +35,8 @@ interface ArticleRepository{
 	public function countByCountry($country);
 
 	public function delete($id);
+	
+	public function getArticlesOrderBy();
 }
 
 ?>

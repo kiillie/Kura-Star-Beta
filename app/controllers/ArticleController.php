@@ -253,7 +253,8 @@ class ArticleController extends BaseController{
 		$categories = $this->category->show();
 		$continents = $this->continent->show();
 		$count = $this->article->countArticlesByUser($id);
-		$favorites = $this->favorite->count_favorite_by_user($id);
+		$favorites = $this->favorite->get_favorite_by_user($id);
+		$c_favorite = $this->favorite->count_favorite_by_user($id);
 		
 		$ranking = $this->article->getByRanking();
 		$ctry_rank = [];
@@ -268,6 +269,7 @@ class ArticleController extends BaseController{
 				->withArticles($articles)
 				->withUser($user)
 				->withCount($count)
+				->withCfavorite($c_favorite)
 				->withFavorites($favorites)
 				->withUsers($users)
 				->withFbusers($fbusers)
