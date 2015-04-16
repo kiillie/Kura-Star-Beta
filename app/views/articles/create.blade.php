@@ -164,9 +164,9 @@
 		</div>
 		<div class="createbtn">
 			@if(Session::has('curation'))
-				<a class="btn btn-default preview" href="{{URL::route('article.preview', Session::get('curation'))}}"> Preview </a>
+				<input class="btn btn-default preview" href="{{URL::route('article.preview', Session::get('curation'))}}" value="Preview" />
 			@else
-				<a class="btn btn-default preview" href="{{URL::route('article.preview', $curation)}}"> Preview </a>
+				<input class="btn btn-default preview" href="{{URL::route('article.preview', $curation)}}" value="Preview" />
 			@endif
 			<input type="submit" class="btn btn-default save" onclick="validate_article()" value="Save" />
 			@if(Session::has('curation'))
