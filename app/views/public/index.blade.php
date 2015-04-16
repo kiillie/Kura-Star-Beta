@@ -6,7 +6,7 @@
 	<!-------------->
 	<div class="defaultWidth center clear-auto bodycontent bodycontent-index ">
 		<div class="contentbox">
-			<h2 class="whatsnew">What's New <span>Check the list below for our latest updates</span></h2>
+			<h2 class="whatsnew">What's New <span>ー最新情報ー</span></h2>
 			@if(count($articles) != 0)
 				<ul class="post-list-thumb">
 					@foreach($articles as $article)		
