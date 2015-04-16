@@ -235,9 +235,15 @@ Route::get('authlogout', [
 	'uses'	=> 'FacebookController@getLogout',
 	'as'	=>	'auth.logout'
 ]);
+
 Route::get('/privacy-policy', [
-	'uses'	=>	'PublicController@privacypolicy', //Specify the controller and and the name of the function in the controller
+	'uses'	=>	'PublicController@privacypolicy',
 	'as'	=>	'privacy-policy'
+]);
+
+Route::get('/terms-of-services', [
+	'uses'	=>	'PublicController@termsofservices',
+	'as'	=>	'terms-of-services'
 ]);
 
 ?>

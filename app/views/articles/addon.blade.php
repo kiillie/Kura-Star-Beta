@@ -12,7 +12,7 @@ if($addon['type'] == 'text'){
 					'<input type="hidden" class="type" value="'+li+'">'+
 					'{{Form::close()}}';
 	if(kind == 'new'){
-		$('.new-addon .new-item').html(content);
+		$('#text .new-addon .new-item').html(content);
 	}
 	else{
 		$("ul.sortable li[value='"+li+"'] .append-new-item").html(content);
@@ -59,7 +59,7 @@ else if($addon['type'] == 'picture'){
 					'{{Form::close()}}';
 
 	if(kind == 'new'){
-		$('.new-addon .new-item').html(content);
+		$('#picture .new-addon .new-item').html(content);
 	}
 	else{
 		$("ul.sortable li[value='"+li+"'] .append-new-item").html(content);
@@ -84,7 +84,7 @@ $(".loader").hide();
 					'</div>';
 
 	if(kind == 'new'){
-		$('.new-addon .new-item').html(content);
+		$('#reference .new-addon .new-item').html(content);
 	}
 	else{
 		$("ul.sortable li[value='"+li+"'] .append-new-item").html(content);
@@ -117,7 +117,7 @@ else if($addon['type'] == 'link'){
 					'{{Form::close()}}';
 
 	if(kind == 'new'){
-		$('.new-addon .new-item').html(content);
+		$('#link .new-addon .new-item').html(content);
 	}
 	else{
 		$("ul.sortable li[value='"+li+"'] .append-new-item").html(content);
@@ -148,7 +148,7 @@ else if($addon['type'] == 'twitter'){
 				  	'<input type="button" class="btn btn-default" onclick="cancel_add(\''+li+'\', \''+type+'\', \''+kind+'\')" value="Cancel">'+
 				  	'{{Form::close()}}';
 	if(kind == 'new'){
-		$('.new-addon .new-item').html(content);
+		$('#twitter .new-addon .new-item').html(content);
 	}
 	else{
 		$("ul.sortable li[value='"+li+"'] .append-new-item").html(content);
@@ -183,7 +183,7 @@ else if($addon['type'] == 'video'){
 					'{{Form::close()}}';
 
 	if(kind == 'new'){
-		$('.new-addon .new-item').html(content);
+		$('#twitter .new-addon .new-item').html(content);
 	}
 	else{
 		$("ul.sortable li[value='"+li+"'] .append-new-item").html(content);
@@ -209,7 +209,7 @@ else if($addon['type'] == 'tag'){
 					'<input type="button" value="Add" class="btn btn-default add" onclick="addItem(\'{{$addon["li"]}}\', \'{{$addon["type"]}}\', \'{{$addon["kind"]}}\')"/><input type="button" class="btn btn-default cancel" onclick="cancel_add(\'{{$addon["li"]}}\', \'{{$addon["type"]}}\', \'{{$addon["kind"]}}\')" value="Cancel"/>'+
 					'{{Form::close()}}';
 	if(kind == 'new'){
-		$('.new-addon .new-item').html(content);
+		$('#tag .new-addon .new-item').html(content);
 	}
 	else{
 		$("ul.sortable li[value='"+li+"'] .append-new-item").html(content);

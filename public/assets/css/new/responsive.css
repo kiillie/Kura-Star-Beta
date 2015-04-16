@@ -195,6 +195,14 @@
 	.nosidebar { width:100% }
 	.createform .leftbox, .createform .rightbox { width: 96%; }
 	.tab2 .ui-state-active a, .tab1 .ui-state-active a:hover { border:0; }
+	.createbtn { width:280px; }
+	.createbtn input[type=submit] {
+		width:66px;
+		padding-top:15px;
+		padding-bottom:15px;
+		font-size:12px;
+		font-weight:normal;
+	}
 }
 
 @media only screen and (min-width: 300px) and (max-width: 760px) {

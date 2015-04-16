@@ -882,3 +882,31 @@ h2.title{
 .registration .log-form img{
 	width: 30%;
 }
+.imgplaceholder{
+	overflow: hidden;
+}
+.imgplaceholder img{
+	width: 100%;
+}
+.createbtn {
+	width:616px;
+	margin:0 auto;
+	margin-top:30px;
+	margin-bottom:50px;
+}
+
+.createbtn input, .createbtn a{
+	border-radius:3px;
+	background:#555;
+	color:#FFF;
+	padding:10px;
+	text-align:center;
+	font-size:14px;
+	font-weight:bold;
+	width:150px;
+	margin:2px;
+}
+
+.createbtn input:hover, .createbtn a:hover {
+	background:#ed7600;
+}

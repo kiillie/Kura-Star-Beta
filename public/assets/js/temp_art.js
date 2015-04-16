@@ -1596,28 +1596,25 @@ function delete_article(id, user){
 	}
 }
 function select_type_img(){
-	var def_image = $(".art-default-img img").attr("src");
-	if($(".url-setting .img-btns a").hasClass('disp-def')){
-		$(".url-setting .img-btns input").removeClass("art-url-submit");
-		$(".url-setting .img-btns input").addClass("art-img-submit");
-		$(".url-setting .img-upload").css('display', 'block');
-		$(".url-setting .img-url").css('display', 'none');
-		$(".url-setting .img-upload input").val("");
-		$(".art-default-img img").attr("src", def_image);
-		$(".url-setting .img-btns a").text("Click to Add an Image URL");
-		$(".url-setting .img-btns a").removeClass('disp-def');
-		$(".url-setting .img-btns a").addClass('disp-up');
+	if($(".img-btns a").hasClass('disp-def')){
+		$(".img-btns input").removeClass("art-url-submit");
+		$(".img-btns input").addClass("art-img-submit");
+		$(".img-upload").css('display', 'block');
+		$(".img-url").css('display', 'none');
+		$(".img-upload input").val("");
+		$(".img-btns a").text("Click to Add an Image URL");
+		$(".img-btns a").removeClass('disp-def');
+		$(".img-btns a").addClass('disp-up');
 	}
 	else{
-		$(".url-setting .img-btns input").removeClass("art-img-submit");
-		$(".url-setting .img-btns input").addClass("art-url-submit");
-		$(".url-setting .img-upload").css('display', 'none');
-		$(".url-setting .img-url").css('display', 'block');
-		$(".url-setting .img-url input").val("");
-		$(".art-default-img img").attr("src", def_image);
-		$(".url-setting .img-btns a").text("Click to Upload an Image");
-		$(".url-setting .img-btns a").removeClass('disp-up');
-		$(".url-setting .img-btns a").addClass('disp-def');
+		$(".img-btns input").removeClass("art-img-submit");
+		$(".img-btns input").addClass("art-url-submit");
+		$(".img-upload").css('display', 'none');
+		$(".img-url").css('display', 'block');
+		$(".img-url input").val("");
+		$(".img-btns a").text("Click to Upload an Image");
+		$(".img-btns a").removeClass('disp-up');
+		$(".img-btns a").addClass('disp-def');
 	}
 }
 function record(url, result) {

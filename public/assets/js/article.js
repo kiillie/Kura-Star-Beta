@@ -25,7 +25,7 @@ function imageIsLoaded(e) {
 	$(".img-upload input").css("color","green");
 	imgresult = e.target.result;
 }
-$(".url-setting .img-form").on('submit', function(e){
+$(".createform .img-form").on('submit', function(e){
 	
 	var parent = $(this).parent();
 
@@ -51,12 +51,12 @@ $(".url-setting .img-form").on('submit', function(e){
 									$(this).remove();
 								});
 							}, 5000);
-							$(".url-setting .img-btns .img-loader").remove();
+							$(".createform .img-btns .img-loader").remove();
 						},
 						success : function(res){
 							if(res != ""){		
 								$(".article-details .art-default-img img").attr("src", res);
-								$(".url-setting .img-btns .img-loader").remove();
+								$(".createform .img-btns .img-loader").remove();
 							}
 						}
 				});
@@ -76,7 +76,7 @@ $(".url-setting .img-form").on('submit', function(e){
 						processData : false,
 						success : function(res){			
 							$(".art-default-img img").attr("src", res);
-							$(".url-setting .img-btns .img-loader").remove();
+							$(".createform .img-btns .img-loader").remove();
 						}
 				});
 		}

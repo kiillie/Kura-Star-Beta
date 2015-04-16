@@ -139,6 +139,7 @@ class PublicController extends BaseController{
 				->withFbusers($fbusers);
 		}
 	}
+
 	public function privacypolicy(){
 		$countries = $this->country->showCountryByContinent();
 		$continents = $this->continent->show();
@@ -152,8 +153,8 @@ class PublicController extends BaseController{
 			$ctry_rank [$country->COUNTRY_ID] = $this->article->countByCountry($country->COUNTRY_ID);
 		}
 
-	return View::make('public.privacy-policy') //this will get the view you just made in the previous instruction.
-	->withCountries($countries)
+		return View::make('public.privacy-policy') //this will get the view you just made in the previous instruction.
+				->withCountries($countries)
 				->withContinents($continents)
 				->withCategories($categories)
 				->withArticles($articles)
@@ -161,7 +162,31 @@ class PublicController extends BaseController{
 				->withRank($ranking)
 				->withCtryrank($ctry_rank)
 				->withFbusers($fbusers);
-}
+	}
+
+	public function termsofservices(){
+		$countries = $this->country->showCountryByContinent();
+		$continents = $this->continent->show();
+		$categories = $this->category->show();
+		$articles = $this->article->allArticles();
+		$users = $this->user->allUsers();
+		$fbusers = $this->fbuser->getAllUsers();
+		$ranking = $this->article->getByRanking();
+		$ctry_rank = [];
+		foreach($countries as $country){
+			$ctry_rank [$country->COUNTRY_ID] = $this->article->countByCountry($country->COUNTRY_ID);
+		}
+
+		return View::make('public.terms-of-services') //this will get the view you just made in the previous instruction.
+				->withCountries($countries)
+				->withContinents($continents)
+				->withCategories($categories)
+				->withArticles($articles)
+				->withUsers($users)
+				->withRank($ranking)
+				->withCtryrank($ctry_rank)
+				->withFbusers($fbusers);
+	}
 
 }
 
