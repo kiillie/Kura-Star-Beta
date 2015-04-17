@@ -57,7 +57,7 @@
 											<a href="{{URL::route('article.bycountry', $country->COUNTRY_ID)}}">
 												<span class="rank rank1">{{$count+1}}</span>
 												<h4 class="ranktitle"><img src="{{$country->FLAG_IMAGE}}" />{{$country->COUNTRY_NAME}}</h4>
-												<span class="smallpoints smallpoints-right">14,091 Articles</span>
+												<span class="smallpoints smallpoints-right">{{$val}} Articles</span>
 											</a>
 										</li>
 										@endif
