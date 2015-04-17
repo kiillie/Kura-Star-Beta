@@ -1,9 +1,28 @@
 @extends('layouts.main')
 @section('content')
+ <script>
+  $(function() {
+    $( "#dialog" ).dialog({
+      autoOpen: false,
+      show: {
+        effect: "blind",
+        duration: 1000
+      },
+      hide: {
+        effect: "explode",
+        duration: 1000
+      }
+    });
+ 
+    $( "#opener" ).click(function() {
+      $( "#dialog" ).dialog( "open" );
+    });
+  });
+  </script>
 <div class="defaultWidth center clear-auto bodycontent">
 	<div class="contentbox nosidebar">
 		<div class="breadcrumb"><a href="#">HOME</a> &middot; <span>CREATE</span></div>
-						
+		
 		<div class="divider"><span>fill up custom post below</span></div>
 		<div class="createform">
 			<div class="custompost">
@@ -18,16 +37,21 @@
 						{{Form::open(['name'=>'insert-img', 'class'=>'img-form', 'role'=>'form', 'method'=>'post', 'enctype'=>'multipart/form-data', 'url' => 'article/image'])}}
 							<div class="img-upload col-md-4" style="display:none;">
 								<label>Upload a File</label>
-								<input type="file" id="inputFile" />
+								<input type="file" id="inputFile" name="imgUp" accept="image/*"/>
 							</div>
 							<div class="img-url">
 								<label>Paste Image Link Below</label>
-								<input type="text" id="inputFile2" class="urllink" />
+								<input type="text" id="inputFile2" name="imageUrl" class="urllink" placeholder="URL" />
 							</div>
 							<div class="img-btns">
 								<input type="submit" class="btn btn-default art-url-submit" name="art-submit" value="Set">
 								<a href="javascript:void(0)" class="disp-def" onclick="select_type_img()">Click to Upload an Image</a>
 							</div>
+							@if(Session::has('curation'))
+								<input type="hidden" class="cur-id" name="cur_id" value="{{Session::get('curation')}}">
+							@else
+								<input type="hidden" class="cur-id" name="cur_id" value="{{$curation}}">
+							@endif
 						{{Form::close()}}
 					</div>
 					{{ Form::open(['name'=>'article', 'role'=>'form', 'route'=>'article.store', 'method'=>'post', 'enctype'=>"multipart/form-data"]) }}
@@ -36,7 +60,7 @@
 						<div class="linewrap">
 							<div class="leftbox leftbox2">
 								<label>Select A Country</label>
-								<select id="cty">
+								<select id="cty" name="country">
 									@foreach($continents as $continent)
 					        			<option disabled>-----{{$continent->CONTINENT_NAME}}-----</li>
 							    		@foreach($countries as $country)
@@ -53,7 +77,7 @@
 							</div>
 							<div class="leftbox leftbox2">
 								<label>Select A Category</label>
-								<select id="cat">
+								<select id="cat" name="category">
 									@foreach($categories as $category)
 										@if($article->CATEGORY_ID == $category->CATEGORY_ID)
 											<option selected value="{{$category->CATEGORY_ID}}">{{$category->CATEGORY_NAME}}</option>
@@ -66,19 +90,114 @@
 						</div>
 											
 						<label>details</label>
-						<input type="text" placeholder="Title" value="{{$article->CURATION_TITLE}}"/>
+						<input type="text" placeholder="Title" name="title" value="{{$article->CURATION_TITLE}}"/>
 					</div>
 					<div class="rightbox">
 						<label>limit to 150 characters only</label>
-						<textarea placeholder="Description" maxlength="150">{{$article->CURATION_DESCRIPTION}}</textarea>
+						<textarea placeholder="Description" name="description" maxlength="150">{{$article->CURATION_DESCRIPTION}}</textarea>
 					</div>
 						@if(Session::has('curation'))
 								<input type="hidden" class="cur-id" name="cur_id" value="{{Session::get('curation')}}">
 						@else
 						<input type="hidden" class="cur-id" name="cur_id" value="{{$curation}}">
 						@endif
-					{{Form::close()}}
 				</div>
+				<div class="createbtn">
+						@if(Session::has('curation'))
+							<input class="btn btn-default preview" href="{{URL::route('article.preview', Session::get('curation'))}}" value="Preview" />
+						@else
+							<input class="btn btn-default preview" href="{{URL::route('article.preview', $curation)}}" value="Preview" />
+						@endif
+						<input type="submit" class="btn btn-default save" onclick="validate_article()" value="Save" />
+						@if(Session::has('curation'))
+							@if(Session::has('status'))
+								@if(Session::get('status') == 0)
+									<input type="button" class="btn btn-default publish unpublished" onclick="publish_article({{Session::get('curation')}})" value="Publish" />
+								@else
+									<input type="button" class="btn btn-default publish published" onclick="publish_article({{Session::get('curation')}})" value="Unpublish" />
+								@endif
+							@else
+								@if(($status) == 0)
+									<input type="button" class="btn btn-default publish unpublished" onclick="publish_article({{Session::get('curation')}})" value="Publish" />
+								@else
+									<input type="button" class="btn btn-default publish published" onclick="publish_article({{Session::get('curation')}})" value="Unpublish" />
+								@endif
+							@endif
+						@else
+							@if(Session::has('status'))
+								@if(Session::get('status') == 0)
+									<input type="button" class="btn btn-default publish unpublished" onclick="publish_article({{$curation}})" value="Publish" />
+								@else
+									<input type="button" class="btn btn-default publish published" onclick="publish_article({{$curation}})" value="Unpublish" />
+								@endif
+							@else
+								@if(($status) == 0)
+									<input type="button" class="btn btn-default publish unpublished" onclick="publish_article({{$curation}})" value="Publish" />
+								@else
+									<input type="button" class="btn btn-default publish published" onclick="publish_article({{$curation}})" value="Unpublish" />
+								@endif
+							@endif
+						@endif
+						@if(Session::has('curation'))
+							<input type="button" class="btn btn-default delete" value="Delete" onclick="delete_article({{Session::get('curation')}}, {{$article->CURATER_ID}})" />
+						@else
+							<input type="button" class="btn btn-default delete" value="Delete" onclick="delete_article({{$curation}}, {{$article->CURATER_ID}})" />
+						@endif
+					</div>
+					<?php
+						try{
+							$html = file_get_contents(public_path().'/assets/articles/'.$article->CURATION_ID.".php");
+							$dom = new DOMDocument();
+							$html = trim($html);
+							if($html == "" && $article->CURATION_DETAIL != ""){
+								$dom->loadHtml(html_entity_decode($article->CURATION_DETAIL));
+								$length = $dom->getElementsByTagName("li")->length;
+								$classes = [];
+								$c = 0;
+
+								foreach($dom->getElementsByTagName('div') as $div){
+									if($div->getAttribute('class') == 'image-container'){
+										$classes[$c] = "picture";
+									}
+									else{
+										$classes[$c] = $div->getAttribute('class');
+									}
+									$c++;
+									echo $div->getAttribute('class');
+								}
+								$xpath = new DOMXpath($dom); 
+								$divTag = $xpath->evaluate("//li//div"); 
+								$content = "";
+								print_r($classes);
+								for($i = 0; $i < $length; $i++){
+
+									$divcontent = $divTag->item($i);
+									$content .= '<li class="ui-state-default added-addon">';
+									$content .= '<div class="item-added-container">';
+									$content .= '<div class="item-inner text">';
+									$content .= $dom->saveXML($divcontent);
+									$content .= '</div>';
+									$content .= '<div class="editlist">';
+									$content .= '<button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button>';
+									$content .= '</div>';
+									$content .= '</div>';
+									$content .= '<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div>';
+									$content .= '<input type="hidden" class="type" value="'.$classes[$i].'">';
+									$content .= '</li>';
+									
+									//echo $dom->saveXML($divcontent);
+								}
+								$file = fopen(public_path().'/assets/articles/'.$article->CURATION_ID.".php", "w");
+								fwrite($file, $content);
+								fclose($file);
+							}
+						}
+						catch(Exception $e){
+							fopen(public_path().'/assets/articles/'.$article->CURATION_ID.".php", "w");
+						}
+						?>
+				<textarea name="inner-detail" class="detail-li" style="display:none;">{{$article->CURATION_DETAIL}}</textarea>
+					{{Form::close()}}
 			</div>
 							
 			<div class="divider"><span>or fill up reference post below</span></div>
@@ -161,52 +280,20 @@
 							
 								
 			</div>
-		</div>
-		<div class="createbtn">
-			@if(Session::has('curation'))
-				<input class="btn btn-default preview" href="{{URL::route('article.preview', Session::get('curation'))}}" value="Preview" />
-			@else
-				<input class="btn btn-default preview" href="{{URL::route('article.preview', $curation)}}" value="Preview" />
-			@endif
-			<input type="submit" class="btn btn-default save" onclick="validate_article()" value="Save" />
-			@if(Session::has('curation'))
-				@if(Session::has('status'))
-					@if(Session::get('status') == 0)
-						<input type="button" class="btn btn-default publish unpublished" onclick="publish_article({{Session::get('curation')}})" value="Publish" />
-					@else
-						<input type="button" class="btn btn-default publish published" onclick="publish_article({{Session::get('curation')}})" value="Unpublish" />
-					@endif
-				@else
-					@if(($status) == 0)
-						<input type="button" class="btn btn-default publish unpublished" onclick="publish_article({{Session::get('curation')}})" value="Publish" />
-					@else
-						<input type="button" class="btn btn-default publish published" onclick="publish_article({{Session::get('curation')}})" value="Unpublish" />
-					@endif
-				@endif
-			@else
-				@if(Session::has('status'))
-					@if(Session::get('status') == 0)
-						<input type="button" class="btn btn-default publish unpublished" onclick="publish_article({{$curation}})" value="Publish" />
-					@else
-						<input type="button" class="btn btn-default publish published" onclick="publish_article({{$curation}})" value="Unpublish" />
-					@endif
-				@else
-					@if(($status) == 0)
-						<input type="button" class="btn btn-default publish unpublished" onclick="publish_article({{$curation}})" value="Publish" />
-					@else
-						<input type="button" class="btn btn-default publish published" onclick="publish_article({{$curation}})" value="Unpublish" />
-					@endif
-				@endif
-			@endif
-			@if(Session::has('curation'))
-				<input type="button" class="btn btn-default delete" value="Delete" onclick="delete_article({{Session::get('curation')}}, {{$article->CURATER_ID}})" />
-			@else
-				<input type="button" class="btn btn-default delete" value="Delete" onclick="delete_article({{$curation}}, {{$article->CURATER_ID}})" />
-			@endif
 		</div>		
 												
 						
 						
+	</div>
+	<div class="twitter-search" title="Search for Tweets" style="display: none;">
+		@include('articles.twitter_search')
+		@section('twitterSearch')
+		@show
+	</div>
+	<div class="image-search" title="Search for Image" style="display: none;">
+		@include('articles.image_search')
+		@section('imageSearch')
+		@show
 	</div>
 					
 					<!---- start sidebar ---->
@@ -217,4 +304,5 @@
 <script language="javascript" src="/assets/js/create.js"></script>
 <script language="javascript" src="/assets/js/temp_art.js"></script>
 <script language="javascript" src="/assets/js/article.js"></script>
+<script language="javascript" src="/assets/js/linkScrapper.min.js"></script>
 @stop

@@ -115,7 +115,7 @@ $(window).load(function() {
             var reader = new FileReader();
 
             reader.onload = function (e) {
-                $('.imgplaceholder').css('background-image', 'url('+e.target.result+')');
+                $('.imgplaceholder img').attr("src", e.target.result);
             }
 
             reader.readAsDataURL(input.files[0]);
@@ -132,7 +132,7 @@ $(window).load(function() {
 
     $("#inputFile2").keyup(function () {
 		var bla = $('#inputFile2').val();
-         $('.imgplaceholder').css('background-image', 'url('+bla+')');
+         $('.imgplaceholder img').attr("src", bla);
     });
 });
 

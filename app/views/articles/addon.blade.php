@@ -30,10 +30,10 @@ else if($addon['type'] == 'picture'){
 	var li = "{{$addon['li']}}";
 	var type = "{{$addon['type']}}";
 	var content = 	'<div class="row picture">'+
-					'<div class="col-md-6 def-image">'+
+					'<div class="def-image">'+
 					'<img src="/assets/images/article-default.png" width="200" alt="Image">'+
 					'</div>'+
-					'<div class="col-md-6 url-upload">'+
+					'<div class="url-upload">'+
 					'<div class="upload-img-con">'+
 					'{{Form::open(["name"=>"image", "enctype"=>"multipart/form-data", "id"=>"upload-addon", "url"=>"file/upload"])}}'+
 					'<input type="file" name="image" class="upload-img" accept="image/*"/>'+
@@ -171,10 +171,10 @@ else if($addon['type'] == 'video'){
 					'<input type="button" value="Cancel" class="btn btn-default"onclick="cancel_add(\''+li+'\', \''+type+'\', \''+kind+'\')">'+
 					'</div>'+
 					'<div class="extracted-vid row">'+
-					'<div class="col-md-7">'+
+					'<div class="vid-iframe">'+
 					'<iframe src="#" width="300" height="300">#document</iframe>'+
 					'</div>'+
-					'<div class="col-md-5">'+
+					'<div class="vid-ex">'+
 					'<textarea class="vid-desc form-control" placeholder="Video Description"></textarea>'+
 					'<input type="button" class="btn btn-default" onclick="addItem(\''+li+'\', \''+type+'\', \''+kind+'\')" value="Add" />'+
 					'<input type="button" class="btn btn-default" onclick="cancel_add(\''+li+'\', \''+type+'\', \''+kind+'\')" value="Cancel">'+
@@ -183,7 +183,7 @@ else if($addon['type'] == 'video'){
 					'{{Form::close()}}';
 
 	if(kind == 'new'){
-		$('#twitter .new-addon .new-item').html(content);
+		$('#video .new-addon .new-item').html(content);
 	}
 	else{
 		$("ul.sortable li[value='"+li+"'] .append-new-item").html(content);

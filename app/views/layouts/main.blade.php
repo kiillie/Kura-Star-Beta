@@ -30,6 +30,9 @@
 		<link rel="stylesheet" href="/assets/css/new/flexslider.css">
 		<link rel="stylesheet" href="/assets/css/new/custom.css" />
 		<link rel="stylesheet" href="/assets/css/new/responsive.css" />
+		<script language="javascript" src="/assets/js/jquery-2.1.3.min.js"></script>
+		<script language="javascript" src="/assets/js/jquery-ui.js"></script>
+		<script language="javascript" src="/assets/js/jquery-ui.min.js"></script>
     </head>
 	<body>
 		<div class="box100 mainWrap">
@@ -43,12 +46,12 @@
 						<div class="actions">
 						@if(Hybrid_Auth::isConnectedWith('Facebook'))
 							<a href="{{URL::route('auth.logout')}}"><img src="/assets/images/new/icon_login.png" />LOGOUT</a>
-							<a href="{{URL::route('user.profile', 'fb'.$profile->identifier)}}"><img src="/assets/images/new/icon_signup.png" />{{$profile->displayName}}</a>
+							<a href="{{URL::route('user.profile', 'fb'.$profile->identifier)}}"><img src="/assets/images/new/icon_signup.png" />{{strtoupper($profile->displayName)}}</a>
 							<a href="{{URL::route('article.insert')}}"><img src="/assets/images/new/icon_write.png" />POST</a>
 						@else
 							@if(Auth::check())
 								<a href="{{URL::route('logout')}}"><img src="/assets/images/new/icon_login.png" />LOGOUT</a>
-								<a href="{{URL::route('user.profile', Auth::user()->CURATER_ID)}}"><img src="/assets/images/new/icon_signup.png" />{{Auth::user()->CURATER}}</a>
+								<a href="{{URL::route('user.profile', Auth::user()->CURATER_ID)}}"><img src="/assets/images/new/icon_signup.png" />{{strtoupper(Auth::user()->CURATER)}}</a>
 								<a href="{{URL::route('article.insert')}}"><img src="/assets/images/new/icon_write.png" />POST</a>
 							@else
 								<a href="{{URL::route('login')}}"><img src="/assets/images/new/icon_login.png" />LOGIN</a>
@@ -174,11 +177,9 @@
 								<ul>
 									<li><a href="{{URL::route('article.bycategory', 1)}}"><i class="fa fa-cutlery"></i>&nbsp;Gourmet</a></li>
 									<li><a href="{{URL::route('article.bycategory', 2)}}"><i class="fa fa-music"></i>&nbsp;Leisure</a></li>
-									<li><a href="{{URL::route('article.bycategory', 3)}}"><i class="fa fa-briefcase"></i>&nbsp;Fashion</a></li>
+									<li><a href="{{URL::route('article.bycategory', 3)}}"><i class="fa fa-briefcase"></i>&nbsp;Life</a></li>
 									<li><a href="{{URL::route('article.bycategory', 4)}}"><i class="fa fa-leanpub"></i>&nbsp;Study</a></li>
 									<li><a href="{{URL::route('article.bycategory', 5)}}"><i class="fa fa-usd"></i>&nbsp;Business</a></li>
-									<li><a href="{{URL::route('article.bycategory', 6)}}"><i class="fa fa-hotel"></i>&nbsp;Hotel</a></li>
-									<li><a href="{{URL::route('article.bycategory', 7)}}"><i class="fa fa-bell"></i>&nbsp;Buzz</a></li>
 								</ul>
 							</div>
 						</div>

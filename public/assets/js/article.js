@@ -55,7 +55,7 @@ $(".createform .img-form").on('submit', function(e){
 						},
 						success : function(res){
 							if(res != ""){		
-								$(".article-details .art-default-img img").attr("src", res);
+								$(".art-default-img img").attr("src", res);
 								$(".createform .img-btns .img-loader").remove();
 							}
 						}
