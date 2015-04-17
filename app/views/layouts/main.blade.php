@@ -90,9 +90,8 @@
 						<div class="footermenu">
 							<a href="#">Terms of Services</a>
 							<a href="#">Privacy Policy</a>
-							<a href="#">Contact Us</a>
 							<a href="#">About Us</a>
-							<a href="#">Home</a>
+							<a href="{{URL::route('index')}}">Home</a>
 						</div>
 					</div>
 				</div>

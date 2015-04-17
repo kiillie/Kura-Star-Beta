@@ -97,7 +97,7 @@
 					</div>
 					<div class="rightbox">
 						<label>limit to <span class="num-char">0</span>/150 characters only</label>
-						<textarea placeholder="Description" name="description" maxlength="150">{{$article->CURATION_DESCRIPTION}}</textarea>
+						<textarea placeholder="Description" class="artdesc" name="description" maxlength="150">{{$article->CURATION_DESCRIPTION}}</textarea>
 					</div>
 						@if(Session::has('curation'))
 							<input type="hidden" class="cur-id" name="cur_id" value="{{Session::get('curation')}}">
@@ -279,19 +279,6 @@
 							}
 						?>
 					</ul>
-					<script language="javascript" src="/assets/js/plugins/moaModal.js"></script>
-<script language="javascript" src="/assets/js/plugins/moaModal.minified.js"></script>
-
-<script>
-$(document).ready(function(){
-	 $('.twitter-button').modal({
-        target : '#twitter-search',
-        animation : 'top',
-        position : 'center'
-    });
-});
-</script>
-					<a class="twitter-button">Click Me</a>
 				</div>
 							
 								

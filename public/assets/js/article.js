@@ -319,9 +319,9 @@ function check_exist(src){
 	});
 
 	//For the Number of Characters in Create Article
-	$(".article-details .desc textarea").keyup(function(e){
+	$(".createform textarea.artdesc").keyup(function(e){
 		var value = $(this).val().length;
-		$(".article-details .desc .num-char").text(value);
+		$(".createform .num-char").text(value);
 	});
 
 	//For Link Extraction
