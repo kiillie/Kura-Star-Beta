@@ -134,14 +134,36 @@ class UserController extends BaseController{
 	}
 	
 	public function curators(){
-		$fbusers = $this->fbuser->getAllUsers();
+		$countries = $this->country->showCountryByContinent();
+		$continents = $this->continent->show();
+		$categories = $this->category->show();
+		$articles = $this->article->allArticles();
 		$users = $this->user->allUsers();
-		
+		$fbusers = $this->fbuser->getAllUsers();
 		$curators = $this->article->getArticlesOrderBy();
-		
+		$profile = "";
+
+		if(Hybrid_Auth::isConnectedWith('Facebook')){
+			$provider = $this->oauth->authenticate('Facebook');
+			$profile = $provider->getUserProfile();
+		}
+
+		$ranking = $this->article->getByRanking();
+		$ctry_rank = [];
+		foreach($countries as $country){
+			$ctry_rank [$country->COUNTRY_ID] = $this->article->countByCountry($country->COUNTRY_ID);
+		}
+
 		return View::make('users.curators')
-					->withFbusers($fbusers)
+					->withCountries($countries)
+					->withContinents($continents)
+					->withCategories($categories)
+					->withArticles($articles)
 					->withUsers($users)
+					->withRank($ranking)
+					->withCtryrank($ctry_rank)
+					->withProfile($profile)
+					->withFbusers($fbusers)
 					->withCurators($curators);
 	}
 	

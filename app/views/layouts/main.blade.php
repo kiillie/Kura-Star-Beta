@@ -66,11 +66,9 @@
 							<li><a href="{{URL::route('index')}}" class="selected"><i class="fa fa-home fa-2x"></i>&nbsp; HOME</a></li>
 							<li><a href="{{URL::route('article.bycategory', 1)}}"><i class="fa fa-cutlery fa-2x"></i>&nbsp; GOURMET</a></li>
 							<li><a href="{{URL::route('article.bycategory', 2)}}"><i class="fa fa-music fa-2x"></i>&nbsp; LEISURE</a></li>
-							<li><a href="{{URL::route('article.bycategory', 3)}}"><i class="fa fa-briefcase fa-2x"></i>&nbsp; FASHION</a></li>
+							<li><a href="{{URL::route('article.bycategory', 3)}}"><i class="fa fa-briefcase fa-2x"></i>&nbsp; LIFE</a></li>
 							<li><a href="{{URL::route('article.bycategory', 4)}}"><i class="fa fa-leanpub fa-2x"></i>&nbsp; STUDY</a></li>
 							<li><a href="{{URL::route('article.bycategory', 5)}}"><i class="fa fa-usd fa-2x"></i>&nbsp; BUSINESS</a></li>
-							<li><a href="{{URL::route('article.bycategory', 6)}}"><i class="fa fa-hotel fa-2x"></i>&nbsp; HOTEL</a></li>
-							<li><a href="{{URL::route('article.bycategory', 7)}}"><i class="fa fa-bell fa-2x"></i>&nbsp; BUZZ</a></li>
 						</ul>
 					</div>
 				</div>

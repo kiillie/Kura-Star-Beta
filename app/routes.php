@@ -177,6 +177,11 @@ Route::post('user/update', [
 	'as'	=>	'user.update'
 ]);
 
+Route::get('curators', [
+	'uses'	=>	'UserController@curators',
+	'as'	=>	'curators'
+]);
+
 /** Continent & Countries **/
 
 Route::get('continent/create', [
@@ -245,5 +250,6 @@ Route::get('/terms-of-services', [
 	'uses'	=>	'PublicController@termsofservices',
 	'as'	=>	'terms-of-services'
 ]);
+
 
 ?>

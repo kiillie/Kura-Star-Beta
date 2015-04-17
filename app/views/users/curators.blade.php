@@ -1,247 +1,96 @@
 @extends('layouts.main')
 @section('content')
-	<div class="defaultWidth center clear-auto bodycontent">
-	
-					<div class="contentbox">
-						<div class="breadcrumb"><a href="#">HOME</a> &middot; <span>CURATORS</span></div>
-						<ul class="post-list-thumb curator-list-thumb">
-														<li>
+<div class="defaultWidth center clear-auto bodycontent">
+	<div class="contentbox">
+		@if(count($curators) != 0)
+			<ul class="post-list-thumb curator-list-thumb">
+				@foreach($curators as $curator)
+					<?php
+						$exist = strpos($curator->CURATER_ID, 'fb');
+						if($exist !== false){
+					?>
+					@foreach($fbusers as $fbuser)
+						@if($fbuser->CURATER_ID == $curator->CURATER_ID)
+							<li>
 								<a href class="post-list-thumb-wrap curator-list">
 									<div class="infobelow">
-										
-										
-											<img src="images/profile/profile1.jpg" />
+													
+										@if($fbuser->CURATER_IMAGE != "")
+											<div class="curator-img">
+												<img src="{{$fbuser->CURATER_IMAGE}}" />
+											</div>
+										@else
+											<div class="curator-img">
+												<img src="/assets/images/picture-default.png" />
+											</div>
+										@endif
 											<div class="curator-info">
-												<h4>Misaki Kimura</h4>
-												<p>初めまして♡最近始めたばかりのルーキーですが、みなさんの生活…平均 80,907P（合計 11,731,462P）</p>
+												<h4>{{$fbuser->CURATER}}</h4>
+												<p>{{$fbuser->CURATER_DESCRIPTION}}</p>
 												<div class="clear"></div>
 											</div>
-											
-										
+																		
+																	
 										<span class="smallpoints smallpoints-right">14,091 pts</span>
-										
+														
 									</div>
 								</a>
 							</li>
-														<li>
+						@endif
+					@endforeach
+					<?php
+						}
+						else{
+					?>
+					@foreach($users as $raw)
+						@if($raw->CURATER_ID == $curator->CURATER_ID)
+							<li>
 								<a href class="post-list-thumb-wrap curator-list">
 									<div class="infobelow">
-										
-										
-											<img src="images/profile/profile1.jpg" />
+													
+										@if($raw->CURATER_IMAGE != "")
+											<div class="curator-img">
+												<img src="{{$raw->CURATER_IMAGE}}" />
+											</div>
+										@else
+											<div class="curator-img">
+												<img src="/assets/images/picture-default.png" />
+											</div>
+										@endif
 											<div class="curator-info">
-												<h4>Misaki Kimura</h4>
-												<p>初めまして♡最近始めたばかりのルーキーですが、みなさんの生活…平均 80,907P（合計 11,731,462P）</p>
+												<h4>{{$raw->CURATER}}</h4>
+												<p>{{$raw->CURATER_DESCRIPTION}}</p>
 												<div class="clear"></div>
 											</div>
-											
-										
+																		
+																	
 										<span class="smallpoints smallpoints-right">14,091 pts</span>
-										
+														
 									</div>
 								</a>
 							</li>
-														<li>
-								<a href class="post-list-thumb-wrap curator-list">
-									<div class="infobelow">
-										
-										
-											<img src="images/profile/profile1.jpg" />
-											<div class="curator-info">
-												<h4>Misaki Kimura</h4>
-												<p>初めまして♡最近始めたばかりのルーキーですが、みなさんの生活…平均 80,907P（合計 11,731,462P）</p>
-												<div class="clear"></div>
-											</div>
-											
-										
-										<span class="smallpoints smallpoints-right">14,091 pts</span>
-										
-									</div>
-								</a>
-							</li>
-														<li>
-								<a href class="post-list-thumb-wrap curator-list">
-									<div class="infobelow">
-										
-										
-											<img src="images/profile/profile1.jpg" />
-											<div class="curator-info">
-												<h4>Misaki Kimura</h4>
-												<p>初めまして♡最近始めたばかりのルーキーですが、みなさんの生活…平均 80,907P（合計 11,731,462P）</p>
-												<div class="clear"></div>
-											</div>
-											
-										
-										<span class="smallpoints smallpoints-right">14,091 pts</span>
-										
-									</div>
-								</a>
-							</li>
-														<li>
-								<a href class="post-list-thumb-wrap curator-list">
-									<div class="infobelow">
-										
-										
-											<img src="images/profile/profile1.jpg" />
-											<div class="curator-info">
-												<h4>Misaki Kimura</h4>
-												<p>初めまして♡最近始めたばかりのルーキーですが、みなさんの生活…平均 80,907P（合計 11,731,462P）</p>
-												<div class="clear"></div>
-											</div>
-											
-										
-										<span class="smallpoints smallpoints-right">14,091 pts</span>
-										
-									</div>
-								</a>
-							</li>
-														<li>
-								<a href class="post-list-thumb-wrap curator-list">
-									<div class="infobelow">
-										
-										
-											<img src="images/profile/profile1.jpg" />
-											<div class="curator-info">
-												<h4>Misaki Kimura</h4>
-												<p>初めまして♡最近始めたばかりのルーキーですが、みなさんの生活…平均 80,907P（合計 11,731,462P）</p>
-												<div class="clear"></div>
-											</div>
-											
-										
-										<span class="smallpoints smallpoints-right">14,091 pts</span>
-										
-									</div>
-								</a>
-							</li>
-														<li>
-								<a href class="post-list-thumb-wrap curator-list">
-									<div class="infobelow">
-										
-										
-											<img src="images/profile/profile1.jpg" />
-											<div class="curator-info">
-												<h4>Misaki Kimura</h4>
-												<p>初めまして♡最近始めたばかりのルーキーですが、みなさんの生活…平均 80,907P（合計 11,731,462P）</p>
-												<div class="clear"></div>
-											</div>
-											
-										
-										<span class="smallpoints smallpoints-right">14,091 pts</span>
-										
-									</div>
-								</a>
-							</li>
-														<li>
-								<a href class="post-list-thumb-wrap curator-list">
-									<div class="infobelow">
-										
-										
-											<img src="images/profile/profile1.jpg" />
-											<div class="curator-info">
-												<h4>Misaki Kimura</h4>
-												<p>初めまして♡最近始めたばかりのルーキーですが、みなさんの生活…平均 80,907P（合計 11,731,462P）</p>
-												<div class="clear"></div>
-											</div>
-											
-										
-										<span class="smallpoints smallpoints-right">14,091 pts</span>
-										
-									</div>
-								</a>
-							</li>
-														<li>
-								<a href class="post-list-thumb-wrap curator-list">
-									<div class="infobelow">
-										
-										
-											<img src="images/profile/profile1.jpg" />
-											<div class="curator-info">
-												<h4>Misaki Kimura</h4>
-												<p>初めまして♡最近始めたばかりのルーキーですが、みなさんの生活…平均 80,907P（合計 11,731,462P）</p>
-												<div class="clear"></div>
-											</div>
-											
-										
-										<span class="smallpoints smallpoints-right">14,091 pts</span>
-										
-									</div>
-								</a>
-							</li>
-														<li>
-								<a href class="post-list-thumb-wrap curator-list">
-									<div class="infobelow">
-										
-										
-											<img src="images/profile/profile1.jpg" />
-											<div class="curator-info">
-												<h4>Misaki Kimura</h4>
-												<p>初めまして♡最近始めたばかりのルーキーですが、みなさんの生活…平均 80,907P（合計 11,731,462P）</p>
-												<div class="clear"></div>
-											</div>
-											
-										
-										<span class="smallpoints smallpoints-right">14,091 pts</span>
-										
-									</div>
-								</a>
-							</li>
-														<li>
-								<a href class="post-list-thumb-wrap curator-list">
-									<div class="infobelow">
-										
-										
-											<img src="images/profile/profile1.jpg" />
-											<div class="curator-info">
-												<h4>Misaki Kimura</h4>
-												<p>初めまして♡最近始めたばかりのルーキーですが、みなさんの生活…平均 80,907P（合計 11,731,462P）</p>
-												<div class="clear"></div>
-											</div>
-											
-										
-										<span class="smallpoints smallpoints-right">14,091 pts</span>
-										
-									</div>
-								</a>
-							</li>
-														<li>
-								<a href class="post-list-thumb-wrap curator-list">
-									<div class="infobelow">
-										
-										
-											<img src="images/profile/profile1.jpg" />
-											<div class="curator-info">
-												<h4>Misaki Kimura</h4>
-												<p>初めまして♡最近始めたばかりのルーキーですが、みなさんの生活…平均 80,907P（合計 11,731,462P）</p>
-												<div class="clear"></div>
-											</div>
-											
-										
-										<span class="smallpoints smallpoints-right">14,091 pts</span>
-										
-									</div>
-								</a>
-							</li>
-													</ul>
-						
-						<!----- start pagination ------>
-						
-						<div class="pagination">
-							<a href="#" class="selected">1</a>
-							<a href="#">2</a>
-							<a href="#">3</a>
-							<a href="#">4</a>
-						</div>
-						
-						<!----- start pagination ------>
-						
-						
-					</div>
+						@endif
+					@endforeach
+					<?php
+						}
+					?>
+				@endforeach
+			</ul>
+			<!---- start pagination ---->
+				<div class="pagination">
+					{{$curators->links()}}
+				</div>	
+			<!----- end pagination ----------->
+		@else
+			<div class="alert alert-danger"></div>
+		@endif
+							
+	</div>
 					
-					<!---- start sidebar ---->
-						@include('articles.rightbar')
-						@section('rightbar')
-						@show
-					<!----- end sidebar ----------->
-					
-				</div>
+	<!---- start sidebar ---->
+		@include('articles.rightbar')
+		@section('rightbar')
+		@show
+	<!----- end sidebar ----------->
+</div>
 @stop

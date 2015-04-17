@@ -111,7 +111,7 @@ p {
 }
 .menu li {
 	float:left;
-	width:12.5%;
+	width:16.6%;
 	text-align:center;
 }
 
@@ -909,4 +909,8 @@ h2.title{
 
 .createbtn input:hover, .createbtn a:hover {
 	background:#ed7600;
+}
+
+.curator-list-thumb .curator-list{
+	height: 113px;
 }

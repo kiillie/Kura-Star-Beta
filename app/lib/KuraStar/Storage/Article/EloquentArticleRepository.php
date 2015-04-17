@@ -225,8 +225,11 @@ class EloquentArticleRepository implements ArticleRepository{
 	}
 	
 	public function getArticlesOrderBy(){
-		$articles = Article::where('CURATION_STATUS', '=', 1)->groupBy('CURATER_ID')->orderBy(count('CURATER_ID'), 'DESC')->paginate(12);
-	
+		$articles = \DB::table('t_curation')
+                        ->select(\DB::raw('*, COUNT("CURATER_ID") AS curaters'))
+                        ->orderBy('curaters', 'DESC')
+                        ->groupBy('CURATER_ID')
+                        ->paginate(12);
 		return $articles;
 	}
 
