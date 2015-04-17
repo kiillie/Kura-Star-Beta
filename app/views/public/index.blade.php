@@ -36,7 +36,7 @@
 									</p>
 								</div>
 								<div class="infobelow">
-									<span class="smallpoints smallpoints-left">{{$article->VIEWS}}</span>
+									<span class="smallpoints smallpoints-left">{{$article->VIEWS}} views</span>
 									<?php
 										$exist = strpos($article->CURATER_ID, 'fb');
 										if($exist !== false){

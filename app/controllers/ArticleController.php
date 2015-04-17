@@ -165,6 +165,7 @@ class ArticleController extends BaseController{
 			foreach($countries as $country){
 				$ctry_rank [$country->COUNTRY_ID] = $this->article->countByCountry($country->COUNTRY_ID);
 			}
+			arsort($ctry_rank);
 			if(\Auth::check()){
 				$check = $this->favorite->check($id, Auth::user()->CURATER_ID);
 			}
@@ -204,7 +205,7 @@ class ArticleController extends BaseController{
 		foreach($countries as $country){
 			$ctry_rank [$country->COUNTRY_ID] = $this->article->countByCountry($country->COUNTRY_ID);
 		}
-
+			arsort($ctry_rank);
 		return View::make('articles.preview')
 				->withContinents($continents)
 				->withCountries($countries)
@@ -261,7 +262,7 @@ class ArticleController extends BaseController{
 		foreach($countries as $country){
 			$ctry_rank [$country->COUNTRY_ID] = $this->article->countByCountry($country->COUNTRY_ID);
 		}
-		
+		arsort($ctry_rank);
 		return View::make('users.articles')
 				->withContinents($continents)
 				->withCountries($countries)
@@ -297,7 +298,7 @@ class ArticleController extends BaseController{
 		foreach($countries as $country){
 			$ctry_rank[$country->COUNTRY_ID] = $this->article->countByCountry($country->COUNTRY_ID);
 		}
-
+		arsort($ctry_rank);
 		return View::make('articles.article_by_category')
 				->withCountries($countries)
 				->withCategories($categories)
@@ -330,7 +331,7 @@ class ArticleController extends BaseController{
 			$ctry_rank [$country->COUNTRY_ID] = $this->article->countByCountry($country->COUNTRY_ID);
 		}
 		$count = [];
-
+		arsort($ctry_rank);
 		foreach($categories as $category){
 			$count[$category->CATEGORY_ID] = $this->article->countCategoryByCountry($id, $category->CATEGORY_ID);
 		}

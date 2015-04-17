@@ -41,7 +41,7 @@ class PublicController extends BaseController{
 		foreach($countries as $country){
 			$ctry_rank [$country->COUNTRY_ID] = $this->article->countByCountry($country->COUNTRY_ID);
 		}
-
+			arsort($ctry_rank);
 			return View::make('public.index')
 				->withCountries($countries)
 				->withContinents($continents)
@@ -60,7 +60,7 @@ class PublicController extends BaseController{
 		foreach($countries as $country){
 			$ctry_rank [$country->COUNTRY_ID] = $this->article->countByCountry($country->COUNTRY_ID);
 		}
-
+			arsort($ctry_rank);
 			return View::make('public.index')
 				->withCountries($countries)
 				->withContinents($continents)
@@ -108,7 +108,7 @@ class PublicController extends BaseController{
 		foreach($countries as $country){
 			$ctry_rank [$country->COUNTRY_ID] = $this->article->countByCountry($country->COUNTRY_ID);
 		}
-
+			arsort($ctry_rank);
 			return View::make('public.index')
 				->withCountries($countries)
 				->withContinents($continents)
@@ -127,7 +127,7 @@ class PublicController extends BaseController{
 		foreach($countries as $country){
 			$ctry_rank [$country->COUNTRY_ID] = $this->article->countByCountry($country->COUNTRY_ID);
 		}
-
+			arsort($ctry_rank);
 			return View::make('public.index')
 				->withCountries($countries)
 				->withContinents($continents)
@@ -152,7 +152,7 @@ class PublicController extends BaseController{
 		foreach($countries as $country){
 			$ctry_rank [$country->COUNTRY_ID] = $this->article->countByCountry($country->COUNTRY_ID);
 		}
-
+		arsort($ctry_rank);
 		return View::make('public.privacy-policy') //this will get the view you just made in the previous instruction.
 				->withCountries($countries)
 				->withContinents($continents)
@@ -176,7 +176,7 @@ class PublicController extends BaseController{
 		foreach($countries as $country){
 			$ctry_rank [$country->COUNTRY_ID] = $this->article->countByCountry($country->COUNTRY_ID);
 		}
-
+		arsort($ctry_rank);
 		return View::make('public.terms-of-services') //this will get the view you just made in the previous instruction.
 				->withCountries($countries)
 				->withContinents($continents)

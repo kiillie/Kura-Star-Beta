@@ -153,7 +153,7 @@ class UserController extends BaseController{
 		foreach($countries as $country){
 			$ctry_rank [$country->COUNTRY_ID] = $this->article->countByCountry($country->COUNTRY_ID);
 		}
-
+		arsort($ctry_rank);
 		return View::make('users.curators')
 					->withCountries($countries)
 					->withContinents($continents)
