@@ -894,7 +894,7 @@ h2.title{
 	margin-bottom:50px;
 }
 
-.createbtn input, .createbtn a{
+.createbtn input{
 	border-radius:3px;
 	background:#555;
 	color:#FFF;
@@ -906,7 +906,7 @@ h2.title{
 	margin:2px;
 }
 
-.createbtn input:hover, .createbtn a:hover {
+.createbtn input:hover{
 	background:#ed7600;
 }
 

@@ -1596,15 +1596,15 @@ function delete_article(id, user){
 	}
 }
 function select_type_img(){
-	if($(".img-btns a").hasClass('disp-def')){
+	if($(".img-btns .artimage").hasClass('disp-def')){
 		$(".img-btns input").removeClass("art-url-submit");
 		$(".img-btns input").addClass("art-img-submit");
 		$(".img-upload").css('display', 'block');
 		$(".img-url").css('display', 'none');
 		$(".img-upload input").val("");
-		$(".img-btns a").text("Click to Add an Image URL");
-		$(".img-btns a").removeClass('disp-def');
-		$(".img-btns a").addClass('disp-up');
+		$(".img-btns .artimage").text("Click to Add an Image URL");
+		$(".img-btns .artimage").removeClass('disp-def');
+		$(".img-btns .artimage").addClass('disp-up');
 	}
 	else{
 		$(".img-btns input").removeClass("art-img-submit");
@@ -1612,9 +1612,9 @@ function select_type_img(){
 		$(".img-upload").css('display', 'none');
 		$(".img-url").css('display', 'block');
 		$(".img-url input").val("");
-		$(".img-btns a").text("Click to Upload an Image");
-		$(".img-btns a").removeClass('disp-up');
-		$(".img-btns a").addClass('disp-def');
+		$(".img-btns .artimage").text("Click to Upload an Image");
+		$(".img-btns .artimage").removeClass('disp-up');
+		$(".img-btns .artimage").addClass('disp-def');
 	}
 }
 function record(url, result) {

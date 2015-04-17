@@ -43,9 +43,12 @@
 								<label>Paste Image Link Below</label>
 								<input type="text" id="inputFile2" name="imageUrl" class="urllink" placeholder="URL" />
 							</div>
-							<div class="img-btns">
-								<input type="submit" class="btn btn-default art-url-submit" name="art-submit" value="Set">
-								<a href="javascript:void(0)" class="disp-def" onclick="select_type_img()">Click to Upload an Image</a>
+							<div class="img-btns" style="text-align: center;">
+								<input type="submit" class="btn btn-default art-url-submit" name="art-submit" value="Set"><br/>
+								<a href="javascript:void(0)" class="disp-def artimage" onclick="select_type_img()">Click to Upload an Image</a><br/>
+								<span>or</span><br/>
+								<a href="javascript:void(0)" onclick="add_img_class(0, 'picture', 'main')"><span class="glyphicon glyphicon-search"></span> Search for Image</a>
+								<input type="hidden" class="google-img" name="google-main" />
 							</div>
 							@if(Session::has('curation'))
 								<input type="hidden" class="cur-id" name="cur_id" value="{{Session::get('curation')}}">
@@ -93,20 +96,20 @@
 						<input type="text" placeholder="Title" name="title" value="{{$article->CURATION_TITLE}}"/>
 					</div>
 					<div class="rightbox">
-						<label>limit to 150 characters only</label>
+						<label>limit to <span class="num-char">0</span>/150 characters only</label>
 						<textarea placeholder="Description" name="description" maxlength="150">{{$article->CURATION_DESCRIPTION}}</textarea>
 					</div>
 						@if(Session::has('curation'))
-								<input type="hidden" class="cur-id" name="cur_id" value="{{Session::get('curation')}}">
+							<input type="hidden" class="cur-id" name="cur_id" value="{{Session::get('curation')}}">
 						@else
-						<input type="hidden" class="cur-id" name="cur_id" value="{{$curation}}">
+							<input type="hidden" class="cur-id" name="cur_id" value="{{$curation}}">
 						@endif
 				</div>
 				<div class="createbtn">
 						@if(Session::has('curation'))
-							<input class="btn btn-default preview" href="{{URL::route('article.preview', Session::get('curation'))}}" value="Preview" />
+							<a href="{{URL::route('article.preview', Session::get('curation'))}}"><input class="btn btn-default preview" type="button" href="{{URL::route('article.preview', Session::get('curation'))}}" value="Preview" /></a>
 						@else
-							<input class="btn btn-default preview" href="{{URL::route('article.preview', $curation)}}" value="Preview" />
+							<a href="{{URL::route('article.preview', $curation)}}"><input class="btn btn-default preview" type="button" href="{{URL::route('article.preview', $curation)}}" value="Preview" /></a>
 						@endif
 						<input type="submit" class="btn btn-default save" onclick="validate_article()" value="Save" />
 						@if(Session::has('curation'))
@@ -276,6 +279,19 @@
 							}
 						?>
 					</ul>
+					<script language="javascript" src="/assets/js/plugins/moaModal.js"></script>
+<script language="javascript" src="/assets/js/plugins/moaModal.minified.js"></script>
+
+<script>
+$(document).ready(function(){
+	 $('.twitter-button').modal({
+        target : '#twitter-search',
+        animation : 'top',
+        position : 'center'
+    });
+});
+</script>
+					<a class="twitter-button">Click Me</a>
 				</div>
 							
 								
@@ -285,7 +301,7 @@
 						
 						
 	</div>
-	<div class="twitter-search" title="Search for Tweets" style="display: none;">
+	<div id="twitter-search" title="Search for Tweets" style="display: none; width: 50%;">
 		@include('articles.twitter_search')
 		@section('twitterSearch')
 		@show
@@ -297,6 +313,7 @@
 	</div>
 					
 					<!---- start sidebar ---->
+					
 					<!----- end sidebar ----------->
 					
 					
@@ -305,4 +322,5 @@
 <script language="javascript" src="/assets/js/temp_art.js"></script>
 <script language="javascript" src="/assets/js/article.js"></script>
 <script language="javascript" src="/assets/js/linkScrapper.min.js"></script>
+
 @stop
