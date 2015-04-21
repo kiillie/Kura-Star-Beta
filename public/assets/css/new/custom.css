@@ -40,7 +40,7 @@ body {
 	font-size:100%;
 	font-family: Kozuka;
 	color:#666;
-	background-color:#f0f0f0;
+	background-color:#f0f0f0 !important;
 	min-width:320px;
 	height:100%;
 }
@@ -846,7 +846,7 @@ a.post-list-thumb-wrap:hover h2, a.post-list-thumb-wrap:hover h4 {
 .btn  { background:#919191; width:100px; text-align:center; color:#FFF; font-size:14px; border-radius:3px; margin:20px 4px; cursor:pointer; }
 
 /**** April 14, 2015 ****/
-.registration input[type='text'], .registration input[type='password']{
+.registration input[type='text'], .registration input[type='password'], .google-input input{
 	width: 320px;
 	border: 0;
 	background: rgba(255,255,255,0.75);
@@ -932,4 +932,11 @@ h2.title{
 }
 #video .extracted-vid{
 	display: none;
+}
+.image-res {
+	width: 30%;
+	float: left;
+}
+.image-res img{
+	width: 100%;
 }

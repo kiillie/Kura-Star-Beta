@@ -1,23 +1,18 @@
 @extends('layouts.main')
 @section('content')
+<link rel="stylesheet" href="/assets/css/plugins/avgrund.css">
  <script>
-  $(function() {
-    $( "#dialog" ).dialog({
-      autoOpen: false,
-      show: {
-        effect: "blind",
-        duration: 1000
-      },
-      hide: {
-        effect: "explode",
-        duration: 1000
-      }
-    });
- 
-    $( "#opener" ).click(function() {
-      $( "#dialog" ).dialog( "open" );
-    });
-  });
+	function openDialog(type){
+		if(type == 'google'){
+			Avgrund.show('#google-search');
+		}
+		else if(type == 'twitter'){
+			Avgrund.show("#twitter-search");
+		}
+	}
+	function closeDialog(){
+		Avgrund.hide();
+	}
   </script>
 <div class="defaultWidth center clear-auto bodycontent">
 	<div class="contentbox nosidebar">
@@ -47,7 +42,7 @@
 								<input type="submit" class="btn btn-default art-url-submit" name="art-submit" value="Set"><br/>
 								<a href="javascript:void(0)" class="disp-def artimage" onclick="select_type_img()">Click to Upload an Image</a><br/>
 								<span>or</span><br/>
-								<a href="javascript:void(0)" onclick="add_img_class(0, 'picture', 'main')"><span class="glyphicon glyphicon-search"></span> Search for Image</a>
+								<a href="javascript:openDialog('google')" onclick="add_img_class(0, 'picture', 'main')"><span class="glyphicon glyphicon-search"></span> Search for Image</a>
 								<input type="hidden" class="google-img" name="google-main" />
 							</div>
 							@if(Session::has('curation'))
@@ -288,16 +283,18 @@
 						
 						
 	</div>
-	<div id="twitter-search" title="Search for Tweets" style="display: none; width: 50%;">
+	<div id="twitter-search" class="avgrund-popup" title="Search for Tweets">
 		@include('articles.twitter_search')
 		@section('twitterSearch')
 		@show
 	</div>
-	<div class="image-search" title="Search for Image" style="display: none;">
+	<div class="image-search avgrund-popup" id="google-search" title="Search for Image">
 		@include('articles.image_search')
 		@section('imageSearch')
 		@show
 	</div>
+	<div class="avgrund-cover"></div>
+	
 					
 					<!---- start sidebar ---->
 					
@@ -309,5 +306,5 @@
 <script language="javascript" src="/assets/js/temp_art.js"></script>
 <script language="javascript" src="/assets/js/article.js"></script>
 <script language="javascript" src="/assets/js/linkScrapper.min.js"></script>
-
+<script type="text/javascript" src="/assets/js/plugins/avgrund.js"></script>
 @stop

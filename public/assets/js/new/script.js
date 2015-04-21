@@ -140,5 +140,6 @@ $(window).load(function() {
 $(window).load(function() {
 		  $(function() {
 			$( "#tabs" ).tabs();
+			$(".img-search").tabs();
 		  });
 });
