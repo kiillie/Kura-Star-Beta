@@ -142,7 +142,14 @@ class UserController extends BaseController{
 		$fbusers = $this->fbuser->getAllUsers();
 		$curators = $this->article->getArticlesOrderBy();
 		$profile = "";
-
+		$count_art = [];
+		$count_fave = [];
+		foreach($users as $user){
+			$count_art[$user->CURATER_ID] = $this->article->countArticlesByUser($user->CURATER_ID);
+		}
+		foreach($fbusers as $fbuser){
+			$count_art[$fbuser->CURATER_ID] = $this->article->countArticlesByUser($fbuser->CURATER_ID);
+		}
 		if(Hybrid_Auth::isConnectedWith('Facebook')){
 			$provider = $this->oauth->authenticate('Facebook');
 			$profile = $provider->getUserProfile();
@@ -164,7 +171,8 @@ class UserController extends BaseController{
 					->withCtryrank($ctry_rank)
 					->withProfile($profile)
 					->withFbusers($fbusers)
-					->withCurators($curators);
+					->withCurators($curators)
+					->withCoart($count_art);
 	}
 	
 	public function edit($id){

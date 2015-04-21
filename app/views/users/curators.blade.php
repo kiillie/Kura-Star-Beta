@@ -30,7 +30,7 @@
 												<div class="clear"></div>
 											</div>
 																			
-										<span class="smallpoints smallpoints-right"> articles</span>
+										<span class="smallpoints smallpoints-right">{{$coart[$fbuser->CURATER_ID]}} articles</span>
 														
 									</div>
 								</a>
@@ -63,7 +63,7 @@
 											</div>
 																		
 																	
-										<span class="smallpoints smallpoints-right"> articles</span>
+										<span class="smallpoints smallpoints-right">{{$coart[$raw->CURATER_ID]}} articles</span>
 														
 									</div>
 								</a>
