@@ -205,6 +205,8 @@ class ArticleController extends BaseController{
 		$countries = $this->country->showCountryByContinent();
 		$categories = $this->category->show();
 		$continents = $this->continent->show();
+		$users = $this->user->allUsers();
+		$fbusers = $this->fbuser->getAllUsers();
 		$profile = "";
 		if(Hybrid_Auth::isConnectedWith('Facebook')){
 			$provider = $this->oauth->authenticate('Facebook');
@@ -220,6 +222,14 @@ class ArticleController extends BaseController{
 		foreach($countries as $country){
 			$ctry_rank [$country->COUNTRY_ID] = $this->article->countByCountry($country->COUNTRY_ID);
 		}
+		foreach($users as $user){
+			$count_art[$user->CURATER_ID] = $this->article->countArticlesByUser($user->CURATER_ID);
+			$count_fave[$user->CURATER_ID] = $this->favorite->count_favorite_by_user($user->CURATER_ID);
+		}
+		foreach($fbusers as $fbuser){
+			$count_art[$fbuser->CURATER_ID] = $this->article->countArticlesByUser($fbuser->CURATER_ID);
+			$count_fave[$fbuser->CURATER_ID] = $this->favorite->count_favorite_by_user($fbuser->CURATER_ID);
+		}
 			arsort($ctry_rank);
 		return View::make('articles.preview')
 				->withContinents($continents)
@@ -229,7 +239,11 @@ class ArticleController extends BaseController{
 				->withUser($user)
 				->withRank($ranking)
 				->withCtryrank($ctry_rank)
-				->withProfile($profile);
+				->withProfile($profile)
+				->withUsers($users)
+				->withFbusers($fbusers)
+				->withCoart($count_art)
+				->withCofave($count_fave);
 	}
 
 	public function twitter(){

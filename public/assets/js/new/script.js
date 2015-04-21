@@ -142,4 +142,12 @@ $(window).load(function() {
 			$( "#tabs" ).tabs();
 			$(".img-search").tabs();
 		  });
+		  
+		if($(".bodycontent").hasClass("bycategory")){
+			var cat = $(".bycategory").attr("value");
+			$(".menuwrap .menu li").eq(cat).find("a").addClass("selected");
+		}
+		else if($(".bodycontent").hasClass("bodycontent-index")){
+			$(".menuwrap .menu li").eq(0).find("a").addClass("selected");
+		}
 });

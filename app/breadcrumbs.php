@@ -22,13 +22,25 @@ Breadcrumbs::register('article_category', function($breadcrumbs){
 Breadcrumbs::register('article', function($breadcrumbs, $article) {
     $breadcrumbs->parent('index');
 
-    // foreach ($article->ancestors as $ancestor) {
-    //     $breadcrumbs->push($ancestor->CURATION_TITLE, route('ARTICLE.VIEW', $ancestor->CURATION_ID));
-    // }
-
     $breadcrumbs->push($article->CURATION_TITLE, route('article.view', $article->CURATION_ID));
 });
+Breadcrumbs::register('country', function($breadcrumbs, $country) {
+    $breadcrumbs->parent('index');
 
+    $breadcrumbs->push($country->COUNTRY_NAME);
+});
+Breadcrumbs::register('category', function($breadcrumbs, $category) {
+    $breadcrumbs->parent('index');
+
+    $breadcrumbs->push($category->CATEGORY_NAME);
+});
+Breadcrumbs::register('search', function($breadcrumbs, $country, $category) {
+    $breadcrumbs->parent('index');
+
+	$breadcrumbs->push($country->COUNTRY_NAME, route('article.bycountry', $country->COUNTRY_ID));
+    $breadcrumbs->push($category->CATEGORY_NAME, route('article.bycategory', $category->CATEGORY_ID));
+	$breadcrumbs->push("");
+});
 Breadcrumbs::register('page', function($breadcrumbs, $page) {
     $breadcrumbs->parent('category', $page->category);
     $breadcrumbs->push($page->title, route('page', $page->id));
