@@ -2,7 +2,7 @@
 @section('content')
 <div class="defaultWidth center clear-auto bodycontent">
 	<div class="contentbox">
-		<div class="breadcrumb"><a href="#">HOME</a> &middot; <a href="#">CURATORS</a> &middot; <span>渡瀬理恵</span></div>
+	{{ Breadcrumbs::render('profile', $user) }}
 			
 			<div class="curator-detail-wrap">
 				<div class="pointer2"></div>
@@ -21,7 +21,7 @@
 					<div class="clear"></div>
 				</div>
 				<div class="points-detail">
-					11,600<span>points</span>
+					{{$count}}<span>Articles</span>
 				</div>
 				<div class="clear"></div>
 			</div>

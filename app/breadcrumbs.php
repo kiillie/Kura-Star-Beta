@@ -39,7 +39,12 @@ Breadcrumbs::register('search', function($breadcrumbs, $country, $category) {
 
 	$breadcrumbs->push($country->COUNTRY_NAME, route('article.bycountry', $country->COUNTRY_ID));
     $breadcrumbs->push($category->CATEGORY_NAME, route('article.bycategory', $category->CATEGORY_ID));
-	$breadcrumbs->push("");
+});
+Breadcrumbs::register('profile', function($breadcrumbs, $user) {
+    $breadcrumbs->parent('index');
+
+	$breadcrumbs->push("Curators", route('curators'));
+    $breadcrumbs->push($user->CURATER, route('user.profile', $user->CURATER_ID));
 });
 Breadcrumbs::register('page', function($breadcrumbs, $page) {
     $breadcrumbs->parent('category', $page->category);
