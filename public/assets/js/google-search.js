@@ -143,11 +143,12 @@ function add_google_image(res){
         {picture : res}).done(function(saved){
           $.post('/article/image',
           {
-            cur_id : $(".article .cur-id").val(),
+            cur_id : $(".createform .cur-id").val(),
             googleImage: saved
           }).done(function(img){
-            $(".article-details .art-default-img img").attr("src", saved);
-            $(".article-details .google-img").val(saved);
+            $(".createform .imgplaceholder img").attr("src", saved);
+			$(".createform .imgplaceholder").css("background", "none");
+            $(".createform .google-img").val(saved);
           });
         });
     }

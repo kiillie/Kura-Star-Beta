@@ -12,7 +12,7 @@
 					@foreach($fbusers as $fbuser)
 						@if($fbuser->CURATER_ID == $curator->CURATER_ID)
 							<li>
-								<a href class="post-list-thumb-wrap curator-list">
+								<a href="{{URL::route('user.profile', $fbuser->CURATER_ID)}}" class="post-list-thumb-wrap curator-list">
 									<div class="infobelow">
 													
 										@if($fbuser->CURATER_IMAGE != "")
@@ -29,9 +29,8 @@
 												<p>{{$fbuser->CURATER_DESCRIPTION}}</p>
 												<div class="clear"></div>
 											</div>
-																		
-																	
-										<span class="smallpoints smallpoints-right">14,091 pts</span>
+																			
+										<span class="smallpoints smallpoints-right"> articles</span>
 														
 									</div>
 								</a>
@@ -45,7 +44,7 @@
 					@foreach($users as $raw)
 						@if($raw->CURATER_ID == $curator->CURATER_ID)
 							<li>
-								<a href class="post-list-thumb-wrap curator-list">
+								<a href="{{URL::route('user.profile', $raw->CURATER_ID)}}" class="post-list-thumb-wrap curator-list">
 									<div class="infobelow">
 													
 										@if($raw->CURATER_IMAGE != "")
@@ -64,7 +63,7 @@
 											</div>
 																		
 																	
-										<span class="smallpoints smallpoints-right">14,091 pts</span>
+										<span class="smallpoints smallpoints-right"> articles</span>
 														
 									</div>
 								</a>

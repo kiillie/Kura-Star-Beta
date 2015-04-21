@@ -11,7 +11,7 @@
 				<ul class="post-list-thumb">
 					@foreach($articles as $article)		
 						<li>
-							<a href class="post-list-thumb-wrap">
+							<a href="{{URL::route('article.view', $article->CURATION_ID)}}" class="post-list-thumb-wrap">
 								@if($article->CURATION_IMAGE == "")
 									<div class="postimg" style="background-image:url(/assets/images/article-default.png);"></div>
 								@else

@@ -712,6 +712,7 @@ a.post-list-thumb-wrap:hover h2, a.post-list-thumb-wrap:hover h4 {
 	margin-right:3%;
 	float:left;
 	height:210px;
+	overflow: hidden;
 }
 
 .article-detail-wrap .curator-info h4 {
@@ -938,5 +939,8 @@ h2.title{
 	float: left;
 }
 .image-res img{
+	width: 100%;
+}
+.curator-detail-wrap .postimg img{
 	width: 100%;
 }

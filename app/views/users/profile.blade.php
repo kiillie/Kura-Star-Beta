@@ -125,7 +125,7 @@
 						<ul class="post-list-thumb">
 							@foreach($favorites as $favorite)
 								<li>
-									<a href="{{URL::route('article.create', $favorite->CURATION_ID)}}" class="post-list-thumb-wrap">
+									<a href="{{URL::route('article.view', $favorite->CURATION_ID)}}" class="post-list-thumb-wrap">
 										@if($favorite->CURATION_IMAGE == "")
 											<div class="postimg" style="background-image:url(/assets/images/article-default.png);"></div>
 										@else

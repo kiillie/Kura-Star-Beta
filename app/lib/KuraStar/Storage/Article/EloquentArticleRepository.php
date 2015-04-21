@@ -143,6 +143,7 @@ class EloquentArticleRepository implements ArticleRepository{
 
 	public function countArticlesByUser($id){
 		return Article::where('CURATER_ID', '=', $id)
+					->where('CURATION_STATUS', '=', 1)
 					->count();
 	}
 
