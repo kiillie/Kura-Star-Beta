@@ -1,7 +1,11 @@
 @extends('layouts.main')
 @section('content')
 <script>
-	
+	var title = "{{$article->CURATION_TITLE}}";
+	if(title != ""){
+		$("title").text(title);
+	}
+	$("meta[name='description']").attr("content", "{{$article->CURATION_DESCRIPTION}}");
 </script>
 <div class="defaultWidth center clear-auto bodycontent">
 	<div class="contentbox">
