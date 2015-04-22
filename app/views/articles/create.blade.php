@@ -16,14 +16,14 @@
   </script>
 <div class="defaultWidth center clear-auto bodycontent">
 	<div class="contentbox nosidebar">
-		<div class="breadcrumb"><a href="#">HOME</a> &middot; <span>CREATE</span></div>
+		{{ Breadcrumbs::render('create') }}
 		
 		<div class="divider"><span>fill up custom post below</span></div>
 		<div class="createform">
 			<div class="custompost">
 				<div class="linewrap">
 					<div class="leftbox">
-						<label>image preview</label>
+						<label>Image Preview</label>
 						@if($article->CURATION_IMAGE == "")
 							<div class="imgplaceholder"><img src="/assets/images/new/blank-img.png" alt="{{$article->CURATION_TITLE}}" /></div>
 						@else

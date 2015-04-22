@@ -24,6 +24,11 @@ Breadcrumbs::register('article', function($breadcrumbs, $article) {
 
     $breadcrumbs->push($article->CURATION_TITLE, route('article.view', $article->CURATION_ID));
 });
+Breadcrumbs::register('create', function($breadcrumbs) {
+    $breadcrumbs->parent('index');
+
+    $breadcrumbs->push("CREATE ARTICLE");
+});
 Breadcrumbs::register('country', function($breadcrumbs, $country) {
     $breadcrumbs->parent('index');
 
@@ -32,19 +37,19 @@ Breadcrumbs::register('country', function($breadcrumbs, $country) {
 Breadcrumbs::register('category', function($breadcrumbs, $category) {
     $breadcrumbs->parent('index');
 
-    $breadcrumbs->push($category->CATEGORY_NAME);
+    $breadcrumbs->push(strtoupper($category->CATEGORY_NAME));
 });
 Breadcrumbs::register('search', function($breadcrumbs, $country, $category) {
     $breadcrumbs->parent('index');
 
-	$breadcrumbs->push($country->COUNTRY_NAME, route('article.bycountry', $country->COUNTRY_ID));
-    $breadcrumbs->push($category->CATEGORY_NAME, route('article.bycategory', $category->CATEGORY_ID));
+	$breadcrumbs->push(strtoupper($country->COUNTRY_NAME), route('article.bycountry', $country->COUNTRY_ID));
+    $breadcrumbs->push(strtoupper($category->CATEGORY_NAME), route('article.bycategory', $category->CATEGORY_ID));
 });
 Breadcrumbs::register('profile', function($breadcrumbs, $user) {
     $breadcrumbs->parent('index');
 
 	$breadcrumbs->push("CURATORS", route('curators'));
-    $breadcrumbs->push($user->CURATER, route('user.profile', $user->CURATER_ID));
+    $breadcrumbs->push(strtoupper($user->CURATER), route('user.profile', $user->CURATER_ID));
 });
 Breadcrumbs::register('login', function($breadcrumbs) {
     $breadcrumbs->parent('index');

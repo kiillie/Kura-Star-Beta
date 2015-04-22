@@ -437,12 +437,18 @@ function cancel_add(li, type, kind){
 function editItem(li, type, kind){
 	if(type == 'text'){
 		var text = $("ul.sortable li[value='"+li+"'] .add-item-area .texts").val();
+		var res = "";
+		var spl = text.split("\n");
+		var lngt = spl.length;
+		for(var i = 0; i < lngt; i++){
+			res = res+"<p>"+spl[i]+"</p>";
+		}
 		$(".loader").hide();
 		if(validate_addon(li, type, kind)){
 			var content = 	'<div class="item-added-container">'+
 							'<div class="item-inner">'+
 							'<div class="text">'+
-							'<pre>'+text+'</pre>'+
+							res+
 							'</div>'+
 							'</div>'+
 							'<div class="editlist">'+

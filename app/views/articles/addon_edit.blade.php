@@ -5,7 +5,13 @@ if($addon['type'] == 'text'){
 	var li = "{{$addon['li']}}";
 	var type = "{{$addon['type']}}";
 	var kind = "{{$addon['kind']}}";
-	var text = $("ul.sortable li[value='"+li+"'] .item-inner .text p").html();
+	var text = "";
+	var txtlnt = $("ul.sortable li[value='"+li+"'] .item-inner .text p").length;
+	var p = "";
+	for(var i = 0; i < txtlnt; i++){
+		p = $("ul.sortable li[value='"+li+"'] .item-inner .text p").eq(i).text();
+		text = text+p+"\n";
+	}
 	var content =	'{{Form::open(["name"=>"text"])}}'+
 					'<textarea placeholder="Put your text here" class="form-control texts">'+text+
 					'</textarea>'+
