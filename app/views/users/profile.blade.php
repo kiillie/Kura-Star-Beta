@@ -144,6 +144,7 @@
 						<ul class="post-list-thumb">
 							@foreach($favorites as $favorite)
 								@foreach($allarticles as $allarticle)
+								{{$allarticle->CURATION_ID}}
 									@if($favorite->CURATION_ID == $allarticle->CURATION_ID)
 										<li>
 											<a href="{{URL::route('article.view', $allarticle->CURATION_ID)}}" class="post-list-thumb-wrap">
