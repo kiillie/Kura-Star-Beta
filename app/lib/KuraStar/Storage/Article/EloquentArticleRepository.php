@@ -102,6 +102,7 @@ class EloquentArticleRepository implements ArticleRepository{
 
 	public function allArticles(){
 		return Article::where('CURATION_STATUS', '=', 1)
+						->orderBy('VIEWS', 'DESC')
 						->paginate(12);
 	}
 
