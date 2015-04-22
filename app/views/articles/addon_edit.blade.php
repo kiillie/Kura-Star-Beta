@@ -30,7 +30,14 @@ else if($addon['type'] == 'picture'){
 	var type = "{{$addon['type']}}";
 	var kind = "{{$addon['kind']}}";
 	var image = $("ul.sortable li[value='"+li+"'] .item-inner .image-container img").attr("src");
-	var desc = $("ul.sortable li[value='"+li+"'] .item-inner .desc").html();
+	var desc = "";
+	var txtlnt = $("ul.sortable li[value='"+li+"'] .item-inner .desc p").length;
+	var p = "";
+	for(var i = 0; i < txtlnt; i++){
+		p = $("ul.sortable li[value='"+li+"'] .item-inner .desc p").eq(i).text();
+		desc = desc+p+"\n";
+	}
+	
 	var alt = $("ul.sortable li[value='"+li+"'] .item-inner .image-container img").attr("alt");
 	if(desc == undefined){
 		desc = "";

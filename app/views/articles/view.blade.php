@@ -10,7 +10,6 @@
 <div class="defaultWidth center clear-auto bodycontent">
 	<div class="contentbox">
 		{{ Breadcrumbs::render('article', $article) }}
-				
 		<div class="curator-detail-wrap article-detail-wrap">
 			<div class="pointer2"></div>
 				@if($article->CURATION_IMAGE == "")
@@ -114,7 +113,7 @@
 				?>
 				@foreach($fbusers as $fbuser)
 					@if($fbuser->CURATER_ID == $article->CURATER_ID)
-						<a href="" class="curator-detail-wrap" style="box-shadow:none; border:solid 1px #ee7500; margin-top:50px;">
+						<a href="{{URL::route('user.profile', $fbuser->CURATER_ID)}}" class="curator-detail-wrap" style="box-shadow:none; border:solid 1px #ee7500; margin-top:50px;">
 							@if($fbuser->CURATER_IMAGE == "")
 								<img src="/assets/images/article-default.png">
 							@else
@@ -142,7 +141,7 @@
 				?>
 				@foreach($users as $raw)
 					@if($raw->CURATER_ID == $article->CURATER_ID)
-						<a href="" class="curator-detail-wrap" style="box-shadow:none; border:solid 1px #ee7500; margin-top:50px;">
+						<a href="{{URL::route('user.profile', $raw->CURATER_ID)}}" class="curator-detail-wrap" style="box-shadow:none; border:solid 1px #ee7500; margin-top:50px;">
 							@if($raw->CURATER_IMAGE == "")
 								<img src="/assets/images/article-default.png">
 							@else

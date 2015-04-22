@@ -59,7 +59,12 @@ function addItem(li, type, kind){
 		if(validate_addon(li, type, kind)){
 			if(kind == 'new'){
 				var desc = $(".new-addon .new-item .img-desc").val();
-
+				var txt = "";
+				var spl = desc.split("\n");
+				var lngt = spl.length;
+				for(var i = 0; i < lngt; i++){
+					txt = txt+"<p>"+spl[i]+"</p>";
+				}
 				if($(".new-addon .new-item .img-anchor").hasClass("a-url")){
 					var res = $(".new-addon .new-item .imgurl").val();
 					var resource = getRootUrl(res);
@@ -71,13 +76,20 @@ function addItem(li, type, kind){
 				else{
 					var src = $(".new-addon .new-item .img-hid").val();
 					var image = '<a class="art-added-img" href="'+src+'" title="'+desc+'" data-fancybox-group="gallery"><img class="image" src="'+src+'" alt="'+src+'" /></a>'+
-								'<p class="desc">'+desc+'</p>';
+								'<div class="desc">'+txt+'</div>';
 				}
 				$('.new-addon .new-item').html("");
 			}
 			else{
 				var desc = $("ul.sortable li[value='"+li+"'] .img-desc").val();
-
+				var txt = "";
+				var spl = desc.split("\n");
+				var lngt = spl.length;
+				for(var i = 0; i < lngt; i++){
+					txt = txt+"<p>"+spl[i]+"</p>";
+				}
+				
+				
 				if($("ul.sortable li[value='"+li+"'] .img-anchor").hasClass("a-url")){
 					var res = $("ul.sortable li[value='"+li+"'] .imgurl").val();
 					var resource = getRootUrl(res);
@@ -89,7 +101,7 @@ function addItem(li, type, kind){
 				else{
 					var src = $("ul.sortable li[value='"+li+"'] .img-hid").val();
 					var image = '<a class="art-added-img" href="'+src+'" title="'+desc+'" data-fancybox-group="gallery"><img class="image" src="'+src+'" alt="'+src+'" /></a>'+
-								'<p class="desc">'+desc+'</p>';
+								'<div class="desc">'+txt+'</div>';
 				}
 				$('ul.sortable li[value="'+li+'"] .append-new-item').html("");
 				$('ul.sortable li[value="'+li+'"] .add-inner .item-btn-con').show();
@@ -468,15 +480,21 @@ function editItem(li, type, kind){
 	else if(type == 'picture'){
 		var src = $("ul.sortable li[value='"+li+"'] .def-image img").attr("src");
 		var desc = $("ul.sortable li[value='"+li+"'] .add-item-area .img-desc").val();
+		var txt = "";
+		var spl = desc.split("\n");
+		var lngt = spl.length;
+		for(var i = 0; i < lngt; i++){
+			txt = txt+"<p>"+spl[i]+"</p>";
+		}
 		var image = '<a class="art-added-img" href="'+src+'" title="'+src+'" data-fancybox-group="gallery"><img class="image" src="'+src+'" alt="'+src+'" /></a>'+
-					'<p class="desc">'+desc+'</p>';
+					'<div class="desc">'+txt+'</div>';
 		var source = $("ul.sortable li[value='"+li+"'] .add-item-area .img-hid").val();
 		if(src != source){
 			var resource = getRootUrl(source);
   			var orig = getOrigin(source);
 			var image = '<a class="art-added-img" href="'+src+'" title="'+src+'" data-fancybox-group="gallery"><img class="image" src="'+src+'" alt="'+source+'" /></a>'+
                 		'<div class="url-source"><span>Source: <a href="'+orig+'" target="_blank" alt="'+resource+'">'+resource+'</a></span></div>'+  
-                		'<p class="desc">'+desc+'</p>';
+                		'<div class="desc">'+txt+'</div>';
 		}
 
 		var content = 	'<div class="item-added-container">'+
