@@ -1,19 +1,6 @@
 @extends('layouts.main')
 @section('content')
-<link rel="stylesheet" href="/assets/css/plugins/avgrund.css">
- <script>
-	function openDialog(type){
-		if(type == 'google'){
-			Avgrund.show('#google-search');
-		}
-		else if(type == 'twitter'){
-			Avgrund.show("#twitter-search");
-		}
-	}
-	function closeDialog(){
-		Avgrund.hide();
-	}
-  </script>
+<link rel="stylesheet" href="/assets/css/plugins/jquery.superbox.css">
 <div class="defaultWidth center clear-auto bodycontent">
 	<div class="contentbox nosidebar">
 		{{ Breadcrumbs::render('create') }}
@@ -282,12 +269,12 @@
 						
 						
 	</div>
-	<div id="twitter-search" class="avgrund-popup" title="Search for Tweets">
+	<div id="twitter-search" class="avgrund-popup" title="Search for Tweets" style="display: none;">
 		@include('articles.twitter_search')
 		@section('twitterSearch')
 		@show
 	</div>
-	<div class="image-search avgrund-popup" id="google-search" title="Search for Image">
+	<div class="image-search avgrund-popup" id="google-search" title="Search for Image" style="display: none;">
 		@include('articles.image_search')
 		@section('imageSearch')
 		@show
@@ -297,13 +284,17 @@
 					
 					<!---- start sidebar ---->
 					
-					<!----- end sidebar ----------->
-					
-					
+					<!----- end sidebar ----------->		
 </div>
+
 <script language="javascript" src="/assets/js/create.js"></script>
 <script language="javascript" src="/assets/js/temp_art.js"></script>
 <script language="javascript" src="/assets/js/article.js"></script>
 <script language="javascript" src="/assets/js/linkScrapper.min.js"></script>
-<script type="text/javascript" src="/assets/js/plugins/avgrund.js"></script>
+<script type="text/javascript" src="/assets/js/plugins/jquery.superbox.js"></script>
+<script>
+	$(document).ready(function(){
+		$.superbox();
+	});
+</script>
 @stop

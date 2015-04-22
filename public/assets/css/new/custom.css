@@ -995,3 +995,11 @@ h2.title{
 }
 
 /************end registration************/
+/**** social ***/
+.social-login .facebook, .social-login .twitter{
+	float: left;
+	margin: 0 10px;
+}
+.social-login img{
+	width: 80px;
+}
