@@ -137,19 +137,82 @@
 					@endif
 				</div>
 				<div id="tabs-2">
-				<?php
-					for($i = 0; $i < count($favorites); $i++){
-						echo $favorites[$i];
-					}
-					
-				?>
+					@foreach($favorites as $favorite)
+						{{$favorite->CURATION_ID}}
+					@endforeach
 					@if(count($favorites) != 0)
 						<ul class="post-list-thumb">
 							@foreach($favorites as $favorite)
 								@foreach($allarticles as $allarticle)
-									@if($allarticle->CURATION_ID == $favorite->CURATION_ID)
+									@if($favorite->CURATION_ID == $allarticle->CURATION_ID)
 										<li>
-										{{$allarticle->CURATION_ID}}
+											<a href="{{URL::route('article.view', $allarticle->CURATION_ID)}}" class="post-list-thumb-wrap">
+												@if($allarticle->CURATION_IMAGE == "")
+													<div class="postimg" style="background-image:url(/assets/images/article-default.png);"></div>
+												@else
+													<div class="postimg" style="background-image:url({{$allarticle->CURATION_IMAGE}});"></div>
+												@endif
+												<div class="labels">
+													@foreach($countries as $country)
+														@if($country->COUNTRY_ID == $allarticle->COUNTRY_ID)
+															<span class="countrylabel"><i class="fa fa-map-marker"></i> {{$country->COUNTRY_NAME}}</span>
+														@endif
+													@endforeach
+													@foreach($categories as $category)
+														@if($category->CATEGORY_ID == $allarticle->CATEGORY_ID)
+															<span class="catlabel"><i class="fa fa-hotel"></i> {{$category->CATEGORY_NAME}}</span>
+														@endif
+													@endforeach
+												</div>
+												<div class="desc">
+													<h2>{{$allarticle->CURATION_TITLE}}</h2>
+													<p>
+														{{$allarticle->CURATION_DESCRIPTION}}
+													</p>
+												</div>
+												<div class="infobelow">
+													<span class="smallpoints smallpoints-left">{{$allarticle->VIEWS}} views</span>
+													<?php
+														$exist = strpos($allarticle->CURATER_ID, 'fb');
+														if($exist !== false){
+													?>
+													@foreach($fbusers as $fbuser)
+														@if($fbuser->CURATER_ID == $allarticle->CURATER_ID)
+															<div class="profile-thumb-wrap">
+																@if($fbuser->CURATER_IMAGE == "")
+																	<img src="/assets/images/picture-default.png" />
+																@else
+																	<img src="{{$fbuser->CURATER_IMAGE}}" />
+																@endif
+																<div class="curator">
+																	<span>CURATOR</span><br />
+																	<h3>{{$fbuser->CURATER}}</h3>
+																</div>
+															</div>
+														@endif
+													@endforeach
+													<?php
+														}
+														else{
+													?>
+													@foreach($users as $raw)
+														@if($raw->CURATER_ID == $allarticle->CURATER_ID)
+															<div class="profile-thumb-wrap">
+																@if($raw->CURATER_IMAGE == "")
+																	<img src="/assets/images/picture-default.png" />
+																@else
+																	<img src="{{$raw->CURATER_IMAGE}}" />
+																@endif
+																<div class="curator">
+																	<span>CURATOR</span><br />
+																	<h3>{{$raw->CURATER}}</h3>
+																</div>
+															</div>
+														@endif
+													@endforeach
+													<?php } ?>
+												</div>
+											</a>
 										</li>
 									@endif
 								@endforeach
