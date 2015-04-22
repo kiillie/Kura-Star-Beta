@@ -402,6 +402,10 @@ class ArticleController extends BaseController{
 			$continents = $this->continent->show();
 			$ranking = $this->article->getByRanking();
 			$ctry_rank = [];
+			foreach($countries as $country){
+				$ctry_rank [$country->COUNTRY_ID] = $this->article->countByCountry($country->COUNTRY_ID);
+			}
+			arsort($ctry_rank);
 			$profile = "";
 			$fbusers = $this->fbuser->getAllUsers();
 
