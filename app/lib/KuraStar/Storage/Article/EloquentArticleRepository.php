@@ -107,7 +107,7 @@ class EloquentArticleRepository implements ArticleRepository{
 	}
 	
 	public function articleLists(){
-		return Article::paginate(12);
+		return Article::all();
 	}
 	
 	public function show($id){

@@ -137,14 +137,10 @@
 					@endif
 				</div>
 				<div id="tabs-2">
-					@foreach($favorites as $favorite)
-						{{$favorite->CURATION_ID}}
-					@endforeach
 					@if(count($favorites) != 0)
 						<ul class="post-list-thumb">
 							@foreach($favorites as $favorite)
 								@foreach($allarticles as $allarticle)
-								{{$allarticle->CURATION_ID}}
 									@if($favorite->CURATION_ID == $allarticle->CURATION_ID)
 										<li>
 											<a href="{{URL::route('article.view', $allarticle->CURATION_ID)}}" class="post-list-thumb-wrap">
