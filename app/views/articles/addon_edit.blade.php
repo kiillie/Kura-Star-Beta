@@ -37,7 +37,6 @@ else if($addon['type'] == 'picture'){
 		p = $("ul.sortable li[value='"+li+"'] .item-inner .desc p").eq(i).text();
 		desc = desc+p+"\n";
 	}
-	
 	var alt = $("ul.sortable li[value='"+li+"'] .item-inner .image-container img").attr("alt");
 	if(desc == undefined){
 		desc = "";
@@ -134,7 +133,13 @@ else if($addon['type'] == 'video'){
 	var type = "{{$addon['type']}}";
 	var kind = "{{$addon['kind']}}";
 	var src = $("ul.sortable li[value='"+li+"'] iframe").attr("src");
-	var vid_dsc = $("ul.sortable li[value='"+li+"'] .vid-p-desc").text();
+	var vid_dsc = "";
+	var txtlnt = $("ul.sortable li[value='"+li+"'] .vid-p-desc p").length;
+	var p = "";
+	for(var i = 0; i < txtlnt; i++){
+		p = $("ul.sortable li[value='"+li+"'] .vid-p-desc p").eq(i).text();
+		vid_dsc = vid_dsc+p+"\n";
+	}
 	var content = '{{Form::open(["name"=>"video"])}}'+
 					'<div class="extracted-vid row" style="display: block;">'+
 					'<div class="col-md-7">'+

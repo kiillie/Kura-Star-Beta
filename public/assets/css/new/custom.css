@@ -914,24 +914,24 @@ h2.title{
 .curator-list-thumb .curator-list{
 	height: 113px;
 }
-#picture .def-image{
+#picture .def-image, .sortable .def-image{
 	width: 20%;
 	float: left;
 }
-#picture .url-upload{
+#picture .url-upload, .sortable li .url-upload{
 	width: 80%;
 	float: left;
 }
-#picture .upload-img-con{
+#picture .upload-img-con, .sortable li .upload-img-con{
 	display: none;
 }
-#link .link-result{
+#link .link-result, .sortable .link-result{
 	display: none;
 }
-#tag .tag-bullet{
+#tag .tag-bullet, .sortable .tag-bullet{
 	display: none;
 }
-#video .extracted-vid{
+#video .extracted-vid, .sortable .extracted-vid{
 	display: none;
 }
 .image-res {

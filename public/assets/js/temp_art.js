@@ -317,23 +317,35 @@ function addItem(li, type, kind){
 		if(kind == 'new'){
 			var src = $(".new-addon .new-item iframe").attr("src");
 			var desc = $(".new-addon .new-item .vid-desc").val();
+			var res = "";
+			var spl = desc.split("\n");
+			var lngt = spl.length;
+			for(var i = 0; i < lngt; i++){
+				res = res+"<p>"+spl[i]+"</p>";
+			}
 			var resource = getRootUrl(src);
 			var orig = getOrigin(src);
 			var video = '<iframe class="vid-display" src="'+src+'" width="600" height="400">#</iframe>'+
 						'<div class="url-source"><span>Source: <a href="'+orig+'" target="_blank" alt="'+resource+'">'+resource+'</a></span></div>'+
-						'<p class="vid-p-desc">'+desc+'</p>';
+						'<div class="vid-p-desc">'+res+'</div>';
 			$('.new-addon .new-item').html("");
 		}
 		else{
 			var src = $("ul.sortable li[value='"+li+"'] iframe").attr("src");
 			var desc = $("ul.sortable li[value='"+li+"'] .vid-desc").val();
+			var res = "";
+			var spl = desc.split("\n");
+			var lngt = spl.length;
+			for(var i = 0; i < lngt; i++){
+				res = res+"<p>"+spl[i]+"</p>";
+			}
 			var resource = getRootUrl(src);
 
 			var orig = getOrigin(src);
 
 			var video =  '<iframe class="vid-display" src="'+src+'" width="600" height="400">#</iframe>'+		 
 						 '<div class="url-source"><span>Source: <a href="'+orig+'" target="_blank" alt="'+resource+'">'+resource+'</a></span></div>'+
-						 '<p class="vid-p-desc">'+desc+'</p>';
+						 '<div class="vid-p-desc">'+desc+'</div>';
 			$('ul.sortable li[value="'+li+'"] .append-new-item').html("");
 			$('ul.sortable li[value="'+li+'"] .add-inner .item-btn-con').show();
 		}
@@ -572,12 +584,19 @@ function editItem(li, type, kind){
 	else if(type == 'video'){
 		var src = $("ul.sortable li[value='"+li+"'] iframe").attr("src");
 		var desc = $("ul.sortable li[value='"+li+"'] .vid-desc").val();
+		var res = "";
+		var spl = desc.split("\n");
+		var lngt = spl.length;
+		for(var i = 0; i < lngt; i++){
+			res = res+"<p>"+spl[i]+"</p>";
+		}
+		
 		var resource = getRootUrl(src);
 		var orig = getOrigin(src);
 
 		var video = '<iframe class="vid-display" src="'+src+'" width="600" height="400">#</iframe>'+
 						'<div class="url-source"><span>Source: <a href="'+orig+'" target="_blank" alt="'+resource+'">'+resource+'</a></span></div>'+
-						'<p class="vid-p-desc">'+desc+'</p>';
+						'<div class="vid-p-desc">'+res+'</div>';
 
 		$(".loader").show();
 		var content = 	'<div class="item-added-container">'+
