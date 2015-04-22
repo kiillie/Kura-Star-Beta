@@ -37,7 +37,7 @@
 							@foreach($articles as $article)		
 								<li>
 									@if(Hybrid_Auth::isConnectedWith('Facebook'))
-										@if('fb'.$profile->identifier() == $article->CURATER_ID)
+										@if('fb'.$profile->identifier == $article->CURATER_ID)
 											<a href="{{URL::route('article.create', $article->CURATION_ID)}}" class="post-list-thumb-wrap">
 										@else
 											<a href="{{URL::route('article.view', $article->CURATION_ID)}}" class="post-list-thumb-wrap">
