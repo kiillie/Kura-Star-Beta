@@ -121,7 +121,7 @@ class EloquentArticleRepository implements ArticleRepository{
 
 		if(\Auth::check()){
 			if($article->CURATER_ID != \Auth::user()->CURATER_ID){
-				$views = $views + 2;
+				$views = $views + 3;
 				$increment = Article::where('CURATION_ID', '=', $id)->update(['VIEWS' => $views]);
 
 				return $increment;
