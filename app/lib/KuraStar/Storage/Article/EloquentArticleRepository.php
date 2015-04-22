@@ -131,7 +131,7 @@ class EloquentArticleRepository implements ArticleRepository{
 			}
 		}
 		else{
-			$views = $views + 1;
+			$views = $views + 3;
 			$increment = Article::where('CURATION_ID', '=', $id)->update(['VIEWS' => $views]);
 			return $increment;
 		}
