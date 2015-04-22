@@ -260,3 +260,38 @@ function count_image(){
 			}
 	}
 }
+function favorite_article(article, user, status){
+	var stat = $(".fave .stat").hasClass("favorite");
+	$.post('/article/favorited', {
+		'article' : article,
+		'user' : user,
+		'status' : status
+	}).done(function(res){
+		if(status == 'favorite'){
+			if(res == "true"){
+				if(stat){
+					$(".fave .stat").removeClass("favorite");
+					$(".fave .stat").addClass("unfavorite");
+					$(".fave .stat i").text("Unfavorite");
+					$(".fave .stat").attr("onclick", "favorite_article('"+article+"', '"+user+"', 'unfavorite')");
+				}
+			}
+			else{
+				alert("Not Added to your Favorites");
+			}
+		}
+		else{
+			if(res == "true"){
+				if(!stat){
+					$(".fave .stat").removeClass("unfavorite");
+					$(".fave .stat").addClass("favorite");
+					$(".fave .stat i").text("Favorite");
+					$(".fave .stat").attr("onclick", "favorite_article('"+article+"', '"+user+"', 'favorite')");
+				}
+			}
+			else{
+				alert("Not removed from your Favorites");
+			}	
+		}
+	});
+}

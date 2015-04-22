@@ -105,7 +105,11 @@ class EloquentArticleRepository implements ArticleRepository{
 						->orderBy('VIEWS', 'DESC')
 						->paginate(12);
 	}
-
+	
+	public function articleLists(){
+		return Article::paginate(12);
+	}
+	
 	public function show($id){
 		return Article::where('CURATION_ID', '=', $id)->first();
 	}

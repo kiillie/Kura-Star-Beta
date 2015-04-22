@@ -29,9 +29,11 @@
 			<div class="curator-info">
 				<h4>{{$article->CURATION_TITLE}}</h4>
 				<p>{{$article->CURATION_DESCRIPTION}}</p>
+				
 			</div>
 			<div class="infobelow">
 				<span class="smallpoints smallpoints-left"><img src="/assets/images/social-sample.png" /></span>
+				
 				<div class="profile-thumb-wrap">
 					<?php
 						$exist = strpos($article->CURATER_ID, 'fb');
@@ -75,6 +77,20 @@
 				</div>
 			</div>
 			<div class="points-detail">
+				@if(Auth::check())
+					@if($check)
+						<span class="fave"><a href="javascript:void(0);" class="stat favorite" onclick="favorite_article({{$article->CURATION_ID}}, {{Auth::user()->CURATER_ID}}, 'favorite')"><i>Favorite</i></a></span>
+					@else
+						<span class="fave"><a href="javascript:void(0);" class="stat unfavorite" onclick="favorite_article({{$article->CURATION_ID}}, {{Auth::user()->CURATER_ID}}, 'unfavorite')"> <i>Unfavorite</i></a></span>
+					@endif
+				@endif
+				@if(Hybrid_Auth::isConnectedWith('Facebook'))
+					@if($check)
+						<span class="fave"><a href="javascript:void(0);" class="stat favorite" onclick="favorite_article({{$article->CURATION_ID}}, '{{'fb'.$profile->identifier}}', 'favorite')"> <i>Favorite</i></a></span>
+					@else
+						<span class="fave"><a href="javascript:void(0);" class="stat unfavorite" onclick="favorite_article({{$article->CURATION_ID}}, '{{'fb'.$profile->identifier}}', 'unfavorite')"> <i>Unfavorite</i></a></span>
+					@endif
+				@endif
 				{{$article->VIEWS}} <span>views</span>
 			</div>
 			<div class="clear"></div>
@@ -164,4 +180,5 @@
 					
 					
 </div>
+<script language="javascript" src="/assets/js/create.js"></script>
 @stop

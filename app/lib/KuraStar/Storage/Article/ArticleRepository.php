@@ -11,6 +11,8 @@ interface ArticleRepository{
 	public function getArticle($id);
 
 	public function allArticles();
+	
+	public function articleLists();
 
 	public function show($id);
 

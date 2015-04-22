@@ -1502,41 +1502,6 @@ function check_image(li, type, kind){
 		}
 	}
 }
-function favorite_article(article, user, status){
-	var stat = $(".article .fave .stat").hasClass("favorite");
-	$.post('/article/favorited', {
-		'article' : article,
-		'user' : user,
-		'status' : status
-	}).done(function(res){
-		if(status == 'favorite'){
-			if(res == "true"){
-				if(stat){
-					$(".article .fave .stat").removeClass("favorite");
-					$(".article .fave .stat").addClass("unfavorite");
-					$(".article .fave .stat i").text("Unfavorite");
-					$(".article .fave .stat").attr("onclick", "favorite_article('"+article+"', '"+user+"', 'unfavorite')");
-				}
-			}
-			else{
-				alert("Not Added to your Favorites");
-			}
-		}
-		else{
-			if(res == "true"){
-				if(!stat){
-					$(".article .fave .stat").removeClass("unfavorite");
-					$(".article .fave .stat").addClass("favorite");
-					$(".article .fave .stat i").text("Favorite");
-					$(".article .fave .stat").attr("onclick", "favorite_article('"+article+"', '"+user+"', 'favorite')");
-				}
-			}
-			else{
-				alert("Not removed from your Favorites");
-			}	
-		}
-	});
-}
 function validate_article(){
 	$("form[name='article']").one('submit', function(e){
 		e.preventDefault();

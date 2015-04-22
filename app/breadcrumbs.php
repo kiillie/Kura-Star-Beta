@@ -22,7 +22,7 @@ Breadcrumbs::register('article_category', function($breadcrumbs){
 Breadcrumbs::register('article', function($breadcrumbs, $article) {
     $breadcrumbs->parent('index');
 
-    $breadcrumbs->push($article->CURATION_TITLE, route('article.view', $article->CURATION_ID));
+    $breadcrumbs->push(strtoupper($article->CURATION_TITLE), route('article.view', $article->CURATION_ID));
 });
 Breadcrumbs::register('create', function($breadcrumbs) {
     $breadcrumbs->parent('index');
