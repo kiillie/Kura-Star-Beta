@@ -137,7 +137,12 @@
 					@endif
 				</div>
 				<div id="tabs-2">
-				{{count($favorites)}}
+				<?php
+					for($i = 0; $i < count($favorites); $i++){
+						echo $favorites[$i];
+					}
+					
+				?>
 					@if(count($favorites) != 0)
 						<ul class="post-list-thumb">
 							@foreach($favorites as $favorite)
