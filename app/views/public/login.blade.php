@@ -19,6 +19,17 @@
 							<label class="chx">{{Form::checkbox('remember')}} remember me</label>
 							{{Form::submit('Login', ['class'	=> 'form-control btn btn-primary'])}}
 						{{Form::close()}}
+						
+						<div class="social-login">
+							<br/>
+							<h6>Or Login with:</h6>
+							<div class="facebook">
+							   <a href="fbauth"><img src="/assets/images/facebook.png"></a>
+							</div>
+							<div class="twitter">
+								{{HTML::image('assets/images/twitter.png')}}
+							</div>
+						</div>
 					</div>	
 						
 				</div>
