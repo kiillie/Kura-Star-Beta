@@ -1,8 +1,7 @@
 @extends('layouts.main')
 @section('content')
 <script>
-	$("title").text("{{$article->CURATION_TITLE}}");
-	$("head").append('<meta name="description" content="{{addslashes($article->CURATION_DESCRIPTION)}}">');
+	
 </script>
 <div class="defaultWidth center clear-auto bodycontent">
 	<div class="contentbox">

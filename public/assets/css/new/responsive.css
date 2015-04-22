@@ -204,7 +204,11 @@
 		font-weight:normal;
 	}
 }
-
+@media only screen and (min-width: 300px) and (max-width: 767px) {
+	/******registration form************/
+	.regbox { width:100%; }
+	/********end registration form**********/
+}
 @media only screen and (min-width: 300px) and (max-width: 760px) {
 	.searchwrap { top:56%; }
 	.mCustomScrollbar, .dropcountry, .dropcategory { height:130px; }

@@ -1,12 +1,12 @@
 <?php
 
 Breadcrumbs::register('index', function($breadcrumbs) {
-    $breadcrumbs->push('Home', route('index'));
+    $breadcrumbs->push('HOME', route('index'));
 });
 
 Breadcrumbs::register('registration', function($breadcrumbs) {
     $breadcrumbs->parent('index');
-    $breadcrumbs->push('User Registration', route('registration'));
+    $breadcrumbs->push('USER REGISTRATION', route('registration'));
 });
 
 Breadcrumbs::register('view_article', function($breadcrumbs){
@@ -43,8 +43,13 @@ Breadcrumbs::register('search', function($breadcrumbs, $country, $category) {
 Breadcrumbs::register('profile', function($breadcrumbs, $user) {
     $breadcrumbs->parent('index');
 
-	$breadcrumbs->push("Curators", route('curators'));
+	$breadcrumbs->push("CURATORS", route('curators'));
     $breadcrumbs->push($user->CURATER, route('user.profile', $user->CURATER_ID));
+});
+Breadcrumbs::register('login', function($breadcrumbs) {
+    $breadcrumbs->parent('index');
+
+	$breadcrumbs->push("USER LOGIN");
 });
 Breadcrumbs::register('page', function($breadcrumbs, $page) {
     $breadcrumbs->parent('category', $page->category);

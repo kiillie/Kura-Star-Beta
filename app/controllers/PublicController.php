@@ -85,7 +85,7 @@ class PublicController extends BaseController{
 	}
 
 	public function test(){
-		return View::make('articles.delete_article');
+		return View::make('public.test');
 	}
 
 	public function tester(){

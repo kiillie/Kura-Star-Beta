@@ -166,7 +166,6 @@
 								$xpath = new DOMXpath($dom); 
 								$divTag = $xpath->evaluate("//li//div"); 
 								$content = "";
-								print_r($classes);
 								for($i = 0; $i < $length; $i++){
 
 									$divcontent = $divTag->item($i);

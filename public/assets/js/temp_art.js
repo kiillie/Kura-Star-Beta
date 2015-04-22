@@ -7,10 +7,22 @@ function addItem(li, type, kind){
 		if(validate_addon(li, type, kind)){
 			if(kind == 'new'){
 				var text = $(".new-item .texts").val();
+				var res = "";
+				var spl = text.split("\n");
+				var lngt = spl.length;
+				for(var i = 0; i < lngt; i++){
+					res = res+"<p>"+spl[i]+"</p>";
+				}
 				$('.new-addon .new-item').html("");
 			}
 			else{
 				var text = $("ul.sortable li[value='"+li+"'] .append-new-item .texts").val();
+				var res = "";
+				var spl = text.split("\n");
+				var lngt = spl.length;
+				for(var i = 0; i < lngt; i++){
+					res = res+"<p>"+spl[i]+"</p>";
+				}
 				$('ul.sortable li[value="'+li+'"] .append-new-item').html("");
 				$('ul.sortable li[value="'+li+'"] .add-inner .item-btn-con').show();
 			}
@@ -19,7 +31,7 @@ function addItem(li, type, kind){
 							'<div class="item-added-container">'+
 							'<div class="item-inner">'+
 							'<div class="text">'+
-							'<pre>'+text+'</pre>'+
+							res+
 							'</div>'+
 							'</div>'+
 							'<div class="editlist">'+

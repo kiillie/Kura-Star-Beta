@@ -944,3 +944,54 @@ h2.title{
 .curator-detail-wrap .postimg img{
 	width: 100%;
 }
+/************registration************/
+.regbox {
+	width:50%;
+	box-sizing:border-box;
+	padding:20px;
+	font-size:16px;
+	float:left;
+}
+.reg-form2 input[type=text], .reg-form2 input[type=password], .reg-form2 input[type=file], .reg-form2 select, .reg-form2 textarea {
+	background:#FFF;
+	border:solid 1px #e6e6e6;
+	border-radius:4px;
+	width:92.5%;
+	padding:6px 2%;
+	color:#747474;
+	font-size:15px;
+	line-height:24px;
+	height:50px;
+	margin-top:10px;
+}
+.reg-form2 input[type=submit] {
+	border-radius:3px;
+	background:#555;
+	color:#FFF;
+	padding:10px;
+	text-align:center;
+	font-size:14px;
+	font-weight:bold;
+	width:150px;
+	margin:2px;
+	margin-top:20px;
+}
+
+.reg-form2 input[type=submit]:hover {
+	background:#ed7600;
+}
+
+.default-title {
+	font-size:24px;
+	  color: #494949;
+	  font-weight:500;
+}
+.chx {
+	display:block;
+	margin-top:20px;
+}
+.chx input {
+	margin-right:6px;
+}
+
+/************end registration************/
