@@ -23,7 +23,7 @@
 					<img width="80" src="/assets/images/loader.gif" alt="loading..."/>
 				</div>
 				<div class="tweet-results">
-
+					
 				</div>
 			</div>
 		</div>
