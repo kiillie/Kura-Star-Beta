@@ -13,6 +13,8 @@
 		}
 		else if('twitter'){
 			$("#twitter-search").css("display", "block");
+			$("#twitter-search .tweet-results").html("");
+			$("#twitter-search .search-value").val("");
 			Avgrund.show("#twitter-search");
 			
 		}
