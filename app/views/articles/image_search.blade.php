@@ -1,12 +1,12 @@
 @section('imageSearch')
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript" src="/assets/js/google-search.js"></script>
-<div class="modal image-search fade" id="imageSearch" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-	    <div class="modal-content">
+<div class="image-search" id="imageSearch">
+  <div class="googlebox">
+	    <div>
 	      	<div class="modal-header">
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeDialog()"><span aria-hidden="true">&times;</span></button>
-		        <h4 class="modal-title" id="myModalLabel">Image Search</h4>
+		        <h4 class="modal-title" id="myModalLabel">Search for Images</h4>
 	      	</div>
 	    	<div class="modal-body">
 	    		<div class="img-search tab1 tab2">
@@ -16,11 +16,11 @@
 		        	</ul>
 		        	<div class="tab-content">
 			        	<div class="img-srch" id="google">
-			        		<div class="google-input"><input type="text" class="form-control img-text" placeholder="Search for images..."/></div>
+			        		<div class="google-input"><input type="text" class="form-control img-text" placeholder="Search Images"/></div>
 			        		<input type="hidden" class="search-li" />
 			        		<input type="hidden" class="search-kind">
 			        		<br />
-	    					<div id="content" class="row" ></div>
+	    					<ul id="content" class="post-list-thumb" ></ul>
 			        	</div>
 			        	<div class="img-srch" id="instagram">
 			        		Instagram

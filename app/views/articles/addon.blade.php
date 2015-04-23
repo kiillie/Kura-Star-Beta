@@ -47,7 +47,7 @@ else if($addon['type'] == 'picture'){
 					'<input type="button" class="btn btn-default url-cancel" value="Cancel" onclick="cancel_add(\''+li+'\', \''+type+'\', \''+kind+'\')">'+
 					'</div>'+
 					'<a href="javascript:void(0)" class="img-anchor a-url" onclick="select_img_type(\''+li+'\', \''+type+'\', \''+kind+'\')">Upload an Image</a><br/><br/>'+
-					'<a href="javascript:void(0)" class="search-anchor" onclick="add_img_class('+li+', \''+type+'\', \''+kind+'\')" data-toggle="modal" data-target="#imageSearch"><span class="glyphicon glyphicon-search"></span> Search for image</a>'+
+					'<a href="javascript:openDialog(\'google\')" class="search-anchor" onclick="add_img_class('+li+', \''+type+'\', \''+kind+'\')" data-toggle="modal" data-target="#imageSearch"><span class="glyphicon glyphicon-search"></span> Search for image</a>'+
 					'<div class="img-desc-con">'+
 					'<textarea class="form-control img-desc"></textarea>'+
 					'<input type="button" class="btn btn-default pic-add" value="Add" onclick="addItem(\''+li+'\', \''+type+'\', \''+kind+'\')">'+

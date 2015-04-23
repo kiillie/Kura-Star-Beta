@@ -260,7 +260,7 @@ p {
 }
 .post-list-thumb li {
 	float:left;
-	width:33.333%;
+	width:29.333%;
 }
 .post-list-thumb-wrap, .curator-detail-wrap {
 	padding:10px;
@@ -937,6 +937,9 @@ h2.title{
 .image-res {
 	width: 30%;
 	float: left;
+	padding: 10px;
+	overflow: hidden;
+	min-height: 160px;
 }
 .image-res img{
 	width: 100%;
@@ -1003,3 +1006,61 @@ h2.title{
 .social-login img{
 	width: 80px;
 }
+/******* END *******/
+#lean_overlay {
+    position: fixed;
+    z-index:100;
+    top: 0px;
+    left: 0px;
+    height:100%;
+    width:100%;
+    background: #000;
+    display: none;
+}
+#imageSearch .post-list-thumb{
+	border: none;
+	background-color: transparent;
+}
+/****** Twitter  ****/
+.tweetbox, .googlebox{
+	width:100%;
+	box-sizing:border-box;
+	padding:20px;
+	font-size:16px;
+	float:left;
+}
+.tweetbox .modal-header button, .googlebox .modal-header button{
+	float: right;
+}
+.tweetbox .modal-header h4, .googlebox .modal-header h4{
+	font-size: 40px;
+}
+.tweet-form input[type=text], .googlebox input[type='text']{
+	background:#FFF;
+	border:solid 1px #e6e6e6;
+	border-radius:4px;
+	width:92.5%;
+	padding:6px 2%;
+	color:#747474;
+	font-size:15px;
+	line-height:24px;
+	height:50px;
+	margin-top:10px;
+}
+..tweet-form input[type=submit]{
+	border-radius:3px;
+	background:#555;
+	color:#FFF;
+	padding:10px;
+	text-align:center;
+	font-size:14px;
+	font-weight:bold;
+	width:150px;
+	margin:2px;
+	margin-top:20px;
+}
+
+..tweet-form input[type=submit]:hover {
+	background:#ed7600;
+}
+/***** *****/

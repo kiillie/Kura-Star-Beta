@@ -3,7 +3,6 @@ function edit_addon(li, type, controller, action, kind){
 	if(action == 'new'){
 		$(".loader").show();
 		post_addon_data(li, type, controller, action, kind);
-		onopen();
 	}
 	else if(action == 'edit'){
 		edit_addon_data(li, type, controller, action, kind);
@@ -19,24 +18,6 @@ function edit_addon_data(li, type, controller, action, kind){
 		}).done(function(data){
 			$("ul.sortable li[value='"+li+"'] .add-item-area").append("<div class='edit-area'>"+data+"</div>");
 		});
-}
-function onopen(){
-	$(document).ready(function(){
-		$( ".twitter-search" ).dialog({
-		  autoOpen: false,
-		  show: {
-			effect: "blind",
-			duration: 1000
-		  },
-		  hide: {
-			effect: "explode",
-			duration: 1000
-		  }
-		});
-		$(".search-anchor").click(function(){
-			alert("hi");
-		});
-	});
 }
 function post_addon_data(li, type, controller, action, kind){
 	var tosave = $("ul.sortable").html();

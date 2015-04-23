@@ -1,18 +1,18 @@
 @section('twitterSearch')
-<div class="modal twitter-search fade" id="twitterSearch" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-	    <div class="modal-content">
+<div class="twitter-search" id="twitterSearch">
+  <div class="tweetbox">
+	    <div>
 	      	<div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <button type="button" class="close" onclick="closeDialog()" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		        <h4 class="modal-title" id="myModalLabel">Search for Tweets</h4>
 	      	</div>
 	    	<div class="modal-body">
-	    		<div class="row">
-	    			{{Form::open(['name'=>'tweet-search', 'id'=>'form-tweet', 'method'=>'post', 'route'=>'addon.twitter'])}}
-	    			<div class="col-md-7">
+	    		<div class="tweet-wrap">
+	    			{{Form::open(['name'=>'tweet-search', 'id'=>'form-tweet', 'method'=>'post', 'route'=>'addon.twitter', 'class'=>'tweet-form'])}}
+	    			<div class="tweet-input">
 						<input type="text" class="form-control search-value" name="search" placeholder="Search for tweets" aria-describedby="sizing-addon1">
 				  	</div>
-				  	<div class="col-md-5">
+				  	<div class="tweet-hidden">
 				  		<input type="hidden" class="tweet-kind" name="type" />
 				  		<input type="hidden" class="tweet-li" name="li" />
 				  		<input type="submit" class="btn btn-default" id="sizing-addon1" value="Search"/>
@@ -26,11 +26,32 @@
 
 				</div>
 			</div>
-			<div class="modal-footer">
-		    	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			</div>
 		</div>
 	</div>
-</div>fsfsdfdsfds
-
+</div>
+<script>
+$(document).ready(function(){
+	$(".twitter-search #form-tweet").submit(function(e){
+		$(".tweet-loading").show();
+		$(".twitter-search .tweet-results").html("");
+		e.preventDefault();
+		var search = $(".twitter-search .search-value").val();
+		$.ajax({
+			url	: '/addon/twitter',
+			type : 'POST',
+			data : new FormData(this),
+			contentType : false,
+			cache : false,
+			processData : false,
+			success : function(res){
+				$(".twitter-search .tweet-results").html(res);
+			}
+		}).fail(function(){
+			$(".tweet-loading").hide();
+			var content = "<div class='alert alert-danger'>Please search again.</div>";
+			$(".twitter-search .tweet-results").html(content);
+		});
+	});
+});
+</script>
 @stop

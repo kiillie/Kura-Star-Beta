@@ -6,20 +6,18 @@ google.load('search', '1');
         var cursor = imageSearch.cursor;
         var curPage = cursor.currentPageIndex; // check what page the app is on
         var pagesDiv = document.createElement('div');
-        var ul = document.createElement('ul');
-        ul.className = 'pagination';
+        var pag = document.createElement('div');
+        pag.className = 'pagination';
         pagesDiv.className = 'page-con';
         for (var i = 0; i < cursor.pages.length; i++) {
           var page = cursor.pages[i];
 
-            var list = document.createElement('li');
             var link = document.createElement('a');
             link.href= "javascript:imageSearch.gotoPage("+i+");";
             link.innerHTML = page.label;
             link.style.marginRight = '2px';
-            list.appendChild(link);
-            ul.appendChild(list);
-            pagesDiv.appendChild(ul);
+            pag.appendChild(link);
+            pagesDiv.appendChild(pag);
         }
 
         var contentDiv = document.getElementById('content');
@@ -33,14 +31,14 @@ google.load('search', '1');
           var results = imageSearch.results;
           for (var i = 0; i < results.length; i++) {
             var result = results[i];
-            var imgContainer = document.createElement('div');
+            var imgContainer = document.createElement('li');
             var addBtn = document.createElement('input');
 
             addBtn.type = 'button';
             addBtn.className = 'btn add-btn btn-default';
             addBtn.setAttribute("onclick", "add_google_image('"+result.url+"')");
             addBtn.value = "Add";
-            imgContainer.className = 'col-md-4 image-res';
+            imgContainer.className = 'image-res';
             
             var newImg = document.createElement('img');
 
@@ -62,7 +60,7 @@ google.load('search', '1');
 
           for (var i = 0; i < results.length; i++) {
             var result = results[i];
-            var imgContainer = document.createElement('div');
+            var imgContainer = document.createElement('li');
             var addBtn = document.createElement('input');
             var img = result.url;
             img = decodeURIComponent(decodeURIComponent(img));
@@ -71,7 +69,7 @@ google.load('search', '1');
             addBtn.className = 'btn add-btn btn-default';
             addBtn.setAttribute("onclick", "add_google_image('"+img+"')");
             addBtn.value = "Add";
-          	imgContainer.className = 'col-md-4 image-res';
+          	imgContainer.className = 'image-res';
             
             var newImg = document.createElement('img');
             newImg.src=img;

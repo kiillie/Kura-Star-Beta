@@ -83,5 +83,9 @@ var Avgrund = (function(){
 		show: show,
 		hide: hide
 	}
-
+	
 })();
+
+$(window).scroll(function(){
+	$(".avgrund-popup").css("top", $(this).scrollTop()+300);
+});
