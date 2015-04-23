@@ -1465,7 +1465,7 @@ function validate_addon(li, type, kind){
 			}
 		}
 		else{
-			if($("ul.sortable li[value='"+li+"'] .tag").val() == ""){
+			if($("ul.sortable li[value='"+li+"'] .tag input.tag").val() == ""){
 				setTimeout(function(){
 					$("<span class='label label-danger err'>Insert a Tag Title</span>").insertBefore("ul.sortable li[value='"+li+"'] .tag");
 				}, 1000);
