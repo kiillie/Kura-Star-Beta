@@ -20,7 +20,9 @@
 			        		<input type="hidden" class="search-li" />
 			        		<input type="hidden" class="search-kind">
 			        		<br />
-	    					<ul id="content" class="post-list-thumb" ></ul>
+							<div id="contentwrapper">
+								<ul id="content" class="post-list-thumb" ></ul>
+							</div>
 			        	</div>
 			        	<div class="img-srch" id="instagram">
 			        		Instagram

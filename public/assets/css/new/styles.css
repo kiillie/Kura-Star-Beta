@@ -1,0 +1,14 @@
+.tweet .tweet-info .date{
+	color: #B6B6B6;
+	font-size: 12px;
+}
+.tweet .tweet-info{
+	float: left;
+}
+.tweet .tweet-img{
+	float: left;
+	margin-right: 10px;
+}
+.tweet{
+	padding: 20px;
+}

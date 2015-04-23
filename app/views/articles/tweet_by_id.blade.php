@@ -20,11 +20,11 @@ $result = search($tweet['id']);
 if($result != NULL){
 $time = strtotime($result->created_at);
 ?>
-<div class="tweet row">
-	<div class="tweet-img col-md-1">
+<div class="tweet">
+	<div class="tweet-img">
 		<a href="https://twitter.com/{{$result->user->screen_name}}"><img src="{{$result->user->profile_image_url}}" alt="{{$result->user->screen_name}}" /></a>
 	</div>
-	<div class="tweet-info col-md-11">
+	<div class="tweet-info">
 		<div class="info">
 			<span class="name"><a href="https://twitter.com/{{$result->user->screen_name}}">{{$result->user->name}}</a></span>
 			<span class="screen">&#64;{{$result->user->screen_name}}</span>
@@ -35,6 +35,7 @@ $time = strtotime($result->created_at);
 		@endif
 		<span class="date">{{date("Y-m-d", $time)}}</span>
 	</div>
+	<div class="clear"></div>
 </div>
 <?php
 }

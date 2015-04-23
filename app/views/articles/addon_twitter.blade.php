@@ -33,11 +33,11 @@ $count = 1;
 	?>
 
 	<div class="result-wrap" value="{{$count}}">
-		<div class="tweet row">
-			<div class="tweet-img col-md-2">
+		<div class="tweet">
+			<div class="tweet-img">
 				<a href="https://twitter.com/{{$result->user->screen_name}}"><img src="{{$result->user->profile_image_url}}" alt="{{$result->user->screen_name}}" /></a>
 			</div>
-			<div class="tweet-info col-md-10">
+			<div class="tweet-info">
 				<div class="info">
 					<span class="name"><a href="https://twitter.com/{{$result->user->screen_name}}">{{$result->user->name}}</a></span>
 					<span class="screen">&#64;{{$result->user->screen_name}}</span>
@@ -48,6 +48,7 @@ $count = 1;
 				@endif
 				<span class="date">{{date("Y-m-d", $time)}}</span>
 			</div>
+			<div class="clear"></div>
 		</div>
 		<div class="tweet-add" style="display: none;">
 			<input type="button" class="btn btn-default" value="Add this tweet" onclick="add_search_tweet({{$count}}, 'twitter' ,'{{$search['type']}}')">

@@ -20,7 +20,7 @@ google.load('search', '1');
             pagesDiv.appendChild(pag);
         }
 
-        var contentDiv = document.getElementById('content');
+        var contentDiv = document.getElementById('contentwrapper');
         contentDiv.appendChild(pagesDiv);
       }
       function postSearch(){
@@ -56,6 +56,8 @@ google.load('search', '1');
         if(imageSearch.results && imageSearch.results.length > 0) {
           var contentDiv = document.getElementById('content');
           contentDiv.innerHTML = '';
+		  var contentWrap = document.getElementById('contentwrapper');
+		  contentWrap.innerHTML = '';
           var results = imageSearch.results;
 
           for (var i = 0; i < results.length; i++) {
@@ -78,6 +80,7 @@ google.load('search', '1');
               imgContainer.appendChild(newImg);
               imgContainer.appendChild(addBtn);
               contentDiv.appendChild(imgContainer);
+			  contentWrap.appendChild(contentDiv);
            // }
             
           }

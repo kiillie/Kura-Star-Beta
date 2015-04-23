@@ -8,14 +8,18 @@
 		if(type == 'google'){
 			$("#google-search").css("display", "block");
 			Avgrund.show( "#google-search" );
-			
+			$("#google-search .img-text").val("");
+			$("#google-search #contentwrapper").html("<ul id='content' class='post-list-thumb'></ul>");
 		}
 		else if('twitter'){
 			$("#twitter-search").css("display", "block");
 			Avgrund.show("#twitter-search");
+			
 		}
 	}
 	function closeDialog() {
+		$("#google-search .img-text").val("");
+		$("#google-search #contentwrapper").html("<ul id='content' class='post-list-thumb'></ul>");
 		Avgrund.hide();
 	}
 </script>
@@ -312,5 +316,5 @@
 <script language="javascript" src="/assets/js/linkScrapper.min.js"></script>
 <script language="javascript" src="/assets/js/plugins/avgrund.js"></script>
 <link rel="stylesheet" href="/assets/css/plugins/avgrund.css">
-
+<link rel="stylesheet" href="/assets/css/new/styles.css">
 @stop

@@ -4,7 +4,7 @@
 	    <div>
 	      	<div class="modal-header">
 		        <button type="button" class="close" onclick="closeDialog()" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		        <h4 class="modal-title" id="myModalLabel">Search for Tweets</h4>
+		        <img src="/assets/images/tweet-search.png" alt="Search tweets"/><h4 class="modal-title" id="myModalLabel">Search for Tweets</h4>
 	      	</div>
 	    	<div class="modal-body">
 	    		<div class="tweet-wrap">

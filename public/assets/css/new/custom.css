@@ -1034,6 +1034,7 @@ h2.title{
 }
 .tweetbox .modal-header h4, .googlebox .modal-header h4{
 	font-size: 40px;
+	float: left;
 }
 .tweet-form input[type=text], .googlebox input[type='text']{
 	background:#FFF;
@@ -1047,7 +1048,7 @@ h2.title{
 	height:50px;
 	margin-top:10px;
 }
-..tweet-form input[type=submit]{
+.tweet-form input[type=submit]{
 	border-radius:3px;
 	background:#555;
 	color:#FFF;
@@ -1060,7 +1061,11 @@ h2.title{
 	margin-top:20px;
 }
 
-..tweet-form input[type=submit]:hover {
+.tweet-form input[type=submit]:hover {
 	background:#ed7600;
+}
+.tweetbox .modal-header img{
+	width: 60px;
+	float: left;
 }
 /***** *****/
