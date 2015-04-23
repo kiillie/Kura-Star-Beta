@@ -41,7 +41,10 @@ function post_addon_data(li, type, controller, action, kind){
 		});
 }
 $(".sortable").sortable({
-	handle: '.sort-item'
+	handle: '.sort-item',
+	stop: function(event,ui){
+		insert_addon();
+	}
 });
 
 function show_appended_item_area(li){
