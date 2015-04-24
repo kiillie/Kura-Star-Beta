@@ -41,11 +41,11 @@ class EloquentArticleRepository implements ArticleRepository{
 				$parts = pathinfo($url['path']);
 				$filename = $parts['filename'].".".$parts['extension'];
 				$path = "\\".public_path()."\\assets\\images\\attachmentssss\\".$filename;
-				$file = "/assets/images/attachments/".$filename;
+				$file = "/assets/images/attachmentsssss/".$filename;
 				if(file_exists($path)){
 					$rand = str_random(7);
 					$filename = $parts['filename']."_".$rand.".".$parts['extension'];
-					$path = "\\".public_path()."\\assets\\images\\attachmentsssss\\".$filename;
+					$path = public_path()."\\assets\\images\\attachmentsssss\\".$filename;
 					$file = "/assets/images/attachments/".$filename;
 				}
 				if(fopen($path, "w")){
