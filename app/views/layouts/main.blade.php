@@ -194,7 +194,6 @@
 				
 				
 		</div>
-		<script src="/assets/js/new/jquery.js"></script>
 		<script src="/assets/js/new/jquery-ui.js"></script>
 		<script src="/assets/js/new/jquery.mCustomScrollbar.concat.min.js"></script>
 		<script src="/assets/js/new/jquery.flexslider.js"></script>
