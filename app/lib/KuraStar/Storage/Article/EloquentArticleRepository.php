@@ -40,12 +40,12 @@ class EloquentArticleRepository implements ArticleRepository{
 				$url = parse_url($input['imageUrl']);
 				$parts = pathinfo($url['path']);
 				$filename = $parts['filename'].".".$parts['extension'];
-				$path = "\\".public_path()."\\assets\\images\\attachmentssss\\".$filename;
+				$path = $_SERVER['DOCUMENT_ROOT']."\\assets\\images\\attachmentssss\\".$filename;
 				$file = "/assets/images/attachmentsssss/".$filename;
 				if(file_exists($path)){
 					$rand = str_random(7);
 					$filename = $parts['filename']."_".$rand.".".$parts['extension'];
-					$path = public_path()."\\assets\\images\\attachmentsssss\\".$filename;
+					$path = $_SERVER['DOCUMENT_ROOT']."\\assets\\images\\attachmentsssss\\".$filename;
 					$file = "/assets/images/attachmentsssss/".$filename;
 				}
 				if(fopen($path, "w")){
@@ -62,7 +62,7 @@ class EloquentArticleRepository implements ArticleRepository{
 								$article = Article::where('CURATION_ID', '=', $input['cur_id'])
 										->update(['CURATION_IMAGE' => $file]);
 							}
-						}
+						} 
 						else{
 							$article = Article::where('CURATION_ID', '=', $input['cur_id'])
 									->update(['CURATION_IMAGE' => $file]);
