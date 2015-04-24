@@ -1,5 +1,6 @@
 @extends('layouts.main')
 @section('content')
+<link rel="stylesheet" href="/assets/css/new/styles.css">
 <script>
 	$("title").text("{{$article->CURATION_TITLE}}");
 	$("head").append('<meta name="description" content="{{addslashes($article->CURATION_DESCRIPTION)}}">');

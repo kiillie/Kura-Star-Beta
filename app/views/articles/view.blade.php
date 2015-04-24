@@ -1,5 +1,6 @@
 @extends('layouts.main')
 @section('content')
+<link rel="stylesheet" href="/assets/css/new/styles.css">
 <script>
 	var title = "{{$article->CURATION_TITLE}}";
 	if(title != ""){

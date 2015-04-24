@@ -1,5 +1,6 @@
 @extends('layouts.main')
 @section('content')
+<link rel="stylesheet" href="/assets/css/new/styles.css">
 <script>
 	$(window).load(function(){
 		$(".avgrund-popup").css("top", $(this).scrollTop()+300);
@@ -318,5 +319,4 @@
 <script language="javascript" src="/assets/js/linkScrapper.min.js"></script>
 <script language="javascript" src="/assets/js/plugins/avgrund.js"></script>
 <link rel="stylesheet" href="/assets/css/plugins/avgrund.css">
-<link rel="stylesheet" href="/assets/css/new/styles.css">
 @stop

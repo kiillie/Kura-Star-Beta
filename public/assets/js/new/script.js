@@ -6,6 +6,7 @@ $(document).ready(function() {
 		$('.menu-sp').click(function(){
 			 $( ".menu" ).fadeToggle('fast');
 		});
+		count_image();
 });
 /*
 $(document).ready(function() {
@@ -151,3 +152,21 @@ $(window).load(function() {
 			$(".menuwrap .menu li").eq(0).find("a").addClass("selected");
 		}
 });
+
+/*** COUNT ***/
+
+
+function count_image(){
+	var count_img = $(".image-container").length;
+	var cont = $(".image-container").width();
+	
+	for(i = 0; i < count_img; i++){
+			var pic_width = $(".image-container img").eq(i).width();
+			if(pic_width < cont){
+				$(".image-container img").eq(i).css("width", pic_width);
+			}
+			else{
+				$(".image-container img").eq(i).css("width", "100%");
+			}
+	}
+}

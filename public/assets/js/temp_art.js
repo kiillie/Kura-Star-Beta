@@ -35,7 +35,7 @@ function addItem(li, type, kind){
 							'</div>'+
 							'</div>'+
 							'<div class="editlist">'+
-							'<button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button>'+
+							'<ul class="list-inline editbtns"><li><button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button></li><li><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button></li><li class="right sort"><span class="sort-item"><span class="glyphicon glyphicon-move"></span> Sort this item</span></li></ul>'+
 							'</div>'+
 							'</div>'+
 							'<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div></div>'+
@@ -109,11 +109,11 @@ function addItem(li, type, kind){
 			$(".loader").show();
 			var content = 	'<li class="ui-state-default added-addon">'+
 							'<div class="item-added-container">'+
-							'<div class="item-inner text">'+
+							'<div class="item-inner picture">'+
 							'<div class="image-container">'+image+'</div>'+
 							'</div>'+
 							'<div class="editlist">'+
-							'<button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button>'+
+							'<ul class="list-inline editbtns"><li><button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button></li><li><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button></li><li class="right sort"><span class="sort-item"><span class="glyphicon glyphicon-move"></span> Sort this item</span></li></ul>'+
 							'</div>'+
 							'</div>'+
 							'<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div></div>'+
@@ -161,11 +161,11 @@ function addItem(li, type, kind){
 			}
 			var content =	'<li class="ui-state-default added-addon">'+
 							'<div class="item-added-container">'+
-							'<div class="item-inner text">'+
+							'<div class="item-inner reference">'+
 							'<div class="ref-container">'+quote+'</div>'+
 							'</div>'+
 							'<div class="editlist">'+
-							'<button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button>'+
+							'<ul class="list-inline editbtns"><li><button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button></li><li><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button></li><li class="right sort"><span class="sort-item"><span class="glyphicon glyphicon-move"></span> Sort this item</span></li></ul>'+
 							'</div>'+
 							'</div>'+
 							'<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div></div>'+
@@ -210,11 +210,11 @@ function addItem(li, type, kind){
 		}
 		var content =	'<li class="ui-state-default added-addon">'+
 						'<div class="item-added-container">'+
-						'<div class="item-inner text">'+
+						'<div class="item-inner link">'+
 						'<div class="link-wrapper">'+link+"</div>"+
 						'</div>'+
 						'<div class="editlist">'+
-						'<button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button>'+
+						'<ul class="list-inline editbtns"><li><button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button></li><li><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button></li><li class="right sort"><span class="sort-item"><span class="glyphicon glyphicon-move"></span> Sort this item</span></li></ul>'+
 						'</div>'+
 						'</div>'+
 						'<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div></div>'+
@@ -249,11 +249,11 @@ function addItem(li, type, kind){
 					var tweet = res;
 					var content =	'<li class="ui-state-default added-addon">'+
 									'<div class="item-added-container">'+
-									'<div class="item-inner text">'+
+									'<div class="item-inner twitter">'+
 									'<div class="tweet-wrapper">'+tweet+"</div>"+
 									'</div>'+
 									'<div class="editlist">'+
-									'<button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button>'+
+									'<ul class="list-inline editbtns"><li><button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button></li><li><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button></li><li class="right sort"><span class="sort-item"><span class="glyphicon glyphicon-move"></span> Sort this item</span></li></ul>'+
 									'</div>'+
 									'</div>'+
 									'<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div></div>'+
@@ -286,11 +286,11 @@ function addItem(li, type, kind){
 					var tweet = res;
 					var content =	'<li class="ui-state-default added-addon">'+
 									'<div class="item-added-container">'+
-									'<div class="item-inner text">'+
+									'<div class="item-inner twitter">'+
 									'<div class="tweet-wrapper">'+tweet+"</div>"+
 									'</div>'+
 									'<div class="editlist">'+
-									'<button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button>'+
+									'<ul class="list-inline editbtns"><li><button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button></li><li><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button></li><li class="right sort"><span class="sort-item"><span class="glyphicon glyphicon-move"></span> Sort this item</span></li></ul>'+
 									'</div>'+
 									'</div>'+
 									'<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div></div>'+
@@ -351,11 +351,11 @@ function addItem(li, type, kind){
 		}
 		var content =	'<li class="ui-state-default added-addon">'+
 						'<div class="item-added-container">'+
-						'<div class="item-inner text">'+
+						'<div class="item-inner video">'+
 						'<div class="vid-wrapper">'+video+"</div>"+
 						'</div>'+
 						'<div class="editlist">'+
-						'<button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button>'+
+						'<ul class="list-inline editbtns"><li><button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button></li><li><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button></li><li class="right sort"><span class="sort-item"><span class="glyphicon glyphicon-move"></span> Sort this item</span></li></ul>'+
 						'</div>'+
 						'</div>'+
 						'<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div></div>'+
@@ -404,11 +404,11 @@ function addItem(li, type, kind){
 			$(".loader").show();
 			var content = '<li class="ui-state-default added-addon">'+
 							'<div class="item-added-container">'+
-							'<div class="item-inner">'+
+							'<div class="item-inner tag">'+
 							'<div class="tag">'+text+'</div>'+
 							'</div>'+
 							'<div class="editlist">'+
-							'<button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button>'+
+							'<ul class="list-inline editbtns"><li><button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button></li><li><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button></li><li class="right sort"><span class="sort-item"><span class="glyphicon glyphicon-move"></span> Sort this item</span></li></ul>'+
 							'</div>'+
 							'</div>'+
 							'<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div></div>'+
@@ -470,13 +470,13 @@ function editItem(li, type, kind){
 		$(".loader").hide();
 		if(validate_addon(li, type, kind)){
 			var content = 	'<div class="item-added-container">'+
-							'<div class="item-inner">'+
+							'<div class="item-inner text">'+
 							'<div class="text">'+
 							res+
 							'</div>'+
 							'</div>'+
 							'<div class="editlist">'+
-							'<button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button>'+
+							'<ul class="list-inline editbtns"><li><button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button></li><li><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button></li><li class="right sort"><span class="sort-item"><span class="glyphicon glyphicon-move"></span> Sort this item</span></li></ul>'+
 							'</div>'+
 							'</div>'+
 							'<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div></div>'+
@@ -486,7 +486,6 @@ function editItem(li, type, kind){
 			
 			addonHovered(type, kind);
 			insert_addon();
-			$("ul.sortable li[value='"+li+"'] .add-item-area").html("");
 		}
 	}
 	else if(type == 'picture'){
@@ -510,11 +509,11 @@ function editItem(li, type, kind){
 		}
 
 		var content = 	'<div class="item-added-container">'+
-						'<div class="item-inner text">'+
+						'<div class="item-inner picture">'+
 						'<div class="image-container">'+image+'</div>'+
 						'</div>'+
 						'<div class="editlist">'+
-						'<button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button>'+
+						'<ul class="list-inline editbtns"><li><button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button></li><li><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button></li><li class="right sort"><span class="sort-item"><span class="glyphicon glyphicon-move"></span> Sort this item</span></li></ul>'+
 						'</div>'+
 						'</div>'+
 						'<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div></div>'+
@@ -538,11 +537,11 @@ function editItem(li, type, kind){
 							'<div class="quote-url"><span>Source:</span><span class="url-val"> <a href="'+url+'" target="_blank">'+url+'</a></span></div>';
 			}
 			var content =	'<div class="item-added-container">'+
-							'<div class="item-inner text">'+
+							'<div class="item-inner reference">'+
 							'<div class="ref-container">'+quote+'</div>'+
 							'</div>'+
 							'<div class="editlist">'+
-							'<button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button>'+
+							'<ul class="list-inline editbtns"><li><button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button></li><li><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button></li><li class="right sort"><span class="sort-item"><span class="glyphicon glyphicon-move"></span> Sort this item</span></li></ul>'+
 							'</div>'+
 							'</div>'+
 							'<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div></div>'+
@@ -565,11 +564,11 @@ function editItem(li, type, kind){
 					'<div class="link-extra"><p>'+desc+'</p></div>';
 		alert(link);
 		var content =	'<div class="item-added-container">'+
-						'<div class="item-inner text">'+
+						'<div class="item-inner link">'+
 						'<div class="link-wrapper">'+link+"</div>"+
 						'</div>'+
 						'<div class="editlist">'+
-						'<button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button>'+
+						'<ul class="list-inline editbtns"><li><button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button></li><li><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button></li></ul>'+
 						'</div>'+
 						'</div>'+
 						'<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div></div>'+
@@ -600,11 +599,11 @@ function editItem(li, type, kind){
 
 		$(".loader").show();
 		var content = 	'<div class="item-added-container">'+
-						'<div class="item-inner text">'+
+						'<div class="item-inner video">'+
 						'<div class="vid-wrapper">'+video+"</div>"+
 						'</div>'+
 						'<div class="editlist">'+
-						'<button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button>'+
+						'<ul class="list-inline editbtns"><li><button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button></li><li><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button></li><li class="right sort"><span class="sort-item"><span class="glyphicon glyphicon-move"></span> Sort this item</span></li></ul>'+
 						'</div>'+
 						'</div>'+
 						'<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div></div>'+
@@ -629,7 +628,7 @@ function editItem(li, type, kind){
 						'<div class="tag">'+text+
 						'</div>'+
 						'<div class="editlist">'+
-						'<button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button>'+
+						'<ul class="list-inline editbtns"><li><button class="editItem" onclick="edit_item()"><span class="glyphicon glyphicon-edit"></span> Edit</button></li><li><button class="deleteItem" onclick="delete_item()"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button></li><li class="right sort"><span class="sort-item"><span class="glyphicon glyphicon-move"></span> Sort this item</span></li></ul>'+
 						'</div>'+
 						'</div>'+
 						'<div class="add-item-area"><div class="append-new-item"></div><div class="add-inner"><div class="show-append-here"></div><div class="item-btn-con"><div class="item-hr"><hr></hr></div><div class="add-item-btn right"><a href="javascript:void(0)" onclick="show_appended_item_area()">Add New Addon</a></div></div></div></div></div>'+

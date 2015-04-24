@@ -112,7 +112,7 @@ function add_google_image(res){
                     '<div class="url-source"><span>Source: <a href="'+orig+'" target="_blank" alt="'+resource+'">'+resource+'</a></span></div>';
 
         var content =   '<div class="item-added-container">'+
-                  '<div class="item-inner text">'+
+                  '<div class="item-inner picture">'+
                   '<div class="image-container">'+image+'</div>'+
                   '</div>'+
                   '<div class="editlist">'+
@@ -160,7 +160,7 @@ function add_google_image(res){
                   '<div class="url-source"><span>Source: <a href="'+orig+'" target="_blank" alt="'+resource+'">'+resource+'</a></span></div>';
       var content =   '<li class="ui-state-default added-addon">'+
                 '<div class="item-added-container">'+
-                '<div class="item-inner text">'+
+                '<div class="item-inner picture">'+
                 '<div class="image-container">'+image+'</div>'+
                 '</div>'+
                 '<div class="editlist">'+

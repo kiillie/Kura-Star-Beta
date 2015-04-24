@@ -46,12 +46,12 @@
 						<div class="actions">
 						@if(Hybrid_Auth::isConnectedWith('Facebook'))
 							<a href="{{URL::route('auth.logout')}}"><img src="/assets/images/new/icon_login.png" />LOGOUT</a>
-							<a href="{{URL::route('user.profile', 'fb'.$profile->identifier)}}"><img src="/assets/images/new/icon_signup.png" />{{strtoupper($profile->displayName)}}</a>
+							<a href="{{URL::route('user.profile', 'fb'.$profile->identifier)}}"><img src="{{$profile->photoURL}}}}" />{{strtoupper($profile->displayName)}}</a>
 							<a href="{{URL::route('article.insert')}}"><img src="/assets/images/new/icon_write.png" />POST</a>
 						@else
 							@if(Auth::check())
 								<a href="{{URL::route('logout')}}"><img src="/assets/images/new/icon_login.png" />LOGOUT</a>
-								<a href="{{URL::route('user.profile', Auth::user()->CURATER_ID)}}"><img src="/assets/images/new/icon_signup.png" />{{strtoupper(Auth::user()->CURATER)}}</a>
+								<a href="{{URL::route('user.profile', Auth::user()->CURATER_ID)}}"><img src="{{Auth::user()->CURATER_IMAGE}}" />{{strtoupper(Auth::user()->CURATER)}}</a>
 								<a href="{{URL::route('article.insert')}}"><img src="/assets/images/new/icon_write.png" />POST</a>
 							@else
 								<a href="{{URL::route('login')}}"><img src="/assets/images/new/icon_login.png" />LOGIN</a>

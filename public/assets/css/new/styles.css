@@ -14,22 +14,56 @@
 }
 .sortable .added-addon ul.list-inline{
 	margin: 0;
-	padding: 0;
 	list-style-type: none;
 }
 .sortable .added-addon ul.list-inline li{
 	display: inline;
-	margin-right: 20px;
+}
+.sortable .added-addon ul.list-inline li button, .sortable .added-addon ul.list-inline li .sort-item{
+	padding:0 20px;
+	text-align: center;
+}
+.sortable .added-addon ul.list-inline li:hover{
+	background: #F57900;
 }
 .sortable .add-inner{
 	position: relative;
 }
 .sortable .add-inner .item-hr{
 	overflow: hidden;
-	width: 990px;
+	width: 1008px;
 }
 .sortable .add-inner .add-item-btn{
 	position: absolute;
 	right: 0;
-	top: -15px;
+	top: -5px;
+}
+.sortable .tag h2.normal span.inner-tag{
+	font-size: 50px;
+}
+.sortable li ul.list-inline{
+	background: gray;
+	font-size: 12px;
+}
+.sortable li ul li, .sortable li ul li button{
+	color: white;
+}
+.sortable li .picture .desc, .article-detail-wrap .post-detail-list li .desc{
+	height: auto;
+}
+.sortable .editlist{
+	border-bottom: 1px solid;
+}
+.sortable .add-inner .append-add-item a{
+	color: white;
+	padding: 0 10px;
+}
+.article-detail-wrap .post-detail-list .tag h2.normal{
+	font-size: 45px;
+}
+.article-detail-wrap .post-detail-list .tag h2.subheading{
+	font-size: 15px;
+}
+.article-detail-wrap .post-detail-list li {
+	margin-bottom: 15px;
 }

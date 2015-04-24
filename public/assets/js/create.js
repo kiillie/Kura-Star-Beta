@@ -57,7 +57,7 @@ function show_appended_item_area(li){
 	addon += '<li><a href="javascript:void(0);" onclick="edit_addon(\''+li+'\', \'twitter\', \'addon\', \'new\', \'append\')">Twitter</a></li>';
 	addon += '<li><a href="javascript:void(0);" onclick="edit_addon(\''+li+'\', \'video\', \'addon\', \'new\', \'append\')">Youtube</a></li>';
 	addon += '<li><a href="javascript:void(0);" onclick="edit_addon(\''+li+'\', \'tag\', \'addon\', \'new\', \'append\')">H2 Tag</a></li>';
-	addon += '<li class="remove-appended right"><a href="javascript:void(0);" onclick="close_appended('+li+')"><span class="glyphicon glyphicon-remove-circle"></span></a></li>';
+	addon += '<li class="remove-appended right"><a href="javascript:void(0);" onclick="close_appended('+li+')"><span class="glyphicon glyphicon-remove-circle"></span>X</a></li>';
 	addon += '</ul>';
 
 	$("ul.sortable li[value="+li+"] .add-inner .show-append-here").html(addon);
@@ -229,20 +229,6 @@ function publish_article(id){
 			$(".publish").val("Unpublish");	
 		}
 	});
-}
-function count_image(){
-	var count_img = $(".image-container").length;
-	var cont = $(".image-container").width();
-	
-	for(i = 0; i < count_img; i++){
-			var pic_width = $(".image-container img").eq(i).width();
-			if(pic_width < cont){
-				$(".image-container img").eq(i).css("width", pic_width);
-			}
-			else{
-				$(".image-container img").eq(i).css("width", "100%");
-			}
-	}
 }
 function favorite_article(article, user, status){
 	var stat = $(".fave .stat").hasClass("favorite");
