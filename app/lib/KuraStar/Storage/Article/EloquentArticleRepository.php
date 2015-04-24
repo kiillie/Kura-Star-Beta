@@ -243,7 +243,7 @@ class EloquentArticleRepository implements ArticleRepository{
 					} 
 				}
 			}
-			else{
+			else{ 
 				if($selected->CURATION_IMAGE == ""){
 					$article = Article::where('CURATION_ID', '=', $id);
 					return $article->delete();
