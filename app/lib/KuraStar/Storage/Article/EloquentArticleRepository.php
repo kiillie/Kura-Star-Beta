@@ -46,7 +46,7 @@ class EloquentArticleRepository implements ArticleRepository{
 					$rand = str_random(7);
 					$filename = $parts['filename']."_".$rand.".".$parts['extension'];
 					$path = public_path()."\\assets\\images\\attachmentsssss\\".$filename;
-					$file = "/assets/images/attachments/".$filename;
+					$file = "/assets/images/attachmentsssss/".$filename;
 				}
 				if(fopen($path, "w")){
 					if(\File::copy($input['imageUrl'], $path)){
