@@ -1,6 +1,22 @@
 @extends('layouts.main')
 @section('content')
 <link rel="stylesheet" href="/assets/css/new/styles.css">
+<script type="text/javascript" src="/assets/js/plugins/jquery.fancybox.js?v=2.1.5"></script>
+<link rel="stylesheet" type="text/css" href="/assets/css/plugins/jquery.fancybox.css?v=2.1.5" media="screen" /> 
+<script>
+$(document).ready(function(){
+	$(".art-added-img").fancybox({
+		openEffect	: 'elastic',
+    	closeEffect	: 'elastic',
+    	helpers : {
+    		title : {
+    			type : 'inside'
+    		}
+    	}
+    });
+
+});
+</script>
 <script>
 	var title = "{{$article->CURATION_TITLE}}";
 	if(title != ""){
