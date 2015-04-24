@@ -240,7 +240,7 @@ class EloquentArticleRepository implements ArticleRepository{
 							$article = Article::where('CURATION_ID', '=', $id);
 							return $article->delete();
 						}
-					}
+					} 
 				}
 			}
 			else{
