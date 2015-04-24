@@ -220,7 +220,30 @@ class EloquentArticleRepository implements ArticleRepository{
 			}
 		}
 		if($count == 0){
-			if(unlink(public_path().'/assets/articles/'.$id.'.php')){
+			if(file_exists(public_path().'/assets/articles/'.$id.'.php')){
+				if(unlink(public_path().'/assets/articles/'.$id.'.php')){
+					if($selected->CURATION_IMAGE == ""){
+						$article = Article::where('CURATION_ID', '=', $id);
+						return $article->delete();
+					}
+					else{
+						if(file_exists(public_path().$selected->CURATION_IMAGE)){
+							if(unlink(public_path().$selected->CURATION_IMAGE)){
+								$article = Article::where('CURATION_ID', '=', $id);
+								return $article->delete();
+							}
+							else{
+								return false;
+							}
+						}
+						else{
+							$article = Article::where('CURATION_ID', '=', $id);
+							return $article->delete();
+						}
+					}
+				}
+			}
+			else{
 				if($selected->CURATION_IMAGE == ""){
 					$article = Article::where('CURATION_ID', '=', $id);
 					return $article->delete();
