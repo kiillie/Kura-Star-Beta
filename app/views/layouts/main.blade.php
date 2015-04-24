@@ -51,7 +51,11 @@
 						@else
 							@if(Auth::check())
 								<a href="{{URL::route('logout')}}"><img src="/assets/images/new/icon_login.png" />LOGOUT</a>
-								<a href="{{URL::route('user.profile', Auth::user()->CURATER_ID)}}"><img src="{{Auth::user()->CURATER_IMAGE}}" />{{strtoupper(Auth::user()->CURATER)}}</a>
+								@if($Auth::user()->CURATER_IMAGE != '')
+									<a href="{{URL::route('user.profile', Auth::user()->CURATER_ID)}}"><img src="{{Auth::user()->CURATER_IMAGE}}" />{{strtoupper(Auth::user()->CURATER)}}</a>
+								@else
+									<a href="{{URL::route('user.profile', Auth::user()->CURATER_ID)}}"><img src="/assets/images/picture-default.png" />{{strtoupper(Auth::user()->CURATER)}}</a>
+								@endif
 								<a href="{{URL::route('article.insert')}}"><img src="/assets/images/new/icon_write.png" />POST</a>
 							@else
 								<a href="{{URL::route('login')}}"><img src="/assets/images/new/icon_login.png" />LOGIN</a>
