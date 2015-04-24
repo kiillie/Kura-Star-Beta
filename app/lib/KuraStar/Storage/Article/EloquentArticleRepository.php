@@ -208,9 +208,14 @@ class EloquentArticleRepository implements ArticleRepository{
 			$dom->loadHtml($html);
 			foreach($dom->getElementsByTagName('img') as $img){
 				if (filter_var($img->getAttribute('src'), FILTER_VALIDATE_URL) === false) {
-				    if(!unlink(public_path().$img->getAttribute('src'))){
-				    	$count++;
-				    }
+					if(file_exists(public_path().$img->getAttribute('src'))){
+						if(!unlink(public_path().$img->getAttribute('src'))){
+							$count++;
+						}
+					}
+					else{
+						$count++;
+					}
 				}
 			}
 		}
@@ -221,12 +226,18 @@ class EloquentArticleRepository implements ArticleRepository{
 					return $article->delete();
 				}
 				else{
-					if(unlink(public_path().$selected->CURATION_IMAGE)){
-						$article = Article::where('CURATION_ID', '=', $id);
-						return $article->delete();
+					if(file_exists(public_path().$selected->CURATION_IMAGE)){
+						if(unlink(public_path().$selected->CURATION_IMAGE)){
+							$article = Article::where('CURATION_ID', '=', $id);
+							return $article->delete();
+						}
+						else{
+							return false;
+						}
 					}
 					else{
-						return false;
+						$article = Article::where('CURATION_ID', '=', $id);
+						return $article->delete();
 					}
 				}
 			}
