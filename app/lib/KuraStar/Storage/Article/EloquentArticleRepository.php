@@ -52,9 +52,15 @@ class EloquentArticleRepository implements ArticleRepository{
 					if(File::copy($input['imageUrl'], $path)){
 						$picture = Article::where('CURATION_ID', '=', $input['cur_id'])->first();
 						if($picture['CURATION_IMAGE'] != ""){
-							if(unlink(public_path().$picture['CURATION_IMAGE'])){
+							if(file_exists($picture['CURATION_IMAGE'])){
+								if(unlink(public_path().$picture['CURATION_IMAGE'])){
+									$article = Article::where('CURATION_ID', '=', $input['cur_id'])
+										->update(['CURATION_IMAGE' => $file]);
+								}
+							}
+							else{
 								$article = Article::where('CURATION_ID', '=', $input['cur_id'])
-									->update(['CURATION_IMAGE' => $file]);
+										->update(['CURATION_IMAGE' => $file]);
 							}
 						}
 						else{
