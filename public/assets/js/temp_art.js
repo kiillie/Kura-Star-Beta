@@ -70,12 +70,12 @@ function addItem(li, type, kind){
 					var resource = getRootUrl(res);
 					var orig = getOrigin(res);
 					var src = $(".new-addon .new-item .img-hid").val();
-					var image = '<a class="art-added-img" href="'+src+'" title="'+src+'" data-fancybox-group="gallery"><img class="image" src="'+src+'" alt="'+res+'" /></a>'+
+					var image = '<a class="art-added-img" href="'+src+'" title="'+txt+'" data-fancybox-group="gallery"><img class="image" src="'+src+'" alt="'+res+'" /></a>'+
                 				'<div class="url-source"><span>Source: <a href="'+orig+'" target="_blank" alt="'+resource+'">'+resource+'</a></span></div>';
 				}
 				else{
 					var src = $(".new-addon .new-item .img-hid").val();
-					var image = '<a class="art-added-img" href="'+src+'" title="'+desc+'" data-fancybox-group="gallery"><img class="image" src="'+src+'" alt="'+src+'" /></a>'+
+					var image = '<a class="art-added-img" href="'+src+'" title="'+txt+'" data-fancybox-group="gallery"><img class="image" src="'+src+'" alt="'+src+'" /></a>'+
 								'<div class="desc">'+txt+'</div>';
 				}
 				$('.new-addon .new-item').html("");
@@ -497,13 +497,13 @@ function editItem(li, type, kind){
 		for(var i = 0; i < lngt; i++){
 			txt = txt+"<p>"+spl[i]+"</p>";
 		}
-		var image = '<a class="art-added-img" href="'+src+'" title="'+src+'" data-fancybox-group="gallery"><img class="image" src="'+src+'" alt="'+src+'" /></a>'+
+		var image = '<a class="art-added-img" href="'+src+'" title="'+txt+'" data-fancybox-group="gallery"><img class="image" src="'+src+'" alt="'+src+'" /></a>'+
 					'<div class="desc">'+txt+'</div>';
 		var source = $("ul.sortable li[value='"+li+"'] .add-item-area .img-hid").val();
 		if(src != source){
 			var resource = getRootUrl(source);
   			var orig = getOrigin(source);
-			var image = '<a class="art-added-img" href="'+src+'" title="'+src+'" data-fancybox-group="gallery"><img class="image" src="'+src+'" alt="'+source+'" /></a>'+
+			var image = '<a class="art-added-img" href="'+src+'" title="'+txt+'" data-fancybox-group="gallery"><img class="image" src="'+src+'" alt="'+source+'" /></a>'+
                 		'<div class="url-source"><span>Source: <a href="'+orig+'" target="_blank" alt="'+resource+'">'+resource+'</a></span></div>'+  
                 		'<div class="desc">'+txt+'</div>';
 		}

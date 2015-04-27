@@ -108,7 +108,7 @@ function add_google_image(res){
     {picture : res}).done(function(saved){
       $(".loader").hide();
 
-        var image = '<a class="art-added-img" href="'+saved+'" title="'+saved+'" data-fancybox-group="gallery"><img class="image" src="'+saved+'" alt="'+res+'" /></a>'+
+        var image = '<a class="art-added-img" href="'+saved+'" title="" data-fancybox-group="gallery"><img class="image" src="'+saved+'" alt="'+res+'" /></a>'+
                     '<div class="url-source"><span>Source: <a href="'+orig+'" target="_blank" alt="'+resource+'">'+resource+'</a></span></div>';
 
         var content =   '<div class="item-added-container">'+
@@ -156,7 +156,7 @@ function add_google_image(res){
     else{
     $.post('/addon/picture', 
     {picture : res}).done(function(saved){
-      var image = '<a class="art-added-img" href="'+saved+'" title="'+saved+'" data-fancybox-group="gallery"><img class="image" src="'+saved+'" alt="'+res+'" /></a>'+
+      var image = '<a class="art-added-img" href="'+saved+'" title="" data-fancybox-group="gallery"><img class="image" src="'+saved+'" alt="'+res+'" /></a>'+
                   '<div class="url-source"><span>Source: <a href="'+orig+'" target="_blank" alt="'+resource+'">'+resource+'</a></span></div>';
       var content =   '<li class="ui-state-default added-addon">'+
                 '<div class="item-added-container">'+
