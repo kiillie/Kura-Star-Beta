@@ -203,6 +203,17 @@
 		font-size:12px;
 		font-weight:normal;
 	}
+	.custompost .createbtn input[type='submit']{
+	  border-radius: 3px;
+	  background: #555;
+	  color: #FFF;
+	  padding: 10px;
+	  text-align: center;
+	  font-size: 14px;
+	  font-weight: bold;
+	  width: 150px;
+	  margin: 2px;
+	}
 }
 @media only screen and (min-width: 300px) and (max-width: 767px) {
 	/******registration form************/
