@@ -1,6 +1,6 @@
 <?php
 
-//$image = str_replace('/', '\\', $addon['image']);
+$image = $addon['image']; //str_replace('/', '\\', $addon['image']);
 $exists = file_exists(public_path().$image);
 $str_exist = strpos($image, 'assets');
 if($str_exist && $exists){
