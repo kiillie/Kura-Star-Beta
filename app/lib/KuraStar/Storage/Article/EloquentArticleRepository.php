@@ -225,7 +225,7 @@ class EloquentArticleRepository implements ArticleRepository{
 				}
 			}
 			catch(Exception $e){
-				$count++;
+				$count = 0;
 			}
 		}
 		if($count == 0){
