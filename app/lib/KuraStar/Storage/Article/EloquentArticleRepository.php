@@ -225,9 +225,7 @@ class EloquentArticleRepository implements ArticleRepository{
 				}
 			}
 			catch(Exception $e){
-				if(file_exists(public_path().'/assets/articles/'.$id.'.php')){
-					unlink(public_path().'/assets/articles/'.$id.'.php');
-				}
+				$count++;
 			}
 		}
 		if($count == 0){
