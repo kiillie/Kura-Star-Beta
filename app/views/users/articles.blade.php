@@ -10,7 +10,7 @@
 		</div>
 		<div class="col-md-2">
 			<span>Favorited</span>
-		</div>
+		</div> 
 	</div>
 	<div class="row lists">
 		@if(Session::has('message'))
