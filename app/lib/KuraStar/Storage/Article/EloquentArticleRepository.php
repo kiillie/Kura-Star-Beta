@@ -209,17 +209,24 @@ class EloquentArticleRepository implements ArticleRepository{
 		$html = trim($html);
 		if($html != ""){
 			$dom = new \DOMDocument();
-			$dom->loadHtml($html);
-			foreach($dom->getElementsByTagName('img') as $img){
-				if (filter_var($img->getAttribute('src'), FILTER_VALIDATE_URL) === false) {
-					if(file_exists(public_path().$img->getAttribute('src'))){
-						if(!unlink(public_path().$img->getAttribute('src'))){
+			try{
+				$dom->loadHtml($html);
+				foreach($dom->getElementsByTagName('img') as $img){
+					if (filter_var($img->getAttribute('src'), FILTER_VALIDATE_URL) === false) {
+						if(file_exists(public_path().$img->getAttribute('src'))){
+							if(!unlink(public_path().$img->getAttribute('src'))){
+								$count++;
+							}
+						}
+						else{
 							$count++;
 						}
 					}
-					else{
-						$count++;
-					}
+				}
+			}
+			catch(Exception $e){
+				if(file_exists(public_path().'/assets/articles/'.$id.'.php')){
+					unlink(public_path().'/assets/articles/'.$id.'.php');
 				}
 			}
 		}
