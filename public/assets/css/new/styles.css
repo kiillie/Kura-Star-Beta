@@ -67,3 +67,9 @@
 .article-detail-wrap .post-detail-list li {
 	margin-bottom: 15px;
 }
+.sortable li .url-source{
+	font-size: 12px;
+}
+.sortable li .url-source a{
+	color: rgb(187, 187, 187);
+}
