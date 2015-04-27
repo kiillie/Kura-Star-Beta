@@ -504,6 +504,7 @@ class ArticleController extends BaseController{
 
 	public function addonInsert(){
 		$addon = Input::all();
+		$details = $this->article->insertDetails($addon);
 		return View::make('articles.addon_insert')
 				->withAddon($addon);
 	}

@@ -7,6 +7,8 @@ interface ArticleRepository{
 	public function insertImage($input);
 
 	public function insert($user, $id);
+	
+	public function insertDetails($input);
 
 	public function getArticle($id);
 

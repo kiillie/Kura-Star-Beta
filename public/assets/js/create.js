@@ -202,7 +202,8 @@ function insert_addon(){
 	var id = $(".cur-id").val();
 	$.post('/addon/insert',{
 		'insert' : insert,
-		'id'	 : id
+		'id'	 : id,
+		'details' : det_con
 	});
 }
 function publish_article(id){

@@ -93,7 +93,11 @@ class EloquentArticleRepository implements ArticleRepository{
 
 		return $article->save();
 	}
-
+	
+	public function insertDetails($input){
+		$details = Article::where('CURATION_ID', '=', $input['id'])->update(['CURATION_DETAIL' => $input['details']]);
+	}
+	
 	public function getArticle($id){
 		$article = Article::where('CURATER_ID', '=', $id)->max('REGISTER_DATE');
 		return Article::where('CURATER_ID', '=', $id)
