@@ -28,10 +28,14 @@
 						
 			<div id="tabs" class="tab1">
 				<ul>
-					<li><a href="#tabs-1">ARTICLES</a></li>
-					<li><a href="#tabs-2">FAVORITES</a></li>
+					<li><a href="#tabs-1">DRAFTS</a></li>
+					<li><a href="#tabs-2">ARTICLES</a></li>
+					<li><a href="#tabs-3">FAVORITES</a></li>
 				</ul>
 				<div id="tabs-1">
+					Drafts here
+				</div>
+				<div id="tabs-2">
 					@if(count($articles) != 0)
 						<ul class="post-list-thumb">
 							@foreach($articles as $article)		
@@ -136,7 +140,7 @@
 						</div>
 					@endif
 				</div>
-				<div id="tabs-2">
+				<div id="tabs-3">
 					@if(count($favorites) != 0)
 						<ul class="post-list-thumb">
 							@foreach($favorites as $favorite)
