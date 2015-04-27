@@ -165,9 +165,9 @@ $(document).ready(function(){
 							@endif
 						@endif
 						@if(Session::has('curation'))
-							<input type="button" class="btn btn-default delete" value="Delete" onclick="delete_article({{Session::get('curation')}}, {{$article->CURATER_ID}})" />
+							<input type="button" class="btn btn-default delete" value="Delete" onclick="delete_article({{Session::get('curation')}}, '{{$article->CURATER_ID}}')" />
 						@else
-							<input type="button" class="btn btn-default delete" value="Delete" onclick="delete_article({{$curation}}, {{$article->CURATER_ID}})" />
+							<input type="button" class="btn btn-default delete" value="Delete" onclick="delete_article({{$curation}}, '{{$article->CURATER_ID}}')" />
 						@endif
 					</div>
 					<?php
@@ -237,7 +237,7 @@ $(document).ready(function(){
 						<li><a onclick="edit_addon('0', 'reference', 'addon', 'new', 'new')" href="#reference">REFERENCE</a></li>
 						<li><a onclick="edit_addon('0', 'link', 'addon', 'new', 'new')" href="#link">LINK</a></li>
 						<li><a onclick="edit_addon('0', 'twitter', 'addon', 'new', 'new')" href="#twitter">TWITTER</a></li>
-						<li><a onclick="edit_addon('0', 'video', 'addon', 'new', 'new')" href="#video">YOUTUBE</a></li>
+						<li><a onclick="edit_addon('0', 'video', 'addon', 'new', 'new')" href="#video" target="content">YOUTUBE</a></li>
 						<li><a onclick="edit_addon('0', 'tag', 'addon', 'new', 'new')" href="#tag">H2 TAG</a></li>
 					</ul>
 									

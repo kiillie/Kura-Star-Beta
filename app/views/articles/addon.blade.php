@@ -181,7 +181,6 @@ else if($addon['type'] == 'video'){
 					'</div>'+
 					'</div>'+
 					'{{Form::close()}}';
-
 	if(kind == 'new'){
 		$('#video .new-addon .new-item').html(content);
 	}
