@@ -12,6 +12,9 @@
 							</script>
 						</div>
 						<div class="sideboxcontent rankwrap">
+							<h3 class="curatorslink"><a href="{{URL::route('curators')}}">See Curators</a></h3>
+						</div>
+						<div class="sideboxcontent rankwrap">
 							<h3 class="sidetitle">Ranking Article</h3>
 							<ul class="rankarticle">
 								<?php
