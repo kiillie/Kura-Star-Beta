@@ -212,20 +212,26 @@ class EloquentArticleRepository implements ArticleRepository{
 		$selected = Article::where('CURATION_ID', '=', $id)->first();
 		$html = trim($html);
 		if($html != ""){
+			libxml_use_internal_errors(true);
 			$dom = new \DOMDocument();
 			try{
-				if(!$dom->loadHtml($html)){
-					foreach($dom->getElementsByTagName('img') as $img){
-						if (filter_var($img->getAttribute('src'), FILTER_VALIDATE_URL) === false) {
-							if(file_exists(public_path().$img->getAttribute('src'))){
-								if(!unlink(public_path().$img->getAttribute('src'))){
+				if($dom->loadHtml($html)){
+					if(count(libxml_get_errors) == 0){
+						foreach($dom->getElementsByTagName('img') as $img){
+							if (filter_var($img->getAttribute('src'), FILTER_VALIDATE_URL) === false) {
+								if(file_exists(public_path().$img->getAttribute('src'))){
+									if(!unlink(public_path().$img->getAttribute('src'))){
+										$count++;
+									}
+								}
+								else{
 									$count++;
 								}
 							}
-							else{
-								$count++;
-							}
 						}
+					}
+					else{
+						$count = 0;
 					}
 				}
 				else{
