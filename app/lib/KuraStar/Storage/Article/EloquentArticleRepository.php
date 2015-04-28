@@ -216,7 +216,7 @@ class EloquentArticleRepository implements ArticleRepository{
 			$dom = new \DOMDocument();
 			try{
 				if($dom->loadHtml($html)){
-					if(count(libxml_get_errors) == 0){
+					if(count(libxml_get_errors()) == 0){
 						foreach($dom->getElementsByTagName('img') as $img){
 							if (filter_var($img->getAttribute('src'), FILTER_VALIDATE_URL) === false) {
 								if(file_exists(public_path().$img->getAttribute('src'))){
