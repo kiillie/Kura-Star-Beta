@@ -30,7 +30,7 @@
 					{{Form::open(['name' => 'edit', 'route' => 'user.update', 'class' => 'reg-form2 edit-form'])}}
 						<h4 class="name"><input name="name" type="text" value="{{$user->CURATER}}" placeholder="Name"/></h4>
 						<p class="email"><input type="text" name="email" placeholder="Email" value="{{$user->MAIL_ADDRESS}}"></p>
-						<p class="desc"><textarea name="desc">{{$user->CURATER_DESCRIPTION}}</textarea></p>
+						<p class="desc"><textarea name="desc" placeholder="Short Description">{{$user->CURATER_DESCRIPTION}}</textarea></p>
 						<input type="hidden" value="{{$user->CURATER_ID}}" name="id"/>
 						<div class="editbtn">
 							<input type="submit" value="Update"/>
