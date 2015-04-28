@@ -637,7 +637,12 @@ a.post-list-thumb-wrap:hover h2, a.post-list-thumb-wrap:hover h4 {
 .curator-detail-points {
 	position:absolute;
 }
-
+.tab1 > ul {
+	font-size:12px;
+	width:444px;
+	margin:0 auto;
+	overflow:auto;
+}
 .tab1 > ul.unown {
 	font-size:12px;
 	width:297px;
