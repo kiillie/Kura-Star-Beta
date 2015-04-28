@@ -179,7 +179,12 @@ class UserController extends BaseController{
 		$countries = $this->country->showCountryByContinent();
 		$categories = $this->category->show();
 		$continents = $this->continent->show();
-		$user = $this->user->getUserById($id);
+		if(Hybrid_Auth::isConnectedWith('Facebook')){
+			$user = $this->user->getUserById($id);
+		}
+		if(\Auth::check()){
+			$user = $this->user->getUserById($id);
+		}
 
 		return View::make('users.edit')
 					->withUser($user)
