@@ -266,3 +266,20 @@ function favorite_article(article, user, status){
 		}
 	});
 }
+$(document).ready(function(){
+	resize_iframe();
+});
+$(window).resize(function(){
+	resize_iframe();
+});
+function resize_iframe(){
+	var wid = 0;
+	if($(".referpost .addons-container ul").hasClass("sortable")){
+		wid = $(".sortable").width()-100;
+		hgh = $
+	}
+	else if($(".article-detail-wrap ul").hasClass("post-detail-list")){
+		wid = $(".post-detail-list").width();
+	}
+	$("iframe").attr('width', wid);
+}
