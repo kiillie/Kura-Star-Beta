@@ -10,17 +10,10 @@
 				@else
 					<img src="{{$user->CURATER_IMAGE}}" />
 				@endif
-				<div class="labels labels2">
-					<span class="countrylabel"><b>{{$count}}</b> Articles</span>
-					<span class="catlabel"><b>{{$cfavorite}}</b> Favorites</span>
-				</div>
 				<div class="curator-info">
 					<h4>{{$user->CURATER}}</h4>
 					<p>{{$user->CURATER_DESCRIPTION}}</p>
 					<div class="clear"></div>
-				</div>
-				<div class="points-detail">
-					{{$count}}<span>Articles</span>
 				</div>
 				<div class="clear"></div>
 			</div>
