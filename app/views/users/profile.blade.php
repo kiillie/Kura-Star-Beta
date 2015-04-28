@@ -27,15 +27,25 @@
 			</div>
 						
 			<div id="tabs" class="tab1">
-				<ul>
-					@if(Auth::check())
-						@if(Auth::user()->CURATER_ID == $user->CURATER_ID)
+				@if(Auth::check())
+					@if(Auth::user()->CURATER_ID == $user->CURATER_ID)
+						<ul class="own">
 							<li><a href="#drafts">DRAFTS</a></li>
-						@endif
+							<li><a href="#articles">ARTICLES</a></li>
+							<li><a href="#favorites">FAVORITES</a></li>
+						</ul>
+					@else
+						<ul class="unown">
+							<li><a href="#articles">ARTICLES</a></li>
+							<li><a href="#favorites">FAVORITES</a></li>
+						</ul>
 					@endif
-					<li><a href="#articles">ARTICLES</a></li>
-					<li><a href="#favorites">FAVORITES</a></li>
-				</ul>
+				@else
+					<ul class="unown">
+						<li><a href="#articles">ARTICLES</a></li>
+						<li><a href="#favorites">FAVORITES</a></li>
+					</ul>
+				@endif
 			@if(Auth::check())
 				@if(Auth::user()->CURATER_ID == $user->CURATER_ID)
 				<div id="drafts">

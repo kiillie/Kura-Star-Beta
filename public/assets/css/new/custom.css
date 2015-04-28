@@ -638,7 +638,13 @@ a.post-list-thumb-wrap:hover h2, a.post-list-thumb-wrap:hover h4 {
 	position:absolute;
 }
 
-.tab1 > ul {
+.tab1 > ul.unown {
+	font-size:12px;
+	width:297px;
+	margin:0 auto;
+	overflow:auto;
+}
+.tab1 > ul.own {
 	font-size:12px;
 	width:444px;
 	margin:0 auto;
