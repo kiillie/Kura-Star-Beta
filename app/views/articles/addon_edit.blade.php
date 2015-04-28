@@ -135,21 +135,25 @@ else if($addon['type'] == 'video'){
 	var src = $("ul.sortable li[value='"+li+"'] iframe").attr("src");
 	var vid_dsc = "";
 	var txtlnt = $("ul.sortable li[value='"+li+"'] .vid-p-desc p").length;
+	for(var i = 0; i < lngt; i++){
+		res = res+"<p>"+spl[i]+"</p>";
+	}
 	var p = "";
 	for(var i = 0; i < txtlnt; i++){
 		p = $("ul.sortable li[value='"+li+"'] .vid-p-desc p").eq(i).text();
 		vid_dsc = vid_dsc+p+"\n";
 	}
 	var content = '{{Form::open(["name"=>"video"])}}'+
-					'<div class="extracted-vid row" style="display: block;">'+
-					'<div class="col-md-7">'+
+					'<div class="extracted-vid" style="display: block;">'+
+					'<div class="vid-iframe">'+
 					'<iframe src="'+src+'" width="300" height="300">#document</iframe>'+
 					'</div>'+
-					'<div class="col-md-5">'+
+					'<div class="vid-ex">'+
 					'<textarea class="vid-desc form-control" placeholder="Video Description">'+vid_dsc+'</textarea>'+
 					'<input type="button" class="btn btn-default" onclick="editItem(\''+li+'\', \''+type+'\', \''+kind+'\')" value="Add" />'+
 					'<input type="button" class="btn btn-default" onclick="cancel_add(\''+li+'\', \''+type+'\', \''+kind+'\')" value="Cancel">'+
 					'</div>'+
+					'<div class="clear"></div>'+
 					'</div>'+
 					'{{Form::close()}}';
 		$("ul.sortable li[value='"+li+"'] .add-item-area").html("<div class='edit-area'>"+content+"</div>");

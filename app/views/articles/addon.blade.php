@@ -170,7 +170,7 @@ else if($addon['type'] == 'video'){
 					'<input type="button" value="Check" class="btn btn-default add" onclick="extract_video(\''+li+'\', \''+type+'\', \''+kind+'\')">'+
 					'<input type="button" value="Cancel" class="btn btn-default"onclick="cancel_add(\''+li+'\', \''+type+'\', \''+kind+'\')">'+
 					'</div>'+
-					'<div class="extracted-vid row">'+
+					'<div class="extracted-vid">'+
 					'<div class="vid-iframe">'+
 					'<iframe src="#" width="300" height="300">#document</iframe>'+
 					'</div>'+
