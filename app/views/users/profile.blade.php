@@ -19,6 +19,16 @@
 					<h4>{{$user->CURATER}}</h4>
 					<p>{{$user->CURATER_DESCRIPTION}}</p>
 					<div class="clear"></div>
+					@if(Auth::check())
+						@if(Auth::user()->CURATER_ID == $user->CURATER_ID)
+							<div class="edit-wrap">
+								<p class="edit">
+									<a href="{{URL::route('user.edit', $user->CURATER_ID)}}">Edit Profile</a>
+								</p>
+								<div class="clear"></div>
+							</div>
+						@endif
+					@endif
 				</div>
 				<div class="points-detail">
 					{{$count}}<span>Articles</span>
