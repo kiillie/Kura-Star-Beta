@@ -1080,3 +1080,14 @@ h2.title{
 	float: left;
 }
 /***** *****/
+
+.sidebox .sideboxcontent .curatorslink{
+	font-size: 20px;
+	text-align: center;
+}
+.sidebox .sideboxcontent .curatorslink a{
+	color: rgb(251, 126, 0);
+}
+.sidebox .sideboxcontent .curatorslink a:hover{
+	color: gray;
+}
