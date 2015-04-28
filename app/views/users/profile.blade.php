@@ -28,6 +28,17 @@
 								<div class="clear"></div>
 							</div>
 						@endif
+					@else
+						@if(Hybrid_Auth::isConnectedWith('Facebook'))
+							@if('fb'.$profile->identifier == $user->CURATER_ID)
+								<div class="edit-wrap">
+									<p class="edit">
+										<a href="{{URL::route('user.edit', $user->CURATER_ID)}}">Edit Profile</a>
+									</p>
+									<div class="clear"></div>
+								</div>
+							@endif
+						@endif
 					@endif
 				</div>
 				<div class="points-detail">
