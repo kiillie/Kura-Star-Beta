@@ -71,7 +71,8 @@ function addItem(li, type, kind){
 					var orig = getOrigin(res);
 					var src = $(".new-addon .new-item .img-hid").val();
 					var image = '<a class="art-added-img" href="'+src+'" title="'+txt+'" data-fancybox-group="gallery"><img class="image" src="'+src+'" alt="'+res+'" /></a>'+
-                				'<div class="url-source"><span>Source: <a href="'+orig+'" target="_blank" alt="'+resource+'">'+resource+'</a></span></div>';
+                				'<div class="url-source"><span>Source: <a href="'+orig+'" target="_blank" alt="'+resource+'">'+resource+'</a></span></div>'+
+								'<div class="desc">'+txt+'</div>';
 				}
 				else{
 					var src = $(".new-addon .new-item .img-hid").val();
@@ -345,7 +346,7 @@ function addItem(li, type, kind){
 
 			var video =  '<iframe class="vid-display" src="'+src+'" width="600" height="400">#</iframe>'+		 
 						 '<div class="url-source"><span>Source: <a href="'+orig+'" target="_blank" alt="'+resource+'">'+resource+'</a></span></div>'+
-						 '<div class="vid-p-desc">'+desc+'</div>';
+						 '<div class="vid-p-desc">'+res+'</div>';
 			$('ul.sortable li[value="'+li+'"] .append-new-item').html("");
 			$('ul.sortable li[value="'+li+'"] .add-inner .item-btn-con').show();
 		}

@@ -135,9 +135,6 @@ else if($addon['type'] == 'video'){
 	var src = $("ul.sortable li[value='"+li+"'] iframe").attr("src");
 	var vid_dsc = "";
 	var txtlnt = $("ul.sortable li[value='"+li+"'] .vid-p-desc p").length;
-	for(var i = 0; i < lngt; i++){
-		res = res+"<p>"+spl[i]+"</p>";
-	}
 	var p = "";
 	for(var i = 0; i < txtlnt; i++){
 		p = $("ul.sortable li[value='"+li+"'] .vid-p-desc p").eq(i).text();
