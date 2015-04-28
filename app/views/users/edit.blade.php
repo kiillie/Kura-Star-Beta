@@ -2,7 +2,7 @@
 @section('content')
 <div class="defaultWidth center clear-auto bodycontent">
 	<div class="contentbox">
-	{{ Breadcrumbs::render('profile', $user) }}
+	{{ Breadcrumbs::render('edit', $user) }}
 			<div class="curator-detail-wrap">
 				<div class="pointer2"></div>
 				@if($user->CURATER_IMAGE == "")

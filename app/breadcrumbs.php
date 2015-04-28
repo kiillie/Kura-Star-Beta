@@ -56,6 +56,12 @@ Breadcrumbs::register('login', function($breadcrumbs) {
 
 	$breadcrumbs->push("USER LOGIN");
 });
+Breadcrumbs::register('edit', function($breadcrumbs, $user) {
+    $breadcrumbs->parent('index');
+
+	$breadcrumbs->push(strtoupper($user->CURATER), route('user.profile', $user->CURATER_ID));
+	$breadcrumbs->push("EDIT PROFILE");
+});
 Breadcrumbs::register('page', function($breadcrumbs, $page) {
     $breadcrumbs->parent('category', $page->category);
     $breadcrumbs->push($page->title, route('page', $page->id));
