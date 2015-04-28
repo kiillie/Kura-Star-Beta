@@ -180,7 +180,7 @@ class UserController extends BaseController{
 		$categories = $this->category->show();
 		$continents = $this->continent->show();
 		if(Hybrid_Auth::isConnectedWith('Facebook')){
-			$user = $this->user->getUserById($id);
+			$user = $this->fbuser->getUserById($id);
 		}
 		if(\Auth::check()){
 			$user = $this->user->getUserById($id);
