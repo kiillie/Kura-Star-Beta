@@ -1,9 +1,8 @@
 <?php
-	if(isset($input['name'])){
-		echo $input['name'];
+	if($update){
+		echo "true";
 	}
-	if(isset($input['about'])){
-		echo $input['about'];
+	else{
+		echo "false";
 	}
-
 ?>

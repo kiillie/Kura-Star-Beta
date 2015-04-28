@@ -1,78 +1,29 @@
-$(document).ready(function(){
-	edit_profile("", "");
-	submit_edit();
-	$(".edit-profile.picture .profile-picture").on('change', function(){
-		$(".edit-profile.picture").submit();
-	});
-});
-function edit_profile(section, id){
-	if(section == 'name'){
-		$(".profile-edit .info ."+section+" .edit-profile-a").append(" <span class='edit-loader'><img src='/assets/images/ajax-loader.gif' /></span>");
-		setTimeout(function(){
-			var val = $(".profile-edit .info .name-val").text();
-			var content =	"<form name='edit-form' class='edit-form name' action=''>"+
-							"<input type='text' name='name' value='"+val+"' class='form-control'/><br/>"+
-							"<input type='hidden' name='id' value='"+id+"'>"+
-							"<input type='submit' class='btn btn-default' value='Save Changes' onclick='submit_edit()'>"+
-							"<input type='reset' class='btn btn-default' value='Cancel'>"+
-							"</form>";
-			$(".profile-edit .info ."+section+" .edit-section-cont").html(content);
-			$(".profile-edit .info ."+section+" .edit-section-cont").css("display", "block");	
-			$(".profile-edit .info ."+section+" .edit-loader").remove();
-		}, 2000);
-	}
-	else if(section == "about"){
-		$(".profile-edit .info ."+section+" .edit-profile-a").append(" <span class='edit-loader'><img src='/assets/images/ajax-loader.gif' /></span>");
-		setTimeout(function(){
-			var val = $(".profile-edit .info .desc-val").text();
-			var content =	"<form name='edit-form' class='edit-form about' action=''>"+
-							"<textarea name='about' class='form-control'>"+val+"</textarea><br/>"+
-							"<input type='hidden' name='id' value='"+id+"'>"+
-							"<input type='submit' class='btn btn-default' value='Save Changes' onclick='submit_edit()'>"+
-							"<input type='reset' class='btn btn-default' value='Cancel'>"+
-							"</form>";
-			$(".profile-edit .info ."+section+" .edit-section-cont").html(content);
-			$(".profile-edit .info ."+section+" .edit-section-cont").css("display", "block");	
-			$(".profile-edit .info ."+section+" .edit-loader").remove();
-		}, 2000);
-	}
+function edit_profile(){
+	$(".edit-profile .curator-info").css('display', 'none');
+	$(".edit-profile .curator-edit").css('display', 'block');
 }
-function submit_edit(){
+$(document).ready(function(){
 	$(".edit-form").submit(function(e){
 		e.preventDefault();
-		if($(this).hasClass("name")){
-			$.ajax({
-				url		: '/user/update',
-				type	: 'POST',
-				data	: new FormData(this),
-				contentType : false,
-				cache : false,
-				processData : false,
-				success	: function(res){
-					if(res != ""){
-						$(".profile-edit .info .name-val").text(res);
-						$(".profile-edit .info .name .edit-section-cont").html("");
-						$(".profile-edit .info .name .edit-section-cont").css("display", "none");
-					}
+		$.ajax({
+			url		: '/user/update',
+			type	: 'POST',
+			data	: new FormData(this),
+			contentType : false,
+			cache : false,
+			processData : false,
+			success	: function(res){
+				if(res == "true"){
+					var name = $(".curator-edit h4.name input").val();
+					var email = $(".curator-edit p.email input").val();
+					var desc = $(".curator-edit p.desc textarea").val();
+					$(".curator-info h4.name").text(name);
+					$(".curator-info p.email").text(email);
+					$(".curator-info p.desc").text(desc);
+					$(".edit-profile .curator-info").css('display', 'block');
+					$(".edit-profile .curator-edit").css('display', 'none');
 				}
-			})
-		}
-		else if($(this).hasClass("about")){
-			$.ajax({
-				url		: '/user/update',
-				type	: 'POST',
-				data	: new FormData(this),
-				contentType : false,
-				cache : false,
-				processData : false,
-				success	: function(res){
-					if(res != ""){
-						$(".profile-edit .info .desc-val").text(res);
-						$(".profile-edit .info .about .edit-section-cont").html("");
-						$(".profile-edit .info .about .edit-section-cont").css("display", "none");
-					}
-				}
-			});
-		}
+			}
+		});
 	});
-}
+});

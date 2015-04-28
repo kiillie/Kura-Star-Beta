@@ -199,13 +199,13 @@ class UserController extends BaseController{
 
 	public function update(){
 		$input = Input::all();
-		$update = $this->user->update($input['id'], $input);
-		if(isset($input['prof-pic'])){
-			return Redirect::back();
+		$update = $this->user->update($input);
+		if($update){
+			return View::make('users.update')
+					->withUpdate($update);
 		}
 		else{
-			return View::make('users.update')
-					->withInput($input);
+			return Redirect::back();
 		}
 	}
 }

@@ -92,9 +92,9 @@
 							<img src="/assets/images/new/logo_gray.png" />
 						</a>
 						<div class="footermenu">
-							<a href="#">Terms of Services</a>
-							<a href="#">Privacy Policy</a>
-							<a href="#">About Us</a>
+							<a href="{{URL::route('terms-of-services')}}">Terms of Services</a>
+							<a href="{{URL::route('privacy-policy')}}">Privacy Policy</a>
+							<a href="http://www.u-rg.com">About Us</a>
 							<a href="{{URL::route('index')}}">Home</a>
 						</div>
 					</div>

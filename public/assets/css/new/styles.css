@@ -73,3 +73,41 @@
 .sortable li .url-source a{
 	color: rgb(187, 187, 187);
 }
+.edit-profile .curator-info p{
+	float: none;
+}
+.edit-profile .curator-edit{
+	display: none;
+	height: auto;
+	margin-bottom: 8px;
+	width: 72%;
+	float: left;
+}
+.edit-profile .curator-edit h4{
+	color: #545454;
+	font-size: 22px;
+	font-weight: normal;
+	font-weight: 400;
+	margin-top: 4px;
+	margin-bottom: 13px;
+}
+.edit-profile .curator-edit p{
+	float: none;
+}
+.editbtn{
+	margin: 0 auto;
+}
+.editbtn input{
+	border-radius: 3px;
+	background: #555;
+	color: #FFF;
+	padding: 10px;
+	text-align: center;
+	font-size: 14px;
+	font-weight: bold;
+	width: 150px;
+	margin: 2px;
+}
+.editbtn input:hover{
+	background:#ed7600;
+}
