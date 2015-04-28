@@ -23,6 +23,8 @@ interface ArticleRepository{
 	public function incrementView($id);
 
 	public function getByUser($user);
+	
+	public function getDraftsByUser($user);
 
 	public function countArticlesByUser($id);
 	

@@ -153,7 +153,11 @@ class EloquentArticleRepository implements ArticleRepository{
 	}
 
 	public function getByUser($id){
-		return Article::where('CURATER_ID', '=', $id)->paginate(12);
+		return Article::where('CURATER_ID', '=', $id)->where('CURATION_STATUS', '=', 1)->paginate(12);
+	}
+	
+	public function getDraftsByUser($id){
+		return Article::where('CURATER_ID', '=', $id)->where('CURATION_STATUS', '=', 0)->paginate(12);
 	}
 
 	public function countArticlesByUser($id){

@@ -28,14 +28,124 @@
 						
 			<div id="tabs" class="tab1">
 				<ul>
-					<li><a href="#tabs-1">DRAFTS</a></li>
-					<li><a href="#tabs-2">ARTICLES</a></li>
-					<li><a href="#tabs-3">FAVORITES</a></li>
+					@if(Auth::check())
+						@if(Auth::user()->CURATER_ID == $user->CURATER_ID)
+							<li><a href="#drafts">DRAFTS</a></li>
+						@endif
+					@endif
+					<li><a href="#articles">ARTICLES</a></li>
+					<li><a href="#favorites">FAVORITES</a></li>
 				</ul>
-				<div id="tabs-1">
-					Drafts here
+			@if(Auth::check())
+				@if(Auth::user()->CURATER_ID == $user->CURATER_ID)
+				<div id="drafts">
+					@if(count($drafts) != 0)
+						<ul class="post-list-thumb">
+							@foreach($drafts as $draft)		
+								<li>
+									@if(Hybrid_Auth::isConnectedWith('Facebook'))
+										@if('fb'.$profile->identifier == $draft->CURATER_ID)
+											<a href="{{URL::route('article.create', $draft->CURATION_ID)}}" class="post-list-thumb-wrap">
+										@else
+											<a href="{{URL::route('article.view', $draft->CURATION_ID)}}" class="post-list-thumb-wrap">
+										@endif
+									@else
+										@if(Auth::check())
+											@if(Auth::user()->CURATER_ID == $draft->CURATER_ID)
+												<a href="{{URL::route('article.create', $draft->CURATION_ID)}}" class="post-list-thumb-wrap">
+											@else
+												<a href="{{URL::route('article.view', $draft->CURATION_ID)}}" class="post-list-thumb-wrap">
+											@endif
+										@else
+											<a href="{{URL::route('article.view', $draft->CURATION_ID)}}" class="post-list-thumb-wrap">
+										@endif
+									@endif
+										@if($draft->CURATION_IMAGE == "")
+											<div class="postimg" style="background-image:url(/assets/images/article-default.png);"></div>
+										@else
+											<div class="postimg" style="background-image:url({{$draft->CURATION_IMAGE}});"></div>
+										@endif
+										<div class="labels">
+											@foreach($countries as $country)
+												@if($country->COUNTRY_ID == $draft->COUNTRY_ID)
+													<span class="countrylabel"><i class="fa fa-map-marker"></i> {{$country->COUNTRY_NAME}}</span>
+												@endif
+											@endforeach
+											@foreach($categories as $category)
+												@if($category->CATEGORY_ID == $draft->CATEGORY_ID)
+													<span class="catlabel"><i class="fa fa-hotel"></i> {{$category->CATEGORY_NAME}}</span>
+												@endif
+											@endforeach
+										</div>
+										<div class="desc">
+											<h2>{{$draft->CURATION_TITLE}}</h2>
+											<p>
+												{{$draft->CURATION_DESCRIPTION}}
+											</p>
+										</div>
+										<div class="infobelow">
+											<span class="smallpoints smallpoints-left">{{$draft->VIEWS}} views</span>
+											<?php
+												$exist = strpos($draft->CURATER_ID, 'fb');
+												if($exist !== false){
+											?>
+											@foreach($fbusers as $fbuser)
+												@if($fbuser->CURATER_ID == $draft->CURATER_ID)
+													<div class="profile-thumb-wrap">
+													@if($fbuser->CURATER_IMAGE == "")
+														<img src="/assets/images/picture-default.png" />
+													@else
+														<img src="{{$fbuser->CURATER_IMAGE}}" />
+													@endif
+														<div class="curator">
+															<span>CURATOR</span><br />
+															<h3>{{$fbuser->CURATER}}</h3>
+														</div>
+													</div>
+												@endif
+											@endforeach
+											<?php
+												}
+												else{
+											?>
+											@foreach($users as $raw)
+												@if($raw->CURATER_ID == $draft->CURATER_ID)
+													<div class="profile-thumb-wrap">
+														@if($raw->CURATER_IMAGE == "")
+															<img src="/assets/images/picture-default.png" />
+														@else
+															<img src="{{$raw->CURATER_IMAGE}}" />
+														@endif
+														<div class="curator">
+															<span>CURATOR</span><br />
+															<h3>{{$raw->CURATER}}</h3>
+														</div>
+													</div>
+												@endif
+											@endforeach
+											<?php
+												}
+											?>
+										</div>
+									</a>
+								</li>
+							@endforeach
+						</ul>
+							
+					<!----- start pagination ------>
+						<div class="pagination">
+							{{$drafts->links()}}
+						</div>		
+					<!----- start pagination ------>
+					@else
+						<div class="alert alert-danger">
+							<span>There are no articles yet.</span>
+						</div>
+					@endif
 				</div>
-				<div id="tabs-2">
+				@endif
+			@endif
+				<div id="articles">
 					@if(count($articles) != 0)
 						<ul class="post-list-thumb">
 							@foreach($articles as $article)		
@@ -140,7 +250,7 @@
 						</div>
 					@endif
 				</div>
-				<div id="tabs-3">
+				<div id="favorites">
 					@if(count($favorites) != 0)
 						<ul class="post-list-thumb">
 							@foreach($favorites as $favorite)

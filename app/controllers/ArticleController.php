@@ -268,6 +268,7 @@ class ArticleController extends BaseController{
 	public function showArticlesByUser($id){
 		$articles = $this->article->getByUser($id);
 		$allArticles = $this->article->articleLists();
+		$drafts = $this->article->getDraftsByUser($id);
 		$users = $this->user->allUsers();
 		$fbusers = $this->fbuser->getAllUsers();
 		$exist = strpos($id, 'fb');
@@ -310,7 +311,8 @@ class ArticleController extends BaseController{
 				->withRank($ranking)
 				->withCtryrank($ctry_rank)
 				->withProfile($profile)
-				->withAllarticles($allArticles);
+				->withAllarticles($allArticles)
+				->withDrafts($drafts);
 	}
 
 	public function showByCategory($id){
