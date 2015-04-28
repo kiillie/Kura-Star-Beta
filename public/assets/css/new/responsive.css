@@ -227,6 +227,15 @@
 	.sortable .add-inner .item-hr{
 		width: 74%;
 	}
+	#video .vid-iframe, .addons-container .vid-iframe{
+		width: 100%;
+		float: none;
+		text-align: center;
+	}
+	#video .vid-ex, .addons-container .vid-ex{
+		width: 100%;
+		float: one;
+	}
 }
 @media only screen and (min-width: 300px) and (max-width: 767px) {
 	/******registration form************/

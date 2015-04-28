@@ -179,6 +179,7 @@ else if($addon['type'] == 'video'){
 					'<input type="button" class="btn btn-default" onclick="addItem(\''+li+'\', \''+type+'\', \''+kind+'\')" value="Add" />'+
 					'<input type="button" class="btn btn-default" onclick="cancel_add(\''+li+'\', \''+type+'\', \''+kind+'\')" value="Cancel">'+
 					'</div>'+
+					'<div class="clear"></div>'+
 					'</div>'+
 					'{{Form::close()}}';
 	if(kind == 'new'){

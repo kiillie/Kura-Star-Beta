@@ -945,6 +945,14 @@ h2.title{
 #video .extracted-vid, .sortable .extracted-vid{
 	display: none;
 }
+#video .vid-iframe, .addons-container .vid-iframe{
+	width: 30%;
+	float: left;
+}
+#video .vid-ex, .addons-container .vid-ex{
+	width: 70%;
+	float: left;
+}
 .image-res {
 	width: 30%;
 	float: left;
