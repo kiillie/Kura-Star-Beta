@@ -612,6 +612,7 @@ function editItem(li, type, kind){
 			$("ul.sortable li[value='"+li+"']").html(content);
 			addonHovered(type, kind);
 			insert_addon();
+			resize_iframe();
 	}
 	else if(type == "tag"){
 		var text = $("ul.sortable li[value='"+li+"'] input.tag").val();
