@@ -94,6 +94,11 @@
 .edit-profile .curator-edit p{
 	float: none;
 }
+.edit-profile .edit-image{
+	position: absolute;
+	width: 200px;
+	display: none;
+}
 .editbtn{
 	margin: 0 auto;
 }
