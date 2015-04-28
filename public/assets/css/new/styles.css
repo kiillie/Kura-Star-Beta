@@ -111,3 +111,13 @@
 .editbtn input:hover{
 	background:#ed7600;
 }
+.edit-profile .curator-detail-wrap .edit-image input[type='file']{
+	background: #FFF;
+	border: solid 1px #e6e6e6;
+	border-radius: 4px;
+	width: 92.5%;
+	padding: 6px 2%;
+	color: #747474;
+	font-size: 15px;
+	line-height: 24px;
+}
