@@ -326,7 +326,7 @@ function addItem(li, type, kind){
 			}
 			var resource = getRootUrl(src);
 			var orig = getOrigin(src);
-			var video = '<iframe class="vid-display" src="'+src+'" width="600" height="400">#</iframe>'+
+			var video = '<iframe class="vid-display" src="'+src+'" width="100%" height="400">#</iframe>'+
 						'<div class="url-source"><span>Source: <a href="'+orig+'" target="_blank" alt="'+resource+'">'+resource+'</a></span></div>'+
 						'<div class="vid-p-desc">'+res+'</div>';
 			$('.new-addon .new-item').html("");
@@ -594,7 +594,7 @@ function editItem(li, type, kind){
 		var resource = getRootUrl(src);
 		var orig = getOrigin(src);
 
-		var video = '<iframe class="vid-display" src="'+src+'" width="600" height="400">#</iframe>'+
+		var video = '<iframe class="vid-display" src="'+src+'" width="100%" height="400">#</iframe>'+
 						'<div class="url-source"><span>Source: <a href="'+orig+'" target="_blank" alt="'+resource+'">'+resource+'</a></span></div>'+
 						'<div class="vid-p-desc">'+res+'</div>';
 
