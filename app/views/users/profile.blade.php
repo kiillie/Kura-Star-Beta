@@ -35,7 +35,6 @@
 				</div>
 				<div class="clear"></div>
 			</div>
-						
 			<div id="tabs" class="tab1">
 				@if(Auth::check())
 					@if(Auth::user()->CURATER_ID == $user->CURATER_ID)
@@ -51,10 +50,25 @@
 						</ul>
 					@endif
 				@else
-					<ul class="unown">
-						<li><a href="#articles">ARTICLES</a></li>
-						<li><a href="#favorites">FAVORITES</a></li>
-					</ul>
+					@if(Hybrid_Auth::isConnectedWith('Facebook'))
+						@if('fb'.$profile->identifier == $user->CURATER_ID)
+							<ul class="own">
+									<li><a href="#drafts">DRAFTS</a></li>
+									<li><a href="#articles">ARTICLES</a></li>
+									<li><a href="#favorites">FAVORITES</a></li>
+							</ul>
+						@else
+							<ul class="unown">
+								<li><a href="#articles">ARTICLES</a></li>
+								<li><a href="#favorites">FAVORITES</a></li>
+							</ul>
+						@endif
+					@else
+						<ul class="unown">
+							<li><a href="#articles">ARTICLES</a></li>
+							<li><a href="#favorites">FAVORITES</a></li>
+						</ul>
+					@endif
 				@endif
 			@if(Auth::check())
 				@if(Auth::user()->CURATER_ID == $user->CURATER_ID)
