@@ -29,6 +29,11 @@ Route::get('user/profile/{id}', [
 	'as'	=>	'user.profile'
 ]);
 
+Route::post('user/image', [
+	'uses'	=>	'UserController@uploadImage',
+	'as'	=>	'user.image'
+]);
+
 Route::get('user/article/{id}', [
 	'uses'	=>	'ArticleController@showArticlesByUser',
 	'as'	=>	'user.articles'

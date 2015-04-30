@@ -201,11 +201,21 @@ class UserController extends BaseController{
 		$input = Input::all();
 		$update = $this->user->update($input);
 		if($update){
-			return View::make('users.update')
-					->withUpdate($update);
+			return Redirect::route('user.edit', $input['id'])
+					->with('message', 'Profile updated successfully.');
 		}
 		else{
-			return Redirect::back();
+			return Redirect::back()
+					->with('message', 'Profile was not updated successfully.');
+		}
+	}
+	
+	public function uploadImage(){
+		$input = Input::all();
+		$upload = $this->user->image($input);
+		
+		if($upload['result']){
+			return View::make('users.image')->withUpload($upload);
 		}
 	}
 }

@@ -9,6 +9,8 @@ interface UserRepository{
 	public function allUsers();
 	
 	public function update($input);
+	
+	public function image($input);
 
 	public function delete($id);
 }
