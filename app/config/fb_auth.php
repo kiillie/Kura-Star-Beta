@@ -10,7 +10,6 @@ return array(
 				'scope'	=> 'public_profile, email'
 				)
 		)
-
 	);
 
 ?>

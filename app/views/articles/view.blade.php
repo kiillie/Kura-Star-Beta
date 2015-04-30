@@ -18,6 +18,7 @@ $(document).ready(function(){
 
 });
 </script>
+<div id="fb-root"></div>
 <script>
 	var title = "{{$article->CURATION_TITLE}}";
 	if(title != ""){
@@ -53,7 +54,8 @@ $(document).ready(function(){
 				
 			</div>
 			<div class="infobelow">
-				<span class="smallpoints smallpoints-left"><img src="/assets/images/social-sample.png" /></span>
+				<span class="smallpoints smallpoints-left"><img src="/assets/images/social-sample.png" />
+				<div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div></span>
 				
 				<div class="profile-thumb-wrap">
 					<?php
