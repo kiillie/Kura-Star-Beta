@@ -41,7 +41,8 @@ class ArticleController extends BaseController{
 		$continents = $this->continent->show();
 		$article = $this->article->show($id);
 		$profile = "";
-
+		$hybrid = "";
+		
 		if(Hybrid_Auth::isConnectedWith('Facebook')){
 			$provider = $this->oauth->authenticate('Facebook');
 			$profile = $provider->getUserProfile();
@@ -54,7 +55,8 @@ class ArticleController extends BaseController{
 				->with('curation', $id)
 				->with('status', $article->CURATION_STATUS)
 				->with('article', $article)
-				->withProfile($profile);
+				->withProfile($profile)
+				->withHybrid($hybrid);
 	}
 
 	public function insert(){
@@ -155,6 +157,7 @@ class ArticleController extends BaseController{
 		$continents = $this->continent->show();
 		$fbusers = $this->fbuser->getAllUsers();
 		$profile = "";
+		$hybrid = "";
 		if(Hybrid_Auth::isConnectedWith('Facebook')){
 			$provider = $this->oauth->authenticate('Facebook');
 			$profile = $provider->getUserProfile();
@@ -198,7 +201,8 @@ class ArticleController extends BaseController{
 					->withProfile($profile)
 					->withCoart($count_art)
 					->withUsers($users)
-					->withCofave($count_fave);
+					->withCofave($count_fave)
+					->withHybrid($hybrid);
 
 		}
 	}
@@ -211,6 +215,7 @@ class ArticleController extends BaseController{
 		$users = $this->user->allUsers();
 		$fbusers = $this->fbuser->getAllUsers();
 		$profile = "";
+		$hybrid = "";
 		if(Hybrid_Auth::isConnectedWith('Facebook')){
 			$provider = $this->oauth->authenticate('Facebook');
 			$profile = $provider->getUserProfile();
@@ -246,7 +251,8 @@ class ArticleController extends BaseController{
 				->withUsers($users)
 				->withFbusers($fbusers)
 				->withCoart($count_art)
-				->withCofave($count_fave);
+				->withCofave($count_fave)
+				->withHybrid($hybrid);
 	}
 
 	public function twitter(){
@@ -277,6 +283,7 @@ class ArticleController extends BaseController{
 		$exist = strpos($id, 'fb');
 		$profile = "";
 		$provider = "";
+		$hybrid = "";
 		if(Hybrid_Auth::isConnectedWith('Facebook')){
 			$provider = $this->oauth->authenticate('Facebook');
 			$profile = $provider->getUserProfile();
@@ -316,7 +323,8 @@ class ArticleController extends BaseController{
 				->withCtryrank($ctry_rank)
 				->withProfile($profile)
 				->withAllarticles($allArticles)
-				->withDrafts($drafts);
+				->withDrafts($drafts)
+				->withHybrid($hybrid);
 	}
 
 	public function showByCategory($id){
@@ -329,6 +337,7 @@ class ArticleController extends BaseController{
 		$ranking = $this->article->getByRanking();
 		$ctry_rank = [];
 		$profile = "";
+		$hybrid = "";
 		$fbusers = $this->fbuser->getAllUsers();
 
 		if(Hybrid_Auth::isConnectedWith('Facebook')){
@@ -350,7 +359,8 @@ class ArticleController extends BaseController{
 				->withRank($ranking)
 				->withCtryrank($ctry_rank)
 				->withProfile($profile)
-				->withFbusers($fbusers);
+				->withFbusers($fbusers)
+				->withHybrid($hybrid);
 	}
 
 	public function showByCountry($id){
@@ -363,6 +373,7 @@ class ArticleController extends BaseController{
 		$ranking = $this->article->getByRanking();
 		$ctry_rank = [];
 		$profile = "";
+		$hybrid = "";
 		$fbusers = $this->fbuser->getAllUsers();
 		if(Hybrid_Auth::isConnectedWith('Facebook')){
 			$provider = $this->oauth->authenticate('Facebook');
@@ -389,7 +400,8 @@ class ArticleController extends BaseController{
 				->withRank($ranking)
 				->withCtryrank($ctry_rank)
 				->withProfile($profile)
-				->withFbusers($fbusers);
+				->withFbusers($fbusers)
+				->withHybrid($hybrid);
 	}
 
 	public function searchArticle(){
@@ -416,7 +428,7 @@ class ArticleController extends BaseController{
 			arsort($ctry_rank);
 			$profile = "";
 			$fbusers = $this->fbuser->getAllUsers();
-
+			$hybrid = "";
 			if(Hybrid_Auth::isConnectedWith('Facebook')){
 				$provider = $this->oauth->authenticate('Facebook');
 				$profile = $provider->getUserProfile();
@@ -439,7 +451,8 @@ class ArticleController extends BaseController{
 					->withRank($ranking)
 					->withCtryrank($ctry_rank)
 					->withProfile($profile)
-					->withFbusers($fbusers);
+					->withFbusers($fbusers)
+					->withHybrid($hybrid);
 
 		}
 	}
