@@ -49,7 +49,7 @@ $(document).ready(function(){
 				<span class="smallpoints smallpoints-left">
 					<div class="fb-like" id="fb-like" data-href="" data-layout="button" data-action="like" data-show-faces="true"></div>
 					<a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-count="none">Tweet</a>
-					<div class="g-plus" data-action="share" data-annotation="bubble" data-height="24" data-href="http://kurastar.com/article/39/view"></div>
+					<div class="g-plus" data-action="share" data-annotation="bubble" data-height="24" data-href=""></div>
 				</span>
 				<div class="profile-thumb-wrap">
 					<?php
@@ -120,7 +120,11 @@ $(document).ready(function(){
 			</ul>
 							
 			<div class="article-curator">
-				<span class="social-sample"><img src="/assets/images/social-sample.png"></span>
+				<span class="social-sample">
+					<div class="fb-like" id="fb-like" data-href="" data-layout="button" data-action="like" data-show-faces="true"></div>
+					<a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-count="none">Tweet</a>
+					<div class="g-plus" data-action="share" data-annotation="bubble" data-height="24" data-href=""></div>
+				</span>
 				<?php
 					$exist = strpos($article->CURATER_ID, 'fb');
 					if($exist !== false){

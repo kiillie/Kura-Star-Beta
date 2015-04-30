@@ -288,6 +288,9 @@ var href = window.location.href;
 $(".smallpoints .fb-like").attr("data-href", href);
 $(".smallpoints .twitter-share-button").attr("href", href);
 $(".smallpoints .g-plus").attr("data-href", href);
+$(".social-sample .fb-like").attr("data-href", href);
+$(".social-sample .twitter-share-button").attr("href", href);
+$(".social-sample .g-plus").attr("data-href", href);
 
 
 (function(d, s, id) {
