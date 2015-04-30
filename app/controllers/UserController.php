@@ -90,10 +90,12 @@ class UserController extends BaseController{
 		$exist = strpos($id, 'fb');
 		$profile = "";
 		$logged = false;
+		$hybrid = "";
 		if($exist !== FALSE && Hybrid_Auth::isConnectedWith('Facebook')){
 			$provider = $this->oauth->authenticate('Facebook');
 			$profile = $provider->getUserProfile();
 			$user = $this->fbuser->getUserById($id);
+			$hybrid = $this->fbuser->getUserById('fb'.$profile->identifier);
 			$logged = true;
 		}
 		else if($exist !== FALSE && !Hybrid_Auth::isConnectedWith('Facebook')){
@@ -119,7 +121,8 @@ class UserController extends BaseController{
 						->withCategories($categories)
 						->withCount($count)
 						->withFavorites($favorites)
-						->withProfile($profile);
+						->withProfile($profile)
+						->withHybrid($hybrid);
 		}
 		else{
 			return View::make('users.view_profile')
@@ -129,7 +132,8 @@ class UserController extends BaseController{
 						->withCategories($categories)
 						->withCount($count)
 						->withFavorites($favorites)
-						->withProfile($profile);
+						->withProfile($profile)
+						->withHybrid($hybrid);
 		}
 	}
 	
@@ -144,6 +148,7 @@ class UserController extends BaseController{
 		$profile = "";
 		$count_art = [];
 		$count_fave = [];
+		$hybrid = "";
 		foreach($users as $user){
 			$count_art[$user->CURATER_ID] = $this->article->countArticlesByUser($user->CURATER_ID);
 		}
@@ -153,6 +158,7 @@ class UserController extends BaseController{
 		if(Hybrid_Auth::isConnectedWith('Facebook')){
 			$provider = $this->oauth->authenticate('Facebook');
 			$profile = $provider->getUserProfile();
+			$hybrid = $this->fbuser->getUserById('fb'.$profile->identifier);
 		}
 
 		$ranking = $this->article->getByRanking();
@@ -172,7 +178,8 @@ class UserController extends BaseController{
 					->withProfile($profile)
 					->withFbusers($fbusers)
 					->withCurators($curators)
-					->withCoart($count_art);
+					->withCoart($count_art)
+					->withHybrid($hybrid);
 	}
 	
 	public function edit($id){
@@ -180,10 +187,12 @@ class UserController extends BaseController{
 		$categories = $this->category->show();
 		$continents = $this->continent->show();
 		$profile = "";
+		$hybrid = "";
 		if(Hybrid_Auth::isConnectedWith('Facebook')){
 			$user = $this->fbuser->getUserById($id);
 			$provider = $this->oauth->authenticate('Facebook');
 			$profile = $provider->getUserProfile();
+			$hybrid = $this->fbuser->getUserById('fb'.$profile->identifier);
 		}
 		if(\Auth::check()){
 			$user = $this->user->getUserById($id);
@@ -194,7 +203,8 @@ class UserController extends BaseController{
 					->withContinents($continents)
 					->withCountries($countries)
 					->withCategories($categories)
-					->withProfile($profile);
+					->withProfile($profile)
+					->withHybrid($hybrid);
 	}
 
 	public function update(){
