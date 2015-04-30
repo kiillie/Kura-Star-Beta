@@ -49,7 +49,7 @@ $(document).ready(function(){
 			</div>
 			<div class="infobelow">
 				<span class="smallpoints smallpoints-left">
-					<div class="fb-like" id="fb-like" data-href="" data-layout="button" data-action="like" data-show-faces="true"></div>
+					<div class="fb-like" id="fb-like" data-href="http://kurastar.com/article/39/view" data-layout="button" data-action="like" data-show-faces="true"></div>
 					<a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-count="none">Tweet</a>
 					<div class="g-plus" data-action="share" data-annotation="bubble" data-height="24" data-href="http://kurastar.com/article/39/view"></div>
 				</span>
