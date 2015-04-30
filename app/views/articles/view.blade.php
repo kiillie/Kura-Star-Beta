@@ -1,13 +1,6 @@
-@extends('layouts.main')
+@extends('layouts.article')
 @section('content')
 <div id="fb-root"></div>
-<script>
-	var title = "{{$article->CURATION_TITLE}}";
-	if(title != ""){
-		$("title").text(title);
-	}
-	$("meta[name='description']").attr("content", "{{$article->CURATION_DESCRIPTION}}");
-</script>
 <link rel="stylesheet" href="/assets/css/new/styles.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/plugins/jquery.fancybox.css?v=2.1.5" media="screen" />
 <script type="text/javascript" src="/assets/js/plugins/jquery.fancybox.js?v=2.1.5"></script>
@@ -55,7 +48,7 @@ $(document).ready(function(){
 			</div>
 			<div class="infobelow">
 				<span class="smallpoints smallpoints-left">
-				<div class="fb-like" data-href="" data-layout="button" data-action="like" data-show-faces="true"></div></span>
+				<div class="fb-like" id="fb-like" data-href="" data-layout="button" data-action="like" data-show-faces="true"></div></span>
 				<div class="profile-thumb-wrap">
 					<?php
 						$exist = strpos($article->CURATER_ID, 'fb');

@@ -283,7 +283,6 @@ function resize_iframe(){
 	}
 	$("iframe").attr('width', wid);
 }
-
 (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
