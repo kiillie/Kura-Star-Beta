@@ -5,7 +5,6 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/plugins/jquery.fancybox.css?v=2.1.5" media="screen" />
 <script type="text/javascript" src="/assets/js/plugins/jquery.fancybox.js?v=2.1.5"></script>
 <script type="text/javascript" src="/assets/js/create.js"></script>
-<script src="https://apis.google.com/js/platform.js" async defer></script>
 <script>
 $(document).ready(function(){
 	$(".art-added-img").fancybox({
@@ -200,4 +199,5 @@ $(document).ready(function(){
 					
 </div>
 <script language="javascript" src="/assets/js/create.js"></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
 @stop
