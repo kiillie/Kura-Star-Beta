@@ -32,10 +32,11 @@ class PublicController extends BaseController{
 		$articles = $this->article->allArticles();
 		$users = $this->user->allUsers();
 		$fbusers = $this->fbuser->getAllUsers();
+		$hybrid = "";
 		if(Hybrid_Auth::isConnectedWith('Facebook')){
 			$provider = $this->oauth->authenticate('Facebook');
 			$profile = $provider->getUserProfile();
-
+			$hybrid = $this->fbuser->getUserById('fb'.$profile->identifier);
 		$ranking = $this->article->getByRanking();
 		$ctry_rank = [];
 		foreach($countries as $country){
@@ -51,7 +52,8 @@ class PublicController extends BaseController{
 				->withRank($ranking)
 				->withCtryrank($ctry_rank)
 				->withProfile($profile)
-				->withFbusers($fbusers);
+				->withFbusers($fbusers)
+				->withHybrid($hybrid);
 		}
 		else{
 
