@@ -10,7 +10,7 @@ interface FacebookRepository{
 
 	public function getAllUsers();
 	
-	public function update();
+	public function update($input);
 	
 	public function image($input);
 
