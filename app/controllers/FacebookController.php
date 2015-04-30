@@ -37,14 +37,6 @@ class FacebookController extends BaseController{
 		
 		return  Redirect::route('index')->withProfile($profile);
 	}
-	
-	public function uploadImage(){
-		$input = Input::all();
-		if(Hybrid_Auth::isConnectedWith('Facebook')){
-			$provider = $this->oauth->authenticate('Facebook');
-			$profile = $provider->getUserProfile();
-		}
-	}
 
 	public function getLogout(){
 		$this->oauth->logoutAllProviders();

@@ -209,7 +209,12 @@ class UserController extends BaseController{
 
 	public function update(){
 		$input = Input::all();
-		$update = $this->user->update($input);
+		if(Hybrid_Auth::isConnectedWith('Facebook')){
+			$update = $this->fbuser->update($input);	
+		}
+		else{
+			$update = $this->user->update($input);	
+		}
 		if($update){
 			return Redirect::route('user.edit', $input['id'])
 					->with('message', 'Profile updated successfully.');
@@ -222,7 +227,12 @@ class UserController extends BaseController{
 	
 	public function uploadImage(){
 		$input = Input::all();
-		$upload = $this->user->image($input);
+		if(Hybrid_Auth::isConnectedWith('Facebook')){
+			$upload = $this->fbuser->image($input);
+		}
+		else{
+			$upload = $this->user->image($input);
+		}
 		
 		if($upload['result']){
 			return View::make('users.image')->withUpload($upload);
