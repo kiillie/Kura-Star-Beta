@@ -193,6 +193,7 @@ class UserController extends BaseController{
 			$provider = $this->oauth->authenticate('Facebook');
 			$profile = $provider->getUserProfile();
 			$hybrid = $this->fbuser->getUserById('fb'.$profile->identifier);
+			$user = $this->fbuser->getUserById('fb'.$profile->identifier);
 		}
 		if(\Auth::check()){
 			$user = $this->user->getUserById($id);
