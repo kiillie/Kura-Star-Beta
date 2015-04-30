@@ -45,6 +45,7 @@ class ArticleController extends BaseController{
 		if(Hybrid_Auth::isConnectedWith('Facebook')){
 			$provider = $this->oauth->authenticate('Facebook');
 			$profile = $provider->getUserProfile();
+			$hybrid = $this->fbuser->getUserById('fb'.$profile->identifier);
 		}
 		return View::make('articles.create')
 				->withCountries($countries)
@@ -61,6 +62,7 @@ class ArticleController extends BaseController{
 			$provider = $this->oauth->authenticate('Facebook');
 			$profile = $provider->getUserProfile();
 			$insert = $this->article->insert('fb', 'fb'.$profile->identifier);
+			$hybrid = $this->fbuser->getUserById('fb'.$profile->identifier);
 		}
 		else{
 			$insert = $this->article->insert('raw', \Auth::user()->CURATER_ID);
@@ -156,6 +158,7 @@ class ArticleController extends BaseController{
 		if(Hybrid_Auth::isConnectedWith('Facebook')){
 			$provider = $this->oauth->authenticate('Facebook');
 			$profile = $provider->getUserProfile();
+			$hybrid = $this->fbuser->getUserById('fb'.$profile->identifier);
 		}
 		$article = $this->article->show($id);
 		$ranking = $this->article->getByRanking();
@@ -211,8 +214,8 @@ class ArticleController extends BaseController{
 		if(Hybrid_Auth::isConnectedWith('Facebook')){
 			$provider = $this->oauth->authenticate('Facebook');
 			$profile = $provider->getUserProfile();
-
 			$user = $this->user->getUserById('fb'.$profile->identifier);
+			$hybrid = $this->fbuser->getUserById('fb'.$profile->identifier);
 		}
 		else{
 			$user = $this->user->getUserById(Auth::user()->CURATER_ID);
@@ -277,6 +280,7 @@ class ArticleController extends BaseController{
 		if(Hybrid_Auth::isConnectedWith('Facebook')){
 			$provider = $this->oauth->authenticate('Facebook');
 			$profile = $provider->getUserProfile();
+			$hybrid = $this->fbuser->getUserById('fb'.$profile->identifier);
 		}
 		if($exist !== false){
 			$user = $this->fbuser->getUserById($id);
@@ -330,6 +334,7 @@ class ArticleController extends BaseController{
 		if(Hybrid_Auth::isConnectedWith('Facebook')){
 			$provider = $this->oauth->authenticate('Facebook');
 			$profile = $provider->getUserProfile();
+			$hybrid = $this->fbuser->getUserById('fb'.$profile->identifier);
 		}
 		foreach($countries as $country){
 			$ctry_rank[$country->COUNTRY_ID] = $this->article->countByCountry($country->COUNTRY_ID);
@@ -362,6 +367,7 @@ class ArticleController extends BaseController{
 		if(Hybrid_Auth::isConnectedWith('Facebook')){
 			$provider = $this->oauth->authenticate('Facebook');
 			$profile = $provider->getUserProfile();
+			$hybrid = $this->fbuser->getUserById('fb'.$profile->identifier);
 		}
 		foreach($countries as $country){
 			$ctry_rank [$country->COUNTRY_ID] = $this->article->countByCountry($country->COUNTRY_ID);
@@ -414,6 +420,7 @@ class ArticleController extends BaseController{
 			if(Hybrid_Auth::isConnectedWith('Facebook')){
 				$provider = $this->oauth->authenticate('Facebook');
 				$profile = $provider->getUserProfile();
+				$hybrid = $this->fbuser->getUserById('fb'.$profile->identifier);
 			}
 
 			foreach($categories as $category){

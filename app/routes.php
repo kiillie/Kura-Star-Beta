@@ -34,6 +34,11 @@ Route::post('user/image', [
 	'as'	=>	'user.image'
 ]);
 
+Route::post('user/hybrid/image', [
+	'uses'	=>	'FacebookController@uploadImage',
+	'as'	=>	'user.image'
+]);
+
 Route::get('user/article/{id}', [
 	'uses'	=>	'ArticleController@showArticlesByUser',
 	'as'	=>	'user.articles'

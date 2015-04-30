@@ -46,7 +46,7 @@
 						<div class="actions">
 						@if(Hybrid_Auth::isConnectedWith('Facebook'))
 							<a href="{{URL::route('auth.logout')}}"><img src="/assets/images/new/icon_login.png" />LOGOUT</a>
-							<a href="{{URL::route('user.profile', 'fb'.$profile->identifier)}}"><img src="{{$profile->photoURL}}" />{{strtoupper($profile->displayName)}}</a>
+							<a href="{{URL::route('user.profile', {{$hybrid->CURATER_ID}})}}"><img src="{{$profile->photoURL}}" />{{strtoupper($hybrid->CURATER)}}</a>
 							<a href="{{URL::route('article.insert')}}"><img src="/assets/images/new/icon_write.png" />POST</a>
 						@else
 							@if(Auth::check())
