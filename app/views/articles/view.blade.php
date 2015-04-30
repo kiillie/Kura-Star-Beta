@@ -54,7 +54,7 @@ $(document).ready(function(){
 				
 			</div>
 			<div class="infobelow">
-				<span class="smallpoints smallpoints-left"><img src="/assets/images/social-sample.png" />
+				<span class="smallpoints smallpoints-left">
 				<div class="fb-like" data-href="" data-layout="button" data-action="like" data-show-faces="true"></div></span>
 				<div class="profile-thumb-wrap">
 					<?php
