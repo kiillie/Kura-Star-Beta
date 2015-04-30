@@ -197,7 +197,7 @@ $(document).ready(function(){
 					
 					
 </div>
-<div id="fb-root"></div>
 <script language="javascript" src="/assets/js/create.js"></script>
+<div id="fb-root"></div>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 @stop
