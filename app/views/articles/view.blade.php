@@ -56,9 +56,9 @@ $(document).ready(function(){
 			</div>
 			<div class="infobelow">
 				<span class="smallpoints smallpoints-left">
-					<div class="fb-wrap"><div class="fb-like" id="fb-like" data-href="" data-layout="button" data-width="76" data-action="like" data-show-faces="true"></div></div>
-					<span class="tweet-share"><a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-count="none">Tweet</a></span>
-					<span class="google-share"><div class="g-plus" data-action="share" data-annotation="bubble" data-height="24" data-href=""></div></span>
+					<span class="fb-wrap"><div class="fb-like" data-href="" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div></span>
+					<span class="tweet-share"><a href="http://kurastar.com" class="twitter-share-button">Tweet</a></span>
+					<span class="google-share"><div class="g-plus" data-action="share" data-annotation="bubble"></div></span>
 				</span>
 				<div class="profile-thumb-wrap">
 					<?php
@@ -130,9 +130,9 @@ $(document).ready(function(){
 		
 			<div class="article-curator">
 				<span class="social-sample">
-					<div class="fb-wrap"><div class="fb-like" id="fb-like" data-href="" data-layout="button" data-action="like" data-show-faces="true"></div></div>
-					<span class="tweet-share"><a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-count="none">Tweet</a></span>
-					<span class="google-share"><div class="g-plus" data-action="share" data-annotation="bubble" data-height="24" data-href=""></div></span>
+					<span class="fb-wrap"><div class="fb-like" data-href="" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div></span>
+					<span class="tweet-share"><a href="" class="twitter-share-button">Tweet</a></span>
+					<span class="google-share"><div class="g-plus" data-action="share" data-annotation="bubble"></div></span>
 				</span>
 				<?php
 					$exist = strpos($article->CURATER_ID, 'fb');

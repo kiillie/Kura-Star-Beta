@@ -173,45 +173,9 @@
 {
     display: none;
 }
-.tweet-share{
-	background: url('http://localhost:8000/assets/images/tweet.png');
-	background: url('http://kurastar.com/assets/images/tweet.png');
-	background-repeat: no-repeat;
-	display: inline-block;
-	margin: 0 3px;
-}
-.google-share{
-	background: url('http://localhost:8000/assets/images/google+.png');
-	background: url('http://kurastar.com/assets/images/google+.png');
-	background-repeat: no-repeat;
-	display: inline-block;
-	width: 103px;
-	margin: 0 3px;
-}
-.fb-like{
-	background: url('http://localhost:8000/assets/images/fblike.png');
-	background: url('http://kurastar.com/assets/images/fblike.png');
-	background-repeat: no-repeat;
-	display: inline-block;
-	width: 76px;
-	height: 24px;
-	margin: 0 3px;
-}
 .fb-like > span{
-	height: 25px !important;
+	vertical-align: baseline !important;
 }
-.article-curator .tweet-share iframe{
-	height: 25px !important;
-}
-.article-curator .google-share iframe{
-	height: 25px !important;
-}
-.tweet-share iframe{
-	height: 24px !important;
-}
-.tweet-share iframe, .google-share iframe{
-	opacity: 0;
-}
-.fb-wrap{
-	display: inline-block;
+.fb-wrap, .tweet-share, .google-share{
+	margin-right: 5px;
 }
