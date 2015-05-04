@@ -209,7 +209,7 @@
 .tweet-share iframe{
 	height: 24px !important;
 }
-.tweet-share iframe, .google-share iframe, .fb-like iframe{
+.tweet-share iframe, .google-share iframe{
 	opacity: 0;
 }
 .fb-wrap{
