@@ -1,4 +1,3 @@
-$(".fb-like iframe").load(function(){
-	alert("yes");
-	$(this).contents().find("head").append('<link rel="stylesheet" href="/assets/css/new/styles.css">');
+$('iframe').load(function(){
+	$("#twitter-widget-0").contents().find('html').css("opacity", "0");
 });

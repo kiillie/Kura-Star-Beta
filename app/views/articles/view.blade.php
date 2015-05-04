@@ -4,7 +4,6 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/plugins/jquery.fancybox.css?v=2.1.5" media="screen" />
 <script type="text/javascript" src="/assets/js/plugins/jquery.fancybox.js?v=2.1.5"></script>
 <script type="text/javascript" src="/assets/js/create.js"></script>
-<script type="text/javascript" src="/assets/js/custom.js"></script>
 <script>
 $(document).ready(function(){
 	$(".art-added-img").fancybox({
@@ -58,8 +57,8 @@ $(document).ready(function(){
 			<div class="infobelow">
 				<span class="smallpoints smallpoints-left">
 					<div class="fb-like" id="fb-like" data-href="" data-layout="button" data-width="76" data-action="like" data-show-faces="true"></div>
-					<a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-count="none">Tweet</a>
-					<div class="g-plus" data-action="share" data-annotation="bubble" data-height="24" data-href=""></div>
+					<span class="tweet-share"><a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-count="none">Tweet</a></span>
+					<span class="google-share"><div class="g-plus" data-action="share" data-annotation="bubble" data-height="24" data-href=""></div></span>
 				</span>
 				<div class="profile-thumb-wrap">
 					<?php
@@ -132,8 +131,8 @@ $(document).ready(function(){
 			<div class="article-curator">
 				<span class="social-sample">
 					<div class="fb-like" id="fb-like" data-href="" data-layout="button" data-action="like" data-show-faces="true"></div>
-					<a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-count="none">Tweet</a>
-					<div class="g-plus" data-action="share" data-annotation="bubble" data-height="24" data-href=""></div>
+					<span class="tweet-share"><a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-count="none">Tweet</a></span>
+					<span class="google-share"><div class="g-plus" data-action="share" data-annotation="bubble" data-height="24" data-href=""></div></span>
 				</span>
 				<?php
 					$exist = strpos($article->CURATER_ID, 'fb');
@@ -214,4 +213,5 @@ $(document).ready(function(){
 <script language="javascript" src="/assets/js/create.js"></script>
 <div id="fb-root"></div>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
+<script type="text/javascript" src="/assets/js/custom.js"></script>
 @stop
