@@ -155,11 +155,13 @@ $(window).load(function() {
 
 /*** COUNT ***/
 
-
+$(window).resize(function(){
+	count_image();
+});
 function count_image(){
 	var count_img = $(".image-container").length;
 	var cont = $(".image-container").width();
-	
+	alert("hi");
 	for(i = 0; i < count_img; i++){
 			var pic_width = $(".image-container img").eq(i).width();
 			if(pic_width < cont){
