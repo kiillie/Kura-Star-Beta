@@ -13,7 +13,7 @@
 					<img src="{{$user->CURATER_IMAGE}}" />
 				@endif
 				<div class="labels labels2">
-					<span class="countrylabel"><b>{{$count}}</b> Articles</span>
+					<span class="countrylabel"><b>{{$artcount}}</b> Articles</span>
 					<span class="catlabel"><b>{{$cfavorite}}</b> Favorites</span>
 				</div>
 				<div class="curator-info">

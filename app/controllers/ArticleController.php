@@ -300,6 +300,7 @@ class ArticleController extends BaseController{
 		$continents = $this->continent->show();
 		$favorites = $this->favorite->get_favorite_by_user($id);
 		$c_favorite = $this->favorite->count_favorite_by_user($id);
+		$art_count = $this->article->countArticlesByUser($id);
 		$count = 0;
 		$forcount = $this->article->getByUserUnpage($id);
 		foreach($forcount as $cur){
@@ -327,7 +328,8 @@ class ArticleController extends BaseController{
 				->withProfile($profile)
 				->withAllarticles($allArticles)
 				->withDrafts($drafts)
-				->withHybrid($hybrid);
+				->withHybrid($hybrid)
+				->withArtcount($art_count);
 	}
 
 	public function showByCategory($id){
