@@ -217,7 +217,7 @@ class UserController extends BaseController{
 			$update = $this->user->update($input);	
 		}
 		if($update){
-			return Redirect::route('user.edit', $input['id'])
+			return Redirect::route('user.profile', $input['id'])
 					->with('message', 'Profile updated successfully.');
 		}
 		else{

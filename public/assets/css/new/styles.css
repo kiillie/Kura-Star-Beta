@@ -103,6 +103,15 @@
 	z-index: 10000;
 	bottom: 0;
 }
+.edit-profile .curator-edit input[type='text']{
+	height: 25px;
+}
+.edit-profile .curator-edit .desc{
+	height: 140px;
+}
+.edit-profile .curator-edit textarea{
+	height: 115px;
+}
 .editbtn{
 	margin: 0 auto;
 }
@@ -136,7 +145,7 @@
 .article-detail-wrap .image-container .url-source a, .article-detail-wrap .vid-wrapper .url-source a{
 	color: rgb(189, 189, 189);
 }
-.edit-profile .message{
+.edit-profile .message, .curator-info .message{
 	font-size: 15px;
 	color: red;
 }
@@ -163,7 +172,4 @@
 .upload-form > input
 {
     display: none;
-}
-.twitter-share-button .btn-o a{
-	background: url('/assets/images/tweet.png');
 }

@@ -1,5 +1,6 @@
 @extends('layouts.main')
 @section('content')
+<link rel="stylesheet" href="/assets/css/new/styles.css"></link>
 <div class="defaultWidth center clear-auto bodycontent">
 	<div class="contentbox">
 	{{ Breadcrumbs::render('profile', $user) }}
@@ -16,6 +17,11 @@
 					<span class="catlabel"><b>{{$cfavorite}}</b> Favorites</span>
 				</div>
 				<div class="curator-info">
+					<div class="message">
+						@if(Session::has('message'))
+							<span>{{Session::get('message')}}</span>
+						@endif
+					</div>
 					<h4>{{$user->CURATER}}</h4>
 					<p>{{$user->CURATER_DESCRIPTION}}</p>
 					<div class="clear"></div>
