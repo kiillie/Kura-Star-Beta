@@ -164,3 +164,6 @@
 {
     display: none;
 }
+.twitter-share-button .btn-o a{
+	background: url('/assets/images/tweet.png');
+}

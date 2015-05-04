@@ -15,6 +15,15 @@ $(document).ready(function(){
     		}
     	}
     });
+	$(".profile-image").fancybox({
+		openEffect	: 'elastic',
+    	closeEffect	: 'elastic',
+    	helpers : {
+    		title : {
+    			type : 'inside'
+    		}
+    	}
+    });
 
 });
 </script>
@@ -24,9 +33,9 @@ $(document).ready(function(){
 		<div class="curator-detail-wrap article-detail-wrap">
 			<div class="pointer2"></div>
 				@if($article->CURATION_IMAGE == "")
-					<div class="postimg postimg2" style=""><img src="/assets/images/article-default.png" /></div>
+					<div class="postimg postimg2" style=""><a class="profile-image" href="/assets/images/article-default.png" data-fancybox-group="gallery"><img src="/assets/images/article-default.png" /></a></div>
 				@else
-					<div class="postimg postimg2" style=""><img src="{{$article->CURATION_IMAGE}}" /></div>
+					<div class="postimg postimg2" style=""><a class="profile-image" href="{{$article->CURATION_IMAGE}}" data-fancybox-group="gallery"><img src="{{$article->CURATION_IMAGE}}" /></a></div>
 				@endif
 			<div class="labels">
 				@foreach($countries as $country)
@@ -118,7 +127,7 @@ $(document).ready(function(){
 			<ul class="post-detail-list">
 			{{html_entity_decode($article->CURATION_DETAIL)}}				
 			</ul>
-							
+		
 			<div class="article-curator">
 				<span class="social-sample">
 					<div class="fb-like" id="fb-like" data-href="" data-layout="button" data-action="like" data-show-faces="true"></div>
