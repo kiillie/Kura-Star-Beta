@@ -212,3 +212,6 @@
 .tweet-share iframe, .google-share iframe, .fb-like iframe{
 	opacity: 0;
 }
+.fb-wrap{
+	display: inline-block;
+}

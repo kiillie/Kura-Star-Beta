@@ -26,9 +26,6 @@
 							<div class="facebook">
 							   <a href="fbauth"><img src="/assets/images/facebook.png"></a>
 							</div>
-							<div class="twitter">
-								{{HTML::image('assets/images/twitter.png')}}
-							</div>
 						</div>
 					</div>	
 						

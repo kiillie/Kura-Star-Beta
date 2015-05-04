@@ -162,12 +162,15 @@ function count_image(){
 	var count_img = $(".image-container").length;
 	var cont = $(".image-container").width();
 	for(i = 0; i < count_img; i++){
-			var pic_width = $(".image-container img").eq(i).width();
-			if(pic_width < cont){
-				$(".image-container img").eq(i).css("width", pic_width);
-			}
-			else{
-				$(".image-container img").eq(i).css("width", "100%");
-			}
+		var raw = new Image();
+		var rawsrc = $(".image-container img").eq(i).attr("src");
+		raw.src = rawsrc;
+		var pic_width = raw.width;
+		if(pic_width < cont){
+			$(".image-container img").eq(i).css("width", pic_width);
+		}
+		else{
+			$(".image-container img").eq(i).css("width", "100%");
+		}
 	}
 }
