@@ -24,6 +24,8 @@ interface ArticleRepository{
 
 	public function getByUser($user);
 	
+	public function getByUserUnpage($user);
+	
 	public function getDraftsByUser($user);
 
 	public function countArticlesByUser($id);

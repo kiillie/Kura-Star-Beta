@@ -298,10 +298,13 @@ class ArticleController extends BaseController{
 		$countries = $this->country->showCountryByContinent();
 		$categories = $this->category->show();
 		$continents = $this->continent->show();
-		$count = $this->article->countArticlesByUser($id);
 		$favorites = $this->favorite->get_favorite_by_user($id);
 		$c_favorite = $this->favorite->count_favorite_by_user($id);
-		
+		$count = 0;
+		$forcount = $this->article->getByUserUnpage($id);
+		foreach($forcount as $cur){
+			$count = $count + $cur->VIEWS;
+		}
 		$ranking = $this->article->getByRanking();
 		$ctry_rank = [];
 		foreach($countries as $country){

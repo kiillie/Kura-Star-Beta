@@ -48,7 +48,7 @@
 					@endif
 				</div>
 				<div class="points-detail">
-					{{$count}}<span>Articles</span>
+					{{$count}}<span>Views</span>
 				</div>
 				<div class="clear"></div>
 			</div>

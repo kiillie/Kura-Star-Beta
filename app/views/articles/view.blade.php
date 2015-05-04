@@ -4,6 +4,7 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/plugins/jquery.fancybox.css?v=2.1.5" media="screen" />
 <script type="text/javascript" src="/assets/js/plugins/jquery.fancybox.js?v=2.1.5"></script>
 <script type="text/javascript" src="/assets/js/create.js"></script>
+<script type="text/javascript" src="/assets/js/custom.js"></script>
 <script>
 $(document).ready(function(){
 	$(".art-added-img").fancybox({
@@ -56,7 +57,7 @@ $(document).ready(function(){
 			</div>
 			<div class="infobelow">
 				<span class="smallpoints smallpoints-left">
-					<div class="fb-like" id="fb-like" data-href="" data-layout="button" data-action="like" data-show-faces="true"></div>
+					<div class="fb-like" id="fb-like" data-href="" data-layout="button" data-width="76" data-action="like" data-show-faces="true"></div>
 					<a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-count="none">Tweet</a>
 					<div class="g-plus" data-action="share" data-annotation="bubble" data-height="24" data-href=""></div>
 				</span>

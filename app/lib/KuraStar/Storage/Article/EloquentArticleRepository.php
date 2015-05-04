@@ -156,6 +156,10 @@ class EloquentArticleRepository implements ArticleRepository{
 		return Article::where('CURATER_ID', '=', $id)->where('CURATION_STATUS', '=', 1)->paginate(12);
 	}
 	
+	public function getByUserUnpage($id){
+		return Article::where('CURATER_ID', '=', $id)->where('CURATION_STATUS', '=', 1)->get();
+	}
+	
 	public function getDraftsByUser($id){
 		return Article::where('CURATER_ID', '=', $id)->where('CURATION_STATUS', '=', 0)->paginate(12);
 	}
@@ -191,7 +195,7 @@ class EloquentArticleRepository implements ArticleRepository{
 						->where('CURATION_STATUS', '=', 1)
 						->count();
 	}
-
+	
 	public function getByRanking(){
 		return Article::where('CURATION_STATUS', '=', 1)
 				->orderBy('VIEWS', 'desc')
