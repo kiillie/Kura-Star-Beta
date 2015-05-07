@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.article')
 @section('content')
 <script type="text/javascript" src="/assets/js/create.js"></script>
 <script type="text/javascript" src="/assets/js/plugins/jquery.fancybox.js?v=2.1.5"></script>
@@ -18,14 +18,10 @@ $(document).ready(function(){
 });
 </script>
 <link rel="stylesheet" href="/assets/css/new/styles.css">
-<script>
-	$("title").text("{{$article->CURATION_TITLE}}");
-	$("head").append('<meta name="description" content="{{addslashes($article->CURATION_DESCRIPTION)}}">');
-</script>
 <div class="defaultWidth center clear-auto bodycontent">
 	<div class="contentbox">
 		{{ Breadcrumbs::render('article', $article) }}
-				
+		<div class="preview-message"><h2>This is just a preview of the article and only you can see it.</h2></div>
 		<div class="curator-detail-wrap article-detail-wrap">
 			<div class="pointer2"></div>
 				@if($article->CURATION_IMAGE == "")
@@ -166,7 +162,7 @@ $(document).ready(function(){
 				<?php } ?>
 			</div>
 							
-			<a href="#" class="reportpost"><i class="fa fa-exclamation-triangle"></i>&nbsp; REPORT POST</a>
+			<!--<a href="#" class="reportpost"><i class="fa fa-exclamation-triangle"></i>&nbsp; REPORT POST</a>-->
 							
 			<div class="clear"></div>
 							

@@ -193,7 +193,7 @@ $(document).ready(function(){
 				<?php } ?>
 			</div>
 							
-			<a href="#" class="reportpost"><i class="fa fa-exclamation-triangle"></i>&nbsp; REPORT POST</a>
+			<!--<a href="#" class="reportpost"><i class="fa fa-exclamation-triangle"></i>&nbsp; REPORT POST</a>-->
 							
 			<div class="clear"></div>
 							
