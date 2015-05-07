@@ -21,7 +21,7 @@ $(document).ready(function(){
 <div class="defaultWidth center clear-auto bodycontent">
 	<div class="contentbox">
 		{{ Breadcrumbs::render('article', $article) }}
-		<div class="preview-message"><h2>This is just a preview of the article and only you can see it.</h2></div>
+		<div class="preview-message"><h2>This is just a preview of the article and only you can see this message.</h2></div>
 		<div class="curator-detail-wrap article-detail-wrap">
 			<div class="pointer2"></div>
 				@if($article->CURATION_IMAGE == "")

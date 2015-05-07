@@ -179,3 +179,12 @@
 .fb-wrap, .tweet-share, .google-share{
 	margin-right: 5px;
 }
+.preview-message{
+	text-align: center;
+	background: rgb(254, 128, 0);
+	padding: 10px;
+	color: white;
+}
+.preview-message h2{
+	font-size: 20px;
+}
