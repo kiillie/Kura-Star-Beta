@@ -46,7 +46,11 @@ $(document).ready(function(){
 				<p>{{$article->CURATION_DESCRIPTION}}</p>
 			</div>
 			<div class="infobelow">
-				<span class="smallpoints smallpoints-left"><img src="/assets/images/social-sample.png" /></span>
+				<span class="smallpoints smallpoints-left">
+					<span class="fb-wrap"><div class="fb-like" data-href="" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div></span>
+					<span class="tweet-share"><a href="http://kurastar.com" class="twitter-share-button">Tweet</a></span>
+					<span class="google-share"><div class="g-plus" data-action="share" data-annotation="bubble"></div></span>
+				</span>
 				<div class="profile-thumb-wrap">
 					<?php
 						$exist = strpos($article->CURATER_ID, 'fb');
@@ -102,7 +106,11 @@ $(document).ready(function(){
 			</ul>
 							
 			<div class="article-curator">
-				<span class="social-sample"><img src="/assets/images/social-sample.png"></span>
+				<span class="social-sample">
+					<span class="fb-wrap"><div class="fb-like" data-href="" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div></span>
+					<span class="tweet-share"><a href="" class="twitter-share-button">Tweet</a></span>
+					<span class="google-share"><div class="g-plus" data-action="share" data-annotation="bubble"></div></span>
+				</span>
 				<?php
 					$exist = strpos($article->CURATER_ID, 'fb');
 					if($exist !== false){
@@ -179,4 +187,9 @@ $(document).ready(function(){
 					
 					
 </div>
+<script language="javascript" src="/assets/js/create.js"></script>
+<div id="fb-root"></div>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script type="text/javascript" src="/assets/js/custom.js"></script>
+<script type="text/javascript" src="/assets/js/new/script.js"></script>
 @stop
