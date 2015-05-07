@@ -245,7 +245,7 @@ function favorite_article(article, user, status){
 					$(".fave .stat").addClass("unfavorite");
 					$(".fave .stat i img").attr("src", "/assets/images/unfavorite.png");
 					$(".fave .stat i img").attr("alt", "Unfavorite");
-					$(".fave .stat i img").attr("title", "Unfavorite");
+					$(".fave .stat i img").attr("title", "Add to Favorites");
 					$(".fave .stat").attr("onclick", "favorite_article('"+article+"', '"+user+"', 'unfavorite')");
 				}
 			}
@@ -260,7 +260,7 @@ function favorite_article(article, user, status){
 					$(".fave .stat").addClass("favorite");
 					$(".fave .stat i img").attr("src", "/assets/images/favorite.png");
 					$(".fave .stat i img").attr("alt", "Favorite");
-					$(".fave .stat i img").attr("title", "Favorite");
+					$(".fave .stat i img").attr("title", "Unfavorite this");
 					$(".fave .stat").attr("onclick", "favorite_article('"+article+"', '"+user+"', 'favorite')");
 				}
 			}
