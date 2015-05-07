@@ -188,3 +188,10 @@
 .preview-message h2{
 	font-size: 20px;
 }
+.points-detail .view-span, .points-detail .view-span-cur{
+	font-size: 22px !important;
+	right: 7px !important;
+	color: #898989 !important;
+	text-align: center !important;
+	line-height: 26px !important;
+}

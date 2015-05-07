@@ -48,7 +48,7 @@
 					@endif
 				</div>
 				<div class="points-detail">
-					{{$count}}<span>Views</span>
+					<span class="view-span">{{$count}}</span><span>Views</span>
 				</div>
 				<div class="clear"></div>
 			</div>
@@ -402,4 +402,5 @@
 		@show
 	<!----- end sidebar ----------->			
 </div>
+<script type="text/javascript" src="/assets/js/custom.js"></script>
 @stop

@@ -156,7 +156,7 @@ $(document).ready(function(){
 								<div class="clear"></div>
 							</div>
 							<div class="points-detail">
-								{{$article->VIEWS}}<span> Views</span>
+								<span class="view-span-cur">{{$article->VIEWS}}</span><span> Views</span>
 							</div>
 							<div class="clear"></div>
 						</a>
@@ -184,7 +184,7 @@ $(document).ready(function(){
 								<div class="clear"></div>
 							</div>
 							<div class="points-detail">
-								{{$article->VIEWS}}<span> VIEWS</span>
+								<span class="view-span-cur">{{$article->VIEWS}}</span><span> VIEWS</span>
 							</div>
 							<div class="clear"></div>
 						</a>
