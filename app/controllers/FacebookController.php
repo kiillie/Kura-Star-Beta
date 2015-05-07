@@ -19,11 +19,10 @@ class FacebookController extends BaseController{
 			catch(Exception $e){
 				return Redirect::to('fbauth');
 			}
-
 			return;
 		}
 		$provider = $this->oauth->authenticate('Facebook');
-		$this->oauth->remember_me(true);
+		//$this->oauth->remember_me(true);
 		$profile = $provider->getUserProfile();
 			
 		if(!$this->fbuser->check('fb'.$profile->identifier)){
