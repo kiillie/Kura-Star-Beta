@@ -243,7 +243,9 @@ function favorite_article(article, user, status){
 				if(stat){
 					$(".fave .stat").removeClass("favorite");
 					$(".fave .stat").addClass("unfavorite");
-					$(".fave .stat i").text("Unfavorite");
+					$(".fave .stat i img").attr("src", "/assets/images/unfavorite.png");
+					$(".fave .stat i img").attr("alt", "Unfavorite");
+					$(".fave .stat i img").attr("title", "Unfavorite");
 					$(".fave .stat").attr("onclick", "favorite_article('"+article+"', '"+user+"', 'unfavorite')");
 				}
 			}
@@ -256,7 +258,9 @@ function favorite_article(article, user, status){
 				if(!stat){
 					$(".fave .stat").removeClass("unfavorite");
 					$(".fave .stat").addClass("favorite");
-					$(".fave .stat i").text("Favorite");
+					$(".fave .stat i img").attr("src", "/assets/images/favorite.png");
+					$(".fave .stat i img").attr("alt", "Favorite");
+					$(".fave .stat i img").attr("title", "Favorite");
 					$(".fave .stat").attr("onclick", "favorite_article('"+article+"', '"+user+"', 'favorite')");
 				}
 			}

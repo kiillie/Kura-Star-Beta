@@ -105,16 +105,16 @@ $(document).ready(function(){
 			<div class="points-detail">
 				@if(Auth::check())
 					@if($check)
-						<span class="fave"><a href="javascript:void(0);" class="stat favorite" onclick="favorite_article({{$article->CURATION_ID}}, {{Auth::user()->CURATER_ID}}, 'favorite')"><i>Favorite</i></a></span>
+						<span class="fave"><a href="javascript:void(0);" class="stat favorite" onclick="favorite_article({{$article->CURATION_ID}}, {{Auth::user()->CURATER_ID}}, 'favorite')"><i><img src="/assets/images/favorite.png" title="Favorite" alt="Favorite"/></i></a></span>
 					@else
-						<span class="fave"><a href="javascript:void(0);" class="stat unfavorite" onclick="favorite_article({{$article->CURATION_ID}}, {{Auth::user()->CURATER_ID}}, 'unfavorite')"> <i>Unfavorite</i></a></span>
+						<span class="fave"><a href="javascript:void(0);" class="stat unfavorite" onclick="favorite_article({{$article->CURATION_ID}}, {{Auth::user()->CURATER_ID}}, 'unfavorite')"> <i><img src="/assets/images/unfavorite.png" title="Unfavorite" alt="Unfavorite"/></i></a></span>
 					@endif
 				@endif
 				@if(Hybrid_Auth::isConnectedWith('Facebook'))
 					@if($check)
-						<span class="fave"><a href="javascript:void(0);" class="stat favorite" onclick="favorite_article({{$article->CURATION_ID}}, '{{'fb'.$profile->identifier}}', 'favorite')"> <i>Favorite</i></a></span>
+						<span class="fave"><a href="javascript:void(0);" class="stat favorite" onclick="favorite_article({{$article->CURATION_ID}}, '{{'fb'.$profile->identifier}}', 'favorite')"> <i><img src="/assets/images/favorite.png" title="Favorite" alt="Favorite"/></i></a></span>
 					@else
-						<span class="fave"><a href="javascript:void(0);" class="stat unfavorite" onclick="favorite_article({{$article->CURATION_ID}}, '{{'fb'.$profile->identifier}}', 'unfavorite')"> <i>Unfavorite</i></a></span>
+						<span class="fave"><a href="javascript:void(0);" class="stat unfavorite" onclick="favorite_article({{$article->CURATION_ID}}, '{{'fb'.$profile->identifier}}', 'unfavorite')"> <i><img src="/assets/images/unfavorite.png" title="Unfavorite" alt="Unfavorite"/></i></a></span>
 					@endif
 				@endif
 				{{$article->VIEWS}} <span>views</span>

@@ -216,6 +216,13 @@ class ArticleController extends BaseController{
 		$fbusers = $this->fbuser->getAllUsers();
 		$profile = "";
 		$hybrid = "";
+		$check = false;
+		if(\Auth::check()){
+			$check = $this->favorite->check($id, Auth::user()->CURATER_ID);
+		}
+		else if(Hybrid_Auth::isConnectedWith('Facebook')){
+			$check = $this->favorite->check($id, 'fb'.$profile->identifier);
+		}
 		if(Hybrid_Auth::isConnectedWith('Facebook')){
 			$provider = $this->oauth->authenticate('Facebook');
 			$profile = $provider->getUserProfile();
@@ -252,7 +259,8 @@ class ArticleController extends BaseController{
 				->withFbusers($fbusers)
 				->withCoart($count_art)
 				->withCofave($count_fave)
-				->withHybrid($hybrid);
+				->withHybrid($hybrid)
+				->withCheck($check);
 	}
 
 	public function twitter(){
