@@ -117,7 +117,7 @@ $(document).ready(function(){
 						<span class="fave"><a href="javascript:void(0);" class="stat unfavorite" onclick="favorite_article({{$article->CURATION_ID}}, '{{'fb'.$profile->identifier}}', 'unfavorite')"> <i><img src="/assets/images/favorite.png" title="Unfavorite this" alt="Unfavorite"/></i></a></span>
 					@endif
 				@endif
-				{{$article->VIEWS}} <span>views</span>
+				<span class="view-span">{{$article->VIEWS}}</span> <span>views</span>
 			</div>
 			<div class="clear"></div>
 		</div>
