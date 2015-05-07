@@ -15,11 +15,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
         <!-- Le Favicons -->
-        <link href="/assets/ico/favicon.ico" rel="icon" type="image/x-icon" />
-        <link href="/assets/ico/apple-touch-icon-144-precomposed.png" rel="apple-touch-icon-precomposed" />
-        <link href="/assets/ico/apple-touch-icon-114-precomposed.png" rel="apple-touch-icon-precomposed" />
-        <link href="/assets/ico/apple-touch-icon-72-precomposed.png" rel="apple-touch-icon-precomposed" />
-        <link href="/assets/ico/apple-touch-icon-57-precomposed.png" rel="apple-touch-icon-precomposed" />
+        <link href="/assets/ico/favicon.jpg" rel="icon" type="image/x-icon" />
+        <link href="/assets/ico/favicon.jpg" rel="apple-touch-icon-precomposed" />
+        <link href="/assets/ico/favicon.jpg" rel="apple-touch-icon-precomposed" />
+        <link href="/assets/ico/favicon.jpg" rel="apple-touch-icon-precomposed" />
+        <link href="/assets/ico/favicon.jpg" rel="apple-touch-icon-precomposed" />
         
         <!-- Le Assets -->
 		<link rel="stylesheet" href="/assets/css/new/reset.css" />
