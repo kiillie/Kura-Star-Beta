@@ -12,6 +12,7 @@ class FacebookController extends BaseController{
 	}
 
 	public function getFbAuth($auth=NULL){
+		\Hybrid\Auth::instance('user')->remember_me(true);
 		if($auth == 'auth'){
 			try{
 				Hybrid_Endpoint::process();
