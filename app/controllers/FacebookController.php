@@ -12,7 +12,6 @@ class FacebookController extends BaseController{
 	}
 
 	public function getFbAuth($auth=NULL){
-		$auth::instance('user')->remember_me(true);
 		if($auth == 'auth'){
 			try{
 				Hybrid_Endpoint::process();
@@ -24,6 +23,7 @@ class FacebookController extends BaseController{
 			return;
 		}
 		$provider = $this->oauth->authenticate('Facebook');
+		//$auth::instance('user')->remember_me(true);
 		$profile = $provider->getUserProfile();
 			
 		if(!$this->fbuser->check('fb'.$profile->identifier)){
