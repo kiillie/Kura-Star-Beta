@@ -106,19 +106,19 @@ $(document).ready(function(){
 			<div class="points-detail">
 				@if(Auth::check())
 					@if($check)
-						<span class="fave"><a href="javascript:void(0);" class="stat favorite" onclick="favorite_article({{$article->CURATION_ID}}, {{Auth::user()->CURATER_ID}}, 'favorite')"><i><img src="/assets/images/favorite.png" alt="Favorite"/></i></a></span>
+						<span class="fave"><a href="javascript:void(0);" class="stat favorite" onclick="favorite_article({{$article->CURATION_ID}}, {{Auth::user()->CURATER_ID}}, 'favorite')"><i><img src="/assets/images/unfavorite.png" title="Add to Favorites" alt="Favorite"/></i></a></span>
 					@else
-						<span class="fave"><a href="javascript:void(0);" class="stat unfavorite" onclick="favorite_article({{$article->CURATION_ID}}, {{Auth::user()->CURATER_ID}}, 'unfavorite')"> <i><img src="/assets/images/unfavorite.png" alt="Unfavorite"/></i></a></span>
+						<span class="fave"><a href="javascript:void(0);" class="stat unfavorite" onclick="favorite_article({{$article->CURATION_ID}}, {{Auth::user()->CURATER_ID}}, 'unfavorite')"> <i><img src="/assets/images/favorite.png" title="Unfavorite this" alt="Unfavorite"/></i></a></span>
 					@endif
 				@endif
 				@if(Hybrid_Auth::isConnectedWith('Facebook'))
 					@if($check)
-						<span class="fave"><a href="javascript:void(0);" class="stat favorite" onclick="favorite_article({{$article->CURATION_ID}}, '{{'fb'.$profile->identifier}}', 'favorite')"> <i><img src="/assets/images/favorite.png" alt="Favorite"/></i></a></span>
+						<span class="fave"><a href="javascript:void(0);" class="stat favorite" onclick="favorite_article({{$article->CURATION_ID}}, '{{'fb'.$profile->identifier}}', 'favorite')"> <i><img src="/assets/images/unfavorite.png" title="Add to Favorites" alt="Favorite"/></i></a></span>
 					@else
-						<span class="fave"><a href="javascript:void(0);" class="stat unfavorite" onclick="favorite_article({{$article->CURATION_ID}}, '{{'fb'.$profile->identifier}}', 'unfavorite')"> <i><img src="/assets/images/unfavorite.png" alt="Unfavorite"/></i></a></span>
+						<span class="fave"><a href="javascript:void(0);" class="stat unfavorite" onclick="favorite_article({{$article->CURATION_ID}}, '{{'fb'.$profile->identifier}}', 'unfavorite')"> <i><img src="/assets/images/favorite.png" title="Unfavorite this" alt="Unfavorite"/></i></a></span>
 					@endif
 				@endif
-				{{$article->VIEWS}} <span>views</span>
+				<span class="view-span">{{$article->VIEWS}}</span> <span>views</span>
 			</div>
 			<div class="clear"></div>
 		</div>
