@@ -23,7 +23,7 @@ class FacebookController extends BaseController{
 			return;
 		}
 		$provider = $this->oauth->authenticate('Facebook');
-		//$auth::instance('user')->remember_me(true);
+		$this->oauth->remember_me(true);
 		$profile = $provider->getUserProfile();
 			
 		if(!$this->fbuser->check('fb'.$profile->identifier)){
@@ -35,7 +35,6 @@ class FacebookController extends BaseController{
 			];
 			$save = $this->fbuser->store($cred);
 		}
-		
 		return  Redirect::route('index')->withProfile($profile);
 	}
 
