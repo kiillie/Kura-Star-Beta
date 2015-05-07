@@ -127,7 +127,14 @@ class ArticleController extends BaseController{
 		$data = [];
 		if($article != NULL){
 			if($input['status'] == 'favorite'){
-				$from = $this->user->getUserById(\Auth::user()->CURATER_ID);
+				if(Hybrid_Auth::isConnectedWith('Facebook')){
+					$provider = $this->oauth->authenticate('Facebook');
+					$profile = $provider->getUserProfile();
+					$from = $this->fbuser->getUserById('fb'.$profile->identifier);
+				}
+				else{
+					$from = $this->user->getUserById(\Auth::user()->CURATER_ID);
+				}
 				$message = "<a href='/user/profile/{$from->CURATER_ID}'>".$from->CURATER."</a> favorited your <a href='/article/".$input['article']."/view'>Article</a>";
 				$data = ['to' => $article->CURATER_ID, 'from' => $input['user'],
 				'message' => $message];
