@@ -188,7 +188,7 @@
 						</div>
 					</div>
 					<div class="defaultWidth center clear-auto">
-						<p class="copyright">&copy; Copyright Kura-Star 2015. All Right Reserved.</p>
+						<p class="copyright">&copy; Copyright Kura-Star 2015. All Rights Reserved.</p>
 					</div>
 				</div>
 				
