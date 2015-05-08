@@ -68,15 +68,17 @@ $(document).ready(function(){
 					@foreach($fbusers as $fbuser)
 						@if($fbuser->CURATER_ID == $article->CURATER_ID)
 							<div class="profile-thumb-wrap">
-								@if($fbuser->CURATER_IMAGE == "")
-									<img src="/assets/images/picture-default.png" />
-								@else
-									<img src="{{$fbuser->CURATER_IMAGE}}" />
-								@endif
-								<div class="curator">
-									<span>CURATOR</span><br />
-									<h3>{{$fbuser->CURATER}}</h3>
-								</div>
+								<a href="{{URL::route('user.profile', $fbuser->CURATER_ID)}}">
+									@if($fbuser->CURATER_IMAGE == "")
+										<img src="/assets/images/picture-default.png" />
+									@else
+										<img src="{{$fbuser->CURATER_IMAGE}}" />
+									@endif
+									<div class="curator">
+										<span>CURATOR</span><br />
+										<h3>{{$fbuser->CURATER}}</h3>
+									</div>
+								</a>
 							</div>
 						@endif
 					@endforeach
@@ -87,15 +89,17 @@ $(document).ready(function(){
 					@foreach($users as $raw)
 						@if($raw->CURATER_ID == $article->CURATER_ID)
 							<div class="profile-thumb-wrap">
-								@if($raw->CURATER_IMAGE == "")
-									<img src="/assets/images/picture-default.png" />
-								@else
-									<img src="{{$raw->CURATER_IMAGE}}" />
-								@endif
-								<div class="curator">
-									<span>CURATOR</span><br />
-									<h3>{{$raw->CURATER}}</h3>
-								</div>
+								<a href="{{URL::route('user.profile', $raw->CURATER_ID)}}">
+									@if($raw->CURATER_IMAGE == "")
+										<img src="/assets/images/picture-default.png" />
+									@else
+										<img src="{{$raw->CURATER_IMAGE}}" />
+									@endif
+									<div class="curator">
+										<span>CURATOR</span><br />
+										<h3>{{$raw->CURATER}}</h3>
+									</div>
+								</a>
 							</div>
 						@endif
 					@endforeach
