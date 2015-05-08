@@ -241,6 +241,12 @@
 	/******registration form************/
 	.regbox { width:100%; }
 	/********end registration form**********/
+	.tab1 > ul.own{
+		width: 100%;
+	}
+	.tab1 > ul.own > li{
+		width: 32.6%;
+	}
 }
 @media only screen and (min-width: 300px) and (max-width: 760px) {
 	.searchwrap { top:56%; }
@@ -366,4 +372,3 @@
 	.smallpoints img { width:100%; }
 	.footermenu a { font-size:13px; }
 }
-
