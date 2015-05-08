@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFbUsersTable extends Migration {
+class CreateUserConnectionsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -13,13 +13,9 @@ class CreateFbUsersTable extends Migration {
 	public function up()
 	{
 		//
-		Schema::create('fb_users', function($table){
+		Schema::create('user_connections', function($table){
 			$table->string('CURATER_ID');
-			$table->string('CURATER', 80);
-			$table->string('CURATER_IMAGE', 100)->nullable();
-			$table->string('CURATER_DESCRIPTION', 500)->nullable();
-			$table->string('CURATER_SITE', 100)->nullable();
-			$table->timestamp(BaseModel::CREATED_AT);
+			$table->text('hybridauth_session');
 			$table->timestamp(BaseModel::UPDATED_AT);
 		});
 	}
@@ -32,7 +28,7 @@ class CreateFbUsersTable extends Migration {
 	public function down()
 	{
 		//
-		Schema::drop('fb_users');
+		Schema::drop('user_connections');
 	}
 
 }

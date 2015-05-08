@@ -1099,3 +1099,6 @@ h2.title{
 .sidebox .sideboxcontent .curatorslink a:hover{
 	color: gray;
 }
+.sidebox iframe{
+	width: 100%;
+}

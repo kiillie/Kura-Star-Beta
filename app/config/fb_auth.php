@@ -1,7 +1,6 @@
 <?php
 
 return array(
-	// 'base_url'	=>	"http://localhost:8000/fbauth/auth",
 	'base_url'	=>	"http://kurastar.com/fbauth/auth",
 	'providers'	=> array(
 			'Facebook'	=> array(
