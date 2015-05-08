@@ -70,7 +70,7 @@
 					<div class="defaultWidth center menuwrap">
 						<ul class="menu">
 							<img src="/assets/images/new/pointer1.png" />
-							<li><a href="{{URL::route('index')}}" class="def"><i class="fa fa-home fa-2x"></i>&nbsp; HOME</a></li>
+							<li><a href="{{URL::route('index')}}" class="def"><i class="fa fa-home fa-2x"></i>&nbsp; ホーム</a></li>
 							<li><a href="{{URL::route('article.bycategory', 1)}}" class="menucat"><i class="fa fa-cutlery fa-2x"></i>&nbsp; グルメ</a></li>
 							<li><a href="{{URL::route('article.bycategory', 2)}}" class="menucat"><i class="fa fa-music fa-2x"></i>&nbsp; 観光</a></li>
 							<li><a href="{{URL::route('article.bycategory', 3)}}" class="menucat"><i class="fa fa-briefcase fa-2x"></i>&nbsp; 生活</a></li>
