@@ -71,11 +71,11 @@
 						<ul class="menu">
 							<img src="/assets/images/new/pointer1.png" />
 							<li><a href="{{URL::route('index')}}" class="def"><i class="fa fa-home fa-2x"></i>&nbsp; HOME</a></li>
-							<li><a href="{{URL::route('article.bycategory', 1)}}" class="menucat"><i class="fa fa-cutlery fa-2x"></i>&nbsp; GOURMET</a></li>
-							<li><a href="{{URL::route('article.bycategory', 2)}}" class="menucat"><i class="fa fa-music fa-2x"></i>&nbsp; LEISURE</a></li>
-							<li><a href="{{URL::route('article.bycategory', 3)}}" class="menucat"><i class="fa fa-briefcase fa-2x"></i>&nbsp; LIFE</a></li>
-							<li><a href="{{URL::route('article.bycategory', 4)}}" class="menucat"><i class="fa fa-leanpub fa-2x"></i>&nbsp; STUDY</a></li>
-							<li><a href="{{URL::route('article.bycategory', 5)}}" class="menucat"><i class="fa fa-usd fa-2x"></i>&nbsp; BUSINESS</a></li>
+							<li><a href="{{URL::route('article.bycategory', 1)}}" class="menucat"><i class="fa fa-cutlery fa-2x"></i>&nbsp; グルメ</a></li>
+							<li><a href="{{URL::route('article.bycategory', 2)}}" class="menucat"><i class="fa fa-music fa-2x"></i>&nbsp; 観光</a></li>
+							<li><a href="{{URL::route('article.bycategory', 3)}}" class="menucat"><i class="fa fa-briefcase fa-2x"></i>&nbsp; 生活</a></li>
+							<li><a href="{{URL::route('article.bycategory', 4)}}" class="menucat"><i class="fa fa-leanpub fa-2x"></i>&nbsp; 学び</a></li>
+							<li><a href="{{URL::route('article.bycategory', 5)}}" class="menucat"><i class="fa fa-usd fa-2x"></i>&nbsp; ビジネス</a></li>
 						</ul>
 					</div>
 				</div>
@@ -178,11 +178,11 @@
 							<div>
 								<h4>Menu</h4>
 								<ul>
-									<li><a href="{{URL::route('article.bycategory', 1)}}"><i class="fa fa-cutlery"></i>&nbsp;Gourmet</a></li>
-									<li><a href="{{URL::route('article.bycategory', 2)}}"><i class="fa fa-music"></i>&nbsp;Leisure</a></li>
-									<li><a href="{{URL::route('article.bycategory', 3)}}"><i class="fa fa-briefcase"></i>&nbsp;Life</a></li>
-									<li><a href="{{URL::route('article.bycategory', 4)}}"><i class="fa fa-leanpub"></i>&nbsp;Study</a></li>
-									<li><a href="{{URL::route('article.bycategory', 5)}}"><i class="fa fa-usd"></i>&nbsp;Business</a></li>
+									<li><a href="{{URL::route('article.bycategory', 1)}}"><i class="fa fa-cutlery"></i>&nbsp;グルメ</a></li>
+									<li><a href="{{URL::route('article.bycategory', 2)}}"><i class="fa fa-music"></i>&nbsp;観光</a></li>
+									<li><a href="{{URL::route('article.bycategory', 3)}}"><i class="fa fa-briefcase"></i>&nbsp;生活</a></li>
+									<li><a href="{{URL::route('article.bycategory', 4)}}"><i class="fa fa-leanpub"></i>&nbsp;学び</a></li>
+									<li><a href="{{URL::route('article.bycategory', 5)}}"><i class="fa fa-usd"></i>&nbsp;ビジネス</a></li>
 								</ul>
 							</div>
 						</div>
