@@ -44,6 +44,9 @@
 					<div class="facebook">
 					   <a href="fbauth"><img src="/assets/images/facebook.png"></a>
 					</div>
+					<div class="twitter">
+					   <a href="#"><img src="/assets/images/twitter.png"></a>
+					</div>
 				</div>
 			</div>
 							
