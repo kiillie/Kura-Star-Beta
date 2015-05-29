@@ -22,10 +22,10 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'localhost',
-			'database'  => 'kura-star_dev',
-			'username'  => 'root',
-			'password'  => '',
+			'host'      => '104.236.65.35',
+			'database'  => 'forge',
+			'username'  => 'forge',
+			'password'  => '3WsGFhYHJMJJc72H6vIG',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
