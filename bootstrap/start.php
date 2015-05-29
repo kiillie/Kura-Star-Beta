@@ -28,6 +28,7 @@ $env = $app->detectEnvironment(array(
 
 	'local' => array('PC01-PC'),
 	'production'	=> array('m_suzuki'),
+	''	=> array(),
 
 ));
 
