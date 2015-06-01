@@ -261,5 +261,10 @@ Route::get('/terms-of-services', [
 	'as'	=>	'terms-of-services'
 ]);
 
+Route::get('/About_us', [
+	'uses'	=>	'PublicController@About_us',
+	'as'	=>	'About_us'
+]);
+
 
 ?>

@@ -190,6 +190,30 @@ class PublicController extends BaseController{
 				->withFbusers($fbusers);
 	}
 
+	public function About_us(){
+		$countries = $this->country->showCountryByContinent();
+		$continents = $this->continent->show();
+		$categories = $this->category->show();
+		$articles = $this->article->allArticles();
+		$users = $this->user->allUsers();
+		$fbusers = $this->fbuser->getAllUsers();
+		$ranking = $this->article->getByRanking();
+		$ctry_rank = [];
+		foreach($countries as $country){
+			$ctry_rank [$country->COUNTRY_ID] = $this->article->countByCountry($country->COUNTRY_ID);
+		}
+		arsort($ctry_rank);
+		return View::make('public.about_us') //this will get the view you just made in the previous instruction.
+				->withCountries($countries)
+				->withContinents($continents)
+				->withCategories($categories)
+				->withArticles($articles)
+				->withUsers($users)
+				->withRank($ranking)
+				->withCtryrank($ctry_rank)
+				->withFbusers($fbusers);
+	}
+
 }
 
 ?>
