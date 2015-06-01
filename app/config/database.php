@@ -52,16 +52,16 @@ return array(
 			'prefix'   => '',
 		),
 
-		// 'mysql' => array(
-		// 	'driver'    => 'mysql',
-		// 	'host'      => '104.236.65.35',
-		// 	'database'  => 'forge',
-		// 	'username'  => 'forge',
-		// 	'password'  => '3WsGFhYHJMJJc72H6vIG',
-		// 	'charset'   => 'utf8',
-		// 	'collation' => 'utf8_unicode_ci',
-		// 	'prefix'    => '',
-		// ),
+		'mysql' => array(
+			'driver'    => 'mysql',
+			'host'      => '104.236.65.35',
+			'database'  => 'forge',
+			'username'  => 'forge',
+			'password'  => '3WsGFhYHJMJJc72H6vIG',
+			'charset'   => 'utf8',
+			'collation' => 'utf8_unicode_ci',
+			'prefix'    => '',
+		),
 
 		'mysql' => array(
 			'driver'    => 'mysql',
