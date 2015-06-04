@@ -1102,3 +1102,16 @@ h2.title{
 .sidebox iframe{
 	width: 100%;
 }
+
+form a {  
+	color: #ee7500; 
+}
+.clear-auto {  
+	overflow-y: hidden; 
+}
+
+li.ui-state-default.added-addon {
+  background-color: #FFF;
+  margin-bottom: 1px;
+  padding: 10px;
+}
