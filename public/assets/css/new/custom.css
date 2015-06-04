@@ -1103,12 +1103,8 @@ h2.title{
 	width: 100%;
 }
 
-form a {  
-	color: #ee7500; 
-}
-.clear-auto {  
-	overflow-y: hidden; 
-}
+form a, .add-item-btn a {  color: #ee7500; }
+.clear-auto {  overflow-y: hidden; }
 
 li.ui-state-default.added-addon {
   background-color: #FFF;
