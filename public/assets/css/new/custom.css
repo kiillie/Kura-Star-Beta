@@ -1111,3 +1111,44 @@ li.ui-state-default.added-addon {
   margin-bottom: 1px;
   padding: 10px;
 }
+.item-hr hr {
+  border: 0;
+  border-top: dashed 1px #CCC;
+}
+form a, .add-item-btn a {
+  color: #FFF;
+  font-size: 11px;
+  background-color: #ee7500;
+  padding: 0 4px 2px 4px;
+  border-radius: 3px;
+  margin-top: 10px;
+}
+.img-btns a {
+  background-color:  #ee7500;
+  border-radius: 3px;
+  padding: 5px;
+  color: #FFF;
+  font-size: 12px;
+  display: block;
+  margin-top: 10px;
+}
+
+.sortable .added-addon ul.list-inline {
+  margin: 2px;
+  height: 26px;
+  list-style-type: none;
+  overflow: auto;
+}
+.sortable .added-addon ul.list-inline li {
+	float:left;
+}
+.sortable .add-inner .append-add-item a {
+  color: #FFF;
+  background-color: #BBB;
+  text-transform: uppercase;
+  margin: 1px;
+  padding: 5px 10px;
+}
+.sortable .add-inner .append-add-item a:hover {
+	background-color:  #ee7500;
+}
