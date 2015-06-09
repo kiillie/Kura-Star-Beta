@@ -24,6 +24,7 @@
 					</div>
 					<h4>{{$user->CURATER}}</h4>
 					<p>{{$user->CURATER_DESCRIPTION}}</p>
+						<br>
 					<div class="clear"></div>
 					@if(Auth::check())
 						@if(Auth::user()->CURATER_ID == $user->CURATER_ID)
