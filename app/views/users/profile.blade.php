@@ -39,7 +39,7 @@
 						@if(Hybrid_Auth::isConnectedWith('Facebook'))
 							@if('fb'.$profile->identifier == $user->CURATER_ID)
 								<div class="edit-wrap">
-									<p class="edit">
+									<p class="cv-button">
 										<a href="{{URL::route('user.edit', $user->CURATER_ID)}}">プロフィールを編集する</a>
 									</p>
 									<div class="clear"></div>

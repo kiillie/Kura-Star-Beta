@@ -6,13 +6,13 @@
 				
 				<div class="reg-form">
 					<div class="regbox" style="margin:0 auto; float:none;">
-						<h3 class="default-title">Already have an account?</h3>
+						<h3 class="default-title">アカウントをお持ちの方</h3>
 						@if(Session::has('message_login'))
 							<div class="form-group">
 								<span class="label label-danger" style="color:red;">{{Session::get('message_login')}}</span>
 							</div>
 						@endif
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur metus tellus, iaculis et sollicitudin ut, gravida quis nisi. Praesent et convallis lorem, id sollicitudin mauris.</p>
+						<p>くら☆スタは、海外の暮らしや遊びを共有したり、調べたりすることができるサイトです。あなたの知っている海外の情報を記事にして投稿してみよう！</p>
 						{{Form::open(['name' => 'login', 'route' => 'user.login', 'class' => 'reg-form2'])}}
 							{{Form::text('log_email', '', ['class' => 'form-control', 'placeholder' => 'Email Address'])}}
 							{{Form::password('password', ['class' => 'form-control', 'placeholder' => 'Password'])}}
