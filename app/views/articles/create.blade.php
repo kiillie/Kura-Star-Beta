@@ -225,7 +225,7 @@ $(document).ready(function(){
 					{{Form::close()}}
 			</div>
 							
-			<!-- <div class="divider"><span>or fill up reference post below</span></div>
+			<div class="divider"><span>or fill up reference post below</span></div>
 							
 			<div class="referpost">
 									
@@ -288,7 +288,7 @@ $(document).ready(function(){
 									
 					</div>
 									
-				</div>		 -->					
+				</div>							
 								
 				<div class="addons-container">
 					<ul class="sortable list-unstyled">
