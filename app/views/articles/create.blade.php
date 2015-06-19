@@ -59,7 +59,7 @@ $(document).ready(function(){
 						@endif
 						{{Form::open(['name'=>'insert-img', 'class'=>'img-form', 'role'=>'form', 'method'=>'post', 'enctype'=>'multipart/form-data', 'url' => 'article/image'])}}
 							<div class="img-upload col-md-4" style="display:none;">
-								<label>Upload a File</label>
+								<!-- <label>Upload a File</label> -->
 								<input type="file" id="inputFile" name="imgUp" accept="image/*"/>
 							</div>
 							<!-- <div class="img-url">
@@ -129,11 +129,11 @@ $(document).ready(function(){
 						@endif
 				</div>
 				<div class="createbtn">
-						@if(Session::has('curation'))
+					<!-- 	@if(Session::has('curation'))
 							<a href="{{URL::route('article.preview', Session::get('curation'))}}"><input class="btn btn-default preview" type="button" href="{{URL::route('article.preview', Session::get('curation'))}}" value="Preview" /></a>
 						@else
 							<a href="{{URL::route('article.preview', $curation)}}"><input class="btn btn-default preview" type="button" href="{{URL::route('article.preview', $curation)}}" value="Preview" /></a>
-						@endif
+						@endif -->
 						<input type="submit" class="btn btn-default save" onclick="validate_article()" value="Save" />
 						@if(Session::has('curation'))
 							@if(Session::has('status'))
