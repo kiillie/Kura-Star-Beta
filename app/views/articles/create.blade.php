@@ -85,7 +85,7 @@ $(document).ready(function(){
 									
 						<div class="linewrap">
 							<div class="leftbox leftbox2">
-								<label>Select A Country</label>
+								<label>国を選ぶ</label>
 								<select id="cty" name="country">
 									@foreach($continents as $continent)
 					        			<option disabled>-----{{$continent->CONTINENT_NAME}}-----</li>
@@ -102,7 +102,7 @@ $(document).ready(function(){
 								</select>
 							</div>
 							<div class="leftbox leftbox2">
-								<label>Select A Category</label>
+								<label>カテゴリーを選ぶ</label>
 								<select id="cat" name="category">
 									@foreach($categories as $category)
 										@if($article->CATEGORY_ID == $category->CATEGORY_ID)
