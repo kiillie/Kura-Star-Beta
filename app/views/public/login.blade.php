@@ -8,6 +8,7 @@
 					<div class="regbox" style="margin:0 auto; float:none;">
 						<h3 class="default-title">アカウントをお持ちの方</h3>
 						@if(Session::has('message_login'))
+							</br>
 							<div class="form-group">
 								<span class="label label-danger" style="color:red;">{{Session::get('message_login')}}</span>
 							</div>
