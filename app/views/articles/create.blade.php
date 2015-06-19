@@ -51,7 +51,7 @@ $(document).ready(function(){
 			<div class="custompost">
 				<div class="linewrap">
 					<div class="leftbox">
-						<label>Image Preview</label>
+						<label></label>
 						@if($article->CURATION_IMAGE == "")
 							<div class="imgplaceholder"><img src="/assets/images/new/blank-img.png" alt="{{$article->CURATION_TITLE}}" /></div>
 						@else
@@ -62,10 +62,10 @@ $(document).ready(function(){
 								<!-- <label>Upload a File</label> -->
 								<input type="file" id="inputFile" name="imgUp" accept="image/*"/>
 							</div>
-							<div class="img-url">
+						<!-- 	<div class="img-url">
 								<label>Paste Image Link Below</label>
 								<input type="text" id="inputFile2" name="imageUrl" class="urllink" placeholder="URL" />
-							</div>
+							</div> -->
 							<div class="img-btns" style="text-align: center;">
 								<input type="submit" class="btn btn-default art-url-submit" name="art-submit" value="Set"><br/>
 								<a href="javascript:void(0)" class="disp-def artimage" onclick="select_type_img()">Upload an Image</a><br/>
@@ -115,7 +115,7 @@ $(document).ready(function(){
 							</div>
 						</div>
 											
-						<label>details</label>
+				<!-- <label>details</label> -->
 						<input type="text" placeholder="Title" name="title" value="{{$article->CURATION_TITLE}}"/>
 					</div>
 					<div class="rightbox">
