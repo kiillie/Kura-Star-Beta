@@ -46,7 +46,7 @@ $(document).ready(function(){
 	<div class="contentbox nosidebar">
 		{{ Breadcrumbs::render('create') }}
 		
-		<div class="divider"><span>あなたの一枚を投稿</span></div>
+		<div class="divider"><span>あなたの一枚を投稿する</span></div>
 		<div class="createform">
 			<div class="custompost">
 				<div class="linewrap">
@@ -115,11 +115,11 @@ $(document).ready(function(){
 							</div>
 						</div>
 											
-						<label>details</label>
+						<!-- <label>details</label>
 						<input type="text" placeholder="Title" name="title" value="{{$article->CURATION_TITLE}}"/>
 					</div>
 					<div class="rightbox">
-						<label>limit to <span class="num-char">0</span>/150 characters only</label>
+						<label>limit to <span class="num-char">0</span>/150 characters only</label> -->
 						<textarea placeholder="Description" class="artdesc" name="description" maxlength="150">{{$article->CURATION_DESCRIPTION}}</textarea>
 					</div>
 						@if(Session::has('curation'))
