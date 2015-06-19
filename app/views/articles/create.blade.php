@@ -115,8 +115,8 @@ $(document).ready(function(){
 							</div>
 						</div>
 											
-						<!-- <label>details</label>
-						<input type="text" placeholder="Title" name="title" value="{{$article->CURATION_TITLE}}"/> -->
+						<label>details</label>
+						<input type="text" placeholder="Title" name="title" value="{{$article->CURATION_TITLE}}"/>
 					</div>
 					<div class="rightbox">
 						<!-- <label>limit to <span class="num-char">0</span>/150 characters only</label> -->
