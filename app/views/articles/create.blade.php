@@ -46,7 +46,7 @@ $(document).ready(function(){
 	<div class="contentbox nosidebar">
 		{{ Breadcrumbs::render('create') }}
 		
-		<div class="divider"><span>fill up custom post below</span></div>
+		<div class="divider"><span>あなたの一枚を投稿</span></div>
 		<div class="createform">
 			<div class="custompost">
 				<div class="linewrap">
