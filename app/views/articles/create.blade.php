@@ -288,7 +288,7 @@ $(document).ready(function(){
 									
 					</div>
 									
-				</div>						
+				</div>		 -->					
 								
 				<div class="addons-container">
 					<ul class="sortable list-unstyled">
@@ -305,11 +305,11 @@ $(document).ready(function(){
 							
 								
 			</div>
-		</div>		 -->
-												
+		</div>													
 						
 						
 	</div>
+
 	<div id="twitter-search" class="avgrund-popup" title="Search for Tweets" style="display: none;">
 		@include('articles.twitter_search')
 		@section('twitterSearch')
