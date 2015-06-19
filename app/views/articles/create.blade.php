@@ -67,8 +67,8 @@ $(document).ready(function(){
 								<input type="text" id="inputFile2" name="imageUrl" class="urllink" placeholder="URL" />
 							</div> -->
 							<div class="img-btns" style="text-align: center;">
-								<input type="submit" class="btn btn-default art-url-submit" name="art-submit" value="Set"><br/>
 								<a href="javascript:void(0)" class="disp-def artimage" onclick="select_type_img()">Upload an Image</a><br/>
+								<input type="submit" class="btn btn-default art-url-submit" name="art-submit" value="Set"><br/>
 							<!-- 	<span>or</span><br/>
 								<a href="javascript:openDialog('google')" onclick="add_img_class(0, 'picture', 'main')"><span class="glyphicon glyphicon-search"></span> Search for Image</a>
 								<input type="hidden" class="google-img" name="google-main" /> -->
