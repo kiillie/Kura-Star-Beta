@@ -69,9 +69,9 @@ $(document).ready(function(){
 							<div class="img-btns" style="text-align: center;">
 								<input type="submit" class="btn btn-default art-url-submit" name="art-submit" value="Set"><br/>
 								<a href="javascript:void(0)" class="disp-def artimage" onclick="select_type_img()">Upload an Image</a><br/>
-								<span>or</span><br/>
+							<!-- 	<span>or</span><br/>
 								<a href="javascript:openDialog('google')" onclick="add_img_class(0, 'picture', 'main')"><span class="glyphicon glyphicon-search"></span> Search for Image</a>
-								<input type="hidden" class="google-img" name="google-main" />
+								<input type="hidden" class="google-img" name="google-main" /> -->
 							</div>
 							@if(Session::has('curation'))
 								<input type="hidden" class="cur-id" name="cur_id" value="{{Session::get('curation')}}">
@@ -115,11 +115,11 @@ $(document).ready(function(){
 							</div>
 						</div>
 											
-						<label>details</label>
-						<input type="text" placeholder="Title" name="title" value="{{$article->CURATION_TITLE}}"/>
+						<!-- <label>details</label>
+						<input type="text" placeholder="Title" name="title" value="{{$article->CURATION_TITLE}}"/> -->
 					</div>
 					<div class="rightbox">
-						<label>limit to <span class="num-char">0</span>/150 characters only</label>
+						<!-- <label>limit to <span class="num-char">0</span>/150 characters only</label> -->
 						<textarea placeholder="Description" class="artdesc" name="description" maxlength="150">{{$article->CURATION_DESCRIPTION}}</textarea>
 					</div>
 						@if(Session::has('curation'))
@@ -129,11 +129,11 @@ $(document).ready(function(){
 						@endif
 				</div>
 				<div class="createbtn">
-						@if(Session::has('curation'))
+						<!-- @if(Session::has('curation'))
 							<a href="{{URL::route('article.preview', Session::get('curation'))}}"><input class="btn btn-default preview" type="button" href="{{URL::route('article.preview', Session::get('curation'))}}" value="Preview" /></a>
 						@else
 							<a href="{{URL::route('article.preview', $curation)}}"><input class="btn btn-default preview" type="button" href="{{URL::route('article.preview', $curation)}}" value="Preview" /></a>
-						@endif
+						@endif -->
 						<input type="submit" class="btn btn-default save" onclick="validate_article()" value="Save" />
 						@if(Session::has('curation'))
 							@if(Session::has('status'))
