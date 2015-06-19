@@ -9,7 +9,7 @@ class EloquentArticleRepository implements ArticleRepository{
 		$details = htmlentities($input['inner-detail']);
 
 		$article = Article::where('CURATION_ID', '=', $input['cur_id'])
-					->update(['COUNTRY_ID' => $input['country'], 'CATEGORY_ID' => $input['category'], 'CURATION_DESCRIPTION' => $input['description'], 'CURATION_DETAIL' => $details]);
+					->update(['COUNTRY_ID' => $input['country'], 'CATEGORY_ID' => $input['category'], 'CURATION_TITLE' => $input['title'], 'CURATION_DESCRIPTION' => $input['description'], 'CURATION_DETAIL' => $details]);
 		
 		return $article;
 	}
