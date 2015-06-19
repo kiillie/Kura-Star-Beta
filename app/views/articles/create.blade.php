@@ -225,7 +225,7 @@ $(document).ready(function(){
 					{{Form::close()}}
 			</div>
 							
-			<div class="divider"><span>or fill up reference post below</span></div>
+			<!-- <div class="divider"><span>or fill up reference post below</span></div>
 							
 			<div class="referpost">
 									
@@ -309,7 +309,7 @@ $(document).ready(function(){
 												
 						
 						
-	</div>
+	</div> -->
 	<div id="twitter-search" class="avgrund-popup" title="Search for Tweets" style="display: none;">
 		@include('articles.twitter_search')
 		@section('twitterSearch')
